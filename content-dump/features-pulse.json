@@ -1,0 +1,645 @@
+{
+  "page": "features/pulse",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "a",
+      "text": "Features",
+      "href": "../#features-pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Features",
+      "href": "../#features"
+    },
+    {
+      "tag": "h1",
+      "text": "Less noise.The alerts that matter."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse learns what normal looks like for your business and only fires when something genuinely deviates. No more alert fatigue."
+    },
+    {
+      "tag": "p",
+      "text": "View prices"
+    },
+    {
+      "tag": "p",
+      "text": "metric"
+    },
+    {
+      "tag": "p",
+      "text": "active_sessions"
+    },
+    {
+      "tag": "p",
+      "text": "current"
+    },
+    {
+      "tag": "p",
+      "text": "1,840"
+    },
+    {
+      "tag": "p",
+      "text": "expected"
+    },
+    {
+      "tag": "p",
+      "text": "3,200–3,800"
+    },
+    {
+      "tag": "p",
+      "text": "deviation"
+    },
+    {
+      "tag": "p",
+      "text": "-42%"
+    },
+    {
+      "tag": "p",
+      "text": "High severity"
+    },
+    {
+      "tag": "p",
+      "text": "2 min ago"
+    },
+    {
+      "tag": "p",
+      "text": "Active sessions"
+    },
+    {
+      "tag": "p",
+      "text": "Activation in EU markets fell from 34% to 22% over the past 6 hours."
+    },
+    {
+      "tag": "p",
+      "text": "Baseline"
+    },
+    {
+      "tag": "p",
+      "text": "Anomaly"
+    },
+    {
+      "tag": "p",
+      "text": "Oct 1"
+    },
+    {
+      "tag": "p",
+      "text": "Oct 8"
+    },
+    {
+      "tag": "p",
+      "text": "Oct 15"
+    },
+    {
+      "tag": "p",
+      "text": "Oct 22"
+    },
+    {
+      "tag": "p",
+      "text": "Oct 29"
+    },
+    {
+      "tag": "p",
+      "text": "Sent to #product-alerts"
+    },
+    {
+      "tag": "p",
+      "text": "Delivered 1m ago"
+    },
+    {
+      "tag": "h3",
+      "text": "Adaptive baselines, per metric."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse builds a normal range for every data point it watches. Thresholds adjust automatically as your business grows."
+    },
+    {
+      "tag": "p",
+      "text": "87"
+    },
+    {
+      "tag": "p",
+      "text": "/ 100"
+    },
+    {
+      "tag": "p",
+      "text": "Source:"
+    },
+    {
+      "tag": "p",
+      "text": "Stride"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Mixboard"
+    },
+    {
+      "tag": "p",
+      "text": "Score breakdown"
+    },
+    {
+      "tag": "p",
+      "text": "Deviation from baseline"
+    },
+    {
+      "tag": "p",
+      "text": "-34% · high"
+    },
+    {
+      "tag": "p",
+      "text": "Timing context"
+    },
+    {
+      "tag": "p",
+      "text": "peak traffic window"
+    },
+    {
+      "tag": "p",
+      "text": "Business impact"
+    },
+    {
+      "tag": "p",
+      "text": "revenue-critical metric"
+    },
+    {
+      "tag": "p",
+      "text": "Historical recurrence"
+    },
+    {
+      "tag": "p",
+      "text": "first occurrence"
+    },
+    {
+      "tag": "h3",
+      "text": "Severity scoring with context."
+    },
+    {
+      "tag": "p",
+      "text": "Not every deviation is an emergency. Pulse scores each alert by impact and timing so you know what to act on first."
+    },
+    {
+      "tag": "h2",
+      "text": "Most tools alert you to everything.Pulse only tells you what matters."
+    },
+    {
+      "tag": "p",
+      "text": "MRR · 90D"
+    },
+    {
+      "tag": "p",
+      "text": "Learning"
+    },
+    {
+      "tag": "p",
+      "text": "Baseline adjusting as business grows"
+    },
+    {
+      "tag": "p",
+      "text": "Day 1"
+    },
+    {
+      "tag": "p",
+      "text": "Day 20"
+    },
+    {
+      "tag": "p",
+      "text": "Day 40"
+    },
+    {
+      "tag": "p",
+      "text": "Day 60"
+    },
+    {
+      "tag": "p",
+      "text": "Day 80"
+    },
+    {
+      "tag": "h3",
+      "text": "Baselines that learn your business."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse builds a rolling model of normal for every metric it watches - accounting for weekly patterns, seasonal shifts, and growth - so deviations mean something."
+    },
+    {
+      "tag": "h3",
+      "text": "Every alert scored by impact."
+    },
+    {
+      "tag": "p",
+      "text": "Severity is weighted by how far a deviation sits from baseline, when it's happening, and which metrics are affected. A ranked signal, not a flat list."
+    },
+    {
+      "tag": "h3",
+      "text": "Routed to the right person, instantly."
+    },
+    {
+      "tag": "p",
+      "text": "The right alert reaches the right person every time. Route by severity, by team, or by source — without anyone manually deciding who gets what."
+    },
+    {
+      "tag": "p",
+      "text": "Active alerts · Ranked by impact"
+    },
+    {
+      "tag": "p",
+      "text": "82"
+    },
+    {
+      "tag": "p",
+      "text": "Conversion rate drop"
+    },
+    {
+      "tag": "p",
+      "text": "Critical"
+    },
+    {
+      "tag": "p",
+      "text": "-34% from baseline"
+    },
+    {
+      "tag": "p",
+      "text": "·"
+    },
+    {
+      "tag": "p",
+      "text": "58"
+    },
+    {
+      "tag": "p",
+      "text": "API response time"
+    },
+    {
+      "tag": "p",
+      "text": "Medium"
+    },
+    {
+      "tag": "p",
+      "text": "+12% above baseline"
+    },
+    {
+      "tag": "p",
+      "text": "off-peak hours"
+    },
+    {
+      "tag": "p",
+      "text": "24"
+    },
+    {
+      "tag": "p",
+      "text": "Low"
+    },
+    {
+      "tag": "p",
+      "text": "Sunday pattern"
+    },
+    {
+      "tag": "p",
+      "text": "Routing rule · Growth"
+    },
+    {
+      "tag": "p",
+      "text": "Active"
+    },
+    {
+      "tag": "p",
+      "text": "if"
+    },
+    {
+      "tag": "p",
+      "text": "="
+    },
+    {
+      "tag": "p",
+      "text": "conversion"
+    },
+    {
+      "tag": "p",
+      "text": "<"
+    },
+    {
+      "tag": "p",
+      "text": "20%"
+    },
+    {
+      "tag": "p",
+      "text": "and"
+    },
+    {
+      "tag": "p",
+      "text": "the following:"
+    },
+    {
+      "tag": "p",
+      "text": "time"
+    },
+    {
+      "tag": "p",
+      "text": "business hours"
+    },
+    {
+      "tag": "p",
+      "text": "or"
+    },
+    {
+      "tag": "p",
+      "text": "campaign"
+    },
+    {
+      "tag": "p",
+      "text": "then"
+    },
+    {
+      "tag": "p",
+      "text": "route to"
+    },
+    {
+      "tag": "p",
+      "text": "Threadbase"
+    },
+    {
+      "tag": "p",
+      "text": "# growth-team"
+    },
+    {
+      "tag": "p",
+      "text": "AlertDuty"
+    },
+    {
+      "tag": "p",
+      "text": "on-call"
+    },
+    {
+      "tag": "h2",
+      "text": "Your data, finally connected"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "../pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "../about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "../careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "../blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "../integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "../changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "../404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "../terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "../privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

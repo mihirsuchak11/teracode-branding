@@ -1,0 +1,533 @@
+{
+  "page": "terms-of-service",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "h1",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "p",
+      "text": "Last updated:"
+    },
+    {
+      "tag": "p",
+      "text": "Jun 21, 2026"
+    },
+    {
+      "tag": "p",
+      "text": "1."
+    },
+    {
+      "tag": "p",
+      "text": "Acceptance of Terms"
+    },
+    {
+      "tag": "a",
+      "text": "Acceptance of Terms",
+      "href": "./terms-of-service#acceptance-of-terms-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "2."
+    },
+    {
+      "tag": "p",
+      "text": "Description of Service"
+    },
+    {
+      "tag": "a",
+      "text": "Description of Service",
+      "href": "./terms-of-service#description-of-service-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "3."
+    },
+    {
+      "tag": "p",
+      "text": "Accounts"
+    },
+    {
+      "tag": "a",
+      "text": "Accounts",
+      "href": "./terms-of-service#accounts-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "4."
+    },
+    {
+      "tag": "p",
+      "text": "Acceptable Use"
+    },
+    {
+      "tag": "a",
+      "text": "Acceptable Use",
+      "href": "./terms-of-service#acceptable-use-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "5."
+    },
+    {
+      "tag": "p",
+      "text": "Data and Integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Data and Integrations",
+      "href": "./terms-of-service#data-and-integrations-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "6."
+    },
+    {
+      "tag": "p",
+      "text": "Subscription and Billing"
+    },
+    {
+      "tag": "a",
+      "text": "Subscription and Billing",
+      "href": "./terms-of-service#subscription-and-billing-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "7."
+    },
+    {
+      "tag": "p",
+      "text": "Termination"
+    },
+    {
+      "tag": "a",
+      "text": "Termination",
+      "href": "./terms-of-service#termination-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "8."
+    },
+    {
+      "tag": "p",
+      "text": "Disclaimers"
+    },
+    {
+      "tag": "a",
+      "text": "Disclaimers",
+      "href": "./terms-of-service#disclaimers-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "9."
+    },
+    {
+      "tag": "p",
+      "text": "Limitation of Liability"
+    },
+    {
+      "tag": "a",
+      "text": "Limitation of Liability",
+      "href": "./terms-of-service#limitation-of-liability-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "10."
+    },
+    {
+      "tag": "p",
+      "text": "Changes to Terms"
+    },
+    {
+      "tag": "a",
+      "text": "Changes to Terms",
+      "href": "./terms-of-service#changes-to-terms-var(--variable-KqPNFa9hy)"
+    },
+    {
+      "tag": "h3",
+      "text": "1."
+    },
+    {
+      "tag": "h3",
+      "text": "Acceptance of Terms"
+    },
+    {
+      "tag": "p",
+      "text": "By accessing or using Strand (“the Service”), you agree to be bound by these Terms and Conditions. If you do not agree, please do not use the Service."
+    },
+    {
+      "tag": "h3",
+      "text": "2."
+    },
+    {
+      "tag": "h3",
+      "text": "Description of Service"
+    },
+    {
+      "tag": "p",
+      "text": "Strand provides an AI powered data intelligence platform that connects to third party data sources, builds a knowledge graph, and allows natural language querying of connected data. Features and availability may change at any time without notice."
+    },
+    {
+      "tag": "h3",
+      "text": "3."
+    },
+    {
+      "tag": "h3",
+      "text": "Accounts"
+    },
+    {
+      "tag": "p",
+      "text": "You must provide accurate information when creating an account. You are responsible for maintaining the confidentiality of your credentials and for all activity under your account. Notify us immediately of any unauthorized use."
+    },
+    {
+      "tag": "h3",
+      "text": "4."
+    },
+    {
+      "tag": "h3",
+      "text": "Acceptable Use"
+    },
+    {
+      "tag": "p",
+      "text": "You agree not to: use the Service for unlawful purposes; attempt to reverse engineer, decompile, or gain unauthorized access to the Service; upload data you do not have the right to share; interfere with the normal operation of the Service."
+    },
+    {
+      "tag": "h3",
+      "text": "5."
+    },
+    {
+      "tag": "h3",
+      "text": "Data and Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "You retain ownership of the data you connect to Strand. By connecting a data source, you grant us permission to access, process, and store that data solely to provide the Service. You are responsible for ensuring you have the rights to connect any third party data source."
+    },
+    {
+      "tag": "h3",
+      "text": "6."
+    },
+    {
+      "tag": "h3",
+      "text": "Subscription and Billing"
+    },
+    {
+      "tag": "p",
+      "text": "Paid plans are billed in advance on a monthly or annual basis. Fees are non refundable except where required by law. We may change pricing with reasonable advance notice."
+    },
+    {
+      "tag": "h3",
+      "text": "7."
+    },
+    {
+      "tag": "h3",
+      "text": "Termination"
+    },
+    {
+      "tag": "p",
+      "text": "We may suspend or terminate your access if you violate these Terms. You may cancel your subscription at any time. Upon cancellation, your data will be available for export for a limited period before deletion."
+    },
+    {
+      "tag": "h3",
+      "text": "8."
+    },
+    {
+      "tag": "h3",
+      "text": "Disclaimers"
+    },
+    {
+      "tag": "p",
+      "text": "The Service is provided “as is” without warranties of any kind. We do not guarantee that the Service will be uninterrupted, error free, or that insights generated will be accurate or complete."
+    },
+    {
+      "tag": "h3",
+      "text": "9."
+    },
+    {
+      "tag": "h3",
+      "text": "Limitation of Liability"
+    },
+    {
+      "tag": "p",
+      "text": "To the maximum extent permitted by law, Strand shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Service."
+    },
+    {
+      "tag": "h3",
+      "text": "10."
+    },
+    {
+      "tag": "h3",
+      "text": "Changes to Terms"
+    },
+    {
+      "tag": "p",
+      "text": "We may update these Terms from time to time. Continued use of the Service after changes take effect constitutes acceptance of the revised Terms."
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./features/cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./features/ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./features/pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "./pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "./about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "./blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "./integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "./changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "./404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "./terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

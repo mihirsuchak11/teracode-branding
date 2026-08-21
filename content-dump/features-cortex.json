@@ -1,0 +1,537 @@
+{
+  "page": "features/cortex",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "a",
+      "text": "Features",
+      "href": "../#features-cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Features",
+      "href": "../#features"
+    },
+    {
+      "tag": "h1",
+      "text": "Connect every data source."
+    },
+    {
+      "tag": "h1",
+      "text": "Zero manual mapping."
+    },
+    {
+      "tag": "p",
+      "text": "The knowledge graph that connects everything. Relationships mapped automatically, in real time."
+    },
+    {
+      "tag": "p",
+      "text": "View prices"
+    },
+    {
+      "tag": "p",
+      "text": "J. Smith"
+    },
+    {
+      "tag": "p",
+      "text": "john.smith@company.com"
+    },
+    {
+      "tag": "p",
+      "text": "Synced from:"
+    },
+    {
+      "tag": "p",
+      "text": "Synced"
+    },
+    {
+      "tag": "p",
+      "text": "VaultDB"
+    },
+    {
+      "tag": "p",
+      "text": "jsmith@co.com"
+    },
+    {
+      "tag": "p",
+      "text": "Gridwork"
+    },
+    {
+      "tag": "p",
+      "text": "Pipecloud"
+    },
+    {
+      "tag": "p",
+      "text": "John Smith"
+    },
+    {
+      "tag": "p",
+      "text": "Records found"
+    },
+    {
+      "tag": "h3",
+      "text": "Entity resolution, automatic."
+    },
+    {
+      "tag": "p",
+      "text": "Same customer across your CRM, payments, and database - Cortex links them without configuration."
+    },
+    {
+      "tag": "p",
+      "text": "Account updated"
+    },
+    {
+      "tag": "p",
+      "text": "just now"
+    },
+    {
+      "tag": "p",
+      "text": "New payment linked"
+    },
+    {
+      "tag": "p",
+      "text": "Stride"
+    },
+    {
+      "tag": "p",
+      "text": "12s ago"
+    },
+    {
+      "tag": "p",
+      "text": "Record created"
+    },
+    {
+      "tag": "p",
+      "text": "28s ago"
+    },
+    {
+      "tag": "p",
+      "text": "Entity resolved"
+    },
+    {
+      "tag": "p",
+      "text": "1m ago"
+    },
+    {
+      "tag": "p",
+      "text": "Subscription changed"
+    },
+    {
+      "tag": "p",
+      "text": "2m ago"
+    },
+    {
+      "tag": "h3",
+      "text": "The graph updates itself."
+    },
+    {
+      "tag": "p",
+      "text": "Every change in a connected tool reflects within seconds. Always current, zero manual effort."
+    },
+    {
+      "tag": "h3",
+      "text": "Explore relationships without writing a query."
+    },
+    {
+      "tag": "p",
+      "text": "Browse connections between any two entities - customers, revenue, support history - without touching SQL."
+    },
+    {
+      "tag": "p",
+      "text": "Subscription"
+    },
+    {
+      "tag": "p",
+      "text": "Active"
+    },
+    {
+      "tag": "p",
+      "text": "Plan"
+    },
+    {
+      "tag": "p",
+      "text": "Enterprise"
+    },
+    {
+      "tag": "p",
+      "text": "Renewal"
+    },
+    {
+      "tag": "p",
+      "text": "Dec 14, 2025"
+    },
+    {
+      "tag": "p",
+      "text": "MRR"
+    },
+    {
+      "tag": "p",
+      "text": "$1,240"
+    },
+    {
+      "tag": "p",
+      "text": "Every relationship in your stack, mapped and queryable."
+    },
+    {
+      "tag": "p",
+      "text": "Connected sources"
+    },
+    {
+      "tag": "p",
+      "text": "ThreadBase"
+    },
+    {
+      "tag": "p",
+      "text": "42 channels"
+    },
+    {
+      "tag": "p",
+      "text": "alerts enabled"
+    },
+    {
+      "tag": "p",
+      "text": "874 accounts"
+    },
+    {
+      "tag": "p",
+      "text": "12,400 records"
+    },
+    {
+      "tag": "p",
+      "text": "Chatdock"
+    },
+    {
+      "tag": "p",
+      "text": "9.841 conversations"
+    },
+    {
+      "tag": "p",
+      "text": "204 open"
+    },
+    {
+      "tag": "p",
+      "text": "38 schemes"
+    },
+    {
+      "tag": "p",
+      "text": "6.4M rows"
+    },
+    {
+      "tag": "p",
+      "text": "$2.4 MMR"
+    },
+    {
+      "tag": "p",
+      "text": "1,204 subscriptions"
+    },
+    {
+      "tag": "p",
+      "text": "41.2M"
+    },
+    {
+      "tag": "p",
+      "text": "records indexed"
+    },
+    {
+      "tag": "p",
+      "text": "0"
+    },
+    {
+      "tag": "p",
+      "text": "errors"
+    },
+    {
+      "tag": "p",
+      "text": "Connect your stack"
+    },
+    {
+      "tag": "p",
+      "text": "Plug in 240+ tools in minutes. Cortex ingests every source and starts mapping immediately."
+    },
+    {
+      "tag": "p",
+      "text": "Map relationships automatically"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex finds connections across your data you didn't know existed. No manual schema work required."
+    },
+    {
+      "tag": "p",
+      "text": "Query everything, instantly"
+    },
+    {
+      "tag": "p",
+      "text": "Once mapped, every relationship in your graph is queryable in plain language through Ask."
+    },
+    {
+      "tag": "h2",
+      "text": "Your data, finally connected"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "../pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "../about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "../careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "../blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "../integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "../changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "../404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "../terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "../privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

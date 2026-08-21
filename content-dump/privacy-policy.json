@@ -1,0 +1,579 @@
+{
+  "page": "privacy-policy",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "h1",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "p",
+      "text": "Last updated:"
+    },
+    {
+      "tag": "p",
+      "text": "Jun 17, 2026"
+    },
+    {
+      "tag": "p",
+      "text": "1."
+    },
+    {
+      "tag": "p",
+      "text": "Overview"
+    },
+    {
+      "tag": "a",
+      "text": "Overview",
+      "href": "./privacy-policy#overview-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "2."
+    },
+    {
+      "tag": "p",
+      "text": "Information We Collect"
+    },
+    {
+      "tag": "a",
+      "text": "Information We Collect",
+      "href": "./privacy-policy#information-we-collect-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "3."
+    },
+    {
+      "tag": "p",
+      "text": "How We Use Information"
+    },
+    {
+      "tag": "a",
+      "text": "How We Use Information",
+      "href": "./privacy-policy#how-we-use-information-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "4."
+    },
+    {
+      "tag": "p",
+      "text": "Data Sharing"
+    },
+    {
+      "tag": "a",
+      "text": "Data Sharing",
+      "href": "./privacy-policy#data-sharing-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "5."
+    },
+    {
+      "tag": "p",
+      "text": "Data Security"
+    },
+    {
+      "tag": "a",
+      "text": "Data Security",
+      "href": "./privacy-policy#data-security-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "6."
+    },
+    {
+      "tag": "p",
+      "text": "Data Retention"
+    },
+    {
+      "tag": "a",
+      "text": "Data Retention",
+      "href": "./privacy-policy#data-retention-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "7."
+    },
+    {
+      "tag": "p",
+      "text": "Your Rights"
+    },
+    {
+      "tag": "a",
+      "text": "Your Rights",
+      "href": "./privacy-policy#your-rights-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "8."
+    },
+    {
+      "tag": "p",
+      "text": "Cookies"
+    },
+    {
+      "tag": "a",
+      "text": "Cookies",
+      "href": "./privacy-policy#cookies-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "9."
+    },
+    {
+      "tag": "p",
+      "text": "Children's Privacy"
+    },
+    {
+      "tag": "a",
+      "text": "Children's Privacy",
+      "href": "./privacy-policy#childrens-privacy-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "10."
+    },
+    {
+      "tag": "p",
+      "text": "International Transfers"
+    },
+    {
+      "tag": "a",
+      "text": "International Transfers",
+      "href": "./privacy-policy#international-transfers-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "11."
+    },
+    {
+      "tag": "p",
+      "text": "Changes to This Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Changes to This Policy",
+      "href": "./privacy-policy#changes-to-this-policy-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "p",
+      "text": "12."
+    },
+    {
+      "tag": "a",
+      "text": "Contact",
+      "href": "./privacy-policy#contact-var(--variable-kqpnfa9hy)"
+    },
+    {
+      "tag": "h3",
+      "text": "1."
+    },
+    {
+      "tag": "h3",
+      "text": "Overview"
+    },
+    {
+      "tag": "p",
+      "text": "This Privacy Policy explains how Strand collects, uses, and protects information when you use our Service. By using Strand, you agree to the practices described here."
+    },
+    {
+      "tag": "h3",
+      "text": "2."
+    },
+    {
+      "tag": "h3",
+      "text": "Information We Collect"
+    },
+    {
+      "tag": "p",
+      "text": "We collect account information such as your name, email, and company. We collect connected data from the third party sources you choose to integrate, solely to provide the Service. We collect usage information such as queries run and features used. We also collect device information such as browser type and IP address."
+    },
+    {
+      "tag": "h3",
+      "text": "3."
+    },
+    {
+      "tag": "h3",
+      "text": "How We Use Information"
+    },
+    {
+      "tag": "p",
+      "text": "We use the information we collect to provide and improve the Service, build and maintain your knowledge graph, respond to support requests, send important account notifications, and monitor for security and abuse."
+    },
+    {
+      "tag": "h3",
+      "text": "4."
+    },
+    {
+      "tag": "h3",
+      "text": "Data Sharing"
+    },
+    {
+      "tag": "p",
+      "text": "We do not sell your data. We may share information with service providers who help us operate Strand, subject to confidentiality obligations, or when required by law."
+    },
+    {
+      "tag": "h3",
+      "text": "5."
+    },
+    {
+      "tag": "h3",
+      "text": "Data Security"
+    },
+    {
+      "tag": "p",
+      "text": "We use industry standard safeguards, including encryption in transit and at rest, to protect your data. No method of transmission or storage is completely secure, and we cannot guarantee absolute security."
+    },
+    {
+      "tag": "h3",
+      "text": "6."
+    },
+    {
+      "tag": "h3",
+      "text": "Data Retention"
+    },
+    {
+      "tag": "p",
+      "text": "We retain your information for as long as your account is active or as needed to provide the Service. Upon cancellation, data is deleted from our systems within 30 days, except where retention is required by law."
+    },
+    {
+      "tag": "h3",
+      "text": "7."
+    },
+    {
+      "tag": "h3",
+      "text": "Your Rights"
+    },
+    {
+      "tag": "p",
+      "text": "Depending on your location, you may have the right to access, correct, export, or delete your personal information. To exercise these rights, contact us using the information below."
+    },
+    {
+      "tag": "h3",
+      "text": "8."
+    },
+    {
+      "tag": "h3",
+      "text": "Cookies"
+    },
+    {
+      "tag": "p",
+      "text": "We use cookies and similar technologies to keep you logged in, remember preferences, and understand how the Service is used. You can control cookies through your browser settings."
+    },
+    {
+      "tag": "h3",
+      "text": "9."
+    },
+    {
+      "tag": "h3",
+      "text": "Children's Privacy"
+    },
+    {
+      "tag": "p",
+      "text": "Strand is not directed to individuals under the age of 16. We do not knowingly collect personal information from children."
+    },
+    {
+      "tag": "h3",
+      "text": "10."
+    },
+    {
+      "tag": "h3",
+      "text": "International Transfers"
+    },
+    {
+      "tag": "p",
+      "text": "Your information may be transferred to and processed in countries other than your own. We take steps to ensure appropriate safeguards are in place for such transfers."
+    },
+    {
+      "tag": "h3",
+      "text": "11."
+    },
+    {
+      "tag": "h3",
+      "text": "Changes to This Policy"
+    },
+    {
+      "tag": "p",
+      "text": "We may update this Privacy Policy from time to time. Continued use of the Service after changes take effect constitutes acceptance of the revised policy."
+    },
+    {
+      "tag": "h3",
+      "text": "12."
+    },
+    {
+      "tag": "h3",
+      "text": "Contact"
+    },
+    {
+      "tag": "p",
+      "text": "Questions about this Privacy Policy can be sent to privacy@strand.io"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./features/cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./features/ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./features/pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "./pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "./about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "./blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "./integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "./changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "./404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "./terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

@@ -1,0 +1,463 @@
+{
+  "page": "integrations",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "h1",
+      "text": "240+ integrations.One connection point."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse learns what normal looks like for your business and only fires when something genuinely deviates. No more alert fatigue."
+    },
+    {
+      "tag": "p",
+      "text": "All"
+    },
+    {
+      "tag": "p",
+      "text": "CRM & Sales"
+    },
+    {
+      "tag": "p",
+      "text": "Analytics"
+    },
+    {
+      "tag": "p",
+      "text": "Databases"
+    },
+    {
+      "tag": "p",
+      "text": "Productivity"
+    },
+    {
+      "tag": "p",
+      "text": "Finance"
+    },
+    {
+      "tag": "p",
+      "text": "Marketing"
+    },
+    {
+      "tag": "h3",
+      "text": "Pipecloud"
+    },
+    {
+      "tag": "p",
+      "text": "CRM"
+    },
+    {
+      "tag": "p",
+      "text": "·"
+    },
+    {
+      "tag": "p",
+      "text": "OAuth"
+    },
+    {
+      "tag": "p",
+      "text": "Sync deals, contacts, and pipeline stages. Cortex maps account relationships across your full sales cycle."
+    },
+    {
+      "tag": "h3",
+      "text": "Scaleforce"
+    },
+    {
+      "tag": "p",
+      "text": "API key"
+    },
+    {
+      "tag": "p",
+      "text": "Pull accounts, opportunities, and custom objects. Bi-directional sync keeps both systems current."
+    },
+    {
+      "tag": "h3",
+      "text": "Closetrack"
+    },
+    {
+      "tag": "p",
+      "text": "Sales"
+    },
+    {
+      "tag": "p",
+      "text": "Import leads, activities, and revenue data. Track conversion paths from first touch to closed deal."
+    },
+    {
+      "tag": "h3",
+      "text": "Mixboard"
+    },
+    {
+      "tag": "p",
+      "text": "Product analytics"
+    },
+    {
+      "tag": "p",
+      "text": "Stream event data, funnels, and cohorts. Correlate product usage with revenue and support signals."
+    },
+    {
+      "tag": "h3",
+      "text": "Metripanel"
+    },
+    {
+      "tag": "p",
+      "text": "Web analytics"
+    },
+    {
+      "tag": "p",
+      "text": "Tracking ID"
+    },
+    {
+      "tag": "p",
+      "text": "Connect pageviews, sessions, and conversion events. Map user journeys to account-level behavior."
+    },
+    {
+      "tag": "h3",
+      "text": "Signalkit"
+    },
+    {
+      "tag": "p",
+      "text": "Ingest behavioral data and engagement scores. Identify usage patterns that predict churn or expansion."
+    },
+    {
+      "tag": "h3",
+      "text": "Trackwise"
+    },
+    {
+      "tag": "p",
+      "text": "Event tracking"
+    },
+    {
+      "tag": "p",
+      "text": "Pull raw event streams and user properties. Build granular segments inside the graph."
+    },
+    {
+      "tag": "h3",
+      "text": "Beamcast"
+    },
+    {
+      "tag": "p",
+      "text": "Business intelligence"
+    },
+    {
+      "tag": "p",
+      "text": "Import dashboards, saved queries, and metric definitions. Unify BI data with live source data."
+    },
+    {
+      "tag": "h3",
+      "text": "PolySQL"
+    },
+    {
+      "tag": "p",
+      "text": "Connection string"
+    },
+    {
+      "tag": "p",
+      "text": "Connect production databases via read replica. CDC streams keep the graph current."
+    },
+    {
+      "tag": "h3",
+      "text": "VaultDB"
+    },
+    {
+      "tag": "p",
+      "text": "NoSQL"
+    },
+    {
+      "tag": "p",
+      "text": "Sync collections and documents in real time. Schema-flexible ingestion handles nested data."
+    },
+    {
+      "tag": "h3",
+      "text": "Cleardesk"
+    },
+    {
+      "tag": "p",
+      "text": "Import tickets, conversations, and satisfaction scores. Link support history to customer health signals."
+    },
+    {
+      "tag": "h3",
+      "text": "Driftline"
+    },
+    {
+      "tag": "p",
+      "text": "Customer messaging"
+    },
+    {
+      "tag": "p",
+      "text": "Sync chat transcripts, user events, and resolution data. Surface messaging trends across accounts."
+    },
+    {
+      "tag": "p",
+      "text": "LOAD MORE"
+    },
+    {
+      "tag": "h2",
+      "text": "Your data, finally connected"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./features/cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./features/ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./features/pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "./pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "./about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "./blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "./integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "./changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "./404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "./terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

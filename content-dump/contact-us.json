@@ -1,0 +1,367 @@
+{
+  "page": "contact-us",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "h1",
+      "text": "Let's connect the dots."
+    },
+    {
+      "tag": "p",
+      "text": "Questions about Strand, pricing, or your data setup? Reach the right team in under a minute."
+    },
+    {
+      "tag": "p",
+      "text": "You can also email us at sales@strand.io"
+    },
+    {
+      "tag": "p",
+      "text": "Full name"
+    },
+    {
+      "tag": "p",
+      "text": "Provide a full name"
+    },
+    {
+      "tag": "p",
+      "text": "Work email"
+    },
+    {
+      "tag": "p",
+      "text": "Provide a valid email"
+    },
+    {
+      "tag": "p",
+      "text": "Company name"
+    },
+    {
+      "tag": "p",
+      "text": "Provide a company name"
+    },
+    {
+      "tag": "p",
+      "text": "What can we help with?"
+    },
+    {
+      "tag": "p",
+      "text": "Please fill out this field"
+    },
+    {
+      "tag": "p",
+      "text": "I have read and agree to the Privacy Policy."
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./"
+    },
+    {
+      "tag": "p",
+      "text": "Submit"
+    },
+    {
+      "tag": "p",
+      "text": "Sales:"
+    },
+    {
+      "tag": "p",
+      "text": "Support:"
+    },
+    {
+      "tag": "p",
+      "text": "Partnerships:"
+    },
+    {
+      "tag": "p",
+      "text": "sales@strand.io"
+    },
+    {
+      "tag": "a",
+      "text": "sales@strand.io",
+      "href": "mailto:sales@strand.io"
+    },
+    {
+      "tag": "p",
+      "text": "support@strand.io"
+    },
+    {
+      "tag": "a",
+      "text": "support@strand.io",
+      "href": "mailto:support@strand.io"
+    },
+    {
+      "tag": "p",
+      "text": "partnerships@strand.io"
+    },
+    {
+      "tag": "a",
+      "text": "partnerships@strand.io",
+      "href": "mailto:partnerships@strand.io"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./features/cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./features/ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./features/pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "./pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "./about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "./blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "./integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "./changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "./404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "./terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

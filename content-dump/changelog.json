@@ -1,0 +1,352 @@
+{
+  "page": "changelog",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "h1",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "v2.4.0"
+    },
+    {
+      "tag": "p",
+      "text": "Jun 12, 2026"
+    },
+    {
+      "tag": "h2",
+      "text": "Faster cross source queries and quieter Pulse alerts"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/2lGbNb0EKRZCISNfMTcVLhJDY.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "NEW"
+    },
+    {
+      "tag": "p",
+      "text": "Ask now suggests two or three follow up questions after every result, so you can keep digging without typing a new query from scratch."
+    },
+    {
+      "tag": "p",
+      "text": "IMPROVED"
+    },
+    {
+      "tag": "p",
+      "text": "Queries spanning five or more connected sources resolve noticeably faster, with no change to how you phrase them."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse adjusts its baseline for known seasonal patterns, like quarter end spikes, so expected swings stop triggering alerts."
+    },
+    {
+      "tag": "p",
+      "text": "v2.3.0"
+    },
+    {
+      "tag": "p",
+      "text": "Jun 3, 2026"
+    },
+    {
+      "tag": "h2",
+      "text": "Cortex traces deeper relationships, Nucleus streams larger results"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex now resolves relationships across three or more linked entities in a single pass, not just direct connections."
+    },
+    {
+      "tag": "p",
+      "text": "Nucleus TypeScript SDK v1.4.0 adds streaming support for large query results, instead of waiting on the full payload."
+    },
+    {
+      "tag": "p",
+      "text": "v2.2.1"
+    },
+    {
+      "tag": "p",
+      "text": "May 20, 2026"
+    },
+    {
+      "tag": "h2",
+      "text": "Local schema validation and a Snowflake sync fix"
+    },
+    {
+      "tag": "p",
+      "text": "Nucleus CLI v2.1.0 validates your graph schema locally before pushing changes, instead of waiting on a round trip to the server."
+    },
+    {
+      "tag": "p",
+      "text": "Resolved a delay where the Snowflake connector could lag behind other sources during high volume Pathways syncs."
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./features/cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./features/ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./features/pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "./pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "./about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "./blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "./integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "./changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "./404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "./terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

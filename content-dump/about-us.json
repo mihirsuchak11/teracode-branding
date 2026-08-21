@@ -1,0 +1,504 @@
+{
+  "page": "about-us",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 3,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "h1",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Origins"
+    },
+    {
+      "tag": "p",
+      "text": "We came from companies where the data existed but the answers did not. Brilliant people spending half their week pulling exports, merging spreadsheets, and rebuilding context that should have been instant. The problem was never the data. It was the distance between the data and the person who needed it."
+    },
+    {
+      "tag": "p",
+      "text": "We built Strand to close that distance. One graph. Every source. Anyone on the team can ask a question and get an answer in seconds, not days. Two years in, 2,400 teams have made that switch."
+    },
+    {
+      "tag": "h3",
+      "text": "$12M"
+    },
+    {
+      "tag": "p",
+      "text": "Funding raised"
+    },
+    {
+      "tag": "p",
+      "text": "Founded:"
+    },
+    {
+      "tag": "p",
+      "text": "2025"
+    },
+    {
+      "tag": "p",
+      "text": "Location:"
+    },
+    {
+      "tag": "p",
+      "text": "San Francisco, CA"
+    },
+    {
+      "tag": "p",
+      "text": "Team size:"
+    },
+    {
+      "tag": "p",
+      "text": "7 people"
+    },
+    {
+      "tag": "p",
+      "text": "Trusted by 56+ teams who are tired of tab-switching"
+    },
+    {
+      "tag": "p",
+      "text": "Milestones"
+    },
+    {
+      "tag": "p",
+      "text": "January 2023"
+    },
+    {
+      "tag": "p",
+      "text": "Strand founded"
+    },
+    {
+      "tag": "p",
+      "text": "June 2023"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex v1 shipped"
+    },
+    {
+      "tag": "p",
+      "text": "September 2023"
+    },
+    {
+      "tag": "p",
+      "text": "First 100 teams onboarded"
+    },
+    {
+      "tag": "p",
+      "text": "The future"
+    },
+    {
+      "tag": "p",
+      "text": "Help shape the future of Strand"
+    },
+    {
+      "tag": "p",
+      "text": "The team"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/ksqJrieXLUsSNwxF8kGqLgc3Yg.png",
+      "alt": "Headshot of Marcus Webb, transparent background."
+    },
+    {
+      "tag": "p",
+      "text": "Marcus Webb"
+    },
+    {
+      "tag": "p",
+      "text": "Backend Engineer"
+    },
+    {
+      "tag": "a",
+      "text": "Backend Engineer"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/PUecTk9jWpVwlN9nigmsQSli9q4.png",
+      "alt": "Headshot of Claire Fontaine, transparent background."
+    },
+    {
+      "tag": "p",
+      "text": "Claire Fontaine"
+    },
+    {
+      "tag": "p",
+      "text": "Customer Success"
+    },
+    {
+      "tag": "a",
+      "text": "Customer Success"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/iZ6PrlyGPqoYuxYixWxyH4SexY.png",
+      "alt": "Headshot of Daniel Reyes, transparent background."
+    },
+    {
+      "tag": "p",
+      "text": "Daniel Reyes"
+    },
+    {
+      "tag": "p",
+      "text": "Product Designer"
+    },
+    {
+      "tag": "a",
+      "text": "Product Designer"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/6r2LlY9YSSFLbGFQuS7DHN40A.png",
+      "alt": "Headshot of Jordan Osei, transparent background."
+    },
+    {
+      "tag": "p",
+      "text": "Jordan Osei"
+    },
+    {
+      "tag": "p",
+      "text": "Machine Learning"
+    },
+    {
+      "tag": "a",
+      "text": "Machine Learning"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/8CzrxWF534iSkitS47r5A5xKy8.png",
+      "alt": "Headshot of Ravi Menon, transparent background."
+    },
+    {
+      "tag": "p",
+      "text": "Ravi Menon"
+    },
+    {
+      "tag": "p",
+      "text": "Full Stack Engineer"
+    },
+    {
+      "tag": "a",
+      "text": "Full Stack Engineer"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/7jcAeS53cIjZhvIADnuaNUcY.png",
+      "alt": "Headshot of Kevin Liang, transparent background."
+    },
+    {
+      "tag": "p",
+      "text": "Kevin Liang"
+    },
+    {
+      "tag": "p",
+      "text": "Developer Relations"
+    },
+    {
+      "tag": "a",
+      "text": "Developer Relations"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/mCrcfzFZ37SpEpNzcBAy5oB8.png",
+      "alt": "Headshot of Zara Mitchell, transparent background."
+    },
+    {
+      "tag": "p",
+      "text": "Zara Mitchell"
+    },
+    {
+      "tag": "p",
+      "text": "Sales"
+    },
+    {
+      "tag": "a",
+      "text": "Sales"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/zYExH6gc2W0VSA18crbFqkTKFI.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Could be you"
+    },
+    {
+      "tag": "p",
+      "text": "View careers"
+    },
+    {
+      "tag": "a",
+      "text": "View careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "h2",
+      "text": "Your data, finally connected"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./features/cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./features/ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./features/pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "./pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "./about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "./blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "./integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "./changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "./404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "./terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

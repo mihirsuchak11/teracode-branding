@@ -1,0 +1,713 @@
+{
+  "page": "index.html",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 38,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "p",
+      "text": "New"
+    },
+    {
+      "tag": "p",
+      "text": "Introducing Ask: Query your entire stack in plain language"
+    },
+    {
+      "tag": "h1",
+      "text": "The missing connection layer"
+    },
+    {
+      "tag": "p",
+      "text": "Strand builds a living knowledge graph across every tool in your stack. Ask questions in plain language. Get answers no single source could provide alone."
+    },
+    {
+      "tag": "p",
+      "text": "Connect a source"
+    },
+    {
+      "tag": "p",
+      "text": "Book a demo"
+    },
+    {
+      "tag": "h3",
+      "text": "1."
+    },
+    {
+      "tag": "h3",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "Plug in your tools. 240+ integrations out of the box."
+    },
+    {
+      "tag": "h3",
+      "text": "2."
+    },
+    {
+      "tag": "h3",
+      "text": "Map"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex automatically builds your knowledge graph."
+    },
+    {
+      "tag": "h3",
+      "text": "3."
+    },
+    {
+      "tag": "h3",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query in plain language. Share results with your team."
+    },
+    {
+      "tag": "p",
+      "text": "Trusted by 56+ teams who are tired of tab-switching"
+    },
+    {
+      "tag": "h2",
+      "text": "Your team wastes hours pulling data from scattered tools. Strand turns that into one conversation."
+    },
+    {
+      "tag": "p",
+      "text": "How can I help today?"
+    },
+    {
+      "tag": "p",
+      "text": "Thinking"
+    },
+    {
+      "tag": "p",
+      "text": "3 Results"
+    },
+    {
+      "tag": "p",
+      "text": "Analyze"
+    },
+    {
+      "tag": "p",
+      "text": "Compare"
+    },
+    {
+      "tag": "p",
+      "text": "Monitor"
+    },
+    {
+      "tag": "p",
+      "text": "Report"
+    },
+    {
+      "tag": "p",
+      "text": "Scanning Salesforce"
+    },
+    {
+      "tag": "h2",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect every data source. Strand maps relationships automatically — customers to revenue, usage to churn signals, support tickets to product gaps. One graph. Zero manual mapping."
+    },
+    {
+      "tag": "p",
+      "text": "Resolves entities across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Updates in real time, no rebuilds."
+    },
+    {
+      "tag": "p",
+      "text": "Visual graph explorer for every team."
+    },
+    {
+      "tag": "p",
+      "text": "Explore more"
+    },
+    {
+      "tag": "h2",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Stop writing SQL for simple questions. Ask \"Which enterprise accounts haven't logged in this month?\" and get an answer in seconds. Strand translates intent into insight."
+    },
+    {
+      "tag": "p",
+      "text": "Understands your exact data model."
+    },
+    {
+      "tag": "p",
+      "text": "Suggests smart follow-up questions."
+    },
+    {
+      "tag": "p",
+      "text": "Exports to Slack, CSV, or JSON."
+    },
+    {
+      "tag": "h2",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Not another dashboard with 47 alerts. Pulse learns what normal looks like for your business and only surfaces what's genuinely unusual. Less noise, more signal."
+    },
+    {
+      "tag": "p",
+      "text": "Adaptive baselines, zero config."
+    },
+    {
+      "tag": "p",
+      "text": "Severity scoring by business impact."
+    },
+    {
+      "tag": "p",
+      "text": "Routes alerts to the right channel."
+    },
+    {
+      "tag": "p",
+      "text": "Scaleforce"
+    },
+    {
+      "tag": "p",
+      "text": "14,203 entities"
+    },
+    {
+      "tag": "p",
+      "text": "Live"
+    },
+    {
+      "tag": "p",
+      "text": "Strive"
+    },
+    {
+      "tag": "p",
+      "text": "8,847 entities"
+    },
+    {
+      "tag": "p",
+      "text": "PostgridDB"
+    },
+    {
+      "tag": "p",
+      "text": "52,091 entities"
+    },
+    {
+      "tag": "p",
+      "text": "Syncing"
+    },
+    {
+      "tag": "p",
+      "text": "HotSpot"
+    },
+    {
+      "tag": "p",
+      "text": "Pending"
+    },
+    {
+      "tag": "p",
+      "text": "01"
+    },
+    {
+      "tag": "p",
+      "text": "02"
+    },
+    {
+      "tag": "p",
+      "text": "03"
+    },
+    {
+      "tag": "p",
+      "text": "High severity"
+    },
+    {
+      "tag": "p",
+      "text": "2 min ago"
+    },
+    {
+      "tag": "p",
+      "text": "EU activation rate dropped 12%"
+    },
+    {
+      "tag": "p",
+      "text": "Activation in EU markets fell from 34% to 22% over the past 6 hours."
+    },
+    {
+      "tag": "p",
+      "text": "Baseline"
+    },
+    {
+      "tag": "p",
+      "text": "Anomaly"
+    },
+    {
+      "tag": "p",
+      "text": "Sent to #product-alerts"
+    },
+    {
+      "tag": "p",
+      "text": "Delivered 1m ago"
+    },
+    {
+      "tag": "h2",
+      "text": "Connect your stack"
+    },
+    {
+      "tag": "p",
+      "text": "Monitoring, code, observability, cloud, CI/CD systems, messaging, and even homegrown tooling."
+    },
+    {
+      "tag": "p",
+      "text": "View integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Connected sources"
+    },
+    {
+      "tag": "p",
+      "text": "ThreadBase"
+    },
+    {
+      "tag": "p",
+      "text": "42 channels"
+    },
+    {
+      "tag": "p",
+      "text": "alerts enabled"
+    },
+    {
+      "tag": "p",
+      "text": "Pipecloud"
+    },
+    {
+      "tag": "p",
+      "text": "874 accounts"
+    },
+    {
+      "tag": "p",
+      "text": "12,400 records"
+    },
+    {
+      "tag": "p",
+      "text": "Chatdock"
+    },
+    {
+      "tag": "p",
+      "text": "9.841 conversations"
+    },
+    {
+      "tag": "p",
+      "text": "204 open"
+    },
+    {
+      "tag": "p",
+      "text": "VaultDB"
+    },
+    {
+      "tag": "p",
+      "text": "38 schemes"
+    },
+    {
+      "tag": "p",
+      "text": "6.4M rows"
+    },
+    {
+      "tag": "p",
+      "text": "Stride"
+    },
+    {
+      "tag": "p",
+      "text": "$2.4 MMR"
+    },
+    {
+      "tag": "p",
+      "text": "1,204 subscriptions"
+    },
+    {
+      "tag": "p",
+      "text": "41.2M"
+    },
+    {
+      "tag": "p",
+      "text": "records indexed"
+    },
+    {
+      "tag": "p",
+      "text": "0"
+    },
+    {
+      "tag": "p",
+      "text": "errors"
+    },
+    {
+      "tag": "p",
+      "text": "Add integration"
+    },
+    {
+      "tag": "h2",
+      "text": "12 hours"
+    },
+    {
+      "tag": "p",
+      "text": "saved per week across the ops team"
+    },
+    {
+      "tag": "p",
+      "text": "\"Pulse caught a churn spike three weeks before our dashboards would have shown it. That gap used to cost us accounts.\""
+    },
+    {
+      "tag": "p",
+      "text": "Priya Nair"
+    },
+    {
+      "tag": "p",
+      "text": "Head of Customer Success @ Fieldstone"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/ydiaCWUrza6Xgn2ss3YWI3IFX7Y.png",
+      "alt": "Picture of Priya Nair for their testimonial."
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/AMzqdVbMWg3odmMFMfIpjq5WrA.png",
+      "alt": ""
+    },
+    {
+      "tag": "h2",
+      "text": "Your team already has the data. Strand gives you the answers."
+    },
+    {
+      "tag": "h3",
+      "text": "16x"
+    },
+    {
+      "tag": "p",
+      "text": "Faster time-to-answer"
+    },
+    {
+      "tag": "h3",
+      "text": "47%"
+    },
+    {
+      "tag": "p",
+      "text": "Fewer tools needed"
+    },
+    {
+      "tag": "h3",
+      "text": "80%"
+    },
+    {
+      "tag": "p",
+      "text": "Less time building reports"
+    },
+    {
+      "tag": "h3",
+      "text": "4.2hrs"
+    },
+    {
+      "tag": "p",
+      "text": "Saved per team per week"
+    },
+    {
+      "tag": "h2",
+      "text": "Frequently Asked Questions"
+    },
+    {
+      "tag": "p",
+      "text": "Do you want to learn more about us, let’s go the blog page."
+    },
+    {
+      "tag": "h3",
+      "text": "What is an AI Agent?"
+    },
+    {
+      "tag": "p",
+      "text": "An AI Agent is a task-specific assistant that automates workflows like scheduling, content creation, data processing, and more—without requiring any code."
+    },
+    {
+      "tag": "h3",
+      "text": "Can I use multiple agents at the same time?"
+    },
+    {
+      "tag": "h3",
+      "text": "How customizable are the agents?"
+    },
+    {
+      "tag": "h3",
+      "text": "What tools do the agents integrate with?"
+    },
+    {
+      "tag": "h2",
+      "text": "Your data, finally connected"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./features/cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./features/ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./features/pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "./pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "./about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "./careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "./blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "./integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "./changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "./404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "./terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "./privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}

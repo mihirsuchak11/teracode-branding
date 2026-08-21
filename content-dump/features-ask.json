@@ -1,0 +1,585 @@
+{
+  "page": "features/ask",
+  "title": "Strand - AI Data Intelligence Platform",
+  "appearCount": 14,
+  "nodes": [
+    {
+      "tag": "p",
+      "text": "Strand"
+    },
+    {
+      "tag": "p",
+      "text": "Template"
+    },
+    {
+      "tag": "p",
+      "text": "Purchase"
+    },
+    {
+      "tag": "p",
+      "text": "from"
+    },
+    {
+      "tag": "p",
+      "text": "$109"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/GBjHpEIYOMQ4OX3KkbWMP40QU.png",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "Pricing"
+    },
+    {
+      "tag": "p",
+      "text": "About"
+    },
+    {
+      "tag": "p",
+      "text": "Get started"
+    },
+    {
+      "tag": "h3",
+      "text": "Features"
+    },
+    {
+      "tag": "p",
+      "text": "Cortex"
+    },
+    {
+      "tag": "p",
+      "text": "Connect and unify data across every source."
+    },
+    {
+      "tag": "p",
+      "text": "Ask"
+    },
+    {
+      "tag": "p",
+      "text": "Query your data in plain language."
+    },
+    {
+      "tag": "p",
+      "text": "Pulse"
+    },
+    {
+      "tag": "p",
+      "text": "Detect anomalies before they become problems."
+    },
+    {
+      "tag": "h3",
+      "text": "Resources"
+    },
+    {
+      "tag": "p",
+      "text": "SUPPORT"
+    },
+    {
+      "tag": "p",
+      "text": "Developer docs"
+    },
+    {
+      "tag": "p",
+      "text": "API references, SDKs, and guides."
+    },
+    {
+      "tag": "p",
+      "text": "Help Center"
+    },
+    {
+      "tag": "p",
+      "text": "Tutorials and answers for your team."
+    },
+    {
+      "tag": "p",
+      "text": "COMPANY"
+    },
+    {
+      "tag": "p",
+      "text": "Integrations"
+    },
+    {
+      "tag": "p",
+      "text": "Changelog"
+    },
+    {
+      "tag": "p",
+      "text": "Blog"
+    },
+    {
+      "tag": "p",
+      "text": "Careers"
+    },
+    {
+      "tag": "p",
+      "text": "Contact"
+    },
+    {
+      "tag": "h3",
+      "text": "Pricing"
+    },
+    {
+      "tag": "h3",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "text": "Sign up"
+    },
+    {
+      "tag": "a",
+      "text": "Features",
+      "href": "../#features-ask"
+    },
+    {
+      "tag": "a",
+      "text": "Features",
+      "href": "../#features"
+    },
+    {
+      "tag": "h1",
+      "text": "Ask anything.Get answers quickly."
+    },
+    {
+      "tag": "p",
+      "text": "Ask queries your entire data stack in plain language and returns precise answers in seconds."
+    },
+    {
+      "tag": "p",
+      "text": "View prices"
+    },
+    {
+      "tag": "p",
+      "text": "Which"
+    },
+    {
+      "tag": "p",
+      "text": "accounts"
+    },
+    {
+      "tag": "p",
+      "text": "haven't"
+    },
+    {
+      "tag": "p",
+      "text": "logged in today"
+    },
+    {
+      "tag": "p",
+      "text": "?"
+    },
+    {
+      "tag": "p",
+      "text": "14,203 records"
+    },
+    {
+      "tag": "p",
+      "text": "id"
+    },
+    {
+      "tag": "p",
+      "text": "uuid"
+    },
+    {
+      "tag": "p",
+      "text": "name"
+    },
+    {
+      "tag": "p",
+      "text": "string"
+    },
+    {
+      "tag": "p",
+      "text": "tier"
+    },
+    {
+      "tag": "p",
+      "text": "Pipercloud"
+    },
+    {
+      "tag": "p",
+      "text": "onwer_id"
+    },
+    {
+      "tag": "p",
+      "text": "last_session"
+    },
+    {
+      "tag": "p",
+      "text": "timestamp"
+    },
+    {
+      "tag": "p",
+      "text": "database"
+    },
+    {
+      "tag": "p",
+      "text": "created_at"
+    },
+    {
+      "tag": "p",
+      "text": "auto-resovled"
+    },
+    {
+      "tag": "p",
+      "text": "mrr"
+    },
+    {
+      "tag": "p",
+      "text": "float"
+    },
+    {
+      "tag": "h3",
+      "text": "Understands your schema."
+    },
+    {
+      "tag": "p",
+      "text": "Ask is trained on your specific data structure, so it translates questions into precise queries — not guesses."
+    },
+    {
+      "tag": "p",
+      "text": "Which accounts are at risk this quarter?"
+    },
+    {
+      "tag": "p",
+      "text": "4 enterprise accounts with no session activity in the current calendar month."
+    },
+    {
+      "tag": "p",
+      "text": "1"
+    },
+    {
+      "tag": "p",
+      "text": "How has their usage trended?"
+    },
+    {
+      "tag": "p",
+      "text": "2"
+    },
+    {
+      "tag": "p",
+      "text": "Who is the account owner for each?"
+    },
+    {
+      "tag": "p",
+      "text": "3"
+    },
+    {
+      "tag": "p",
+      "text": "4"
+    },
+    {
+      "tag": "p",
+      "text": "Ask a different question"
+    },
+    {
+      "tag": "h3",
+      "text": "Knows what to ask next."
+    },
+    {
+      "tag": "p",
+      "text": "Every answer comes with suggested follow-up questions, so the right insight is always one click away."
+    },
+    {
+      "tag": "p",
+      "text": "Share results"
+    },
+    {
+      "tag": "p",
+      "text": "Send to Threadbase"
+    },
+    {
+      "tag": "p",
+      "text": "Post to any channel"
+    },
+    {
+      "tag": "p",
+      "text": "Export CSV"
+    },
+    {
+      "tag": "p",
+      "text": "Download as spreadsheet"
+    },
+    {
+      "tag": "p",
+      "text": "Export JSON"
+    },
+    {
+      "tag": "p",
+      "text": "Structured data output"
+    },
+    {
+      "tag": "h3",
+      "text": "Results go where your team works."
+    },
+    {
+      "tag": "p",
+      "text": "Export answers as CSV or JSON, or send them straight to your team. No copy-pasting, no extra steps."
+    },
+    {
+      "tag": "p",
+      "text": "How can I help today?"
+    },
+    {
+      "tag": "p",
+      "text": "Thinking"
+    },
+    {
+      "tag": "p",
+      "text": "3 Results"
+    },
+    {
+      "tag": "p",
+      "text": "Analyze"
+    },
+    {
+      "tag": "p",
+      "text": "Compare"
+    },
+    {
+      "tag": "p",
+      "text": "Monitor"
+    },
+    {
+      "tag": "p",
+      "text": "Report"
+    },
+    {
+      "tag": "p",
+      "text": "Scanning Salesforce"
+    },
+    {
+      "tag": "h2",
+      "text": "Questions your whole team can ask.Answers only Strand can give."
+    },
+    {
+      "tag": "h3",
+      "text": "Plain language input"
+    },
+    {
+      "tag": "p",
+      "text": "No SQL, no syntax. Ask questions the way you'd phrase them to a colleague."
+    },
+    {
+      "tag": "h3",
+      "text": "Relationship-aware"
+    },
+    {
+      "tag": "p",
+      "text": "Ask understands how your data connects - not just what's in a single table."
+    },
+    {
+      "tag": "h3",
+      "text": "Time range context"
+    },
+    {
+      "tag": "p",
+      "text": "Reference periods naturally. \"Last quarter\", \"since onboarding\", \"before the outage\" all work."
+    },
+    {
+      "tag": "h3",
+      "text": "Suggested follow-ups"
+    },
+    {
+      "tag": "p",
+      "text": "Every answer surfaces the next logical question so you keep moving forward."
+    },
+    {
+      "tag": "h3",
+      "text": "One-click sharing"
+    },
+    {
+      "tag": "p",
+      "text": "Send results to your team chat or export as CSV and JSON without leaving the interface."
+    },
+    {
+      "tag": "h3",
+      "text": "Under 200ms"
+    },
+    {
+      "tag": "p",
+      "text": "Queries run against a live graph, not a slow warehouse. Answers arrive before the thought fades."
+    },
+    {
+      "tag": "h2",
+      "text": "Your team already has the data. Strand gives you the answers."
+    },
+    {
+      "tag": "h3",
+      "text": "16x"
+    },
+    {
+      "tag": "p",
+      "text": "Faster time-to-answer"
+    },
+    {
+      "tag": "h3",
+      "text": "47%"
+    },
+    {
+      "tag": "p",
+      "text": "Fewer tools needed"
+    },
+    {
+      "tag": "h3",
+      "text": "80%"
+    },
+    {
+      "tag": "p",
+      "text": "Less time building reports"
+    },
+    {
+      "tag": "h3",
+      "text": "4.2hrs"
+    },
+    {
+      "tag": "p",
+      "text": "Saved per team per week"
+    },
+    {
+      "tag": "h2",
+      "text": "Your data, finally connected"
+    },
+    {
+      "tag": "a",
+      "text": "Cortex",
+      "href": "./cortex"
+    },
+    {
+      "tag": "a",
+      "text": "Ask",
+      "href": "./ask"
+    },
+    {
+      "tag": "a",
+      "text": "Pulse",
+      "href": "./pulse"
+    },
+    {
+      "tag": "a",
+      "text": "Pricing",
+      "href": "../pricing"
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "href": "../about-us"
+    },
+    {
+      "tag": "a",
+      "text": "Careers",
+      "href": "../careers"
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "href": "../blog"
+    },
+    {
+      "tag": "a",
+      "text": "Integrations",
+      "href": "../integrations"
+    },
+    {
+      "tag": "a",
+      "text": "Changelog",
+      "href": "../changelog"
+    },
+    {
+      "tag": "a",
+      "text": "Developer docs",
+      "href": "https://www.framer.com/developers/"
+    },
+    {
+      "tag": "a",
+      "text": "Help Center",
+      "href": "https://www.framer.com/help/"
+    },
+    {
+      "tag": "p",
+      "text": "404"
+    },
+    {
+      "tag": "a",
+      "text": "404",
+      "href": "../404"
+    },
+    {
+      "tag": "p",
+      "text": "Connect"
+    },
+    {
+      "tag": "p",
+      "text": "X"
+    },
+    {
+      "tag": "p",
+      "text": "LinkedIn"
+    },
+    {
+      "tag": "p",
+      "text": "GitHub"
+    },
+    {
+      "tag": "p",
+      "text": "All systems operational"
+    },
+    {
+      "tag": "p",
+      "text": "99.98% UPTIME"
+    },
+    {
+      "tag": "p",
+      "text": "Updates on new features and releases."
+    },
+    {
+      "tag": "p",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "img",
+      "src": "https://framerusercontent.com/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg",
+      "alt": ""
+    },
+    {
+      "tag": "p",
+      "text": "© 2026 Strand. All rights reserved."
+    },
+    {
+      "tag": "p",
+      "text": "Terms and Conditions"
+    },
+    {
+      "tag": "a",
+      "text": "Terms and Conditions",
+      "href": "../terms-of-service"
+    },
+    {
+      "tag": "p",
+      "text": "/"
+    },
+    {
+      "tag": "p",
+      "text": "Privacy Policy"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy Policy",
+      "href": "../privacy-policy"
+    },
+    {
+      "tag": "p",
+      "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  ]
+}
