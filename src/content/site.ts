@@ -1,34 +1,35 @@
 import type { NavDropdownItem } from "@/lib/types";
+import { MAIL_ACCESS, MAIL_CONTACT, MAIL_DEMO } from "@/content/home";
 
 export const nav = {
-  features: [
+  products: [
     {
-      label: "Cortex",
-      description: "Connect and unify data across every source.",
-      href: "/features/cortex",
+      label: "TeraCode Review",
+      description: "An AI review board on every pull request.",
+      href: "/products/review",
     },
     {
-      label: "Ask",
-      description: "Query your data in plain language.",
-      href: "/features/ask",
+      label: "TeraCode Migrate",
+      description: "Carry a codebase-wide migration to done.",
+      href: "/products/migrate",
     },
     {
-      label: "Pulse",
-      description: "Detect anomalies before they become problems.",
-      href: "/features/pulse",
+      label: "TeraCode Oncall",
+      description: "Triage that reads the trace, not the alert.",
+      href: "/products/oncall",
     },
   ] satisfies NavDropdownItem[],
   resources: {
     support: [
       {
-        label: "Developer docs",
-        description: "API references, SDKs, and guides.",
-        href: "https://www.framer.com/developers/",
+        label: "Early access",
+        description: "Get TeraCode Review in private beta.",
+        href: MAIL_ACCESS,
       },
       {
-        label: "Help Center",
-        description: "Tutorials and answers for your team.",
-        href: "https://www.framer.com/help/",
+        label: "Contact us",
+        description: "Talk to the team building TeraCode.",
+        href: "/contact-us",
       },
     ] satisfies NavDropdownItem[],
     company: [
@@ -43,17 +44,17 @@ export const nav = {
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about-us" },
   ],
-  cta: { label: "Get started", href: "/pricing" },
+  cta: { label: "Get early access", href: MAIL_ACCESS },
 };
 
 export const footer = {
   columns: [
     {
-      title: "Features",
+      title: "Products",
       links: [
-        { label: "Cortex", href: "/features/cortex" },
-        { label: "Ask", href: "/features/ask" },
-        { label: "Pulse", href: "/features/pulse" },
+        { label: "TeraCode Review", href: "/products/review" },
+        { label: "TeraCode Migrate", href: "/products/migrate" },
+        { label: "TeraCode Oncall", href: "/products/oncall" },
       ],
     },
     {
@@ -70,35 +71,35 @@ export const footer = {
         { label: "Blog", href: "/blog" },
         { label: "Integrations", href: "/integrations" },
         { label: "Changelog", href: "/changelog" },
-        { label: "Developer docs", href: "https://www.framer.com/developers/" },
-        { label: "Help Center", href: "https://www.framer.com/help/" },
-        // Intentionally links to a non-route so the styled not-found page renders,
-        // matching the original template's footer 404 showcase link.
-        { label: "404", href: "/404" },
+        { label: "Contact", href: "/contact-us" },
       ],
     },
     {
+      /* Social profiles are intentionally absent until real handles exist.
+         The template shipped x.com / linkedin.com / github.com root URLs as
+         placeholders; linking those would send visitors to the wrong company
+         (linkedin.com/company/teracode is an unrelated business). */
       title: "Connect",
       links: [
-        { label: "X", href: "https://x.com" },
-        { label: "LinkedIn", href: "https://linkedin.com" },
-        { label: "GitHub", href: "https://github.com" },
+        { label: "contact@teracode.ai", href: MAIL_CONTACT },
+        { label: "Get early access", href: MAIL_ACCESS },
+        { label: "Contact form", href: "/contact-us" },
       ],
     },
   ],
-  status: { label: "All systems operational", uptime: "99.98% UPTIME" },
-  newsletter: { blurb: "Updates on new features and releases.", cta: "Subscribe" },
+  status: { label: "Private beta", uptime: "BY INVITATION" },
+  newsletter: { blurb: "Updates on what we ship next.", cta: "Subscribe" },
   legal: [
     { label: "Terms and Conditions", href: "/terms-of-service" },
     { label: "Privacy Policy", href: "/privacy-policy" },
   ],
-  copyright: "© 2026 Strand. All rights reserved.",
+  copyright: "© 2026 TeraSoft AI. All rights reserved.",
 };
 
 export const ctaBand = {
-  title: "Your data, finally connected",
-  titleLine1: "Your data,",
-  titleLine2: "finally connected",
-  primary: { label: "Get started", href: "/pricing" },
-  secondary: { label: "Book a demo", href: "/contact-us" },
+  title: "Private beta is open. Bring your own keys.",
+  titleLine1: "Private beta is open.",
+  titleLine2: "Bring your own keys.",
+  primary: { label: "Get early access", href: MAIL_ACCESS },
+  secondary: { label: "Book a demo", href: MAIL_DEMO },
 };

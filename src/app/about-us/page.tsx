@@ -1,26 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { MilestoneTimeline } from "@/components/sections/MilestoneTimeline";
 import { PageShell, PageHero, Eyebrow } from "@/components/sections/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import { Marquee } from "@/components/motion/Marquee";
 import { buildMetadata } from "@/lib/metadata";
-import { aboutHero, origins, milestones, teamSection } from "@/content/about";
+import { aboutHero, origins, milestones } from "@/content/about";
 import { tickerBrands } from "@/content/home";
 
 export const metadata = buildMetadata({
   title: "About us",
   description:
-    "We built Strand to close the distance between your data and the people who need it. One graph. Every source. Answers in seconds.",
+    "TeraSoft AI builds TeraCode — an authoring, execution and scoring layer for AI agents, and the agents we run on it. Starting with TeraCode Review, on your own API keys.",
   path: "/about-us",
 });
-
-const dots = {
-  backgroundImage: "radial-gradient(#1c1917 0.75px, transparent 0.75px)",
-  backgroundSize: "8px 8px",
-  backgroundPosition: "4px 4px",
-} as const;
 
 /* Simple geometric glyphs standing in for the fictional brand marks. */
 function BrandGlyph({ i }: { i: number }) {
@@ -39,43 +31,6 @@ function BrandGlyph({ i }: { i: number }) {
   );
 }
 
-function TeamCell({
-  image,
-  name,
-  sub,
-  href,
-}: {
-  image: string;
-  name: string;
-  sub: string;
-  href?: string;
-}) {
-  const body = (
-    <>
-      <div style={dots} className="pt-4">
-        <Image
-          src={image}
-          alt={href ? "" : `Headshot of ${name}, transparent background.`}
-          width={1210}
-          height={1210}
-          className="aspect-square w-full rounded-lg object-cover"
-        />
-      </div>
-      <div className="mt-2.5 text-center">
-        <p className="text-base leading-6 text-fg">{name}</p>
-        <p className="mt-0.5 text-xs font-medium leading-4 text-fg-faint">{sub}</p>
-      </div>
-    </>
-  );
-  if (href) {
-    return (
-      <Link href={href} className="group block transition-opacity hover:opacity-90">
-        {body}
-      </Link>
-    );
-  }
-  return <div>{body}</div>;
-}
 
 export default function AboutPage() {
   return (
@@ -141,28 +96,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* The team */}
-        <section className="pt-10">
-          <Eyebrow>{teamSection.eyebrow}</Eyebrow>
-          <Reveal className="px-6 pt-10 md:px-10">
-            <div className="grid grid-cols-2 gap-x-3 gap-y-10 pb-20 md:grid-cols-4">
-              {teamSection.members.map((member) => (
-                <TeamCell
-                  key={member.name}
-                  image={member.image}
-                  name={member.name}
-                  sub={member.role}
-                />
-              ))}
-              <TeamCell
-                image={teamSection.openSpot.image}
-                name={teamSection.openSpot.name}
-                sub={teamSection.openSpot.cta.label}
-                href={teamSection.openSpot.cta.href}
-              />
-            </div>
-          </Reveal>
-        </section>
       </PageShell>
 
       <CtaBand />

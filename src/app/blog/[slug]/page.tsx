@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) {
-    return buildMetadata({ title: "Blog", description: "Notes from the Strand team.", path: "/blog" });
+    return buildMetadata({ title: "Blog", description: "Notes from the team building TeraCode.", path: "/blog" });
   }
   return buildMetadata({
     title: post.title,

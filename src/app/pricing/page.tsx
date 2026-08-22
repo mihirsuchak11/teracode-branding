@@ -8,7 +8,7 @@ import { LogoTicker } from "@/components/sections/LogoTicker";
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "Start free with up to 5 data sources, upgrade to Pro for unlimited queries and anomaly detection, or talk to sales about Enterprise.",
+    "No platform fee, no per-seat licence and no markup on inference. You bring your own API keys and your provider bills you directly. Private beta.",
   path: "/pricing",
 });
 

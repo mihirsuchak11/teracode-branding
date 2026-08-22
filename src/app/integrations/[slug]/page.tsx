@@ -49,7 +49,7 @@ export default async function IntegrationPage({
           <IntegrationMark slug={integration.slug} />
           <p className="mt-9 font-mono text-xs text-fg-faint">{integration.meta}</p>
           <h1 className="mt-4 max-w-[720px] text-4xl font-medium leading-[1.1] tracking-tight text-fg md:text-[52px]">
-            Connect {integration.name} to Strand
+            Connect {integration.name} to TeraCode
           </h1>
           <p className="mt-6 max-w-[560px] text-[17px] leading-relaxed text-fg-muted">
             {integration.description}
@@ -75,8 +75,8 @@ export default async function IntegrationPage({
             </p>
             <ul className="mt-7">
               {[
-                "Authorize the connection from your Strand workspace.",
-                "Cortex ingests the source and starts mapping relationships immediately.",
+                "Authorize the connection from your TeraCode workspace.",
+                "TeraCode starts reviewing new pull requests straight away.",
                 "Query the connected data in plain language through Ask.",
               ].map((step, i) => (
                 <li

@@ -397,7 +397,15 @@ export function AskChatAnim() {
  * placeholder character-by-character (the original's `textEffect`), the chips
  * staggered 0.1s apart.
  */
-export function AskComposer({ chips = 3, className }: { chips?: number; className?: string }) {
+export function AskComposer({
+  chips = 3,
+  className,
+  placeholder = askChat.placeholder,
+}: {
+  chips?: number;
+  className?: string;
+  placeholder?: string;
+}) {
   const reduced = useReducedMotion();
   return (
     <div className={`flex flex-col items-center gap-2 p-4 select-none ${className ?? "w-full"}`}>
@@ -412,7 +420,7 @@ export function AskComposer({ chips = 3, className }: { chips?: number; classNam
         <div className="relative flex flex-col gap-4">
           <div className="flex items-center gap-2 pr-2 pl-5">
             <p className="m-0 flex-1 py-5 text-[16px] leading-6 text-[rgb(115,115,115)]">
-              {Array.from(askChat.placeholder).map((char, n) => (
+              {Array.from(placeholder).map((char, n) => (
                 <motion.span
                   key={n}
                   initial={reduced ? false : { opacity: 0.001, y: 2, filter: "blur(3px)" }}

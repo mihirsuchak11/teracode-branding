@@ -5,7 +5,7 @@ import { termsOfService } from "@/content/legal";
 export const metadata = buildMetadata({
   title: "Terms and Conditions",
   description:
-    "The terms and conditions that govern your access to and use of Strand.",
+    "The terms and conditions that govern your access to and use of TeraCode, provided by TeraSoft AI.",
   path: "/terms-of-service",
 });
 

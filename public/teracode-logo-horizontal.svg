@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" width="600" height="160" role="img" aria-label="TeraCode horizontal logo">
+  <title>TeraCode horizontal logo</title>
+  <defs>
+    <mask id="tc-cut-l" maskUnits="userSpaceOnUse" x="-500" y="-200" width="1400" height="900">
+      <rect x="-500" y="-200" width="1400" height="900" fill="#fff"></rect>
+      <polygon points="415.8,-60 134.9,460 -400,460 -400,-60" fill="#000"></polygon>
+    </mask>
+  </defs>
+  <g transform="translate(-17.9,9) scale(0.3988)" fill="#0B0B0F">
+    <path d="M300 34 L352 34 L176 360 L124 360 Z"></path>
+    <path d="M75 109 L275 109 L256 164 L45 164 Z"></path>
+    <path mask="url(#tc-cut-l)" d="M408.8 264 A 118 118 0 1 1 408.8 168 L 357.6 190.8 A 62 62 0 1 0 357.6 241.2 Z"></path>
+  </g>
+  <text x="176" y="122" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="92" fill="#0B0B0F" letter-spacing="-1">TeraCode</text>
+</svg>

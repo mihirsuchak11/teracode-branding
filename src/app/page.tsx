@@ -9,10 +9,13 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { statsSection } from "@/content/home";
 import { faq } from "@/content/faq";
+import { faqJsonLd } from "@/lib/jsonLd";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqJsonLd(faq)} />
       <Hero />
       <LogoTicker />
       <Statement />
@@ -20,8 +23,8 @@ export default function HomePage() {
       <StackSection />
       <Testimonial />
       <StatsBand
-        titleMuted="Your team already has the data."
-        title="Strand gives you the answers."
+        titleMuted={statsSection.titleMuted}
+        title={statsSection.title}
         stats={statsSection.stats}
         icons={["/lottie/stat-1.json", "/lottie/stat-2.json", "/lottie/stat-3.json", "/lottie/stat-4.json"]}
       />

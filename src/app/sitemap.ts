@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const dynamicRoutes = [
-    ...features.map((f) => `/features/${f.slug}`),
+    ...features.map((f) => `/products/${f.slug}`),
     ...integrations.map((i) => `/integrations/${i.slug}`),
     ...jobs.map((j) => `/careers/${j.slug}`),
     ...posts.map((p) => `/blog/${p.slug}`),

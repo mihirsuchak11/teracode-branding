@@ -1,191 +1,209 @@
 import type { Stat } from "@/lib/types";
 
+/** Prefilled mail links — the private beta has no signup form, just an inbox. */
+export const MAIL_ACCESS =
+  "mailto:contact@teracode.ai?subject=Early%20access%20%E2%80%94%20TeraCode%20Review";
+export const MAIL_DEMO =
+  "mailto:contact@teracode.ai?subject=Demo%20request%20%E2%80%94%20TeraCode";
+export const MAIL_CONTACT = "mailto:contact@teracode.ai";
+
 export const hero = {
   announcement: {
     badge: "New",
-    text: "Introducing Ask: Query your entire stack in plain language",
-    href: "/blog/introducing-ask-query-your-entire-stack-in-plain-language",
+    text: "TeraCode Review is now in private beta",
+    href: MAIL_ACCESS,
   },
-  title: "The missing connection layer",
-  body: "Strand builds a living knowledge graph across every tool in your stack. Ask questions in plain language. Get answers no single source could provide alone.",
-  primary: { label: "Connect a source", href: "/pricing" },
-  secondary: { label: "Book a demo", href: "/contact-us" },
+  title: "Ship faster. Ship safer.",
+  body: "TeraCode Review puts an AI review board on every pull request — catching bugs, security issues and regressions before a human opens the diff. It is BYOK — it runs on your own API keys, with no markup on what you spend.",
+  primary: { label: "Get early access", href: MAIL_ACCESS },
+  secondary: { label: "Book a demo", href: MAIL_DEMO },
   mock: {
-    prompt: "How can I help today?",
-    chips: ["Analyze", "Compare", "Monitor", "Report"],
-    status: ["Thinking", "Scanning Salesforce", "3 Results"],
+    prompt: "What should I review?",
+    chips: ["Review", "Explain", "Secure", "Test"],
+    status: ["Reviewing", "Reading the diff", "3 issues"],
   },
 };
 
 export const steps = [
-  { n: "1.", title: "Connect", body: "Plug in your tools. 240+ integrations out of the box." },
-  { n: "2.", title: "Map", body: "Cortex automatically builds your knowledge graph." },
-  { n: "3.", title: "Ask", body: "Query in plain language. Share results with your team." },
+  {
+    n: "1.",
+    title: "Author",
+    body: "Define personas, skills and tools. An agent is instructions, a model and a policy.",
+  },
+  {
+    n: "2.",
+    title: "Run",
+    body: "Sandboxed execution on your own API keys. No reselling, no markup.",
+  },
+  {
+    n: "3.",
+    title: "Measure",
+    body: "Scored on what your team kept, not on how the demo looked.",
+  },
 ];
 
 export const statement = {
-  eyebrow: "Trusted by 56+ teams who are tired of tab-switching",
+  eyebrow: "Bring your own key — TeraCode runs on the providers and stacks you already use",
   title:
-    "Your team wastes hours pulling data from scattered tools. Strand turns that into one conversation.",
+    "AI writes code faster than any team can review it. TeraCode closes the gap.",
 };
 
 export const spotlights = [
   {
-    name: "Cortex",
-    href: "/features/cortex",
-    body: "Connect every data source. Strand maps relationships automatically — customers to revenue, usage to churn signals, support tickets to product gaps. One graph. Zero manual mapping.",
+    name: "TeraCode Review",
+    status: "Private beta",
+    href: MAIL_ACCESS,
+    body: "A review board on every pull request. Security, performance, tests and style each run as their own specialist, then TeraCode reconciles them into a single review a human can act on — before anyone opens the diff.",
     bullets: [
-      "Resolves entities across every source.",
-      "Updates in real time, no rebuilds.",
-      "Visual graph explorer for every team.",
+      "BYOK: runs on your own keys.",
+      "Findings ranked by real risk.",
+      "One review, not forty comments.",
     ],
     mock: "graph" as const,
   },
   {
-    name: "Ask",
-    href: "/features/ask",
-    body: 'Stop writing SQL for simple questions. Ask "Which enterprise accounts haven\'t logged in this month?" and get an answer in seconds. Strand translates intent into insight.',
+    name: "TeraCode Migrate",
+    status: "Coming soon",
+    href: MAIL_ACCESS,
+    body: "Carry a codebase-wide migration to done. Point TeraCode at the change you want, and it works every call site, opens the pull requests, and keeps going until nothing is left behind.",
     bullets: [
-      "Understands your exact data model.",
-      "Suggests smart follow-up questions.",
-      "Exports to Slack, CSV, or JSON.",
+      "Works every call site, not a sample.",
+      "Opens PRs you review normally.",
+      "Stops when the migration is done.",
     ],
     mock: "ask" as const,
   },
   {
-    name: "Pulse",
-    href: "/features/pulse",
-    body: "Not another dashboard with 47 alerts. Pulse learns what normal looks like for your business and only surfaces what's genuinely unusual. Less noise, more signal.",
+    name: "TeraCode Oncall",
+    status: "Coming soon",
+    href: MAIL_ACCESS,
+    body: "Triage that reads the trace, not the alert. When something pages, TeraCode pulls the trace, the recent deploys and the owning code, then arrives with ranked causes instead of another notification.",
     bullets: [
-      "Adaptive baselines, zero config.",
-      "Severity scoring by business impact.",
-      "Routes alerts to the right channel.",
+      "Reads traces, deploys and diffs.",
+      "Arrives with ranked causes.",
+      "Routes to the right channel.",
     ],
     mock: "pulse" as const,
   },
 ];
 
+/** The specialist board shown beside TeraCode Review. */
 export const graphSources = [
-  { name: "Scaleforce", detail: "14,203 entities", status: "Live" },
-  { name: "Strive", detail: "8,847 entities", status: "Live" },
-  { name: "PostgridDB", detail: "52,091 entities", status: "Syncing" },
-  { name: "HotSpot", detail: "—", status: "Pending" },
+  { name: "Security", detail: "2 findings", status: "Done" },
+  { name: "Performance", detail: "1 regression", status: "Done" },
+  { name: "Tests", detail: "coverage -3%", status: "Running" },
+  { name: "Style", detail: "awaiting diff", status: "Queued" },
 ];
 
+/** The triage card shown beside TeraCode Oncall. */
 export const pulseAlert = {
   severity: "High severity",
   time: "2 min ago",
-  title: "EU activation rate dropped 12%",
-  body: "Activation in EU markets fell from 34% to 22% over the past 6 hours.",
-  routed: "Sent to #product-alerts",
-  delivered: "Delivered 1m ago",
+  title: "Checkout latency spike",
+  body: "p95 on /checkout rose from 240ms to 1.9s over the last 20 minutes.",
+  channel: "#incidents",
+  routed: "Routed to",
+  delivered: "Paged 1m ago",
 };
 
 export const stack = {
-  title: "Connect your stack",
-  body: "Monitoring, code, observability, cloud, CI/CD systems, messaging, and even homegrown tooling.",
-  cta: { label: "View integrations", href: "/integrations" },
-  label: "Connected sources",
-  addLabel: "Add integration",
-  /** `logo` files are the original site's own brand marks, saved from its DOM. */
+  title: "One platform, one runtime",
+  body: "Seven products, one execution layer underneath. Author agents, run them sandboxed on your own keys, and score them on what your team actually kept.",
+  cta: { label: "Explore the platform", href: "/integrations" },
+  label: "Platform products",
+  addLabel: "Request access",
+  /** `logo` files are abstract marks carried over from the template. */
   sources: [
-    { name: "Chatdock", a: "9.841 conversations", b: "204 open", logo: "/logos/chatdock.svg" },
-    { name: "VaultDB", a: "38 schemes", b: "6.4M rows", logo: "/logos/vaultdb.svg" },
-    { name: "Stride", a: "$2.4 MMR", b: "1,204 subscriptions", logo: "/logos/stride.svg" },
-    { name: "ThreadBase", a: "42 channels", b: "alerts enabled", logo: "/logos/threadbase.svg" },
-    { name: "Pipecloud", a: "874 accounts", b: "12,400 records", logo: "/logos/pipecloud.svg" },
+    { name: "TeraCode Studio", a: "Personas, skills, tools", b: "Private beta", logo: "/logos/chatdock.svg" },
+    { name: "TeraCode Runtime", a: "Sandboxed execution", b: "Your own keys", logo: "/logos/vaultdb.svg" },
+    { name: "TeraCode Evals", a: "Keep-rate scoring", b: "Private beta", logo: "/logos/stride.svg" },
+    { name: "TeraCode Signals", a: "Traces, spend, drift", b: "Coming soon", logo: "/logos/threadbase.svg" },
+    { name: "TeraCode Review", a: "Every pull request", b: "Private beta", logo: "/logos/pipecloud.svg" },
   ],
   /** The dim 3-wide tile grid beside the list. */
   tiles: Array.from({ length: 11 }, (_, i) => `/logos/tile-${String(i).padStart(2, "0")}.svg`),
   totals: [
-    { value: "41.2M", label: "records indexed" },
-    { value: "0", label: "errors" },
+    { value: "7", label: "products on one platform" },
+    { value: "1", label: "runtime under all of them" },
   ],
 };
 
-/* Fictional brand wordmarks shown in the trusted-by ticker, as in the original. */
+/* Providers, platforms and languages TeraCode runs against — not customers. */
 export const tickerBrands = [
-  "Nietzsche",
-  "Acme Corp",
-  "CloudWatch",
-  "Sisyphus",
-  "Capsule",
-  "Luminous",
-  "Acme",
-  "Focal Point",
+  "Anthropic",
+  "OpenAI",
+  "Google",
+  "GitHub",
+  "GitLab",
+  "TypeScript",
+  "Python",
+  "Go",
 ];
 
-export const statementMock = {
-  question: "Which accounts are at risk this quarter?",
-  status: "Thinking",
-  scoring: ["Scoring by ", "churn signal", " weight"],
-  rows: [
-    { name: "Meridian Corp", risk: "High risk", pill: "No login in 30d", dim: false },
-    { name: "Apex Systems", risk: "Medium", pill: "Usage -40%", dim: true },
-  ],
-  actions: ["Export CSV", "Share with team"],
-};
-
 /**
- * Copy + colours for the looping chat demo in the Statement section, taken
- * verbatim from the original "Ask Chat Anim" Framer component.
+ * Copy for the looping review demo in the Statement section. The animation is
+ * unchanged from the template — only the strings differ.
  */
 export const askChat = {
-  placeholder: "How can I help today?",
-  message: "Which accounts are at risk this quarter?",
-  thinkingLabel: "Thinking",
-  resultsLabel: "3 Results",
+  placeholder: "What should I review?",
+  message: "Review PR #482 before it merges",
+  thinkingLabel: "Reviewing",
+  resultsLabel: "3 issues",
   chips: [
-    { icon: "analyze", label: "Analyze" },
-    { icon: "compare", label: "Compare" },
-    { icon: "monitor", label: "Monitor" },
-    { icon: "report", label: "Report" },
+    { icon: "analyze", label: "Review" },
+    { icon: "compare", label: "Explain" },
+    { icon: "monitor", label: "Secure" },
+    { icon: "report", label: "Test" },
   ],
-  ticker: ["Scanning Salesforce", "Scoring by churn signal weight", "3 accounts flagged"],
+  ticker: ["Reading the diff", "Running security and performance checks", "3 issues found"],
   rows: [
     {
-      name: "Meridian Corp",
-      risk: "High risk",
-      reason: "No login in 30d",
+      name: "auth/session.ts",
+      risk: "High",
+      reason: "Token logged in plaintext",
       tint: "rgb(229, 72, 77)",
       tintSoft: "rgba(229, 72, 77, 0.2)",
     },
     {
-      name: "Apex Systems",
+      name: "api/orders.ts",
       risk: "Medium",
-      reason: "Usage -40%",
+      reason: "Unhandled promise rejection",
       tint: "rgb(249, 171, 0)",
       tintSoft: "rgba(249, 171, 0, 0.2)",
     },
     {
-      name: "Acme Corp",
-      risk: "High Risk",
-      reason: "Ticket spike",
+      name: "db/migrate.sql",
+      risk: "High",
+      reason: "Missing rollback path",
       tint: "rgb(229, 72, 77)",
       tintSoft: "rgba(229, 72, 77, 0.2)",
     },
   ],
   resultActions: [
-    { icon: "export", label: "Export CSV" },
-    { icon: "share", label: "Share with team" },
+    { icon: "export", label: "Post review" },
+    { icon: "share", label: "Open in GitHub" },
   ],
 };
 
+/** Composer placeholder for the TeraCode Migrate panel. */
+export const migrateComposer = "Upgrade every call site to the v3 API";
+
 export const testimonial = {
-  stat: { value: "12 hours", label: "saved per week across the ops team" },
+  stat: { value: "100%", label: "of your token spend goes to your provider, not to us" },
   quote:
-    "“Pulse caught a churn spike three weeks before our dashboards would have shown it. That gap used to cost us accounts.”",
-  name: "Priya Nair",
-  role: "Head of Customer Success @ Fieldstone",
-  image: "/images/ydiaCWUrza6Xgn2ss3YWI3IFX7Y.png",
+    "“Every AI reviewer on the market bills you per seat and resells you tokens at a margin. We think the review should be the product, and the tokens should be yours.”",
+  name: "The team building TeraCode",
+  role: "TeraSoft AI",
+  image: "/art/hero-knot.png",
 };
 
-export const statsSection: { title: string; stats: Stat[] } = {
-  title: "Your team already has the data. Strand gives you the answers.",
+export const statsSection: { titleMuted: string; title: string; stats: Stat[] } = {
+  titleMuted: "Every AI reviewer charges per seat.",
+  title: "TeraCode runs on your keys, at cost.",
   stats: [
-    { value: "16x", label: "Faster time-to-answer" },
-    { value: "47%", label: "Fewer tools needed" },
-    { value: "80%", label: "Less time building reports" },
-    { value: "4.2hrs", label: "Saved per team per week" },
+    { value: "$0", label: "Markup on your token spend" },
+    { value: "0", label: "Per-seat licences" },
+    { value: "100%", label: "BYOK — your own API keys" },
+    { value: "1", label: "Runtime under every product" },
   ],
 };

@@ -28,7 +28,7 @@ export function NewsletterForm() {
           type="email"
           name="email"
           required
-          placeholder="name@framer.com"
+          placeholder="you@company.com"
           className="w-full bg-transparent text-sm text-fg placeholder:text-fg-faint focus:outline-none"
         />
         <button

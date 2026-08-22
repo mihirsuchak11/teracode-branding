@@ -1,11 +1,19 @@
-import Image from "next/image";
 import Link from "next/link";
 import { footer } from "@/content/site";
 import { NewsletterForm } from "./NewsletterForm";
+import { FooterWordmark } from "./FooterWordmark";
 import { ArrowUpRight } from "@/components/ui/icons";
 
 function FooterLink({ label, href, external }: { label: string; href: string; external?: boolean }) {
   const cls = "inline-flex items-center gap-1.5 text-[15px] text-fg-muted transition-colors hover:text-fg";
+  // mailto: is not a route, and should not open in a new tab either.
+  if (href.startsWith("mailto:")) {
+    return (
+      <a href={href} className={cls}>
+        {label}
+      </a>
+    );
+  }
   return external || href.startsWith("http") ? (
     <a href={href} target="_blank" rel="noreferrer" className={cls}>
       {label}
@@ -49,19 +57,9 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Oversized wordmark, as in the original */}
-        <div className="py-16 md:py-24">
-          <Image
-            src="/images/lTfnHgIzLW7AyATpM5FEmbfm7Y.svg"
-            alt=""
-            aria-hidden
-            width={1322}
-            height={340}
-            className="h-auto w-full select-none"
-          />
-        </div>
+        <FooterWordmark />
 
-        <div className="flex flex-col items-start justify-between gap-3 pb-8 text-sm text-fg-faint md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-3 pb-8 text-sm text-fg-muted md:flex-row md:items-center">
           <p>{footer.copyright}</p>
           <p className="flex items-center gap-3">
             {footer.legal.map((link, i) => (

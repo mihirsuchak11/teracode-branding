@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { hero, steps } from "@/content/home";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
@@ -14,7 +13,7 @@ export function Hero() {
       {/* Announcement row — 20px above and below a 24px-tall line */}
       <div className="px-6 py-5 md:px-10">
         <Reveal>
-          <Link
+          <a
             href={hero.announcement.href}
             className="group flex h-6 w-fit items-center gap-2 text-sm"
           >
@@ -25,7 +24,7 @@ export function Hero() {
             <span className="leading-5 text-white transition-colors group-hover:text-fg-dim">
               {hero.announcement.text}
             </span>
-          </Link>
+          </a>
         </Reveal>
       </div>
       <div className="h-px w-full max-w-[692px] bg-border" />
@@ -39,25 +38,25 @@ export function Hero() {
       <div className="relative px-6 pt-[150px] md:px-10">
         <div className="max-w-[612px]">
           <Reveal delay={0.1}>
-            <h1 className="text-display-hero text-fg">The missing connection layer</h1>
+            <h1 className="text-display-hero text-fg">{hero.title}</h1>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-5 text-base leading-6 text-fg-muted">{hero.body}</p>
           </Reveal>
         </div>
         <Reveal delay={0.3} className="mt-10 flex flex-wrap items-center gap-3">
-          <Link
+          <a
             href={hero.primary.href}
             className="inline-flex h-10 items-center rounded-lg bg-fg-soft px-4 text-sm font-medium leading-5 text-[#1c1917] transition-colors hover:bg-fg"
           >
             {hero.primary.label}
-          </Link>
-          <Link
+          </a>
+          <a
             href={hero.secondary.href}
             className="inline-flex h-10 items-center rounded-lg bg-[#1c1917] px-4 text-sm font-medium leading-5 text-fg-soft transition-colors hover:bg-border-strong"
           >
             {hero.secondary.label}
-          </Link>
+          </a>
         </Reveal>
       </div>
 

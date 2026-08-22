@@ -1,27 +1,16 @@
 import { ContactForm } from "@/components/sections/ContactForm";
 import { PageShell } from "@/components/sections/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
-import { XSocial, LinkedIn, GitHub } from "@/components/ui/icons";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: "Contact us",
   description:
-    "Questions about Strand, pricing, or your data setup? Reach the right team in under a minute.",
+    "Questions about TeraCode Review, early access, or how BYOK billing works? Reach the team in under a minute.",
   path: "/contact-us",
 });
 
-const emails = [
-  { label: "Sales:", email: "sales@strand.io" },
-  { label: "Support:", email: "support@strand.io" },
-  { label: "Partnerships:", email: "partnerships@strand.io" },
-];
-
-const socials = [
-  { label: "X", href: "https://x.com", icon: XSocial },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: LinkedIn },
-  { label: "GitHub", href: "https://github.com", icon: GitHub },
-];
+const emails = [{ label: "Email:", email: "contact@teracode.ai" }];
 
 export default function ContactPage() {
   return (
@@ -33,14 +22,14 @@ export default function ContactPage() {
               Let&apos;s connect the dots.
             </h1>
             <p className="mt-3 max-w-[496px] text-base leading-6 text-fg-muted">
-              Questions about Strand, pricing, or your data setup? Reach the right team in under a
+              Questions about TeraCode, early access, or how BYOK billing works? Reach the team in under a
               minute.
             </p>
           </div>
           <p className="text-xs leading-4 text-fg-muted">
             You can also email us at{" "}
-            <a href="mailto:sales@strand.io" className="transition-colors hover:text-fg">
-              sales@strand.io
+            <a href="mailto:contact@teracode.ai" className="transition-colors hover:text-fg">
+              contact@teracode.ai
             </a>
           </p>
         </Reveal>
@@ -66,20 +55,6 @@ export default function ContactPage() {
             </div>
           ))}
         </dl>
-        <div className="flex items-center gap-2">
-          {socials.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={social.label}
-              className="flex h-8 w-8 items-center justify-center rounded-md bg-surface-2 text-fg-dim transition-colors hover:text-fg"
-            >
-              <social.icon width={14} height={14} />
-            </a>
-          ))}
-        </div>
       </section>
     </PageShell>
   );

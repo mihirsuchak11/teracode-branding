@@ -574,7 +574,7 @@ function Panel({
  */
 export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: FeatureBenefit[] }) {
   const mocks = mocksBySlug[slug] ?? [];
-  const across = slug === "ask" ? benefits.length : Math.min(benefits.length, 2);
+  const across = slug === "migrate" ? benefits.length : Math.min(benefits.length, 2);
   const inGrid = benefits.slice(0, across);
   const fullWidth = benefits[across];
 
@@ -591,7 +591,7 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
               benefit={benefit}
               mock={mocks[i]}
               dense={across === 3}
-              stage={slug === "pulse" ? 440 : 480}
+              stage={slug === "oncall" ? 440 : 480}
             />
           ))}
         </div>
@@ -607,7 +607,7 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
             </Reveal>
           </div>
         )}
-        {slug === "ask" && <AskWavesPanel />}
+        {slug === "migrate" && <AskWavesPanel />}
       </section>
   );
 }

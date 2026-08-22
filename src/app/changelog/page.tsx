@@ -6,7 +6,7 @@ import { changelogHero, releases } from "@/content/changelog";
 export const metadata = buildMetadata({
   title: "Changelog",
   description:
-    "New features, improvements, and fixes across Cortex, Ask, Pulse, and the Nucleus SDK.",
+    "What has shipped across TeraCode Review, Migrate and Oncall, and the runtime underneath them.",
   path: "/changelog",
 });
 
