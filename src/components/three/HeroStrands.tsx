@@ -754,7 +754,6 @@ export function HeroStrands({
 
     let last = 0;
     let elapsed = 0;
-    let visible = document.visibilityState === "visible";
     let intersecting = false;
 
     function frame(nowMs: number) {
@@ -807,14 +806,17 @@ export function HeroStrands({
       renderer.render(scene, camera);
     }
 
+    // Paint one frame right away so the hero never sits empty: the
+    // IntersectionObserver callback is async, and in a hidden/occluded tab
+    // (background open, macOS window occlusion) the animation loop cannot run
+    // at all until the tab is shown. The browser already throttles
+    // requestAnimationFrame for hidden documents, so the loop itself only needs
+    // the on-screen gate.
+    frame(performance.now());
+
     const updateLoop = () => {
-      renderer.setAnimationLoop(visible && intersecting ? frame : null);
+      renderer.setAnimationLoop(intersecting ? frame : null);
     };
-    const onVisibility = () => {
-      visible = document.visibilityState === "visible";
-      updateLoop();
-    };
-    document.addEventListener("visibilitychange", onVisibility);
 
     const resizeObserver = new ResizeObserver(() => {
       camera.aspect = mount.clientWidth / mount.clientHeight;
@@ -838,7 +840,6 @@ export function HeroStrands({
       renderer.setAnimationLoop(null);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
-      document.removeEventListener("visibilitychange", onVisibility);
       scene.clear();
       geometry.dispose();
       strandMat.dispose();
