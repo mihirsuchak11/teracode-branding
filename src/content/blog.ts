@@ -1,13 +1,11 @@
 import type { BlogPost } from "@/lib/types";
 
 /**
- * These are the pieces we intend to write, not published articles. Each renders
- * `placeholderBody`, and the date field reads "Coming soon" rather than showing
- * a publication date for something that has not been published.
+ * Intended pieces, not published articles. Each renders `placeholderBody`.
  */
 export const blogHero = {
   title: "Blog",
-  body: "Notes on operating agents, BYOK economics, and building TeraCode.",
+  body: "Notes on BYOK review, keep-rate, and the $20-per-repo meter — when there is something true to write.",
 };
 
 export const posts: BlogPost[] = [
@@ -16,39 +14,39 @@ export const posts: BlogPost[] = [
     title: "Why we don't resell you tokens",
     date: "Coming soon",
     excerpt:
-      "Every AI reviewer on the market bills per seat and takes a margin on inference. Here is why we think the review should be the product and the tokens should be yours.",
+      "The platform charge is connected repositories. Inference is your provider. Mixing those into one “AI review” invoice is how the bill becomes unexplainable.",
   },
   {
     slug: "keep-rate-scoring-agents-on-what-humans-kept",
     title: "Keep rate: scoring agents on what humans kept",
     date: "Coming soon",
     excerpt:
-      "Model confidence is not quality. We measure a review by which findings a human resolved rather than deleted, and that changes what you optimise for.",
+      "Model confidence is not quality. We measure a review by which findings a human resolved rather than deleted.",
   },
   {
     slug: "glob-scoped-skills",
     title: "Glob-scoped skills: knowledge that knows where it applies",
     date: "Coming soon",
     excerpt:
-      "The reviewer reading your auth code should not carry the same instructions as the one reading a migration. Attaching knowledge to file paths is how we do that.",
+      "The reviewer reading auth should not carry the same instructions as the one reading a migration.",
   },
   {
     slug: "a-board-of-specialists-beats-one-generalist",
     title: "A board of specialists beats one generalist",
     date: "Coming soon",
     excerpt:
-      "Why we run security, performance, tests and style as separate reviewers with separate instructions, then reconcile them into a single review.",
+      "Why several agents, each with its own check, then one merged review on the thread.",
   },
   {
     slug: "the-demo-always-works",
     title: "The demo always works",
     date: "Coming soon",
     excerpt:
-      "Agents are easy to prototype and brutal to operate. On the gap between a scripted run and a Friday afternoon against a real codebase.",
+      "On the gap between a scripted run and a Friday afternoon against a real pull request.",
   },
 ];
 
 export const placeholderBody: string[] = [
-  "This piece has not been published yet. It is on the list of things we want to write once TeraCode Review is out of private beta and we have real numbers to write about.",
-  "In the meantime, if the topic is one you care about, write to contact@teracode.ai — we would rather answer your actual question than guess at it in a post.",
+  "This piece has not been published yet. It is on the list of things to write when there are real numbers from real repositories — not a second marketing site inside the dashboard.",
+  "If the topic is one you care about, write to contact@teracodeai.com.",
 ];

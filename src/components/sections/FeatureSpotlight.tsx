@@ -55,7 +55,7 @@ function ExploreMore({ href }: { href: string }) {
   const Tag = href.startsWith("mailto:") || href.startsWith("http") ? "a" : Link;
   return (
     <Tag href={href} className="group mt-10 inline-flex items-center gap-3 text-[15px] text-fg-dim">
-      Get early access
+      Learn more
       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-surface-2 transition-colors group-hover:bg-border-strong">
         <ChevronDown width={13} height={13} className="-rotate-90 text-fg-muted" />
       </span>
@@ -249,7 +249,7 @@ export function FeatureSpotlights() {
                     kind: "node",
                     children: (
                       <Badge
-                        tone={f.status === "Private beta" ? "brand" : "neutral"}
+                        tone="brand"
                         className="mb-5"
                       >
                         {f.status}

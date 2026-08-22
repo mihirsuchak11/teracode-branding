@@ -105,7 +105,7 @@ export function Header() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/teracode-logo-horizontal-white.svg"
-            alt="TeraCode"
+            alt="TeraCodeAI"
             width={105}
             height={28}
             className="h-7 w-auto select-none"
@@ -187,16 +187,27 @@ export function Header() {
             className="overflow-hidden border-t border-border bg-bg md:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
-              {[...nav.products, ...nav.resources.company, ...nav.links].map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-btn px-2 py-2.5 text-[15px] text-fg-soft hover:bg-surface"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {[...nav.products, ...nav.resources.company, ...nav.links].map((item) =>
+                item.href.startsWith("http") ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-btn px-2 py-2.5 text-[15px] text-fg-soft hover:bg-surface"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-btn px-2 py-2.5 text-[15px] text-fg-soft hover:bg-surface"
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
               <a
                 href={nav.cta.href}
                 onClick={() => setMobileOpen(false)}

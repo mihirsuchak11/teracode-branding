@@ -10,7 +10,7 @@ import { careersHero, peopleSection, jobsSection, jobs } from "@/content/careers
 export const metadata = buildMetadata({
   title: "Careers",
   description:
-    "We are not running open roles right now, but we hire opportunistically while TeraCode is in private beta. Introduce yourself.",
+    "We are not running a slate of open roles. Introduce yourself if TeraCodeAI is the problem you want to work on.",
   path: "/careers",
 });
 

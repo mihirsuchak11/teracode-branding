@@ -2,23 +2,23 @@ import type { FaqItem } from "@/lib/types";
 
 export const faq: FaqItem[] = [
   {
-    question: "How do I get access to TeraCode Review?",
+    question: "How do I start?",
     answer:
-      "TeraCode Review is in private beta. Email contact@teracode.ai and we will get you set up — there is no waitlist form to fill in, and a person reads every message.",
+      "Start free opens the TeraCodeAI dashboard login and, after GitHub OAuth, the connect-repository screen. The first repository in an organization is free forever. If you are already signed in, the app keeps that destination instead of showing the button again.",
   },
   {
     question: "What is BYOK, and what does it mean for my bill?",
     answer:
-      "BYOK means bring your own key. You connect your own provider account, and TeraCode calls the model directly with your key. Tokens are billed to you by your provider, at your provider's price — we never resell inference, so there is no markup between you and the model, and nothing to true up later.",
+      "Bring your own key. You add an Anthropic or OpenRouter key; TeraCodeAI calls that provider from the host. Tokens are billed to you by the provider. We do not resell inference. The platform charge is separate: $20 per extra connected repository per month.",
   },
   {
-    question: "How is TeraCode priced?",
+    question: "How is TeraCodeAI priced?",
     answer:
-      "There is no per-seat licence during the private beta. Most AI review tools charge per developer per month on top of the tokens they resell you — TeraCode charges nothing on top of what you already pay your provider.",
+      "One meter. $20 per connected repository per month. The first repository in an organization is free, forever. There is no per-seat licence and no query pack. Inference is your provider invoice.",
   },
   {
-    question: "What else is coming?",
+    question: "Which forges and models do you support?",
     answer:
-      "TeraCode Migrate carries codebase-wide migrations to done, and TeraCode Oncall triages incidents from traces rather than alerts. Both run on the same platform as Review: Studio for authoring, Runtime for execution, Evals for scoring and Signals for observability.",
+      "GitHub via the App, and GitLab via a project access token and webhook. Models are Anthropic direct or whatever OpenRouter fronts with your key. We do not list Bitbucket or Azure DevOps as coming soon.",
   },
 ];

@@ -6,11 +6,11 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Contact us",
   description:
-    "Questions about TeraCode Review, early access, or how BYOK billing works? Reach the team in under a minute.",
+    "Questions about TeraCodeAI, the $20-per-repo meter, or BYOK keys? Reach the team here or start free on the dashboard.",
   path: "/contact-us",
 });
 
-const emails = [{ label: "Email:", email: "contact@teracode.ai" }];
+const emails = [{ label: "Email:", email: "contact@teracodeai.com" }];
 
 export default function ContactPage() {
   return (
@@ -19,17 +19,17 @@ export default function ContactPage() {
         <Reveal className="flex flex-col justify-between gap-16 p-6 md:p-8">
           <div>
             <h1 className="text-2xl font-semibold leading-7 tracking-tight text-fg">
-              Let&apos;s connect the dots.
+              Talk to TeraCodeAI.
             </h1>
             <p className="mt-3 max-w-[496px] text-base leading-6 text-fg-muted">
-              Questions about TeraCode, early access, or how BYOK billing works? Reach the team in under a
-              minute.
+              Questions about the GitHub App, the $20-per-repo meter, or bringing your own key? Start free
+              on the dashboard, or write us here.
             </p>
           </div>
           <p className="text-xs leading-4 text-fg-muted">
             You can also email us at{" "}
-            <a href="mailto:contact@teracode.ai" className="transition-colors hover:text-fg">
-              contact@teracode.ai
+            <a href="mailto:contact@teracodeai.com" className="transition-colors hover:text-fg">
+              contact@teracodeai.com
             </a>
           </p>
         </Reveal>

@@ -18,23 +18,22 @@ export const careersHero = {
       height: 774,
     },
   ],
-  statement: "Build the layer that makes agents safe to operate.",
+  statement: "Build the review board teams will actually require.",
 };
 
 export const peopleSection = {
-  eyebrow: "The people behind TeraCode",
-  title: "Small team, unreasonable standards",
+  eyebrow: "The people behind TeraCodeAI",
+  title: "Small team, the product you can run tomorrow",
   paragraphs: [
-    "We are a small team working on a problem that is easy to fake and hard to actually solve. Anyone can get an agent to look impressive once. Getting one to be worth running on a real codebase, every day, without a human babysitting it, is the whole job.",
-    "That means we care more about judgement than volume. The interesting questions here are about what an agent should refuse to do, how you measure whether its output was worth reading, and how you build something people trust with their production repository — not about how many tokens you can spend.",
-    "We are not running open roles right now. If that problem is the one you want to work on, write to us anyway and tell us what you would build.",
+    "The job is a GitHub App that several reviewers can share, on keys the customer already has, with a check each and a journal that says whether they were worth it. Not a SOC 2 scanner, not a seven-product platform.",
+    "We are not running a slate of open roles. If that problem is the one you want to work on, write anyway.",
   ],
   cta: { label: "More about us", href: "/about-us" },
 };
 
 export const jobsSection = {
   title: "No open roles today.",
-  body: "We hire opportunistically while we are in private beta. If you would be a fit, introduce yourself and we will keep you in mind as the team grows.",
+  body: "Introduce yourself if you would be a fit. We hire when the product needs it, not when a careers page looks empty.",
 };
 
 export const jobs: Job[] = [

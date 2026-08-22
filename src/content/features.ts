@@ -1,4 +1,5 @@
 import type { FeaturePage } from "@/lib/types";
+import { APP_START } from "@/lib/app";
 
 /** A small decorative mock card rendered beside a benefit section. */
 export interface MockCallout {
@@ -41,84 +42,86 @@ export const featureHero: Record<
   { layout: "art-top" | "centered" | "split"; ctas: boolean }
 > = {
   review: { layout: "art-top", ctas: true },
-  migrate: { layout: "centered", ctas: true },
-  oncall: { layout: "split", ctas: true },
+  agents: { layout: "centered", ctas: true },
+  checks: { layout: "split", ctas: true },
 };
+
+export const featureCta = { label: "Start free", href: APP_START };
 
 export const features: FeaturePage[] = [
   {
     slug: "review",
-    name: "TeraCode Review",
-    tagline: "An AI review board on every pull request.",
-    heroTitle: "Every pull request,\nreviewed before you look.",
+    name: "Multi-agent review",
+    tagline: "Several reviewers on every pull request.",
+    heroTitle: "Several reviewers.\nOne review on the thread.",
     heroBody:
-      "Security, performance, tests and style each run as their own specialist. TeraCode reconciles them into a single review a human can act on — running on your own API keys.",
+      "Agents you name — Legal, Compliance, Team Lead, Senior Engineer, or your own — fan out on the same diff. Findings merge so two agents flagging the same line become one comment. Each still posts its own check.",
     benefits: [
       {
-        title: "A board of specialists, not one generalist.",
-        body: "Each concern gets its own reviewer with its own instructions and tools. They run in parallel against the diff, and disagreements get reconciled before anything reaches your team.",
+        title: "A board, not one generalist.",
+        body: "Each agent has its own instructions, model, and skills. They run in parallel. Disagreements are visible; duplicates are not posted twice.",
       },
       {
-        title: "Ranked by risk, not by line number.",
-        body: "A logged credential and a missing trailing comma are not the same finding. Review orders what it reports by the damage it would actually do.",
+        title: "Ranked by what it would break.",
+        body: "A logged credential and a missing trailing comma are not the same finding. Severity is something you can act on, not a line-number sort.",
       },
       {
-        title: "One review, not forty comments.",
-        body: "Findings are merged, de-duplicated and posted as a single review. No comment storm, no forty notifications, no reviewer fatigue.",
+        title: "One thread, several checks.",
+        body: "Comments land as one review from the App. Checks stay per agent, so you can require security without requiring style.",
       },
     ],
   },
   {
-    slug: "migrate",
-    name: "TeraCode Migrate",
-    tagline: "Carry a codebase-wide migration to done.",
-    heroTitle: "Point it at the change.\nIt finishes the job.",
+    slug: "agents",
+    name: "Bring your own key",
+    tagline: "Your provider. Your bill. No markup.",
+    heroTitle: "You bring the key.\nWe run the reviewers.",
     heroBody:
-      "Describe the migration you want. Migrate works every call site, opens pull requests you review normally, and keeps going until nothing is left behind.",
+      "Add an Anthropic or OpenRouter key in the vault. Reviews call that provider from the host. The key is encrypted at rest and never enters the sandbox that clones the pull request.",
     benefits: [
       {
-        title: "Every call site, not a sample.",
-        body: "Migrate enumerates the work before it starts changing anything, so you know the size of the job up front and can see what is left at any point.",
+        title: "Two providers, on purpose.",
+        body: "Anthropic direct when you already hold a key and do not want a second account. OpenRouter when you want exact per-call cost in the dashboard. Other models are whatever OpenRouter fronts — not a pretend Azure or Bedrock product page.",
       },
       {
-        title: "Pull requests you review normally.",
-        body: "Work lands as ordinary pull requests against your branch protection and your checks. Nothing is written to your default branch, and nothing bypasses review.",
+        title: "A budget you can hit.",
+        body: "Set a monthly cap on the project. The review stops spending when it would go over, and says so on the pull request instead of going quiet.",
       },
       {
-        title: "It stops when the migration is done.",
-        body: "Not when a token budget runs out or a turn limit trips. Migrate tracks remaining call sites as its own completion condition.",
+        title: "No seat tax, no token resale.",
+        body: "The platform meter is connected repositories. Inference is your provider invoice. Those are different bills on purpose.",
       },
     ],
     chips: [
-      "Enumerates before editing",
-      "Opens ordinary PRs",
-      "Respects branch protection",
-      "Runs your existing checks",
-      "Resumable mid-migration",
-      "Your own API keys",
+      "Anthropic or OpenRouter",
+      "Encrypted at rest",
+      "Key stays off the sandbox",
+      "Spend from the provider",
+      "Monthly project budget",
+      "No markup on tokens",
     ],
     stats: [
-      { value: "$0", label: "Markup on your token spend" },
-      { value: "0", label: "Per-seat licences" },
-      { value: "100%", label: "BYOK — your own API keys" },
-      { value: "1", label: "Runtime under every product" },
+      { value: "$20", label: "Per extra connected repository / month" },
+      { value: "1", label: "First repository free forever" },
+      { value: "0", label: "Cut of your inference spend" },
+      { value: "2", label: "Providers: Anthropic, OpenRouter" },
     ],
   },
   {
-    slug: "oncall",
-    name: "TeraCode Oncall",
-    tagline: "Triage that reads the trace, not the alert.",
-    heroTitle: "Arrives with causes.\nNot notifications.",
+    slug: "checks",
+    name: "One check each",
+    tagline: "Require the agents you trust.",
+    heroTitle: "A check per agent.\nNot a rubber stamp.",
     heroBody:
-      "When something pages, Oncall pulls the trace, the recent deploys and the owning code, then hands you ranked causes instead of another line in a channel.",
+      "Each reviewer posts its own status check. Gate the merge on the ones that matter. The dashboard journal shows which findings the team kept, so you can tell whether the reviewers were worth it.",
     benefits: [
       {
-        title: "It reads what the alert points at.",
-        body: "An alert is a symptom. Oncall follows it into the trace, the deploys that landed near the incident window, and the code that owns the failing path.",
+        title: "Branch protection, not theatre.",
+        body: "A clean run is a passing check. Default policy comments and checks only — it does not approve the pull request unless you turn that on.",
       },
       {
-        title: "Ranked causes, with the evidence attached.",
-        body: "Every candidate cause arrives with what it was inferred from, so the first thing you do is judge the reasoning rather than start the investigation from nothing.",
+        title: "A journal, not a black box.",
+        body: "Resolved, deleted, or silently fixed: the product records what became of each comment from what the team did, and feeds that back to the agent as calibration.",
       },
     ],
   },
@@ -127,92 +130,92 @@ export const features: FeaturePage[] = [
 export const featureExtras: Record<string, FeatureExtras> = {
   review: {
     midSection: {
-      title: "Four specialists on the diff,\nreconciled into one review.",
+      title: "Named reviewers on the diff,\nmerged into one thread.",
       items: [
         {
-          title: "Scoped to the paths that matter",
-          body: "Skills attach to file paths, so the reviewer reading your auth code carries different instructions from the one reading a migration.",
+          title: "Skills on the paths they know",
+          body: "Attach instructions to file globs so the agent reading auth is not the one reading a migration.",
         },
         {
           title: "Runs on your own keys",
-          body: "Review calls the model with your provider account. Your tokens are billed to you, at your provider's price, with nothing added on top.",
+          body: "The host calls your provider. Tokens are billed to you. We add nothing on top.",
         },
         {
           title: "Scored on what you kept",
-          body: "Quality is measured by which findings your team resolved rather than deleted — not by how confident the model sounded.",
+          body: "Quality is which findings the team resolved rather than deleted — not how confident the model sounded.",
         },
       ],
     },
   },
-  migrate: {
+  agents: {
     midSection: {
-      title: "A migration is not a prompt.\nIt is a work list you have to finish.",
+      title: "The vault is the product.\nThe model bill is yours.",
       items: [
         {
-          title: "Enumerates before editing",
-          body: "The work list is built and shown before a single file changes, so the size of the job is never a surprise.",
+          title: "Anthropic direct",
+          body: "Your sk-ant key. Token counts in the dashboard; dollars on Anthropic's invoice. Recorded as unmetered, never as free.",
         },
         {
-          title: "Opens ordinary PRs",
-          body: "Changes arrive the way your team already reviews them. No special client, no separate approval surface.",
+          title: "OpenRouter",
+          body: "One key for whatever it fronts, with the per-call cost the dashboard can show. Their BYOK path still charges a small platform fee on their side — that is their bill, not ours.",
         },
         {
-          title: "Respects branch protection",
-          body: "Migrate works within the rules your repository already enforces, rather than asking you to relax them.",
+          title: "Encrypted at rest",
+          body: "Keys sit in the vault. They are used to call the provider from the host process.",
         },
         {
-          title: "Runs your existing checks",
-          body: "Your CI is the gate. If the suite fails, the change does not proceed on the strength of the model's opinion.",
+          title: "Never in the sandbox",
+          body: "The clone can read the repository. It cannot see your key, the database URL, or the App private key.",
         },
         {
-          title: "Resumable mid-migration",
-          body: "Stop it, review what has landed, and pick the run back up. Progress is state, not a single long conversation.",
+          title: "A cap that speaks",
+          body: "When spend would pass the project budget, the review says so on the pull request. A cap that only fails closed is a cap nobody can plan around.",
         },
         {
-          title: "Your own API keys",
-          body: "The same BYOK runtime as every other TeraCode product. No reselling, no markup, no per-seat licence.",
+          title: "First repo free",
+          body: "Connect one repository and reviews start. The $20 meter is the second repository, not a trial clock.",
         },
       ],
     },
-    statsTitleMuted: "Every AI reviewer charges per seat.",
-    statsTitle: "TeraCode runs on your keys, at cost.",
+    statsTitleMuted: "One meter for the platform.",
+    statsTitle: "Your provider for the tokens.",
   },
-  oncall: {
+  checks: {
     midSection: {
-      title: "Most tools tell you something broke.\nOncall tells you what to look at.",
+      title: "Most tools dump a comment storm.\nEach agent here has a check you can require.",
       items: [
         {
-          title: "Follows the trace, not the threshold.",
-          body: "The alert is where triage starts, not where it ends. Oncall reads the span that actually failed and the path that led into it, rather than restating the rule that fired.",
+          title: "One check per agent.",
+          body: "Security can fail while style passes. That is the point of several reviewers instead of one blob.",
         },
         {
-          title: "Correlates deploys against the incident window.",
-          body: "Most incidents have a change behind them. Oncall lines up what shipped against when the symptom appeared and says which is worth ruling out first.",
+          title: "Comment-only unless you say otherwise.",
+          body: "Default policy posts findings and checks. Approval and request-changes are explicit deploy choices, because a bot that blocks merges is a different product.",
         },
         {
-          title: "Routes with the reasoning attached.",
-          body: "The page reaches the team that owns the failing code, carrying the evidence it was ranked on — so the first responder starts from a hypothesis instead of a blank terminal.",
+          title: "Keep-rate in the dashboard.",
+          body: "The journal is how you decide whether to keep an agent on a repository — not a marketing score.",
         },
       ],
     },
   },
 };
 
-/** Decorative mock cards, index-aligned with each product's benefits. */
+/** Decorative mock cards, index-aligned with each page's benefits. */
 export const featureMocks: Record<string, FeatureMock[]> = {
   review: [
     {
       callout: {
         tone: "brand",
         title: "PR #482",
-        body: "Reconciled from 4 specialists",
+        body: "Merged from 4 agents",
         meta: "Reviewed",
       },
-      label: "Specialists:",
+      label: "Agents:",
       rows: [
         { label: "Security", value: "2 findings", dot: "brand" },
-        { label: "Performance", value: "1 regression", dot: "brand" },
-        { label: "Tests", value: "coverage -3%", dot: "brand" },
+        { label: "Team Lead", value: "1 regression", dot: "brand" },
+        { label: "Senior Eng", value: "coverage -3%", dot: "brand" },
       ],
     },
     {
@@ -229,75 +232,75 @@ export const featureMocks: Record<string, FeatureMock[]> = {
         { label: "Comments posted", value: "1 review", dot: "brand" },
         { label: "Findings merged", value: "12 → 5" },
         { label: "Duplicates removed", value: "7" },
-        { label: "Blocking", value: "2", mono: true },
+        { label: "Checks posted", value: "4", mono: true },
       ],
     },
   ],
-  migrate: [
+  agents: [
     {
       callout: {
         tone: "neutral",
-        title: "Upgrade every call site to the v3 API",
-        meta: "428 call sites",
+        title: "Vault",
+        meta: "Encrypted at rest",
       },
       rows: [
-        { label: "packages/api", value: "162 sites", mono: true },
-        { label: "packages/web", value: "141 sites", mono: true },
-        { label: "packages/jobs", value: "83 sites", mono: true },
-        { label: "services/billing", value: "42 sites", mono: true },
-        { label: "remaining", value: "0", mono: true },
+        { label: "provider", value: "anthropic", mono: true },
+        { label: "key", value: "sk-ant-…4f21", mono: true },
+        { label: "in sandbox", value: "no", mono: true },
+        { label: "budget", value: "$40 / month", mono: true },
+        { label: "spent", value: "$12.40", mono: true },
       ],
     },
     {
       callout: {
         tone: "brand",
-        title: "Opened 14 pull requests",
-        body: "Each scoped to one package, against your branch protection and your checks.",
+        title: "OpenRouter reports the dollar",
+        body: "Anthropic reports tokens only. The dashboard does not invent a price table.",
       },
       rows: [
-        { label: "Checks passing", value: "14/14", mono: true },
-        { label: "Awaiting review", value: "3", mono: true },
-        { label: "Merged", value: "11", mono: true },
+        { label: "This run", value: "$0.18", mono: true },
+        { label: "Month to date", value: "$12.40", mono: true },
+        { label: "Budget remaining", value: "$27.60", mono: true },
       ],
     },
     {
-      label: "Completion",
+      label: "Meter",
       rows: [
-        { label: "Call sites migrated", value: "428 of 428", dot: "brand" },
-        { label: "Left behind", value: "None", dot: "brand" },
-        { label: "Stopped because", value: "The work list is empty", dot: "brand" },
+        { label: "First repository", value: "Free forever", dot: "brand" },
+        { label: "This extra repository", value: "$20 / month", dot: "brand" },
+        { label: "Inference", value: "Your provider", dot: "brand" },
       ],
     },
   ],
-  oncall: [
+  checks: [
     {
       callout: {
         tone: "danger",
-        badge: "High severity",
+        badge: "Check failed",
         meta: "2 min ago",
-        title: "Checkout latency spike",
-        body: "p95 on /checkout rose from 240ms to 1.9s over the last 20 minutes.",
+        title: "security",
+        body: "Token logged in plaintext in auth/session.ts. Require this check to hold the merge.",
       },
       rows: [
-        { label: "service", value: "checkout-api", mono: true },
-        { label: "p95 now", value: "1,900ms", mono: true },
-        { label: "p95 baseline", value: "220–260ms", mono: true },
-        { label: "deviation", value: "+680%", mono: true, dot: "danger" },
+        { label: "agent", value: "security", mono: true },
+        { label: "check", value: "failure", mono: true },
+        { label: "findings", value: "2", mono: true },
+        { label: "blocking", value: "1", mono: true, dot: "danger" },
       ],
-      footer: { left: "Routed to #incidents", right: "Paged 1m ago" },
+      footer: { left: "Posted on PR #482", right: "Check run updated" },
     },
     {
       callout: {
         tone: "brand",
-        title: "3 ranked causes",
-        meta: "From trace, deploys and ownership",
+        title: "Keep-rate 64%",
+        meta: "Last 30 days · security",
       },
-      label: "Ranked by evidence",
+      label: "What the team did",
       rows: [
-        { label: "Connection pool exhausted", value: "trace · high", dot: "danger" },
-        { label: "Deploy 4f21c landed 18m ago", value: "timing · high", dot: "warn" },
-        { label: "Upstream retry storm", value: "trace · medium", dot: "warn" },
-        { label: "Cache eviction", value: "ruled out", dot: "faint" },
+        { label: "Resolved", value: "18", dot: "brand" },
+        { label: "Deleted as noise", value: "7", dot: "warn" },
+        { label: "Still open", value: "3", dot: "faint" },
+        { label: "Silently fixed", value: "2", dot: "brand" },
       ],
     },
   ],

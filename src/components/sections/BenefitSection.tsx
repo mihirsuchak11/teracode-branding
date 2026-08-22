@@ -499,9 +499,9 @@ function SeverityScoreMock() {
 /* ------------------------------------------------------------- showcase */
 
 const mocksBySlug: Record<string, React.ReactNode[]> = {
-  cortex: [<EntityResolutionMock key="0" />, <LiveFeedMock key="1" />, <GraphExplorerMock key="2" />],
-  ask: [<SchemaMock key="0" />, <FollowUpsMock key="1" />, <ShareMock key="2" />],
-  pulse: [<PulseAlertMock key="0" />, <SeverityScoreMock key="1" />],
+  review: [<EntityResolutionMock key="0" />, <LiveFeedMock key="1" />, <GraphExplorerMock key="2" />],
+  agents: [<SchemaMock key="0" />, <FollowUpsMock key="1" />, <ShareMock key="2" />],
+  checks: [<PulseAlertMock key="0" />, <SeverityScoreMock key="1" />],
 };
 
 function PanelText({ benefit }: { benefit: FeatureBenefit }) {
@@ -574,7 +574,7 @@ function Panel({
  */
 export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: FeatureBenefit[] }) {
   const mocks = mocksBySlug[slug] ?? [];
-  const across = slug === "migrate" ? benefits.length : Math.min(benefits.length, 2);
+  const across = slug === "agents" ? benefits.length : Math.min(benefits.length, 2);
   const inGrid = benefits.slice(0, across);
   const fullWidth = benefits[across];
 
@@ -591,7 +591,7 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
               benefit={benefit}
               mock={mocks[i]}
               dense={across === 3}
-              stage={slug === "oncall" ? 440 : 480}
+              stage={slug === "checks" ? 440 : 480}
             />
           ))}
         </div>
@@ -607,7 +607,7 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
             </Reveal>
           </div>
         )}
-        {slug === "migrate" && <AskWavesPanel />}
+        {slug === "agents" && <AskWavesPanel />}
       </section>
   );
 }

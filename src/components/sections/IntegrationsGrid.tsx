@@ -7,6 +7,10 @@ import { Reveal } from "@/components/motion/Reveal";
 
 /* Per-integration mark color; first twelve tuned to the original grid. */
 const colors: Record<string, string> = {
+  github: "#fafaf9",
+  gitlab: "#fc6d26",
+  anthropic: "#d4a27f",
+  openrouter: "#3e63dd",
   pipecloud: "#3e63dd",
   scaleforce: "#10b981",
   closetrack: "#f9ab00",
