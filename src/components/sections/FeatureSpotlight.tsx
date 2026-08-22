@@ -55,7 +55,7 @@ function ExploreMore({ href }: { href: string }) {
   const Tag = href.startsWith("mailto:") || href.startsWith("http") ? "a" : Link;
   return (
     <Tag href={href} className="group mt-10 inline-flex items-center gap-3 text-[15px] text-fg-dim">
-      Get early access
+      Learn more
       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-surface-2 transition-colors group-hover:bg-border-strong">
         <ChevronDown width={13} height={13} className="-rotate-90 text-fg-muted" />
       </span>
@@ -155,10 +155,10 @@ function PulseMock() {
           <circle cx="217" cy="51.5" r="3" fill="#e5484d" />
         </svg>
         <span className="absolute top-[21%] left-[91%] text-[11px] leading-4 font-medium text-[rgb(82,82,82)]">
-          Baseline
+          Clean
         </span>
         <span className="absolute top-[81%] left-[83%] text-[11px] leading-4 font-medium text-danger">
-          Anomaly
+          Finding
         </span>
       </div>
 
@@ -181,7 +181,7 @@ const mocks = { graph: <CortexMock />, ask: <AskMock />, pulse: <PulseMock /> };
 /**
  * Pinned feature scroller — ports the original "Scroll Progress Section".
  *
- * The left text panels (Review / Migrate / Oncall) scroll while the right column is
+ * The left text panels (review / BYOK / checks) scroll while the right column is
  * `position: sticky`. That column is ONE WebGL strand field (`StrandMorph`)
  * that morphs between a point cloud per feature, with the matching UI card
  * carried in front of it. Both the morph and the card swap are driven by the
@@ -249,7 +249,7 @@ export function FeatureSpotlights() {
                     kind: "node",
                     children: (
                       <Badge
-                        tone={f.status === "Private beta" ? "brand" : "neutral"}
+                        tone="brand"
                         className="mb-5"
                       >
                         {f.status}

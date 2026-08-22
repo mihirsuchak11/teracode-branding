@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buildMetadata } from "@/lib/metadata";
+import { APP_START } from "@/lib/app";
 import { integrations, getIntegration } from "@/content/integrations";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
@@ -49,15 +50,15 @@ export default async function IntegrationPage({
           <IntegrationMark slug={integration.slug} />
           <p className="mt-9 font-mono text-xs text-fg-faint">{integration.meta}</p>
           <h1 className="mt-4 max-w-[720px] text-4xl font-medium leading-[1.1] tracking-tight text-fg md:text-[52px]">
-            Connect {integration.name} to TeraCode
+            Connect {integration.name} to TeraCodeAI
           </h1>
           <p className="mt-6 max-w-[560px] text-[17px] leading-relaxed text-fg-muted">
             {integration.description}
           </p>
           <div className="mt-9 flex items-center gap-3">
-            <Button href="/pricing">Get started</Button>
-            <Button href="/contact-us" variant="secondary">
-              Book a demo
+            <Button href={APP_START}>Start free</Button>
+            <Button href="/pricing" variant="secondary">
+              See pricing
             </Button>
           </div>
         </Reveal>
@@ -70,14 +71,13 @@ export default async function IntegrationPage({
               <p className="font-mono text-xs text-fg-disabled">Coming soon</p>
             </div>
             <p className="mt-5 max-w-[540px] text-sm leading-relaxed text-fg-muted">
-              Detailed setup documentation for this integration is on the way. In the meantime,
-              every connection follows the same three steps:
+              Setup lives in the dashboard after you sign in. The path is:
             </p>
             <ul className="mt-7">
               {[
-                "Authorize the connection from your TeraCode workspace.",
-                "TeraCode starts reviewing new pull requests straight away.",
-                "Query the connected data in plain language through Ask.",
+                "Start free — sign in with GitHub, destination /projects/new.",
+                "Connect the GitHub App or a GitLab project, then add a provider key.",
+                "Open a pull request. Each agent posts its own check on that review.",
               ].map((step, i) => (
                 <li
                   key={step}

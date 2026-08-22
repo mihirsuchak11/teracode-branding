@@ -22,30 +22,32 @@ const NODES = [
   { n: "3", label: "Ship" },
 ];
 
+/* Facts here mirror content/integrations.ts and content/features.ts: GitHub
+   App or GitLab token, Anthropic or OpenRouter, agents the team names. */
 const CONNECT_ROWS = [
-  { k: "Repository", v: "teracode/api" },
+  { k: "Repository", v: "teracodeai/api" },
+  { k: "Forge", v: "GitHub App" },
   { k: "Provider", v: "Anthropic · sk-…c91" },
-  { k: "Scope", v: "Pull requests only" },
 ];
 
 const SPECIALISTS = [
   { name: "Security", detail: "2 findings", tone: "text-danger" },
-  { name: "Performance", detail: "1 regression", tone: "text-warn" },
-  { name: "Tests", detail: "coverage -3%", tone: "text-warn" },
-  { name: "Style", detail: "house rules", tone: "text-fg-faint" },
+  { name: "Team Lead", detail: "1 regression", tone: "text-warn" },
+  { name: "Senior Eng", detail: "coverage -3%", tone: "text-warn" },
+  { name: "Compliance", detail: "clean", tone: "text-fg-faint" },
 ];
 
 const SHIP_ROWS = [
   { k: "Comments posted", v: "1 review" },
-  { k: "Findings reconciled", v: "12 → 5" },
-  { k: "Blocking", v: "2" },
+  { k: "Duplicates merged", v: "12 → 5" },
+  { k: "Checks posted", v: "4" },
 ];
 
 const MARK = [
   { name: "Security", x: 50, y: 14 },
-  { name: "Performance", x: 17, y: 50 },
-  { name: "Tests", x: 83, y: 50 },
-  { name: "Style", x: 50, y: 86 },
+  { name: "Team Lead", x: 17, y: 50 },
+  { name: "Senior Eng", x: 83, y: 50 },
+  { name: "Compliance", x: 50, y: 86 },
 ] as const;
 
 /**
@@ -116,7 +118,7 @@ function ConnectScene() {
         </motion.div>
       ))}
       <p className="mt-3 font-mono text-[11px] leading-4 text-fg-disabled">
-        Keys stay yours. TeraCode never resells inference.
+        Keys stay yours. TeraCodeAI never resells inference.
       </p>
     </div>
   );
@@ -186,7 +188,7 @@ function ShipScene() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.35, delay: 0.2, ease: REVIEW_EASE }}
       >
-        One review on the pull request. Merge stays yours.
+        One review, one check per agent. Merge stays yours.
       </motion.p>
     </div>
   );

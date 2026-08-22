@@ -5,7 +5,7 @@ import { privacyPolicy } from "@/content/legal";
 export const metadata = buildMetadata({
   title: "Privacy Policy",
   description:
-    "How TeraSoft AI collects, uses and protects information when you use TeraCode — including repository access and the model provider keys you supply.",
+    "How TeraCodeAI collects, uses and protects information — including cloned pull requests, BYOK keys, and review sandboxes.",
   path: "/privacy-policy",
 });
 

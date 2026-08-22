@@ -12,16 +12,16 @@ const dots =
 
 const PATHS = [
   { path: "auth/session.ts", skill: "Security", reason: "auth · tokens" },
-  { path: "api/orders.ts", skill: "Performance", reason: "hot path" },
-  { path: "db/migrate.sql", skill: "Tests", reason: "schema change" },
-  { path: "ui/Button.tsx", skill: "Style", reason: "surface" },
+  { path: "api/orders.ts", skill: "Senior Eng", reason: "hot path" },
+  { path: "db/migrate.sql", skill: "Team Lead", reason: "schema change" },
+  { path: "terms/dpa.md", skill: "Compliance", reason: "policy" },
 ];
 
 const KEY_FLOW = [
   { label: "Your key", value: "Anthropic · sk-…c91" },
   { label: "Runtime", value: "Sandboxed, this diff only" },
   { label: "Provider bill", value: "Anthropic, at Anthropic's price" },
-  { label: "Our bill", value: "$0 markup" },
+  { label: "Our cut of it", value: "$0 markup" },
 ];
 
 const KEPT = [

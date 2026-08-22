@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://teracode.ai";
-export const SITE_NAME = "TeraCode";
+/**
+ * Canonical origin for this site. Feeds `metadataBase` (canonical + OpenGraph
+ * URLs), `robots.txt`, `sitemap.xml` and the JSON-LD graph, so it has to be a
+ * host that actually resolves — `teracodeai.com` is NXDOMAIN today, which made
+ * every canonical, OG and sitemap URL point at a dead domain, and left the
+ * legal pages the product app links to unreachable. Set
+ * `NEXT_PUBLIC_SITE_URL=https://teracodeai.com` once the apex domain has DNS.
+ */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://teracode-site.vercel.app";
+export const SITE_NAME = "TeraCodeAI";
 
 export function buildMetadata({
   title,
@@ -12,7 +21,7 @@ export function buildMetadata({
   title: string;
   description: string;
   path?: string;
-  /** Set false when `title` already carries the brand, e.g. "TeraCode Review". */
+  /** Set false when `title` already carries the brand. */
   brandSuffix?: boolean;
 }): Metadata {
   const fullTitle = path === "/" || !brandSuffix ? title : `${title} — ${SITE_NAME}`;

@@ -43,12 +43,8 @@ export function PricingTiers({ tiers }: { tiers: PricingTier[] }) {
                 )}
               </p>
               <div className="mt-10">
-                {tier.name !== "Starter" && (
-                  <p className="text-[15px] text-fg-muted">{tier.description}</p>
-                )}
-                <ul
-                  className={`flex flex-col gap-[13px] ${tier.name !== "Starter" ? "mt-6" : ""}`}
-                >
+                <p className="text-[15px] text-fg-muted">{tier.description}</p>
+                <ul className="mt-6 flex flex-col gap-[13px]">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3 text-sm text-fg-dim">
                       <CircleCheck />

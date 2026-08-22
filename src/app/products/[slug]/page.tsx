@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
-import { features, featureExtras, featureHero, getFeature } from "@/content/features";
-import { MAIL_ACCESS } from "@/content/home";
+import {
+  features,
+  featureCta,
+  featureExtras,
+  featureHero,
+  getFeature,
+} from "@/content/features";
 import { faqJsonLd, productJsonLd } from "@/lib/jsonLd";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { FeaturePage as Feature } from "@/lib/types";
@@ -74,7 +79,7 @@ function HeroBadge({ name }: { name: string }) {
 function HeroCtas({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <Button href={MAIL_ACCESS}>Get early access</Button>
+      <Button href={featureCta.href}>{featureCta.label}</Button>
       <Button href="/pricing" variant="secondary">
         View pricing
       </Button>
@@ -162,8 +167,8 @@ export default async function FeaturePage({
 
   return (
     <>
-      {/* Only Review is obtainable today, so only Review carries an offer. */}
-      <JsonLd data={productJsonLd(feature, feature.slug === "review")} />
+      {/* Every product carries an offer now that pricing is real ($0/$20). */}
+      <JsonLd data={productJsonLd(feature, true)} />
       {feature.slug === "review" && <JsonLd data={faqJsonLd(reviewFaq)} />}
       <div className="relative">
         {artTop && (
@@ -186,10 +191,10 @@ export default async function FeaturePage({
       {feature.slug === "review" && extras?.midSection && (
         <ReviewMidPanels title={extras.midSection.title} items={extras.midSection.items} />
       )}
-      {feature.slug === "migrate" && extras?.midSection && (
+      {feature.slug === "agents" && extras?.midSection && (
         <CapabilityChips title={extras.midSection.title} items={extras.midSection.items} />
       )}
-      {feature.slug === "oncall" && extras?.midSection && (
+      {feature.slug === "checks" && extras?.midSection && (
         <PulseMidSection mid={extras.midSection} />
       )}
       {feature.slug === "review" && (

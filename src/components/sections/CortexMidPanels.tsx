@@ -55,10 +55,10 @@ function ConnectedSourcesPanel() {
 /* ------------------------------------------------- panel 2: relationship map */
 
 const NODES = [
-  { label: "Customer", x: 288, y: 63, w: 135, dim: true },
-  { label: "Support Ticket", x: 144, y: 139, w: 186, dim: false },
-  { label: "Revenue", x: 173, y: 329, w: 127, dim: false },
-  { label: "Subscription", x: 275, y: 405, w: 169, dim: true },
+  { label: "Security", x: 288, y: 63, w: 135, dim: true },
+  { label: "Team Lead", x: 164, y: 139, w: 166, dim: false },
+  { label: "Senior Eng", x: 153, y: 329, w: 167, dim: false },
+  { label: "PR #482", x: 275, y: 405, w: 149, dim: true },
 ];
 
 function NodeGlyph() {
@@ -98,10 +98,10 @@ function RelationshipMapPanel() {
 
       <div className="absolute" style={{ left: 255, top: 250 }}>
         <p className="font-mono text-[11px] font-medium leading-[15px] text-brand">
-          RELATIONSHIP DISCOVERED
+          FINDINGS MERGED
         </p>
         <p className="mt-1 text-xs leading-4 text-fg-muted">
-          Support volume correlates with revenue drop
+          Four agents, one review on the thread
         </p>
       </div>
     </div>
@@ -111,9 +111,9 @@ function RelationshipMapPanel() {
 /* ------------------------------------------------------ panel 3: query result */
 
 const FLAGGED = [
-  { name: "Northgate Industries", reason: "Support spike", score: "82", tone: "text-[#e5484d]" },
-  { name: "Apex Systems", reason: "Usage -40%", score: "74", tone: "text-[#f9ab00]" },
-  { name: "Lumen Health", reason: "No renewal contact", score: "61", tone: "text-[#e5484d]" },
+  { name: "auth/session.ts", reason: "Token logged in plaintext", score: "High", tone: "text-[#e5484d]" },
+  { name: "db/migrate.sql", reason: "Missing rollback path", score: "High", tone: "text-[#e5484d]" },
+  { name: "api/orders.ts", reason: "Unhandled promise rejection", score: "Med", tone: "text-[#f9ab00]" },
 ];
 
 function ActionButton({ label }: { label: string }) {
@@ -136,10 +136,10 @@ function QueryResultPanel() {
         style={{ left: 113, top: 86, width: 386 }}
       >
         <span className="truncate text-sm leading-5 text-fg">
-          Customers likely to churn in next 30 days
+          Findings on PR #482 after merge
         </span>
         <span className="ml-3 flex h-6 shrink-0 items-center rounded-lg border border-border bg-[#141210] px-2 text-xs font-medium leading-4 text-fg-muted">
-          3 Results
+          3 issues
         </span>
       </div>
 
@@ -149,7 +149,7 @@ function QueryResultPanel() {
         style={{ left: 112, top: 149, width: 388, height: 246 }}
       >
         <p className="px-5 pt-5 font-mono text-xs font-medium leading-4 text-fg-muted">
-          3 accounts flagged
+          3 findings posted
         </p>
         {FLAGGED.map((r) => (
           <div key={r.name} className="flex h-[69px] items-center gap-2.5 px-5">
@@ -165,7 +165,7 @@ function QueryResultPanel() {
                 <span className={r.tone}>{r.score}</span>
                 <span className="text-fg-faint"> / 100</span>
               </p>
-              <p className="text-xs font-medium leading-4 text-fg-disabled">risk score</p>
+              <p className="text-xs font-medium leading-4 text-fg-disabled">severity</p>
             </div>
           </div>
         ))}
@@ -173,8 +173,8 @@ function QueryResultPanel() {
 
       {/* actions */}
       <div className="absolute flex gap-1" style={{ left: 188, top: 403 }}>
-        <ActionButton label="Export CSV" />
-        <ActionButton label="Share with team" />
+        <ActionButton label="Post review" />
+        <ActionButton label="Open in GitHub" />
       </div>
     </div>
   );

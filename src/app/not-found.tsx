@@ -17,7 +17,7 @@ export default function NotFound() {
       />
       <div className="relative flex flex-col items-center px-6 py-10 text-center">
         <h1 className="text-lg font-semibold leading-6 text-fg">
-          This page got lost in the graph.
+          This page is not a route.
         </h1>
         <p className="mt-1 text-sm leading-5 text-fg-muted">
           Let&apos;s get you back to somewhere that exists.

@@ -1,6 +1,7 @@
 import { hero, steps } from "@/content/home";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
+import { Button } from "@/components/ui/Button";
 import { HeroStrands, HERO_LOGO_CONFIG } from "@/components/three/HeroStrands";
 
 /* Geometry below is measured off the original page at a 1512px viewport:
@@ -40,18 +41,10 @@ export function Hero() {
           </Reveal>
         </div>
         <Reveal delay={0.3} className="mt-10 flex flex-wrap items-center gap-3">
-          <a
-            href={hero.primary.href}
-            className="inline-flex h-10 items-center rounded-lg bg-fg-soft px-4 text-sm font-medium leading-5 text-[#1c1917] transition-colors hover:bg-fg"
-          >
-            {hero.primary.label}
-          </a>
-          <a
-            href={hero.secondary.href}
-            className="inline-flex h-10 items-center rounded-lg bg-[#1c1917] px-4 text-sm font-medium leading-5 text-fg-soft transition-colors hover:bg-border-strong"
-          >
+          <Button href={hero.primary.href}>{hero.primary.label}</Button>
+          <Button href={hero.secondary.href} variant="secondary">
             {hero.secondary.label}
-          </a>
+          </Button>
         </Reveal>
       </div>
 

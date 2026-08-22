@@ -4,27 +4,22 @@ import type { Integration } from "@/lib/types";
 export type IntegrationItem = Integration & { meta: string };
 
 /**
- * NOTE: this list states which platforms TeraCode connects to and which model
- * providers it can call with your key. Confirm each entry against what is
- * actually supported before launch — every row here is a claim.
+ * Only connections the product actually has. GitHub App, GitLab token,
+ * Anthropic key, OpenRouter key. No Bitbucket, no Azure DevOps, no Soon row.
  */
 export const integrationsHero = {
-  title: "Your platform.\nYour provider. Your keys.",
-  body: "TeraCode connects to the source control you already use and calls whichever model you already pay for. Inference is billed to you by your provider — we never sit in the middle of it.",
-  searchPlaceholder: "Search integrations...",
+  title: "GitHub or GitLab.\nYour key, not ours.",
+  body: "Install the GitHub App, or connect a GitLab project with a token and a webhook. Reviews call Anthropic or OpenRouter with the key you put in the vault.",
+  searchPlaceholder: "Search connections...",
 };
 
 export const integrationCategories = ["All", "Source control", "Model providers"];
 
 const meta: Record<string, string> = {
   github: "Source control · GitHub App",
-  gitlab: "Source control · OAuth",
-  bitbucket: "Source control · OAuth",
+  gitlab: "Source control · Project token",
   anthropic: "Model provider · Your API key",
-  openai: "Model provider · Your API key",
-  google: "Model provider · Your API key",
-  "azure-openai": "Model provider · Your deployment",
-  bedrock: "Model provider · Your AWS account",
+  openrouter: "Model provider · Your API key",
 };
 
 const base: Integration[] = [
@@ -33,56 +28,28 @@ const base: Integration[] = [
     name: "GitHub",
     category: "Source control",
     description:
-      "Review runs on your pull requests and posts back a single reconciled review. Works with your existing branch protection and required checks.",
+      "Install the App, sign in, and connect repositories it can see. Reviews post one merged review and one check per agent. Works with the branch protection you already have.",
   },
   {
     slug: "gitlab",
     name: "GitLab",
     category: "Source control",
     description:
-      "Merge requests are reviewed the same way, with findings posted back into the discussion your team already uses.",
-  },
-  {
-    slug: "bitbucket",
-    name: "Bitbucket",
-    category: "Source control",
-    description:
-      "Pull requests are picked up, reviewed by the specialist board, and returned as one review rather than a comment storm.",
+      "Connect a project with the instance URL, full path, and a project access token (api, Developer). You add the webhook. Checks become commit statuses; GitLab has no request-changes review.",
   },
   {
     slug: "anthropic",
     name: "Anthropic",
     category: "Model providers",
     description:
-      "Call Claude models with your own Anthropic key. Tokens are billed to you by Anthropic at Anthropic's price, with nothing added by us.",
+      "Your sk-ant key, stored encrypted, used only to call Anthropic from the host. The dashboard shows token counts, not a made-up dollar price.",
   },
   {
-    slug: "openai",
-    name: "OpenAI",
+    slug: "openrouter",
+    name: "OpenRouter",
     category: "Model providers",
     description:
-      "Use your own OpenAI account. Your key, your rate limits, your invoice — TeraCode never resells inference back to you.",
-  },
-  {
-    slug: "google",
-    name: "Google",
-    category: "Model providers",
-    description:
-      "Run against Gemini models on your own Google credentials, billed directly to your Google account.",
-  },
-  {
-    slug: "azure-openai",
-    name: "Azure OpenAI",
-    category: "Model providers",
-    description:
-      "Point TeraCode at your own Azure deployment when inference has to stay inside your tenant and your commercial agreement.",
-  },
-  {
-    slug: "bedrock",
-    name: "AWS Bedrock",
-    category: "Model providers",
-    description:
-      "Call models through your own AWS account, so inference spend lands on the bill you already reconcile.",
+      "Your OpenRouter key. One credential for the models it fronts, with the per-call cost the usage page can show. We do not take a cut; OpenRouter's own fees stay on their invoice.",
   },
 ];
 
