@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 export const metadata = buildMetadata({
   title: "Integrations",
   description:
-    "240+ integrations, one connection point. Connect CRM, analytics, databases, productivity, finance, and marketing tools to Strand.",
+    "TeraCode connects to the source control you already use and calls whichever model provider you already pay for, using your own API keys.",
   path: "/integrations",
 });
 

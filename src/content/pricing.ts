@@ -1,102 +1,105 @@
 import type { ComparisonGroup, PricingTier } from "@/lib/types";
+import { MAIL_ACCESS, MAIL_DEMO } from "@/content/home";
 
 export const pricingHero = {
   title: "Pricing",
-  note: "Trusted by 56+ teams who are tired of tab-switching",
+  note: "You pay your model provider. You do not pay us a margin on top.",
 };
 
+/**
+ * TeraCode is in private beta and team pricing is not set yet. Rather than
+ * publish numbers that are not real, the tiers below state what is true today.
+ */
 export const tiers: PricingTier[] = [
   {
-    name: "Starter",
+    name: "Private beta",
     price: "$0",
     period: "/month",
-    description: "Everything you need to connect your first sources.",
-    cta: { label: "Get started free", href: "/contact-us" },
+    description: "What early access costs while we are in private beta.",
+    cta: { label: "Get early access", href: MAIL_ACCESS },
     features: [
-      "Up to 5 data sources",
-      "1,000 queries per month",
-      "Cortex knowledge graph",
-      "Ask natural language queries",
-      "Community support",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "$79",
-    period: "/month",
-    description: "Everything from Starter, and:",
-    cta: { label: "Start 14-day trial", href: "/contact-us" },
-    features: [
-      "Up to 25 data sources",
-      "Unlimited queries",
-      "Pulse anomaly detection",
-      "Recall pattern recognition",
-      "Slack and email integrations",
-      "Priority support",
+      "No platform fee",
+      "No per-seat licence",
+      "Connect your own provider account",
+      "Tokens billed to you, by your provider",
+      "TeraCode Review on your repositories",
+      "Support direct from the team",
     ],
     highlighted: true,
   },
   {
+    name: "Team",
+    price: "Not yet set",
+    description: "We have not priced team plans yet.",
+    cta: { label: "Help us price it", href: MAIL_DEMO },
+    features: [
+      "Everything in the private beta",
+      "Shared configuration across repositories",
+      "Org-wide skills and personas",
+      "Usage and spend reporting",
+      "Priced once beta feedback is in",
+    ],
+  },
+  {
     name: "Enterprise",
     price: "Custom",
-    description: "Everything from Pro, and:",
-    cta: { label: "Talk to sales", href: "/contact-us" },
+    description: "For teams with procurement, residency or isolation requirements.",
+    cta: { label: "Talk to us", href: MAIL_DEMO },
     features: [
-      "Unlimited data sources",
-      "Nucleus developer toolkit",
-      "Custom Pathways pipelines",
-      "SSO and SAML",
-      "Dedicated account manager",
-      "99.99% uptime SLA",
+      "Everything in Team",
+      "Self-hosted runtime",
+      "SSO and audit logging",
+      "Custom data residency",
+      "Security review and MSA",
     ],
   },
 ];
 
 export const tierNames = tiers.map((t) => t.name);
 
-/* Groups and values match the original comparison table exactly.
-   The first group is unlabeled in the original. */
+/**
+ * The comparison is about the billing model rather than a feature checklist —
+ * that is the part of TeraCode that differs from everything else in this
+ * category, and it is the part a buyer needs to understand.
+ */
 export const comparison: ComparisonGroup[] = [
   {
     name: "",
     rows: [
-      { feature: "Data sources", values: ["5", "25", "Unlimited"] },
-      { feature: "Queries per month", values: ["1,000", "Unlimited", "Unlimited"] },
-      { feature: "Team members", values: ["Unlimited", "Unlimited", "Unlimited"] },
+      { feature: "Platform fee", values: ["$0", "Not yet set", "Custom"] },
+      { feature: "Per-seat licence", values: ["None", "None", "None"] },
+      { feature: "Markup on inference", values: ["$0", "$0", "$0"] },
     ],
   },
   {
-    name: "Core",
+    name: "How inference is billed",
     rows: [
-      { feature: "Cortex knowledge graph", values: [true, true, true] },
-      { feature: "Ask natural language queries", values: [true, true, true] },
-      { feature: "Pathways data pipelines", values: [false, true, true] },
-      { feature: "Exportable results (CSV, JSON, Slack)", values: [false, true, true] },
-      { feature: "Visual graph explorer", values: [false, true, true] },
+      { feature: "Bring your own API keys (BYOK)", values: [true, true, true] },
+      { feature: "Billed directly by your provider", values: [true, true, true] },
+      { feature: "We resell you tokens", values: [false, false, false] },
+      { feature: "Choose your own model", values: [true, true, true] },
+      { feature: "Keys encrypted at rest", values: [true, true, true] },
     ],
   },
   {
-    name: "Intelligence",
+    name: "Products",
     rows: [
-      { feature: "Pulse anomaly detection", values: [false, true, true] },
-      { feature: "Recall pattern recognition", values: [false, true, true] },
-      { feature: "Adaptive baselines per metric", values: [false, true, true] },
-      {
-        feature: "Automated insight reports",
-        values: [false, "Weekly", "Weekly + on-demand"],
-      },
-      { feature: "Cross-source correlation analysis", values: [false, false, true] },
+      { feature: "TeraCode Review", values: ["Private beta", "Private beta", "Private beta"] },
+      { feature: "TeraCode Migrate", values: ["Coming soon", "Coming soon", "Coming soon"] },
+      { feature: "TeraCode Oncall", values: ["Coming soon", "Coming soon", "Coming soon"] },
+      { feature: "Shared configuration across repos", values: [false, true, true] },
+      { feature: "Org-wide skills and personas", values: [false, true, true] },
     ],
   },
   {
     name: "Security and admin",
     rows: [
-      { feature: "SSO and SAML", values: [false, false, true] },
-      { feature: "Full pipeline audit logs", values: [false, true, true] },
-      { feature: "Custom Pathways pipelines", values: [false, false, true] },
-      { feature: "Nucleus developer toolkit", values: [false, false, true] },
-      { feature: "Dedicated account manager", values: [false, false, true] },
-      { feature: "99.99% uptime SLA", values: [false, false, true] },
+      { feature: "Sandboxed execution", values: [true, true, true] },
+      { feature: "Usage and spend reporting", values: [false, true, true] },
+      { feature: "SSO and audit logging", values: [false, false, true] },
+      { feature: "Self-hosted runtime", values: [false, false, true] },
+      { feature: "Custom data residency", values: [false, false, true] },
+      { feature: "Security review and MSA", values: [false, false, true] },
     ],
   },
 ];

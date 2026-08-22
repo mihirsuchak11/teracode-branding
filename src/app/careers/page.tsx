@@ -10,7 +10,7 @@ import { careersHero, peopleSection, jobsSection, jobs } from "@/content/careers
 export const metadata = buildMetadata({
   title: "Careers",
   description:
-    "Build the intelligence layer for every company. We're hiring across the stack — all roles are remote unless noted.",
+    "We are not running open roles right now, but we hire opportunistically while TeraCode is in private beta. Introduce yourself.",
   path: "/careers",
 });
 
@@ -59,18 +59,6 @@ export default function CareersPage() {
           <div>
             <p className="text-xs leading-4 text-fg">{peopleSection.eyebrow}</p>
             <p className="mt-0.5 text-xs leading-4 text-fg-muted">{peopleSection.title}</p>
-            <div className="mt-2 flex">
-              {peopleSection.headshots.map((headshot, i) => (
-                <Image
-                  key={headshot.src}
-                  src={headshot.src}
-                  alt={headshot.alt}
-                  width={160}
-                  height={160}
-                  className={`h-8 w-8 rounded-full object-cover ${i > 0 ? "-ml-1" : ""}`}
-                />
-              ))}
-            </div>
           </div>
         </Reveal>
         <Reveal>

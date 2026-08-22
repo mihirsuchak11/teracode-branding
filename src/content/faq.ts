@@ -1,29 +1,24 @@
 import type { FaqItem } from "@/lib/types";
 
-/**
- * NOTE: only the first answer existed in the scraped HTML (Framer renders
- * collapsed accordion items without their content). Answers 2–4 are authored
- * to match — edit freely.
- */
 export const faq: FaqItem[] = [
   {
-    question: "What is an AI Agent?",
+    question: "How do I get access to TeraCode Review?",
     answer:
-      "An AI Agent is a task-specific assistant that automates workflows like scheduling, content creation, data processing, and more—without requiring any code.",
+      "TeraCode Review is in private beta. Email contact@teracode.ai and we will get you set up — there is no waitlist form to fill in, and a person reads every message.",
   },
   {
-    question: "Can I use multiple agents at the same time?",
+    question: "What is BYOK, and what does it mean for my bill?",
     answer:
-      "Yes. Agents run independently and in parallel — you can have Cortex mapping new sources while Ask answers questions and Pulse watches your metrics, all at once.",
+      "BYOK means bring your own key. You connect your own provider account, and TeraCode calls the model directly with your key. Tokens are billed to you by your provider, at your provider's price — we never resell inference, so there is no markup between you and the model, and nothing to true up later.",
   },
   {
-    question: "How customizable are the agents?",
+    question: "How is TeraCode priced?",
     answer:
-      "Each agent can be tuned to your data model, terminology, and alerting preferences. You control which sources it sees, how it scores severity, and where results are delivered.",
+      "There is no per-seat licence during the private beta. Most AI review tools charge per developer per month on top of the tokens they resell you — TeraCode charges nothing on top of what you already pay your provider.",
   },
   {
-    question: "What tools do the agents integrate with?",
+    question: "What else is coming?",
     answer:
-      "Strand ships with 240+ integrations covering monitoring, code, observability, cloud, CI/CD, messaging, and databases — plus a webhook API for homegrown tooling.",
+      "TeraCode Migrate carries codebase-wide migrations to done, and TeraCode Oncall triages incidents from traces rather than alerts. Both run on the same platform as Review: Studio for authoring, Runtime for execution, Evals for scoring and Signals for observability.",
   },
 ];

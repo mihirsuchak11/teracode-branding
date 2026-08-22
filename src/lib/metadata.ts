@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://strand.example.com";
-export const SITE_NAME = "Strand";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://teracode.ai";
+export const SITE_NAME = "TeraCode";
 
 export function buildMetadata({
   title,
   description,
   path = "/",
+  brandSuffix = true,
 }: {
   title: string;
   description: string;
   path?: string;
+  /** Set false when `title` already carries the brand, e.g. "TeraCode Review". */
+  brandSuffix?: boolean;
 }): Metadata {
-  const fullTitle = path === "/" ? title : `${title} — ${SITE_NAME}`;
+  const fullTitle = path === "/" || !brandSuffix ? title : `${title} — ${SITE_NAME}`;
   return {
     title: fullTitle,
     description,
@@ -24,13 +27,11 @@ export function buildMetadata({
       description,
       url: path,
       siteName: SITE_NAME,
-      images: [{ url: "/images/hcH4DnsAZpvFOzdaEnJi8Pk094.png", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: ["/images/hcH4DnsAZpvFOzdaEnJi8Pk094.png"],
     },
   };
 }

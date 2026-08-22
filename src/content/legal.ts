@@ -18,25 +18,25 @@ export const privacyPolicy: LegalDoc = {
     {
       heading: "Overview",
       body: [
-        "This Privacy Policy explains how Strand collects, uses, and protects information when you use our Service. By using Strand, you agree to the practices described here.",
+        "This Privacy Policy explains how TeraSoft AI collects, uses, and protects information when you use TeraCode (\u201cthe Service\u201d). By using the Service, you agree to the practices described here.",
       ],
     },
     {
       heading: "Information We Collect",
       body: [
-        "We collect account information such as your name, email, and company. We collect connected data from the third party sources you choose to integrate, solely to provide the Service. We collect usage information such as queries run and features used. We also collect device information such as browser type and IP address.",
+        "We collect account information such as your name, email, and company. Where you connect a source control provider, we access repository content solely to perform the reviews and tasks you ask for. We store the model provider API keys you supply, encrypted at rest, and use them only to make requests on your behalf. We collect usage information such as runs performed and features used, and device information such as browser type and IP address.",
       ],
     },
     {
       heading: "How We Use Information",
       body: [
-        "We use the information we collect to provide and improve the Service, build and maintain your knowledge graph, respond to support requests, send important account notifications, and monitor for security and abuse.",
+        "We use the information we collect to provide and improve the Service, run the agents you configure, respond to support requests, send important account notifications, and monitor for security and abuse.",
       ],
     },
     {
       heading: "Data Sharing",
       body: [
-        "We do not sell your data. We may share information with service providers who help us operate Strand, subject to confidentiality obligations, or when required by law.",
+        "We do not sell your data. Requests made with your API keys go directly to the model provider you chose, and are subject to that provider\u2019s terms. We may otherwise share information with service providers who help us operate the Service, subject to confidentiality obligations, or when required by law.",
       ],
     },
     {
@@ -66,7 +66,7 @@ export const privacyPolicy: LegalDoc = {
     {
       heading: "Children's Privacy",
       body: [
-        "Strand is not directed to individuals under the age of 16. We do not knowingly collect personal information from children.",
+        "TeraCode is not directed to individuals under the age of 16. We do not knowingly collect personal information from children.",
       ],
     },
     {
@@ -83,7 +83,7 @@ export const privacyPolicy: LegalDoc = {
     },
     {
       heading: "Contact",
-      body: ["Questions about this Privacy Policy can be sent to privacy@strand.io"],
+      body: ["Questions about this Privacy Policy can be sent to contact@teracode.ai"],
     },
   ],
 };
@@ -96,13 +96,13 @@ export const termsOfService: LegalDoc = {
     {
       heading: "Acceptance of Terms",
       body: [
-        "By accessing or using Strand (“the Service”), you agree to be bound by these Terms and Conditions. If you do not agree, please do not use the Service.",
+        "By accessing or using TeraCode (“the Service”), provided by TeraSoft AI, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use the Service.",
       ],
     },
     {
       heading: "Description of Service",
       body: [
-        "Strand provides an AI powered data intelligence platform that connects to third party data sources, builds a knowledge graph, and allows natural language querying of connected data. Features and availability may change at any time without notice.",
+        "TeraCode provides a platform for authoring, running and scoring AI agents, together with agents built on it — including TeraCode Review, which reviews pull requests in connected repositories. Inference is performed by the model provider whose API key you supply. The Service is currently offered in private beta, and features and availability may change at any time without notice.",
       ],
     },
     {
@@ -120,13 +120,13 @@ export const termsOfService: LegalDoc = {
     {
       heading: "Data and Integrations",
       body: [
-        "You retain ownership of the data you connect to Strand. By connecting a data source, you grant us permission to access, process, and store that data solely to provide the Service. You are responsible for ensuring you have the rights to connect any third party data source.",
+        "You retain ownership of your code and of any data you connect. By connecting a repository or supplying an API key, you grant us permission to access and process that data solely to provide the Service. You are responsible for ensuring you hold the rights to connect any repository or third party account, and for complying with the terms of the model provider whose key you supply.",
       ],
     },
     {
       heading: "Subscription and Billing",
       body: [
-        "Paid plans are billed in advance on a monthly or annual basis. Fees are non refundable except where required by law. We may change pricing with reasonable advance notice.",
+        "TeraCode does not currently charge a platform fee or a per-seat licence, and does not resell inference. Model usage is billed to you directly by your own model provider under your agreement with them, and we add no margin to it. If we introduce paid plans, we will give reasonable advance notice.",
       ],
     },
     {
@@ -138,13 +138,13 @@ export const termsOfService: LegalDoc = {
     {
       heading: "Disclaimers",
       body: [
-        "The Service is provided “as is” without warranties of any kind. We do not guarantee that the Service will be uninterrupted, error free, or that insights generated will be accurate or complete.",
+        "The Service is provided “as is” without warranties of any kind. We do not guarantee that the Service will be uninterrupted or error free, or that any review, finding, code change or diagnosis produced by an agent will be accurate or complete. Output is advisory: you remain responsible for reviewing and testing any change before it reaches production.",
       ],
     },
     {
       heading: "Limitation of Liability",
       body: [
-        "To the maximum extent permitted by law, Strand shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Service.",
+        "To the maximum extent permitted by law, TeraSoft AI shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Service.",
       ],
     },
     {

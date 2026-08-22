@@ -33,6 +33,14 @@ export function Button({
 }) {
   const cls = `inline-flex items-center justify-center gap-2 rounded-btn transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]} ${sizes[size]} ${className}`;
   if (href) {
+    // mailto:/http hrefs are not routes — next/link must not try to prefetch them.
+    if (href.startsWith("mailto:") || href.startsWith("http")) {
+      return (
+        <a href={href} className={cls}>
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={cls}>
         {children}

@@ -14,6 +14,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { HERO_POINTS } from "./heroPoints";
+import { TERACODE_POINTS } from "./logoPoints";
 
 export type StrandConfig = {
   points: string;
@@ -38,6 +39,17 @@ export type StrandConfig = {
   dispersion: number;
   simRadius: number;
   simStrength: number;
+  /**
+   * Pointer-motion sway applied to every strand, however far the pointer is.
+   * Weighted toward each strand's free end, so the mark itself stays put.
+   */
+  swayStrength: number;
+  swayMax: number;
+  /** Ambient glow reach — wide enough to touch the whole cloud. */
+  farRadius: number;
+  farStrength: number;
+  /** How fast the pointer-motion sway eases in and back out to rest. */
+  pointerDamping: number;
   simSpring: number;
   simDamping: number;
   simMaxVelocity: number;
@@ -78,6 +90,11 @@ export const HERO_CONFIG: StrandConfig = {
   dispersion: 0.8,
   simRadius: 0.15,
   simStrength: 8,
+  swayStrength: 0.14,
+  swayMax: 0.16,
+  farRadius: 1.3,
+  farStrength: 0.45,
+  pointerDamping: 5,
   simSpring: 60,
   simDamping: 6,
   simMaxVelocity: 5,
@@ -92,6 +109,21 @@ export const HERO_CONFIG: StrandConfig = {
   pulseSpeedRandomMax: 0.1,
   tipTexture: "/art/hero-tip.png",
   fallbackImage: "/art/hero-fallback.png",
+};
+
+/**
+ * Hero variant whose strand roots trace the TeraCode symbol (see
+ * `scripts/generate-logo-points.mjs`). The mark is denser and more legible than
+ * the knot, so it keeps more roots and softens the noise displacement to stop
+ * the silhouette from smearing.
+ */
+export const HERO_LOGO_CONFIG: StrandConfig = {
+  ...HERO_CONFIG,
+  points: TERACODE_POINTS,
+  threshold: 0.7,
+  noiseStrength: 0.1,
+  extrudeOffset: { x: 0, y: 0.08, z: 0.34 },
+  randomOffset: { x: 0.3, y: 0.16, z: 0.16 },
 };
 
 const DEG = Math.PI / 180;
@@ -136,7 +168,9 @@ void main() {
 
 const SIM_FRAG = /* glsl */ `
 uniform sampler2D tPrev; uniform sampler2D tData;
-uniform vec2 uMouse; uniform float uDelta;
+uniform vec2 uMouse; uniform vec2 uMouseVel; uniform float uDelta;
+uniform float uSway; uniform float uSwayMax;
+uniform float uFarRadius; uniform float uFarStrength;
 uniform float uRadius; uniform float uStrength; uniform float uSpring;
 uniform float uDamping; uniform float uMaxVelocity;
 uniform float uHighlightRadius; uniform float uHighlightSpeed;
@@ -164,7 +198,9 @@ void main() {
   vec3 vel = velData.rgb;
   float highlight = velData.a;
 
-  vec3 targetPos = texture2D(tData, atlasUV(cellUv, uDataTarget)).rgb;
+  vec4 targetData = texture2D(tData, atlasUV(cellUv, uDataTarget));
+  vec3 targetPos = targetData.rgb;
+  float rootAnchor = targetData.a; // 1 at the strand root, 0 at its free end
   vec3 highlightRef = texture2D(tData, atlasUV(cellUv, uDataHighlightRef)).rgb;
   float rStagger = texture2D(tData, atlasUV(cellUv, uDataStart)).a;
 
@@ -186,7 +222,13 @@ void main() {
   if (speed > uMaxVelocity) vel = vel / speed * uMaxVelocity;
 
   float springStep = min(uSpring * uDelta, MAX_SPRING_STEP);
-  vel -= (pos - targetPos) * springStep * activeT;
+  // Pointer motion drags every strand's rest target, then it springs back. The
+  // pull is weighted toward the free end (and varied per strand), so strands
+  // bend individually instead of the whole mark sliding around.
+  vec2 sway = clamp(uMouseVel * uSway, vec2(-uSwayMax), vec2(uSwayMax));
+  float swayWeight = (1.0 - rootAnchor) * mix(0.55, 1.0, rStagger);
+  vec3 swayTarget = targetPos + vec3(sway * swayWeight, 0.0);
+  vel -= (pos - swayTarget) * springStep * activeT;
   vel *= exp(-uDamping * uDelta);
 
   pos += vel * uDelta;
@@ -195,6 +237,8 @@ void main() {
 
   float tipDist = length(uMouse - highlightRef.xy);
   float target = 1.0 - smoothstep(0.0, uHighlightRadius, tipDist);
+  // Wide ambient falloff so no strand is ever fully unlit while the pointer moves.
+  target = max(target, uFarStrength * (1.0 - smoothstep(0.0, uFarRadius, tipDist)));
   highlight = mix(highlight, target, clamp(uHighlightSpeed * uDelta, 0.0, 1.0));
   highlight = clamp(highlight, 0.0, 1.0);
 
@@ -606,6 +650,11 @@ export function HeroStrands({
         tPrev: { value: rtA.texture },
         tData: { value: dataTex },
         uMouse: { value: new THREE.Vector2(0, 0) },
+        uMouseVel: { value: new THREE.Vector2(0, 0) },
+        uSway: { value: P.swayStrength },
+        uSwayMax: { value: P.swayMax },
+        uFarRadius: { value: P.farRadius },
+        uFarStrength: { value: P.farStrength },
         uDelta: { value: 0 },
         uRadius: { value: P.simRadius },
         uStrength: { value: P.simStrength },
@@ -687,17 +736,24 @@ export function HeroStrands({
     const rayDir = new THREE.Vector3();
     const camDir = new THREE.Vector3();
     const hit = new THREE.Vector3();
+    const pointerVel = new THREE.Vector2(0, 0);
+    const instVel = new THREE.Vector2(0, 0);
+    const prevHit = new THREE.Vector2(OFFSCREEN, OFFSCREEN);
+    // Tracked on the window, not the canvas: the graphic sits in a corner, and
+    // every pointer move anywhere on the page should move every strand.
     const onMove = (e: MouseEvent) => {
       const rect = mount.getBoundingClientRect();
       mouse.set(e.clientX - rect.left, e.clientY - rect.top);
     };
-    const onLeave = () => mouse.set(OFFSCREEN, OFFSCREEN);
-    mount.addEventListener("mousemove", onMove);
-    mount.addEventListener("mouseleave", onLeave);
+    const onLeave = () => {
+      mouse.set(OFFSCREEN, OFFSCREEN);
+      prevHit.set(OFFSCREEN, OFFSCREEN);
+    };
+    window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseleave", onLeave);
 
     let last = 0;
     let elapsed = 0;
-    let visible = document.visibilityState === "visible";
     let intersecting = false;
 
     function frame(nowMs: number) {
@@ -709,8 +765,14 @@ export function HeroStrands({
 
       const w = mount!.clientWidth;
       const h = mount!.clientHeight;
+      // Pointer velocity and camera tilt ease back to rest whenever the pointer
+      // stops, so the whole cloud settles instead of freezing mid-lean.
+      const decay = Math.exp(-P.pointerDamping * dt);
+      pointerVel.multiplyScalar(decay);
+
       if (mouse.x <= OFFSCREEN) {
         simMat.uniforms.uMouse.value.set(OFFSCREEN, OFFSCREEN);
+        prevHit.set(OFFSCREEN, OFFSCREEN);
       } else {
         const nx = (mouse.x / w) * 2 - 1;
         const ny = -((mouse.y / h) * 2 - 1);
@@ -720,8 +782,14 @@ export function HeroStrands({
         camera.getWorldDirection(camDir);
         const t = -camDir.dot(camPos) / camDir.dot(rayDir);
         hit.copy(camPos).addScaledVector(rayDir, t).applyMatrix4(meshInverse);
+        if (prevHit.x > OFFSCREEN && dt > 0) {
+          instVel.set((hit.x - prevHit.x) / dt, (hit.y - prevHit.y) / dt);
+          pointerVel.lerp(instVel, 1 - decay); // ease in as well as out
+        }
+        prevHit.set(hit.x, hit.y);
         simMat.uniforms.uMouse.value.set(hit.x, hit.y);
       }
+      simMat.uniforms.uMouseVel.value.copy(pointerVel);
 
       simMat.uniforms.tPrev.value = rtA.texture;
       simMat.uniforms.uDelta.value = dt;
@@ -738,14 +806,17 @@ export function HeroStrands({
       renderer.render(scene, camera);
     }
 
+    // Paint one frame right away so the hero never sits empty: the
+    // IntersectionObserver callback is async, and in a hidden/occluded tab
+    // (background open, macOS window occlusion) the animation loop cannot run
+    // at all until the tab is shown. The browser already throttles
+    // requestAnimationFrame for hidden documents, so the loop itself only needs
+    // the on-screen gate.
+    frame(performance.now());
+
     const updateLoop = () => {
-      renderer.setAnimationLoop(visible && intersecting ? frame : null);
+      renderer.setAnimationLoop(intersecting ? frame : null);
     };
-    const onVisibility = () => {
-      visible = document.visibilityState === "visible";
-      updateLoop();
-    };
-    document.addEventListener("visibilitychange", onVisibility);
 
     const resizeObserver = new ResizeObserver(() => {
       camera.aspect = mount.clientWidth / mount.clientHeight;
@@ -764,12 +835,11 @@ export function HeroStrands({
     intersectionObserver.observe(mount);
 
     return () => {
-      mount.removeEventListener("mousemove", onMove);
-      mount.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
       renderer.setAnimationLoop(null);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
-      document.removeEventListener("visibilitychange", onVisibility);
       scene.clear();
       geometry.dispose();
       strandMat.dispose();

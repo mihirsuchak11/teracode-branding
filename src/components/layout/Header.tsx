@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav } from "@/content/site";
-import { ChevronDown, Close, LogoMark, LogoWord, Menu } from "@/components/ui/icons";
+import { ChevronDown, Close, Menu } from "@/components/ui/icons";
 
 function Dropdown({
   label,
@@ -69,6 +69,7 @@ function DropdownLink({
   description?: string;
   onNavigate: () => void;
 }) {
+  const mail = href.startsWith("mailto:");
   const external = href.startsWith("http");
   const cls = "block rounded-btn px-3 py-2.5 transition-colors hover:bg-surface-2";
   const inner = (
@@ -77,7 +78,11 @@ function DropdownLink({
       {description && <span className="mt-0.5 block text-xs text-fg-muted">{description}</span>}
     </>
   );
-  return external ? (
+  return mail ? (
+    <a href={href} className={cls} onClick={onNavigate}>
+      {inner}
+    </a>
+  ) : external ? (
     <a href={href} target="_blank" rel="noreferrer" className={cls} onClick={onNavigate}>
       {inner}
     </a>
@@ -97,18 +102,24 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 h-[68px] bg-bg">
       <div className="mx-4 flex h-full items-center gap-10 px-6 md:mx-10 md:px-10 lg:mx-16">
         <Link href="/" className="flex items-center gap-2" onClick={close}>
-          <LogoMark className="text-fg" />
-          <LogoWord className="text-fg" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/teracode-logo-horizontal-white.svg"
+            alt="TeraCode"
+            width={105}
+            height={28}
+            className="h-7 w-auto select-none"
+          />
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 md:flex">
           <Dropdown
-            label="Features"
+            label="Products"
             open={openMenu === "features"}
             onToggle={() => setOpenMenu(openMenu === "features" ? null : "features")}
           >
-            {nav.features.map((item) => (
+            {nav.products.map((item) => (
               <DropdownLink key={item.href} {...item} onNavigate={close} />
             ))}
           </Dropdown>
@@ -144,14 +155,14 @@ export function Header() {
         </nav>
 
         <div className="ml-auto hidden md:block">
-          <Link
+          <a
             href={nav.cta.href}
             className="inline-flex items-center rounded-lg bg-fg-soft p-2 transition-colors hover:bg-fg"
           >
             <span className="px-1.5 text-sm font-medium leading-5 text-[#1c1917]">
               {nav.cta.label}
             </span>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -176,7 +187,7 @@ export function Header() {
             className="overflow-hidden border-t border-border bg-bg md:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
-              {[...nav.features, ...nav.resources.company, ...nav.links].map((item) => (
+              {[...nav.products, ...nav.resources.company, ...nav.links].map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -186,13 +197,13 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
-              <Link
+              <a
                 href={nav.cta.href}
                 onClick={() => setMobileOpen(false)}
                 className="mt-3 inline-flex h-10 items-center justify-center rounded-[10px] bg-fg-soft px-5 text-sm font-medium text-bg"
               >
                 {nav.cta.label}
-              </Link>
+              </a>
             </div>
           </motion.nav>
         )}

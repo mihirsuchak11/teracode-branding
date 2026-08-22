@@ -35,269 +35,269 @@ export interface FeatureExtras {
   statsTitle?: string;
 }
 
-/** Per-slug hero layout, matching the original pages. */
+/** Per-slug hero layout. Unchanged from the template — only the keys differ. */
 export const featureHero: Record<
   string,
   { layout: "art-top" | "centered" | "split"; ctas: boolean }
 > = {
-  cortex: { layout: "art-top", ctas: true },
-  ask: { layout: "centered", ctas: true },
-  pulse: { layout: "split", ctas: true },
+  review: { layout: "art-top", ctas: true },
+  migrate: { layout: "centered", ctas: true },
+  oncall: { layout: "split", ctas: true },
 };
 
 export const features: FeaturePage[] = [
   {
-    slug: "cortex",
-    name: "Cortex",
-    tagline: "Connect and unify data across every source.",
-    heroTitle: "Connect every data source.\nZero manual mapping.",
+    slug: "review",
+    name: "TeraCode Review",
+    tagline: "An AI review board on every pull request.",
+    heroTitle: "Every pull request,\nreviewed before you look.",
     heroBody:
-      "The knowledge graph that connects everything. Relationships mapped automatically, in real time.",
+      "Security, performance, tests and style each run as their own specialist. TeraCode reconciles them into a single review a human can act on — running on your own API keys.",
     benefits: [
       {
-        title: "Entity resolution, automatic.",
-        body: "Same customer across your CRM, payments, and database - Cortex links them without configuration.",
+        title: "A board of specialists, not one generalist.",
+        body: "Each concern gets its own reviewer with its own instructions and tools. They run in parallel against the diff, and disagreements get reconciled before anything reaches your team.",
       },
       {
-        title: "The graph updates itself.",
-        body: "Every change in a connected tool reflects within seconds. Always current, zero manual effort.",
+        title: "Ranked by risk, not by line number.",
+        body: "A logged credential and a missing trailing comma are not the same finding. Review orders what it reports by the damage it would actually do.",
       },
       {
-        title: "Explore relationships without writing a query.",
-        body: "Browse connections between any two entities - customers, revenue, support history - without touching SQL.",
+        title: "One review, not forty comments.",
+        body: "Findings are merged, de-duplicated and posted as a single review. No comment storm, no forty notifications, no reviewer fatigue.",
       },
     ],
   },
   {
-    slug: "ask",
-    name: "Ask",
-    tagline: "Query your data in plain language.",
-    heroTitle: "Ask anything.\nGet answers quickly.",
+    slug: "migrate",
+    name: "TeraCode Migrate",
+    tagline: "Carry a codebase-wide migration to done.",
+    heroTitle: "Point it at the change.\nIt finishes the job.",
     heroBody:
-      "Ask queries your entire data stack in plain language and returns precise answers in seconds.",
+      "Describe the migration you want. Migrate works every call site, opens pull requests you review normally, and keeps going until nothing is left behind.",
     benefits: [
       {
-        title: "Understands your schema.",
-        body: "Ask is trained on your specific data structure, so it translates questions into precise queries — not guesses.",
+        title: "Every call site, not a sample.",
+        body: "Migrate enumerates the work before it starts changing anything, so you know the size of the job up front and can see what is left at any point.",
       },
       {
-        title: "Knows what to ask next.",
-        body: "Every answer comes with suggested follow-up questions, so the right insight is always one click away.",
+        title: "Pull requests you review normally.",
+        body: "Work lands as ordinary pull requests against your branch protection and your checks. Nothing is written to your default branch, and nothing bypasses review.",
       },
       {
-        title: "Results go where your team works.",
-        body: "Export answers as CSV or JSON, or send them straight to your team. No copy-pasting, no extra steps.",
+        title: "It stops when the migration is done.",
+        body: "Not when a token budget runs out or a turn limit trips. Migrate tracks remaining call sites as its own completion condition.",
       },
     ],
     chips: [
-      "Plain language input",
-      "Relationship-aware",
-      "Time range context",
-      "Suggested follow-ups",
-      "One-click sharing",
-      "Under 200ms",
+      "Enumerates before editing",
+      "Opens ordinary PRs",
+      "Respects branch protection",
+      "Runs your existing checks",
+      "Resumable mid-migration",
+      "Your own API keys",
     ],
     stats: [
-      { value: "16x", label: "Faster time-to-answer" },
-      { value: "47%", label: "Fewer tools needed" },
-      { value: "80%", label: "Less time building reports" },
-      { value: "4.2hrs", label: "Saved per team per week" },
+      { value: "$0", label: "Markup on your token spend" },
+      { value: "0", label: "Per-seat licences" },
+      { value: "100%", label: "BYOK — your own API keys" },
+      { value: "1", label: "Runtime under every product" },
     ],
   },
   {
-    slug: "pulse",
-    name: "Pulse",
-    tagline: "Detect anomalies before they become problems.",
-    heroTitle: "Less noise.\nThe alerts that matter.",
+    slug: "oncall",
+    name: "TeraCode Oncall",
+    tagline: "Triage that reads the trace, not the alert.",
+    heroTitle: "Arrives with causes.\nNot notifications.",
     heroBody:
-      "Pulse learns what normal looks like for your business and only fires when something genuinely deviates. No more alert fatigue.",
+      "When something pages, Oncall pulls the trace, the recent deploys and the owning code, then hands you ranked causes instead of another line in a channel.",
     benefits: [
       {
-        title: "Adaptive baselines, per metric.",
-        body: "Pulse builds a normal range for every data point it watches. Thresholds adjust automatically as your business grows.",
+        title: "It reads what the alert points at.",
+        body: "An alert is a symptom. Oncall follows it into the trace, the deploys that landed near the incident window, and the code that owns the failing path.",
       },
       {
-        title: "Severity scoring with context.",
-        body: "Not every deviation is an emergency. Pulse scores each alert by impact and timing so you know what to act on first.",
+        title: "Ranked causes, with the evidence attached.",
+        body: "Every candidate cause arrives with what it was inferred from, so the first thing you do is judge the reasoning rather than start the investigation from nothing.",
       },
     ],
   },
 ];
 
 export const featureExtras: Record<string, FeatureExtras> = {
-  cortex: {
+  review: {
     midSection: {
-      title: "Every relationship in your stack,\nmapped and queryable.",
+      title: "Four specialists on the diff,\nreconciled into one review.",
       items: [
         {
-          title: "Connect your stack",
-          body: "Plug in 240+ tools in minutes. Cortex ingests every source and starts mapping immediately.",
+          title: "Scoped to the paths that matter",
+          body: "Skills attach to file paths, so the reviewer reading your auth code carries different instructions from the one reading a migration.",
         },
         {
-          title: "Map relationships automatically",
-          body: "Cortex finds connections across your data you didn't know existed. No manual schema work required.",
+          title: "Runs on your own keys",
+          body: "Review calls the model with your provider account. Your tokens are billed to you, at your provider's price, with nothing added on top.",
         },
         {
-          title: "Query everything, instantly",
-          body: "Once mapped, every relationship in your graph is queryable in plain language through Ask.",
+          title: "Scored on what you kept",
+          body: "Quality is measured by which findings your team resolved rather than deleted — not by how confident the model sounded.",
         },
       ],
     },
   },
-  ask: {
+  migrate: {
     midSection: {
-      title: "Questions your whole team can ask.\nAnswers only Strand can give.",
+      title: "A migration is not a prompt.\nIt is a work list you have to finish.",
       items: [
         {
-          title: "Plain language input",
-          body: "No SQL, no syntax. Ask questions the way you'd phrase them to a colleague.",
+          title: "Enumerates before editing",
+          body: "The work list is built and shown before a single file changes, so the size of the job is never a surprise.",
         },
         {
-          title: "Relationship-aware",
-          body: "Ask understands how your data connects - not just what's in a single table.",
+          title: "Opens ordinary PRs",
+          body: "Changes arrive the way your team already reviews them. No special client, no separate approval surface.",
         },
         {
-          title: "Time range context",
-          body: 'Reference periods naturally. "Last quarter", "since onboarding", "before the outage" all work.',
+          title: "Respects branch protection",
+          body: "Migrate works within the rules your repository already enforces, rather than asking you to relax them.",
         },
         {
-          title: "Suggested follow-ups",
-          body: "Every answer surfaces the next logical question so you keep moving forward.",
+          title: "Runs your existing checks",
+          body: "Your CI is the gate. If the suite fails, the change does not proceed on the strength of the model's opinion.",
         },
         {
-          title: "One-click sharing",
-          body: "Send results to your team chat or export as CSV and JSON without leaving the interface.",
+          title: "Resumable mid-migration",
+          body: "Stop it, review what has landed, and pick the run back up. Progress is state, not a single long conversation.",
         },
         {
-          title: "Under 200ms",
-          body: "Queries run against a live graph, not a slow warehouse. Answers arrive before the thought fades.",
+          title: "Your own API keys",
+          body: "The same BYOK runtime as every other TeraCode product. No reselling, no markup, no per-seat licence.",
         },
       ],
     },
-    statsTitleMuted: "Your team already has the data.",
-    statsTitle: "Strand gives you the answers.",
+    statsTitleMuted: "Every AI reviewer charges per seat.",
+    statsTitle: "TeraCode runs on your keys, at cost.",
   },
-  pulse: {
+  oncall: {
     midSection: {
-      title: "Most tools alert you to everything.\nPulse only tells you what matters.",
+      title: "Most tools tell you something broke.\nOncall tells you what to look at.",
       items: [
         {
-          title: "Baselines that learn your business.",
-          body: "Pulse builds a rolling model of normal for every metric it watches - accounting for weekly patterns, seasonal shifts, and growth - so deviations mean something.",
+          title: "Follows the trace, not the threshold.",
+          body: "The alert is where triage starts, not where it ends. Oncall reads the span that actually failed and the path that led into it, rather than restating the rule that fired.",
         },
         {
-          title: "Every alert scored by impact.",
-          body: "Severity is weighted by how far a deviation sits from baseline, when it's happening, and which metrics are affected. A ranked signal, not a flat list.",
+          title: "Correlates deploys against the incident window.",
+          body: "Most incidents have a change behind them. Oncall lines up what shipped against when the symptom appeared and says which is worth ruling out first.",
         },
         {
-          title: "Routed to the right person, instantly.",
-          body: "The right alert reaches the right person every time. Route by severity, by team, or by source — without anyone manually deciding who gets what.",
+          title: "Routes with the reasoning attached.",
+          body: "The page reaches the team that owns the failing code, carrying the evidence it was ranked on — so the first responder starts from a hypothesis instead of a blank terminal.",
         },
       ],
     },
   },
 };
 
-/** Decorative mock cards, index-aligned with each feature's benefits. */
+/** Decorative mock cards, index-aligned with each product's benefits. */
 export const featureMocks: Record<string, FeatureMock[]> = {
-  cortex: [
+  review: [
     {
       callout: {
         tone: "brand",
-        title: "J. Smith",
-        body: "john.smith@company.com",
-        meta: "Synced",
+        title: "PR #482",
+        body: "Reconciled from 4 specialists",
+        meta: "Reviewed",
       },
-      label: "Synced from:",
+      label: "Specialists:",
       rows: [
-        { label: "VaultDB", value: "jsmith@co.com", dot: "brand" },
-        { label: "Gridwork", value: "John Smith", dot: "brand" },
-        { label: "Pipecloud", value: "Records found", dot: "brand" },
+        { label: "Security", value: "2 findings", dot: "brand" },
+        { label: "Performance", value: "1 regression", dot: "brand" },
+        { label: "Tests", value: "coverage -3%", dot: "brand" },
       ],
     },
     {
       rows: [
-        { label: "Account updated", value: "just now", dot: "brand" },
-        { label: "New payment linked · Stride", value: "12s ago", dot: "brand" },
-        { label: "Record created", value: "28s ago", dot: "faint" },
-        { label: "Entity resolved", value: "1m ago", dot: "faint" },
-        { label: "Subscription changed", value: "2m ago", dot: "faint" },
+        { label: "Token logged in plaintext", value: "High", dot: "danger" },
+        { label: "Missing rollback path", value: "High", dot: "danger" },
+        { label: "Unhandled promise rejection", value: "Medium", dot: "warn" },
+        { label: "N+1 query in list view", value: "Medium", dot: "warn" },
+        { label: "Unused import", value: "Low", dot: "faint" },
       ],
     },
     {
       rows: [
-        { label: "Subscription", value: "Active", dot: "brand" },
-        { label: "Plan", value: "Enterprise" },
-        { label: "Renewal", value: "Dec 14, 2025" },
-        { label: "MRR", value: "$1,240", mono: true },
+        { label: "Comments posted", value: "1 review", dot: "brand" },
+        { label: "Findings merged", value: "12 → 5" },
+        { label: "Duplicates removed", value: "7" },
+        { label: "Blocking", value: "2", mono: true },
       ],
     },
   ],
-  ask: [
+  migrate: [
     {
       callout: {
         tone: "neutral",
-        title: "Which accounts haven't logged in today?",
-        meta: "14,203 records",
+        title: "Upgrade every call site to the v3 API",
+        meta: "428 call sites",
       },
       rows: [
-        { label: "id", value: "uuid", mono: true },
-        { label: "name", value: "string", mono: true },
-        { label: "last_session", value: "timestamp", mono: true },
-        { label: "created_at", value: "auto-resolved", mono: true },
-        { label: "mrr", value: "float", mono: true },
+        { label: "packages/api", value: "162 sites", mono: true },
+        { label: "packages/web", value: "141 sites", mono: true },
+        { label: "packages/jobs", value: "83 sites", mono: true },
+        { label: "services/billing", value: "42 sites", mono: true },
+        { label: "remaining", value: "0", mono: true },
       ],
     },
     {
       callout: {
         tone: "brand",
-        title: "Which accounts are at risk this quarter?",
-        body: "4 enterprise accounts with no session activity in the current calendar month.",
+        title: "Opened 14 pull requests",
+        body: "Each scoped to one package, against your branch protection and your checks.",
       },
       rows: [
-        { label: "How has their usage trended?", value: "1", mono: true },
-        { label: "Who is the account owner for each?", value: "2", mono: true },
-        { label: "Ask a different question", value: "3", mono: true },
+        { label: "Checks passing", value: "14/14", mono: true },
+        { label: "Awaiting review", value: "3", mono: true },
+        { label: "Merged", value: "11", mono: true },
       ],
     },
     {
-      label: "Share results",
+      label: "Completion",
       rows: [
-        { label: "Send to Threadbase", value: "Post to any channel", dot: "brand" },
-        { label: "Export CSV", value: "Download as spreadsheet", dot: "brand" },
-        { label: "Export JSON", value: "Structured data output", dot: "brand" },
+        { label: "Call sites migrated", value: "428 of 428", dot: "brand" },
+        { label: "Left behind", value: "None", dot: "brand" },
+        { label: "Stopped because", value: "The work list is empty", dot: "brand" },
       ],
     },
   ],
-  pulse: [
+  oncall: [
     {
       callout: {
         tone: "danger",
         badge: "High severity",
         meta: "2 min ago",
-        title: "Active sessions",
-        body: "Activation in EU markets fell from 34% to 22% over the past 6 hours.",
+        title: "Checkout latency spike",
+        body: "p95 on /checkout rose from 240ms to 1.9s over the last 20 minutes.",
       },
       rows: [
-        { label: "metric", value: "active_sessions", mono: true },
-        { label: "current", value: "1,840", mono: true },
-        { label: "expected", value: "3,200–3,800", mono: true },
-        { label: "deviation", value: "-42%", mono: true, dot: "danger" },
+        { label: "service", value: "checkout-api", mono: true },
+        { label: "p95 now", value: "1,900ms", mono: true },
+        { label: "p95 baseline", value: "220–260ms", mono: true },
+        { label: "deviation", value: "+680%", mono: true, dot: "danger" },
       ],
-      footer: { left: "Sent to #product-alerts", right: "Delivered 1m ago" },
+      footer: { left: "Routed to #incidents", right: "Paged 1m ago" },
     },
     {
       callout: {
         tone: "brand",
-        title: "87 / 100",
-        meta: "Source: Stride / Mixboard",
+        title: "3 ranked causes",
+        meta: "From trace, deploys and ownership",
       },
-      label: "Score breakdown",
+      label: "Ranked by evidence",
       rows: [
-        { label: "Deviation from baseline", value: "-34% · high", dot: "danger" },
-        { label: "Timing context", value: "peak traffic window", dot: "warn" },
-        { label: "Business impact", value: "revenue-critical metric", dot: "warn" },
-        { label: "Historical recurrence", value: "first occurrence", dot: "faint" },
+        { label: "Connection pool exhausted", value: "trace · high", dot: "danger" },
+        { label: "Deploy 4f21c landed 18m ago", value: "timing · high", dot: "warn" },
+        { label: "Upstream retry storm", value: "trace · medium", dot: "warn" },
+        { label: "Cache eviction", value: "ruled out", dot: "faint" },
       ],
     },
   ],

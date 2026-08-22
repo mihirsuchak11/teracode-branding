@@ -65,7 +65,8 @@ export function Testimonial() {
         <div className="relative hidden h-[600px] w-[500px] shrink-0 md:block">
           <Image
             src={testimonial.image}
-            alt={`Portrait of ${testimonial.name}`}
+            alt=""
+            aria-hidden
             fill
             sizes="500px"
             className="pointer-events-none object-cover object-top"

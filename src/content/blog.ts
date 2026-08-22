@@ -1,82 +1,54 @@
 import type { BlogPost } from "@/lib/types";
 
 /**
- * Blog posts were not scraped from the original site. Titles/excerpts below
- * are placeholders in the site's voice; the first slug is the known post
- * linked from the homepage hero announcement.
+ * These are the pieces we intend to write, not published articles. Each renders
+ * `placeholderBody`, and the date field reads "Coming soon" rather than showing
+ * a publication date for something that has not been published.
  */
 export const blogHero = {
   title: "Blog",
-  body: "Notes on connected data, knowledge graphs, and building Strand.",
+  body: "Notes on operating agents, BYOK economics, and building TeraCode.",
 };
 
 export const posts: BlogPost[] = [
   {
-    slug: "introducing-ask-query-your-entire-stack-in-plain-language",
-    title: "Introducing Ask: Query your entire stack in plain language",
-    date: "Jun 10, 2026",
+    slug: "why-we-do-not-resell-you-tokens",
+    title: "Why we don't resell you tokens",
+    date: "Coming soon",
     excerpt:
-      "Ask turns plain-language questions into answers drawn from every connected source — no SQL, no dashboards, no waiting on an analyst.",
+      "Every AI reviewer on the market bills per seat and takes a margin on inference. Here is why we think the review should be the product and the tokens should be yours.",
   },
   {
-    slug: "how-cortex-builds-your-knowledge-graph",
-    title: "How Cortex builds your knowledge graph",
-    date: "May 28, 2026",
+    slug: "keep-rate-scoring-agents-on-what-humans-kept",
+    title: "Keep rate: scoring agents on what humans kept",
+    date: "Coming soon",
     excerpt:
-      "A look under the hood at how Cortex resolves entities across sources and keeps your graph current in real time.",
+      "Model confidence is not quality. We measure a review by which findings a human resolved rather than deleted, and that changes what you optimise for.",
   },
   {
-    slug: "why-dashboards-fail-and-what-comes-next",
-    title: "Why dashboards fail, and what comes next",
-    date: "May 14, 2026",
+    slug: "glob-scoped-skills",
+    title: "Glob-scoped skills: knowledge that knows where it applies",
+    date: "Coming soon",
     excerpt:
-      "Dashboards answer yesterday's questions. Here's why we think conversational data intelligence replaces them.",
+      "The reviewer reading your auth code should not carry the same instructions as the one reading a migration. Attaching knowledge to file paths is how we do that.",
   },
   {
-    slug: "pulse-anomaly-detection-without-the-noise",
-    title: "Pulse: anomaly detection without the noise",
-    date: "Apr 30, 2026",
+    slug: "a-board-of-specialists-beats-one-generalist",
+    title: "A board of specialists beats one generalist",
+    date: "Coming soon",
     excerpt:
-      "How Pulse learns what normal looks like for your business and only surfaces what's genuinely unusual.",
+      "Why we run security, performance, tests and style as separate reviewers with separate instructions, then reconcile them into a single review.",
   },
   {
-    slug: "connecting-your-first-source-in-five-minutes",
-    title: "Connecting your first source in five minutes",
-    date: "Apr 16, 2026",
+    slug: "the-demo-always-works",
+    title: "The demo always works",
+    date: "Coming soon",
     excerpt:
-      "A quick-start walkthrough: from an empty workspace to a living knowledge graph before your coffee cools.",
-  },
-  {
-    slug: "the-real-cost-of-tab-switching",
-    title: "The real cost of tab-switching",
-    date: "Mar 26, 2026",
-    excerpt:
-      "We measured how much time teams lose stitching answers together across tools. The number surprised us.",
-  },
-  {
-    slug: "entity-resolution-at-scale",
-    title: "Entity resolution at scale",
-    date: "Mar 5, 2026",
-    excerpt:
-      "Matching the same customer across six systems is harder than it sounds. Here's how we approach it.",
-  },
-  {
-    slug: "how-fieldstone-caught-churn-three-weeks-early",
-    title: "How Fieldstone caught churn three weeks early",
-    date: "Feb 18, 2026",
-    excerpt:
-      "A customer story: Pulse flagged a churn spike long before the dashboards did, and the ops team kept the accounts.",
-  },
-  {
-    slug: "shipping-the-nucleus-sdk",
-    title: "Shipping the Nucleus SDK",
-    date: "Jan 29, 2026",
-    excerpt:
-      "Everything in Strand is now available to your own code: queries, graph traversal, and streaming results.",
+      "Agents are easy to prototype and brutal to operate. On the gap between a scripted run and a Friday afternoon against a real codebase.",
   },
 ];
 
 export const placeholderBody: string[] = [
-  "This post is coming soon. We're migrating our writing over to the new site, and the full article will land here shortly.",
-  "In the meantime, you can explore how Strand connects your stack, ask questions in plain language, and see the knowledge graph in action.",
+  "This piece has not been published yet. It is on the list of things we want to write once TeraCode Review is out of private beta and we have real numbers to write about.",
+  "In the meantime, if the topic is one you care about, write to contact@teracode.ai — we would rather answer your actual question than guess at it in a post.",
 ];

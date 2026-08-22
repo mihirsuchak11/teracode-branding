@@ -7,6 +7,8 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { ChromaticFilters } from "@/components/motion/ChromaticReveal";
 import { ChromaticGlareBand } from "@/components/motion/ChromaticGlareBand";
 import { buildMetadata } from "@/lib/metadata";
+import { siteGraph } from "@/lib/jsonLd";
+import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,9 +32,9 @@ const cabinet = localFont({
 });
 
 export const metadata: Metadata = buildMetadata({
-  title: "Strand — AI Data Intelligence Platform",
+  title: "TeraCode — BYOK AI Code Review",
   description:
-    "Strand connects every tool in your stack into one living knowledge graph, so you can ask questions in plain language and get instant answers.",
+    "TeraCode Review puts an AI review board on every pull request, catching bugs, security issues and regressions before a human opens the diff. BYOK — bring your own API keys and pay your provider directly, with no markup and no per-seat licence. Private beta.",
 });
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -42,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${cabinet.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <JsonLd data={siteGraph} />
         <SmoothScroll />
         <ChromaticFilters />
         <Header />

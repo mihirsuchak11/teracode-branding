@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { graphSources, pulseAlert, spotlights } from "@/content/home";
+import { graphSources, migrateComposer, pulseAlert, spotlights } from "@/content/home";
+import { Badge } from "@/components/ui/Badge";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ChevronDown } from "@/components/ui/icons";
 import { StrandMorph, type MorphShape } from "@/components/three/StrandMorph";
@@ -51,21 +52,22 @@ function MiniGlyph({ i }: { i: number }) {
 }
 
 function ExploreMore({ href }: { href: string }) {
+  const Tag = href.startsWith("mailto:") || href.startsWith("http") ? "a" : Link;
   return (
-    <Link href={href} className="group mt-10 inline-flex items-center gap-3 text-[15px] text-fg-dim">
-      Explore more
+    <Tag href={href} className="group mt-10 inline-flex items-center gap-3 text-[15px] text-fg-dim">
+      Get early access
       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-surface-2 transition-colors group-hover:bg-border-strong">
         <ChevronDown width={13} height={13} className="-rotate-90 text-fg-muted" />
       </span>
-    </Link>
+    </Tag>
   );
 }
 
 function CortexMock() {
   const dot: Record<string, string> = {
-    Live: "bg-brand",
-    Syncing: "bg-info",
-    Pending: "bg-warn",
+    Done: "bg-brand",
+    Running: "bg-info",
+    Queued: "bg-warn",
   };
   return (
     <div className="flex w-[289px] flex-col items-center gap-2">
@@ -94,7 +96,7 @@ function CortexMock() {
 }
 
 function AskMock() {
-  return <AskComposer chips={3} className="w-[401px]" />;
+  return <AskComposer chips={3} className="w-[401px]" placeholder={migrateComposer} />;
 }
 
 function PulseMock() {
@@ -165,7 +167,8 @@ function PulseMock() {
           #
         </span>
         <span className="whitespace-pre text-fg-muted">
-          <span className="text-[rgb(115,115,115)]">Sent to</span> #product-alerts
+          <span className="text-[rgb(115,115,115)]">{pulseAlert.routed}</span>{" "}
+          {pulseAlert.channel}
         </span>
         <span className="flex-1 text-right text-fg-muted">{pulseAlert.delivered}</span>
       </div>
@@ -178,7 +181,7 @@ const mocks = { graph: <CortexMock />, ask: <AskMock />, pulse: <PulseMock /> };
 /**
  * Pinned feature scroller — ports the original "Scroll Progress Section".
  *
- * The left text panels (Cortex / Ask / Pulse) scroll while the right column is
+ * The left text panels (Review / Migrate / Oncall) scroll while the right column is
  * `position: sticky`. That column is ONE WebGL strand field (`StrandMorph`)
  * that morphs between a point cloud per feature, with the matching UI card
  * carried in front of it. Both the morph and the card swap are driven by the
@@ -242,6 +245,17 @@ export function FeatureSpotlights() {
             >
               <ChromaticCascade
                 blocks={[
+                  {
+                    kind: "node",
+                    children: (
+                      <Badge
+                        tone={f.status === "Private beta" ? "brand" : "neutral"}
+                        className="mb-5"
+                      >
+                        {f.status}
+                      </Badge>
+                    ),
+                  },
                   {
                     kind: "text",
                     tag: "h2",

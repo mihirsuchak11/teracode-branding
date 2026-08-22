@@ -10,7 +10,7 @@ import { FEATURE_POINTS } from "./featurePoints";
  */
 export function FeatureStrands({ slug }: { slug: string }) {
   const config = useMemo(
-    () => ({ points: FEATURE_POINTS[slug] ?? FEATURE_POINTS.cortex, scale: 0.95 }),
+    () => ({ points: FEATURE_POINTS[slug] ?? FEATURE_POINTS.review, scale: 0.95 }),
     [slug],
   );
   return <HeroStrands className="h-full w-full" config={config} />;

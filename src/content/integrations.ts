@@ -1,227 +1,94 @@
 import type { Integration } from "@/lib/types";
 
-/** Integration plus the tile meta line ("Category · Auth method") from the original grid. */
+/** Integration plus the tile meta line ("Category · Auth method"). */
 export type IntegrationItem = Integration & { meta: string };
 
+/**
+ * NOTE: this list states which platforms TeraCode connects to and which model
+ * providers it can call with your key. Confirm each entry against what is
+ * actually supported before launch — every row here is a claim.
+ */
 export const integrationsHero = {
-  title: "240+ integrations.\nOne connection point.",
-  body: "Pulse learns what normal looks like for your business and only fires when something genuinely deviates. No more alert fatigue.",
+  title: "Your platform.\nYour provider. Your keys.",
+  body: "TeraCode connects to the source control you already use and calls whichever model you already pay for. Inference is billed to you by your provider — we never sit in the middle of it.",
   searchPlaceholder: "Search integrations...",
 };
 
-export const integrationCategories = [
-  "All",
-  "CRM & Sales",
-  "Analytics",
-  "Databases",
-  "Support",
-  "Productivity",
-  "Finance",
-  "Marketing",
-];
+export const integrationCategories = ["All", "Source control", "Model providers"];
 
-/* Tile meta lines for the first twelve match the original grid exactly. */
 const meta: Record<string, string> = {
-  pipecloud: "CRM · OAuth",
-  scaleforce: "CRM · API key",
-  closetrack: "Sales · OAuth",
-  mixboard: "Product analytics · API key",
-  metripanel: "Web analytics · Tracking ID",
-  signalkit: "Analytics · OAuth",
-  trackwise: "Event tracking · API key",
-  beamcast: "Business intelligence · OAuth",
-  polysql: "Databases · Connection string",
-  vaultdb: "NoSQL · Connection string",
-  cleardesk: "Support · OAuth",
-  driftline: "Customer messaging · API key",
-  replystack: "Shared inbox · OAuth",
-  gridwork: "Project management · OAuth",
-  fieldpoint: "Field sales · API key",
-  paystream: "Payments · API key",
-  mintledger: "Accounting · OAuth",
-  coreledger: "ERP · API key",
-  cashline: "Billing · API key",
-  openloop: "Marketing automation · OAuth",
-  pushmark: "Push notifications · API key",
-  arcline: "Email marketing · API key",
-  surfboard: "Scheduling · OAuth",
-  threadbase: "Team chat · OAuth",
+  github: "Source control · GitHub App",
+  gitlab: "Source control · OAuth",
+  bitbucket: "Source control · OAuth",
+  anthropic: "Model provider · Your API key",
+  openai: "Model provider · Your API key",
+  google: "Model provider · Your API key",
+  "azure-openai": "Model provider · Your deployment",
+  bedrock: "Model provider · Your AWS account",
 };
 
 const base: Integration[] = [
   {
-    slug: "pipecloud",
-    name: "Pipecloud",
-    category: "CRM",
+    slug: "github",
+    name: "GitHub",
+    category: "Source control",
     description:
-      "Sync deals, contacts, and pipeline stages. Cortex maps account relationships across your full sales cycle.",
+      "Review runs on your pull requests and posts back a single reconciled review. Works with your existing branch protection and required checks.",
   },
   {
-    slug: "scaleforce",
-    name: "Scaleforce",
-    category: "CRM",
+    slug: "gitlab",
+    name: "GitLab",
+    category: "Source control",
     description:
-      "Pull accounts, opportunities, and custom objects. Bi-directional sync keeps both systems current.",
+      "Merge requests are reviewed the same way, with findings posted back into the discussion your team already uses.",
   },
   {
-    slug: "closetrack",
-    name: "Closetrack",
-    category: "Sales",
+    slug: "bitbucket",
+    name: "Bitbucket",
+    category: "Source control",
     description:
-      "Import leads, activities, and revenue data. Track conversion paths from first touch to closed deal.",
+      "Pull requests are picked up, reviewed by the specialist board, and returned as one review rather than a comment storm.",
   },
   {
-    slug: "mixboard",
-    name: "Mixboard",
-    category: "Product analytics",
+    slug: "anthropic",
+    name: "Anthropic",
+    category: "Model providers",
     description:
-      "Stream event data, funnels, and cohorts. Correlate product usage with revenue and support signals.",
+      "Call Claude models with your own Anthropic key. Tokens are billed to you by Anthropic at Anthropic's price, with nothing added by us.",
   },
   {
-    slug: "metripanel",
-    name: "Metripanel",
-    category: "Web analytics",
+    slug: "openai",
+    name: "OpenAI",
+    category: "Model providers",
     description:
-      "Connect pageviews, sessions, and conversion events. Map user journeys to account-level behavior.",
+      "Use your own OpenAI account. Your key, your rate limits, your invoice — TeraCode never resells inference back to you.",
   },
   {
-    slug: "signalkit",
-    name: "Signalkit",
-    category: "Product analytics",
+    slug: "google",
+    name: "Google",
+    category: "Model providers",
     description:
-      "Ingest behavioral data and engagement scores. Identify usage patterns that predict churn or expansion.",
+      "Run against Gemini models on your own Google credentials, billed directly to your Google account.",
   },
   {
-    slug: "trackwise",
-    name: "Trackwise",
-    category: "Event tracking",
+    slug: "azure-openai",
+    name: "Azure OpenAI",
+    category: "Model providers",
     description:
-      "Pull raw event streams and user properties. Build granular segments inside the graph.",
+      "Point TeraCode at your own Azure deployment when inference has to stay inside your tenant and your commercial agreement.",
   },
   {
-    slug: "beamcast",
-    name: "Beamcast",
-    category: "Business intelligence",
+    slug: "bedrock",
+    name: "AWS Bedrock",
+    category: "Model providers",
     description:
-      "Import dashboards, saved queries, and metric definitions. Unify BI data with live source data.",
-  },
-  {
-    slug: "polysql",
-    name: "PolySQL",
-    category: "Relational database",
-    description:
-      "Connect production databases via read replica. CDC streams keep the graph current.",
-  },
-  {
-    slug: "vaultdb",
-    name: "VaultDB",
-    category: "NoSQL",
-    description:
-      "Sync collections and documents in real time. Schema-flexible ingestion handles nested data.",
-  },
-  {
-    slug: "cleardesk",
-    name: "Cleardesk",
-    category: "Help desk",
-    description:
-      "Import tickets, conversations, and satisfaction scores. Link support history to customer health signals.",
-  },
-  {
-    slug: "driftline",
-    name: "Driftline",
-    category: "Customer messaging",
-    description:
-      "Sync chat transcripts, user events, and resolution data. Surface messaging trends across accounts.",
-  },
-  {
-    slug: "replystack",
-    name: "Replystack",
-    category: "Shared inbox",
-    description:
-      "Sync shared inboxes, replies, and response times. Connect conversation history to every account in the graph.",
-  },
-  {
-    slug: "gridwork",
-    name: "Gridwork",
-    category: "Project management",
-    description:
-      "Import projects, tasks, and delivery timelines. Link execution data to the accounts and teams behind it.",
-  },
-  {
-    slug: "fieldpoint",
-    name: "Fieldpoint",
-    category: "Field sales",
-    description:
-      "Sync field activities, visits, and territory data. Tie on-the-ground activity to pipeline outcomes.",
-  },
-  {
-    slug: "paystream",
-    name: "Paystream",
-    category: "Payments",
-    description:
-      "Sync charges, invoices, and payout schedules. Link every transaction to the customer behind it.",
-  },
-  {
-    slug: "mintledger",
-    name: "Mintledger",
-    category: "Accounting",
-    description:
-      "Import journals, expenses, and reconciliation data. Keep financial records aligned with live revenue.",
-  },
-  {
-    slug: "coreledger",
-    name: "Coreledger",
-    category: "ERP",
-    description:
-      "Connect general ledger accounts and cost centers. Unify financial reporting with operational data.",
-  },
-  {
-    slug: "cashline",
-    name: "Cashline",
-    category: "Billing",
-    description:
-      "Sync subscriptions, renewals, and dunning events. Surface revenue risk before invoices slip.",
-  },
-  {
-    slug: "openloop",
-    name: "Openloop",
-    category: "Marketing automation",
-    description:
-      "Import campaigns, sequences, and engagement events. Trace pipeline back to the touches that created it.",
-  },
-  {
-    slug: "pushmark",
-    name: "Pushmark",
-    category: "Push notifications",
-    description:
-      "Stream sends, opens, and opt-outs. Correlate messaging pressure with retention and churn.",
-  },
-  {
-    slug: "arcline",
-    name: "Arcline",
-    category: "Email marketing",
-    description:
-      "Sync campaigns, lists, and click-through data. Map email engagement onto account health.",
-  },
-  {
-    slug: "surfboard",
-    name: "Surfboard",
-    category: "Scheduling",
-    description:
-      "Import meetings, availability, and booking events. Connect calendar activity to deals and support load.",
-  },
-  {
-    slug: "threadbase",
-    name: "Threadbase",
-    category: "Team chat",
-    description:
-      "Send answers and alerts to any channel. Bring team conversations into the graph alongside your data.",
+      "Call models through your own AWS account, so inference spend lands on the bill you already reconcile.",
   },
 ];
 
 export const integrations: IntegrationItem[] = base.map((i) => ({
   ...i,
-  meta: meta[i.slug] ?? `${i.category} · OAuth`,
+  meta: meta[i.slug] ?? `${i.category} · Your API key`,
 }));
 
 export function getIntegration(slug: string): IntegrationItem | undefined {

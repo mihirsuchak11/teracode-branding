@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { hero, steps } from "@/content/home";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
-import { HeroStrands } from "@/components/three/HeroStrands";
+import { HeroStrands, HERO_LOGO_CONFIG } from "@/components/three/HeroStrands";
 
 /* Geometry below is measured off the original page at a 1512px viewport:
    announcement block 692x64 from the frame edge, hairline at y=132, the text
@@ -14,7 +13,7 @@ export function Hero() {
       {/* Announcement row — 20px above and below a 24px-tall line */}
       <div className="px-6 py-5 md:px-10">
         <Reveal>
-          <Link
+          <a
             href={hero.announcement.href}
             className="group flex h-6 w-fit items-center gap-2 text-sm"
           >
@@ -25,44 +24,53 @@ export function Hero() {
             <span className="leading-5 text-white transition-colors group-hover:text-fg-dim">
               {hero.announcement.text}
             </span>
-          </Link>
+          </a>
         </Reveal>
       </div>
       <div className="h-px w-full max-w-[692px] bg-border" />
-
-      {/* Live 3D strand graphic (ported from the original HeroThreeJSV2) */}
-      <div className="absolute right-16 top-0 hidden h-[643px] w-[562px] md:block">
-        <HeroStrands className="h-full w-full" />
-      </div>
 
       {/* Headline stack */}
       <div className="relative px-6 pt-[150px] md:px-10">
         <div className="max-w-[612px]">
           <Reveal delay={0.1}>
-            <h1 className="text-display-hero text-fg">The missing connection layer</h1>
+            <h1 className="text-display-hero text-fg">{hero.title}</h1>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-5 text-base leading-6 text-fg-muted">{hero.body}</p>
           </Reveal>
         </div>
         <Reveal delay={0.3} className="mt-10 flex flex-wrap items-center gap-3">
-          <Link
+          <a
             href={hero.primary.href}
             className="inline-flex h-10 items-center rounded-lg bg-fg-soft px-4 text-sm font-medium leading-5 text-[#1c1917] transition-colors hover:bg-fg"
           >
             {hero.primary.label}
-          </Link>
-          <Link
+          </a>
+          <a
             href={hero.secondary.href}
             className="inline-flex h-10 items-center rounded-lg bg-[#1c1917] px-4 text-sm font-medium leading-5 text-fg-soft transition-colors hover:bg-border-strong"
           >
             {hero.secondary.label}
-          </Link>
+          </a>
         </Reveal>
       </div>
 
+      {/* Live 3D strand graphic — strand roots trace the TeraCode symbol.
+          Below xl there is no room beside the 612px text column (the 562px box
+          would sit on top of the headline), so it stacks under the buttons at
+          up to 480px wide. From xl it pins to the top-right corner of the frame
+          and takes whatever width is left after the text column (720px incl.
+          gutter), growing to the original 562px once the viewport allows. The
+          562:643 aspect is the camera's framing and must hold at every size. */}
+      <div
+        aria-hidden
+        className="pointer-events-none relative mx-auto mt-12 aspect-[562/643] w-[min(480px,calc(100%-48px))] xl:absolute xl:right-16 xl:top-0 xl:mx-0 xl:mt-0 xl:w-[min(562px,calc(100%-720px))]"
+      >
+        <HeroStrands className="h-full w-full" config={HERO_LOGO_CONFIG} />
+      </div>
+
       {/* Steps row — 3 columns of 235px with a 32px gutter, left half of the frame */}
-      <div className="relative px-6 pb-[120px] pt-[191px] md:px-10">
+      <div className="relative px-6 pb-[120px] pt-20 md:px-10 xl:pt-[191px]">
         <div className="grid max-w-[769px] grid-cols-1 gap-8 md:grid-cols-3">
           {/* the original staggers the three step blocks at 0.5 / 0.6 / 0.7s */}
           {steps.map((step, i) => (
