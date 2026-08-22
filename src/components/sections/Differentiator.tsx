@@ -1,5 +1,8 @@
+"use client";
+
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { Reveal } from "@/components/motion/Reveal";
+import { useReviewTick } from "@/components/sections/ReviewFlow";
 
 export function Differentiator({
   eyebrow,
@@ -16,6 +19,8 @@ export function Differentiator({
   ours: string;
   rows: { feature: string; theirs: string; ours: string }[];
 }) {
+  const active = useReviewTick(1800, rows.length, 1);
+
   return (
     <section className="border-b border-border px-6 py-16 md:px-10 md:py-20">
       {eyebrow && (
@@ -39,11 +44,22 @@ export function Differentiator({
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
-              <tr key={row.feature} className="border-b border-border">
+            {rows.map((row, i) => (
+              <tr
+                key={row.feature}
+                className={`border-b border-border transition-colors duration-300 ${
+                  i === active ? "bg-brand-soft/15" : ""
+                }`}
+              >
                 <td className="py-[18px] pr-6 text-[15px] text-fg-dim">{row.feature}</td>
                 <td className="py-[18px] pr-6 text-[15px] text-fg-faint">{row.theirs}</td>
-                <td className="py-[18px] text-[15px] text-fg">{row.ours}</td>
+                <td
+                  className={`py-[18px] text-[15px] ${
+                    i === active ? "text-brand" : "text-fg"
+                  }`}
+                >
+                  {row.ours}
+                </td>
               </tr>
             ))}
           </tbody>

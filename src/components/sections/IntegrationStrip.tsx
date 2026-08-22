@@ -40,8 +40,12 @@ export function IntegrationStrip({
         </div>
         <Reveal>
           <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4">
-            {items.map((item) => (
-              <li key={item.name} className="bg-bg px-4 py-5">
+            {items.map((item, i) => (
+              <li
+                key={item.name}
+                className="integ-cell bg-bg px-4 py-5 transition-colors hover:bg-brand-soft/15"
+                style={{ animationDelay: `${i * 1.2}s` }}
+              >
                 <p className="text-[15px] font-medium text-fg">{item.name}</p>
                 <p className="mt-1 font-mono text-[11px] text-fg-faint">{item.meta}</p>
               </li>

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FeatureAccordion, type AccordionItem } from "@/components/sections/FeatureAccordion";
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { Reveal } from "@/components/motion/Reveal";
+import { REVIEW_EASE, useReviewTick } from "@/components/sections/ReviewFlow";
 
 const dots =
   "[background-image:radial-gradient(#221e1b_1px,transparent_1px)] [background-size:9px_9px]";
@@ -31,14 +32,22 @@ const KEPT = [
 ];
 
 function PathSkillsPanel() {
+  const active = useReviewTick(1400, PATHS.length, 1);
   return (
     <div className="w-[340px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]">
       <p className="px-4 pt-4 font-mono text-[11px] font-medium text-fg-disabled">
         Skills attach to paths
       </p>
       <div className="mt-2 pb-2">
-        {PATHS.map((row) => (
-          <div key={row.path} className="flex items-center justify-between gap-3 px-4 py-3">
+        {PATHS.map((row, i) => (
+          <motion.div
+            key={row.path}
+            className="flex items-center justify-between gap-3 px-4 py-3"
+            animate={{
+              backgroundColor: i === active ? "rgba(16,236,144,0.08)" : "rgba(0,0,0,0)",
+            }}
+            transition={{ duration: 0.3, ease: REVIEW_EASE }}
+          >
             <div className="min-w-0">
               <p className="truncate font-mono text-[13px] text-fg">{row.path}</p>
               <p className="text-[11px] text-fg-faint">{row.reason}</p>
@@ -46,7 +55,7 @@ function PathSkillsPanel() {
             <span className="shrink-0 rounded-full bg-brand-soft px-2 py-0.5 font-mono text-[11px] text-brand">
               {row.skill}
             </span>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -54,6 +63,7 @@ function PathSkillsPanel() {
 }
 
 function ByokPanel() {
+  const active = useReviewTick(1200, KEY_FLOW.length, 1);
   return (
     <div className="w-[340px] rounded-2xl border border-[#262626] bg-[rgb(20,18,16)] p-4">
       <p className="font-mono text-[11px] font-medium text-fg-disabled">Inference path</p>
@@ -61,13 +71,24 @@ function ByokPanel() {
         {KEY_FLOW.map((row, i) => (
           <div key={row.label} className="flex gap-3">
             <div className="flex w-4 flex-col items-center">
-              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand" />
+              <motion.span
+                className="mt-1.5 h-1.5 w-1.5 rounded-full"
+                animate={{
+                  backgroundColor: i === active ? "rgb(16,236,144)" : "rgb(87,83,78)",
+                  boxShadow: i === active ? "0 0 10px #10ec90" : "0 0 0 transparent",
+                }}
+                transition={{ duration: 0.3, ease: REVIEW_EASE }}
+              />
               {i < KEY_FLOW.length - 1 && <span className="w-px flex-1 bg-[#262626]" />}
             </div>
-            <div className="pb-4">
+            <motion.div
+              className="pb-4"
+              animate={{ opacity: i === active ? 1 : 0.45 }}
+              transition={{ duration: 0.3, ease: REVIEW_EASE }}
+            >
               <p className="text-[13px] leading-5 text-fg-muted">{row.label}</p>
               <p className="text-[14px] leading-5 text-fg">{row.value}</p>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>
@@ -76,6 +97,7 @@ function ByokPanel() {
 }
 
 function KeepRatePanel() {
+  const visible = useReviewTick(800, KEPT.length, 2) + 1;
   return (
     <div className="w-[340px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]">
       <div className="flex items-end justify-between px-4 pt-4">
@@ -84,11 +106,17 @@ function KeepRatePanel() {
       </div>
       <p className="px-4 pt-1 text-[12px] text-fg-faint">3 of 4 findings resolved, not deleted</p>
       <div className="mt-3 pb-2">
-        {KEPT.map((row) => (
-          <div key={row.finding} className="flex items-center justify-between gap-3 px-4 py-2.5">
+        {KEPT.map((row, i) => (
+          <motion.div
+            key={row.finding}
+            className="flex items-center justify-between gap-3 px-4 py-2.5"
+            initial={false}
+            animate={{ opacity: i < visible ? 1 : 0.2, x: i < visible ? 0 : 8 }}
+            transition={{ duration: 0.25, ease: REVIEW_EASE }}
+          >
             <span className="truncate text-[13px] text-fg">{row.finding}</span>
             <span className={`shrink-0 font-mono text-[11px] font-medium ${row.tone}`}>{row.fate}</span>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

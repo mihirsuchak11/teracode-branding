@@ -260,3 +260,46 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .accordion-fill { animation: none; width: 100%; }
 }
+
+/* Review mock: a thin brand scan traveling down the risk list, same family as
+   the Strand glare band — one moving highlight, not a bounce. */
+@keyframes review-scan {
+  0% { transform: translateY(-8px); opacity: 0; }
+  12% { opacity: 0.85; }
+  88% { opacity: 0.85; }
+  100% { transform: translateY(168px); opacity: 0; }
+}
+.review-scan {
+  animation: review-scan 2.8s cubic-bezier(0.12, 0.23, 0.5, 1) infinite;
+}
+@keyframes review-row-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.review-row-fill {
+  animation: review-row-fill 0.9s linear forwards;
+}
+.review-step-fill {
+  animation: review-row-fill 2.2s linear forwards;
+}
+@keyframes integ-glow {
+  0%,
+  14%,
+  100% {
+    box-shadow: inset 0 0 0 0 transparent;
+    background-color: var(--color-bg);
+  }
+  7% {
+    box-shadow: inset 0 0 0 1px rgba(16, 236, 144, 0.35);
+    background-color: rgba(16, 236, 144, 0.06);
+  }
+}
+.integ-cell {
+  animation: integ-glow 9.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .review-scan { animation: none; opacity: 0; }
+  .review-row-fill,
+  .review-step-fill { animation: none; width: 100%; }
+  .integ-cell { animation: none; }
+}

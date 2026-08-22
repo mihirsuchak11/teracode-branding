@@ -11,6 +11,7 @@ import { FeatureShowcase, PulseMidSection } from "@/components/sections/BenefitS
 import { ReviewMidPanels } from "@/components/sections/ReviewMidPanels";
 import { CapabilityChips } from "@/components/sections/CapabilityChips";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { ReviewSpecialists } from "@/components/sections/ReviewFlow";
 import { CopyGrid } from "@/components/sections/CopyGrid";
 import { Differentiator } from "@/components/sections/Differentiator";
 import { IntegrationStrip } from "@/components/sections/IntegrationStrip";
@@ -199,6 +200,7 @@ export default async function FeaturePage({
             title={reviewCatches.title}
             items={reviewCatches.items}
             columns={4}
+            graphic={<ReviewSpecialists />}
           />
           <CopyGrid
             eyebrow={reviewAudience.eyebrow}

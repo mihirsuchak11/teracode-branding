@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
 
@@ -7,12 +8,14 @@ export function CopyGrid({
   title,
   items,
   columns = 3,
+  graphic,
 }: {
   eyebrow?: string;
   titleMuted?: string;
   title: string;
   items: { title: string; body: string }[];
   columns?: 3 | 4;
+  graphic?: ReactNode;
 }) {
   return (
     <section className="border-b border-border">
@@ -29,6 +32,7 @@ export function CopyGrid({
           ]}
         />
       </div>
+      {graphic && <div className="px-6 pt-10 md:px-10">{graphic}</div>}
       <div
         className={`mt-10 grid border-t border-border md:divide-x md:divide-border ${
           columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3"
