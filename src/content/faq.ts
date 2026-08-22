@@ -21,4 +21,14 @@ export const faq: FaqItem[] = [
     answer:
       "GitHub via the App, and GitLab via a project access token and webhook. Models are Anthropic direct or whatever OpenRouter fronts with your key. We do not list Bitbucket or Azure DevOps as coming soon.",
   },
+  {
+    question: "Can I try a hosted model without bringing a key?",
+    answer:
+      "No. Reviews call the provider whose key you add. The dashboard can show a labeled fixture of what a comment looks like; that is not a live review and not hosted inference.",
+  },
+  {
+    question: "Does TeraCodeAI merge the pull request for me?",
+    answer:
+      "No. Each agent posts a status check. You require the names you care about in branch protection. There is no auto-merge and no seat licence.",
+  },
 ];

@@ -95,7 +95,7 @@ export const graphSources = [
 export const pulseAlert = {
   severity: "Check failed",
   time: "2 min ago",
-  title: "security · request changes",
+  title: "security · check failed",
   body: "Token logged in plaintext in auth/session.ts. Check security is failing until this finding is addressed.",
   channel: "PR #482",
   routed: "Posted to",

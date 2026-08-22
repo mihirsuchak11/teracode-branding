@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav } from "@/content/site";
+import { Button } from "@/components/ui/Button";
 import { ChevronDown, Close, Menu } from "@/components/ui/icons";
 
 function Dropdown({
@@ -155,14 +156,7 @@ export function Header() {
         </nav>
 
         <div className="ml-auto hidden md:block">
-          <a
-            href={nav.cta.href}
-            className="inline-flex items-center rounded-lg bg-fg-soft p-2 transition-colors hover:bg-fg"
-          >
-            <span className="px-1.5 text-sm font-medium leading-5 text-[#1c1917]">
-              {nav.cta.label}
-            </span>
-          </a>
+          <Button href={nav.cta.href}>{nav.cta.label}</Button>
         </div>
 
         {/* Mobile toggle */}
@@ -208,13 +202,9 @@ export function Header() {
                   </Link>
                 ),
               )}
-              <a
-                href={nav.cta.href}
-                onClick={() => setMobileOpen(false)}
-                className="mt-3 inline-flex h-10 items-center justify-center rounded-[10px] bg-fg-soft px-5 text-sm font-medium text-bg"
-              >
+              <Button href={nav.cta.href} className="mt-3 w-full">
                 {nav.cta.label}
-              </a>
+              </Button>
             </div>
           </motion.nav>
         )}

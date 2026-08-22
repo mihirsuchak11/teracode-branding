@@ -1,40 +1,13 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import type { IntegrationItem } from "@/content/integrations";
 import { Reveal } from "@/components/motion/Reveal";
 
-/* Per-integration mark color; first twelve tuned to the original grid. */
+/* Per-integration mark color. Only the four connections the product has. */
 const colors: Record<string, string> = {
   github: "#fafaf9",
   gitlab: "#fc6d26",
   anthropic: "#d4a27f",
   openrouter: "#3e63dd",
-  pipecloud: "#3e63dd",
-  scaleforce: "#10b981",
-  closetrack: "#f9ab00",
-  mixboard: "#3b82f6",
-  metripanel: "#f97316",
-  signalkit: "#e5484d",
-  trackwise: "#22c55e",
-  beamcast: "#eab308",
-  polysql: "#6366f1",
-  vaultdb: "#e5484d",
-  cleardesk: "#f97316",
-  driftline: "#0ea5e9",
-  replystack: "#36c5f0",
-  gridwork: "#10b981",
-  fieldpoint: "#f9ab00",
-  paystream: "#6e56cf",
-  mintledger: "#22c55e",
-  coreledger: "#3e63dd",
-  cashline: "#eab308",
-  openloop: "#e5484d",
-  pushmark: "#f97316",
-  arcline: "#0ea5e9",
-  surfboard: "#6366f1",
-  threadbase: "#36c5f0",
 };
 
 const shapes = [
@@ -79,20 +52,17 @@ export function IntegrationMark({
   );
 }
 
-/** Full-bleed hairline grid of integration tiles with a LOAD MORE row, as in the original. */
+/** Hairline grid of the four connections the product actually has. */
 export function IntegrationsGrid({ integrations }: { integrations: IntegrationItem[] }) {
-  const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? integrations : integrations.slice(0, 12);
-
   return (
     <section className="border-y border-border">
-      <div className="grid md:grid-cols-3">
-        {visible.map((integration, i) => (
+      <div className="grid md:grid-cols-2">
+        {integrations.map((integration, i) => (
           <div
             key={integration.slug}
-            className={`border-border ${i % 3 > 0 ? "md:border-l" : ""} ${
-              i >= 3 ? "md:border-t" : ""
-            } ${i > 0 ? "border-t md:border-t-0" : ""} ${i >= 3 ? "md:border-t" : ""}`}
+            className={`border-border ${i % 2 > 0 ? "md:border-l" : ""} ${
+              i >= 2 ? "border-t" : ""
+            } ${i > 0 ? "border-t md:border-t-0" : ""} ${i >= 2 ? "md:border-t" : ""}`}
           >
             <Reveal className="h-full">
               <Link
@@ -110,15 +80,6 @@ export function IntegrationsGrid({ integrations }: { integrations: IntegrationIt
           </div>
         ))}
       </div>
-      {!expanded && (
-        <button
-          type="button"
-          onClick={() => setExpanded(true)}
-          className="w-full cursor-pointer border-t border-border py-5 text-center font-mono text-xs uppercase tracking-[0.18em] text-fg-muted transition-colors hover:text-fg"
-        >
-          Load more
-        </button>
-      )}
     </section>
   );
 }

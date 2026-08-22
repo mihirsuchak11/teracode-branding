@@ -117,7 +117,7 @@ export const features: FeaturePage[] = [
     benefits: [
       {
         title: "Branch protection, not theatre.",
-        body: "A clean run is a passing check. Default policy comments and checks only — it does not approve the pull request unless you turn that on.",
+        body: "A clean run is a passing check you can require in branch protection. The App posts comments and checks. It does not merge the pull request.",
       },
       {
         title: "A journal, not a black box.",
@@ -190,7 +190,7 @@ export const featureExtras: Record<string, FeatureExtras> = {
         },
         {
           title: "Comment-only unless you say otherwise.",
-          body: "Default policy posts findings and checks. Approval and request-changes are explicit deploy choices, because a bot that blocks merges is a different product.",
+          body: "Default policy posts findings and checks. It does not merge the pull request. You require the check names in the forge.",
         },
         {
           title: "Keep-rate in the dashboard.",
