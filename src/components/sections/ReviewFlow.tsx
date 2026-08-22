@@ -199,14 +199,16 @@ export function ReviewFlow({ active }: { active: number }) {
   const working = active === 1;
 
   const grid = working
-    ? { noiseFrequency: 3, timeScale: 0.31, waveHeightScale: 0.15, noiseLayerSpread: 0.01 }
-    : { noiseFrequency: 2, timeScale: 0.08, waveHeightScale: 0.09, noiseLayerSpread: 0.005 };
+    ? { noiseFrequency: 3, timeScale: 0.34, waveHeightScale: 0.16, noiseLayerSpread: 0.01 }
+    : { noiseFrequency: 2, timeScale: 0.12, waveHeightScale: 0.11, noiseLayerSpread: 0.005 };
 
   return (
     <div ref={ref} className="relative flex h-[460px] w-full items-center justify-center px-4">
+      {/* Masked from the bottom only, as on the home page's chat stage. A centre
+          mask would hide the wave exactly where the card already covers it. */}
       {!reduced && on && (
         <ParticleGrid
-          className="absolute inset-0 h-full w-full opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_78%)]"
+          className="absolute inset-0 h-full w-full opacity-50 [mask-image:linear-gradient(0deg,transparent_0%,#000_24%)]"
           {...grid}
         />
       )}
