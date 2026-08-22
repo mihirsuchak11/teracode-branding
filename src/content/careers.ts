@@ -18,14 +18,14 @@ export const careersHero = {
       height: 774,
     },
   ],
-  statement: "Build the layer that makes agents safe to operate.",
+  statement: "Build the layer that lets developers ship quickly and securely.",
 };
 
 export const peopleSection = {
   eyebrow: "The people behind TeraCode",
   title: "Small team, unreasonable standards",
   paragraphs: [
-    "We are a small team working on a problem that is easy to fake and hard to actually solve. Anyone can get an agent to look impressive once. Getting one to be worth running on a real codebase, every day, without a human babysitting it, is the whole job.",
+    "TeraSoft is a small team working on a problem that is easy to fake and hard to actually solve. Anyone can get an agent to look impressive once. Getting one to be worth running on a real codebase, every day, without a human babysitting it, is the whole job.",
     "That means we care more about judgement than volume. The interesting questions here are about what an agent should refuse to do, how you measure whether its output was worth reading, and how you build something people trust with their production repository — not about how many tokens you can spend.",
     "We are not running open roles right now. If that problem is the one you want to work on, write to us anyway and tell us what you would build.",
   ],

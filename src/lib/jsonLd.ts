@@ -21,6 +21,8 @@ export const siteGraph = {
       "@type": "Organization",
       "@id": ORG_ID,
       name: "TeraSoft AI",
+      description:
+        "TeraSoft empowers developers to ship software quickly and securely, using AI to streamline development. We build TeraCode.",
       url: SITE_URL,
       /* Raster logo: the generated Apple touch icon, which is a real 180x180 PNG. */
       logo: `${SITE_URL}/apple-icon`,

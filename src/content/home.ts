@@ -119,6 +119,8 @@ export const stack = {
     { name: "TeraCode Evals", a: "Keep-rate scoring", b: "Private beta", logo: "/logos/stride.svg" },
     { name: "TeraCode Signals", a: "Traces, spend, drift", b: "Coming soon", logo: "/logos/threadbase.svg" },
     { name: "TeraCode Review", a: "Every pull request", b: "Private beta", logo: "/logos/pipecloud.svg" },
+    { name: "TeraCode Migrate", a: "Codebase-wide change", b: "Coming soon", logo: "/logos/tile-03.svg" },
+    { name: "TeraCode Oncall", a: "Triage from the trace", b: "Coming soon", logo: "/logos/tile-07.svg" },
   ],
   /** The dim 3-wide tile grid beside the list. */
   tiles: Array.from({ length: 11 }, (_, i) => `/logos/tile-${String(i).padStart(2, "0")}.svg`),

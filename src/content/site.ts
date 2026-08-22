@@ -42,7 +42,7 @@ export const nav = {
   },
   links: [
     { label: "Pricing", href: "/pricing" },
-    { label: "About", href: "/about-us" },
+    { label: "About TeraSoft", href: "/about-us" },
   ],
   cta: { label: "Get early access", href: MAIL_ACCESS },
 };
@@ -61,7 +61,7 @@ export const footer = {
       title: "Company",
       links: [
         { label: "Pricing", href: "/pricing" },
-        { label: "About", href: "/about-us" },
+        { label: "About TeraSoft", href: "/about-us" },
         { label: "Careers", href: "/careers" },
       ],
     },
@@ -93,7 +93,7 @@ export const footer = {
     { label: "Terms and Conditions", href: "/terms-of-service" },
     { label: "Privacy Policy", href: "/privacy-policy" },
   ],
-  copyright: "© 2026 TeraSoft AI. All rights reserved.",
+  copyright: "TeraSoft AI builds TeraCode. © 2026. All rights reserved.",
 };
 
 export const ctaBand = {
