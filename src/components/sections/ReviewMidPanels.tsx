@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FeatureAccordion, type AccordionItem } from "@/components/sections/FeatureAccordion";
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { Reveal } from "@/components/motion/Reveal";
-import { REVIEW_EASE, useReviewTick } from "@/components/sections/ReviewFlow";
+import { REVIEW_EASE, useOnScreen, useReviewTick } from "@/components/sections/ReviewFlow";
 
 const dots =
   "[background-image:radial-gradient(#221e1b_1px,transparent_1px)] [background-size:9px_9px]";
@@ -32,9 +32,13 @@ const KEPT = [
 ];
 
 function PathSkillsPanel() {
-  const active = useReviewTick(1400, PATHS.length, 1);
+  const { ref, on } = useOnScreen<HTMLDivElement>();
+  const active = useReviewTick(1400, PATHS.length, 1, !on);
   return (
-    <div className="w-[340px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]">
+    <div
+      ref={ref}
+      className="w-[340px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]"
+    >
       <p className="px-4 pt-4 font-mono text-[11px] font-medium text-fg-disabled">
         Skills attach to paths
       </p>
@@ -63,9 +67,10 @@ function PathSkillsPanel() {
 }
 
 function ByokPanel() {
-  const active = useReviewTick(1200, KEY_FLOW.length, 1);
+  const { ref, on } = useOnScreen<HTMLDivElement>();
+  const active = useReviewTick(1200, KEY_FLOW.length, 1, !on);
   return (
-    <div className="w-[340px] rounded-2xl border border-[#262626] bg-[rgb(20,18,16)] p-4">
+    <div ref={ref} className="w-[340px] rounded-2xl border border-[#262626] bg-[rgb(20,18,16)] p-4">
       <p className="font-mono text-[11px] font-medium text-fg-disabled">Inference path</p>
       <div className="mt-3">
         {KEY_FLOW.map((row, i) => (
@@ -75,7 +80,6 @@ function ByokPanel() {
                 className="mt-1.5 h-1.5 w-1.5 rounded-full"
                 animate={{
                   backgroundColor: i === active ? "rgb(16,236,144)" : "rgb(87,83,78)",
-                  boxShadow: i === active ? "0 0 10px #10ec90" : "0 0 0 transparent",
                 }}
                 transition={{ duration: 0.3, ease: REVIEW_EASE }}
               />
@@ -97,9 +101,13 @@ function ByokPanel() {
 }
 
 function KeepRatePanel() {
-  const visible = useReviewTick(800, KEPT.length, 2) + 1;
+  const { ref, on } = useOnScreen<HTMLDivElement>();
+  const visible = useReviewTick(800, KEPT.length, 2, !on) + 1;
   return (
-    <div className="w-[340px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]">
+    <div
+      ref={ref}
+      className="w-[340px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]"
+    >
       <div className="flex items-end justify-between px-4 pt-4">
         <p className="font-mono text-[11px] font-medium text-fg-disabled">Keep rate</p>
         <p className="text-[20px] font-semibold leading-none text-fg">75%</p>

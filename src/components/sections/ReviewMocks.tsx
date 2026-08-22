@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { REVIEW_EASE, useReviewTick } from "@/components/sections/ReviewFlow";
+import { REVIEW_EASE, useOnScreen, useReviewTick } from "@/components/sections/ReviewFlow";
 
 const specialists = [
   { name: "Security", detail: "2 findings" },
@@ -39,11 +39,11 @@ const statusDot: Record<string, string> = {
 };
 
 export function ReviewBoardMock() {
-  const tick = useReviewTick(900, specialists.length + 1, 2);
-  const doneThrough = tick;
+  const { ref, on } = useOnScreen<HTMLDivElement>();
+  const doneThrough = useReviewTick(900, specialists.length + 1, 2, !on);
 
   return (
-    <div className="flex w-[289px] flex-col items-center gap-2">
+    <div ref={ref} className="flex w-[289px] flex-col items-center gap-2">
       {specialists.map((s, i) => {
         const status = statusOf(doneThrough, i);
         return (
@@ -82,10 +82,14 @@ export function ReviewBoardMock() {
 }
 
 export function ReviewRiskMock() {
-  const visible = useReviewTick(700, findings.length, 2) + 1;
+  const { ref, on } = useOnScreen<HTMLDivElement>();
+  const visible = useReviewTick(700, findings.length, 2, !on) + 1;
 
   return (
-    <div className="relative w-[320px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]">
+    <div
+      ref={ref}
+      className="relative w-[320px] overflow-hidden rounded-2xl border border-[#262626] bg-[rgb(20,18,16)]"
+    >
       <p className="px-4 pt-4 font-mono text-[11px] font-medium leading-[15px] text-fg-disabled">
         Ranked by risk
       </p>
@@ -113,16 +117,17 @@ export function ReviewRiskMock() {
 
 export function ReviewPostedMock() {
   const reduced = useReducedMotion();
+  const { ref, on: visible } = useOnScreen<HTMLDivElement>();
   const [on, setOn] = useState(true);
 
   useEffect(() => {
-    if (reduced) return;
+    if (reduced || !visible) return;
     const t = setInterval(() => setOn((v) => !v), 2400);
     return () => clearInterval(t);
-  }, [reduced]);
+  }, [reduced, visible]);
 
   return (
-    <div className="w-[300px] rounded-2xl border border-[#262626] bg-[rgb(20,18,16)] p-4">
+    <div ref={ref} className="w-[300px] rounded-2xl border border-[#262626] bg-[rgb(20,18,16)] p-4">
       <div className="flex items-center justify-between">
         <p className="text-[16px] leading-6 text-fg">PR #482</p>
         <motion.span

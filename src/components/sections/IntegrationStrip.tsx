@@ -75,11 +75,15 @@ export function IntegrationStrip({
               {items.map((item, i) => (
                 <li
                   key={item.name}
-                  className="integ-cell bg-bg px-4 py-7 transition-colors hover:bg-brand-soft/15"
-                  style={{ animationDelay: `${i * 1.2}s` }}
+                  className="group relative bg-bg px-4 py-7 transition-colors hover:bg-brand-soft/15"
                 >
-                  <p className="text-[15px] font-medium text-fg">{item.name}</p>
-                  <p className="mt-1.5 font-mono text-[11px] text-fg-faint">{item.meta}</p>
+                  <span
+                    aria-hidden
+                    className="integ-cell pointer-events-none absolute inset-0 bg-brand-soft/25 ring-1 ring-inset ring-brand/50"
+                    style={{ animationDelay: `${i * 1.2}s` }}
+                  />
+                  <p className="relative text-[15px] font-medium text-fg">{item.name}</p>
+                  <p className="relative mt-1.5 font-mono text-[11px] text-fg-faint">{item.meta}</p>
                 </li>
               ))}
             </ul>

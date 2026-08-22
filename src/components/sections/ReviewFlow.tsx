@@ -48,42 +48,49 @@ const MARK = [
   { name: "Style", x: 50, y: 86 },
 ] as const;
 
-export function useReviewTick(ms: number, steps: number, pauseAtEnd = 0) {
-  const reduced = useReducedMotion();
-  const [i, setI] = useState(reduced ? steps - 1 : 0);
-  useEffect(() => {
-    if (reduced) return;
-    const t = setTimeout(() => setI((n) => (n + 1) % (steps + pauseAtEnd)), ms);
-    return () => clearTimeout(t);
-  }, [i, ms, reduced, steps, pauseAtEnd]);
-  return Math.min(i, steps - 1);
-}
-
-export function useReviewCycle() {
-  const reduced = useReducedMotion();
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    if (reduced) return;
-    const t = setTimeout(() => setActive((a) => (a + 1) % REVIEW_DWELL.length), REVIEW_DWELL[active]);
-    return () => clearTimeout(t);
-  }, [active, reduced]);
-
-  return reduced ? 2 : active;
-}
-
-/** Only run the WebGL field while the section is actually on screen. */
-function useOnScreen<T extends HTMLElement>() {
+/**
+ * Every loop on this page is paused while its section is off screen. Lenis
+ * drives the scroll from rAF, so a timer that re-renders a table the visitor
+ * cannot see is paid for in scroll smoothness. `FeatureAccordion` gates its
+ * own advance the same way.
+ */
+export function useOnScreen<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [on, setOn] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setOn(e.isIntersecting), { threshold: 0.15 });
+    const io = new IntersectionObserver(([e]) => setOn(e.isIntersecting), {
+      rootMargin: "120px 0px",
+    });
     io.observe(el);
     return () => io.disconnect();
   }, []);
   return { ref, on };
+}
+
+export function useReviewTick(ms: number, steps: number, pauseAtEnd = 0, paused = false) {
+  const reduced = useReducedMotion();
+  const [i, setI] = useState(reduced ? steps - 1 : 0);
+  useEffect(() => {
+    if (reduced || paused) return;
+    const t = setTimeout(() => setI((n) => (n + 1) % (steps + pauseAtEnd)), ms);
+    return () => clearTimeout(t);
+  }, [i, ms, reduced, steps, pauseAtEnd, paused]);
+  return Math.min(i, steps - 1);
+}
+
+export function useReviewCycle(paused = false) {
+  const reduced = useReducedMotion();
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (reduced || paused) return;
+    const t = setTimeout(() => setActive((a) => (a + 1) % REVIEW_DWELL.length), REVIEW_DWELL[active]);
+    return () => clearTimeout(t);
+  }, [active, reduced, paused]);
+
+  return reduced ? 2 : active;
 }
 
 function Row({ k, v, tone }: { k: string; v: string; tone?: string }) {
@@ -116,7 +123,8 @@ function ConnectScene() {
 }
 
 function ReviewScene() {
-  /* Four specialists resolve one after another, then the scan settles. */
+  /* Four specialists resolve one after another, then the scan settles. Only
+     mounted while the stage is on screen, so it needs no gate of its own. */
   const done = useReviewTick(700, SPECIALISTS.length + 1);
 
   return (
@@ -316,7 +324,7 @@ export function ReviewSpecialists() {
   const { ref, on } = useOnScreen<HTMLDivElement>();
   /* Two extra ticks park the loop on the merged verdict — that resolution is
      the point of the mark, so it holds ~4.5s before the spokes light again. */
-  const tick = useReviewTick(1500, 5, 2);
+  const tick = useReviewTick(1500, 5, 2, !on);
   const merge = tick === 4;
 
   return (

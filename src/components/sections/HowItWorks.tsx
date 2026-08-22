@@ -2,7 +2,12 @@
 
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
-import { REVIEW_DWELL, ReviewFlow, useReviewCycle } from "@/components/sections/ReviewFlow";
+import {
+  REVIEW_DWELL,
+  ReviewFlow,
+  useOnScreen,
+  useReviewCycle,
+} from "@/components/sections/ReviewFlow";
 
 /**
  * Opening band of the Review page, built on the home page's Statement rhythm:
@@ -20,10 +25,11 @@ export function HowItWorks({
   title: string;
   steps: { n: string; title: string; body: string }[];
 }) {
-  const active = useReviewCycle();
+  const { ref, on } = useOnScreen<HTMLElement>();
+  const active = useReviewCycle(!on);
 
   return (
-    <section className="relative">
+    <section ref={ref} className="relative">
       <div className="px-6 pt-28 md:px-10 md:pt-36">
         <ChromaticCascade
           blocks={[

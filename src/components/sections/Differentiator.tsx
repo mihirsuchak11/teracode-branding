@@ -2,7 +2,7 @@
 
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { Reveal } from "@/components/motion/Reveal";
-import { REVIEW_EASE, useReviewTick } from "@/components/sections/ReviewFlow";
+import { REVIEW_EASE, useOnScreen, useReviewTick } from "@/components/sections/ReviewFlow";
 import { motion } from "framer-motion";
 
 /**
@@ -24,10 +24,11 @@ export function Differentiator({
   ours: string;
   rows: { feature: string; theirs: string; ours: string }[];
 }) {
-  const active = useReviewTick(1900, rows.length, 1);
+  const { ref, on } = useOnScreen<HTMLElement>();
+  const active = useReviewTick(1900, rows.length, 1, !on);
 
   return (
-    <section className="px-6 py-16 md:px-10 md:py-24">
+    <section ref={ref} className="px-6 py-16 md:px-10 md:py-24">
       <ChromaticCascade
         blocks={[
           ...(eyebrow
@@ -80,7 +81,6 @@ export function Differentiator({
                       className="h-1.5 w-1.5 shrink-0 rounded-full"
                       animate={{
                         backgroundColor: i === active ? "rgb(16,236,144)" : "rgb(68,64,60)",
-                        boxShadow: i === active ? "0 0 10px #10ec90" : "0 0 0 transparent",
                       }}
                       transition={{ duration: 0.4, ease: REVIEW_EASE }}
                     />
