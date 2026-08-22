@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 export const metadata = buildMetadata({
   title: "Integrations",
   description:
-    "TeraCode connects to the source control you already use and calls whichever model provider you already pay for, using your own API keys.",
+    "GitHub App or GitLab project token. Anthropic or OpenRouter with your key. No Bitbucket or Azure DevOps row.",
   path: "/integrations",
 });
 

@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
-export const alt = "TeraCode";
+export const alt = "TeraCodeAI";
 
 /* The app icon is pure vector paths on its own gradient plate, so it rasterises
    cleanly — no font is needed to render it. */

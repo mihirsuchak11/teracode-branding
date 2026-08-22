@@ -8,33 +8,29 @@ export interface ChangelogRelease extends Omit<ChangelogEntry, "items"> {
 
 export const changelogHero = {
   title: "Changelog",
-  status: { label: "Private beta", uptime: "BY INVITATION" },
+  status: { label: "GitHub App + dashboard", uptime: "BYOK" },
 };
 
-/**
- * TeraCode Review is in private beta, so there is one entry here rather than a
- * manufactured release history. Add real releases as they ship.
- */
 export const releases: ChangelogRelease[] = [
   {
-    version: "Private beta",
+    version: "Now",
     date: "2026",
-    title: "TeraCode Review opens to the first teams",
+    title: "TeraCodeAI — the review board, not a second company",
     items: [
       {
         label: "NEW",
-        text: "TeraCode Review runs a board of specialists — security, performance, tests and style — against every pull request, then reconciles their findings into a single review rather than a comment storm.",
+        text: "Several review agents on every pull request. Findings merge into one thread. Each agent posts its own status check.",
       },
       {
         label: "NEW",
-        text: "Bring your own API keys. TeraCode calls your model provider directly with your key, so inference is billed to you at your provider's price with no markup and no per-seat licence.",
+        text: "Bring your own Anthropic or OpenRouter key. The key is encrypted at rest and does not enter the sandbox that clones the pull request.",
       },
       {
         label: "NEW",
-        text: "Findings are ranked by the damage they would actually do, so a logged credential does not arrive alongside a missing trailing comma as though they were equivalent.",
+        text: "One meter: $20 per extra connected repository per month. The first repository in an organization is free forever.",
       },
       {
-        text: "Access is by invitation while we are in private beta. Write to contact@teracode.ai to be included.",
+        text: "Start from this site at the dashboard login, destination /projects/new. Contact: contact@teracodeai.com.",
       },
     ],
   },

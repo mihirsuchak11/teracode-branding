@@ -10,7 +10,7 @@ export function CtaBand() {
           site's own still (`/art/cta-burst.png`) without WebGL. */}
       <StrandBurst className="pointer-events-none absolute inset-0 h-full w-full" />
 
-      {/* 677px band, headline broken after "Your data," */}
+      {/* 677px band, headline broken after titleLine1 */}
       <div className="relative flex flex-col items-center justify-center px-6 py-40 md:h-[677px] md:py-0">
         <ChromaticCascade
           className="flex flex-col items-center gap-7 text-center"

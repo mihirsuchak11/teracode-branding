@@ -32,9 +32,9 @@ const cabinet = localFont({
 });
 
 export const metadata: Metadata = buildMetadata({
-  title: "TeraCode — BYOK AI Code Review",
+  title: "TeraCodeAI — BYOK multi-agent PR review",
   description:
-    "TeraCode Review puts an AI review board on every pull request, catching bugs, security issues and regressions before a human opens the diff. BYOK — bring your own API keys and pay your provider directly, with no markup and no per-seat licence. Private beta.",
+    "TeraCodeAI is a GitHub App and dashboard that runs several review agents on every pull request. Each posts its own check. You bring the model key. $20 per extra connected repository per month; the first repo in an org is free forever.",
 });
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

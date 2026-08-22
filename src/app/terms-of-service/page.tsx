@@ -5,7 +5,7 @@ import { termsOfService } from "@/content/legal";
 export const metadata = buildMetadata({
   title: "Terms and Conditions",
   description:
-    "The terms and conditions that govern your access to and use of TeraCode, provided by TeraSoft AI.",
+    "The terms that govern TeraCodeAI — BYOK multi-agent pull request review, including cloning PRs, keys, and sandboxes.",
   path: "/terms-of-service",
 });
 

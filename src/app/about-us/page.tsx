@@ -10,7 +10,7 @@ import { tickerBrands } from "@/content/home";
 export const metadata = buildMetadata({
   title: "About us",
   description:
-    "TeraSoft AI builds TeraCode — an authoring, execution and scoring layer for AI agents, and the agents we run on it. Starting with TeraCode Review, on your own API keys.",
+    "TeraCodeAI is BYOK multi-agent pull request review. GitHub App plus dashboard. $20 per extra connected repository; first repo in an org free forever.",
   path: "/about-us",
 });
 

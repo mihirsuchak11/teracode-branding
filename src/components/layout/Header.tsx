@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav } from "@/content/site";
+import { Button } from "@/components/ui/Button";
 import { ChevronDown, Close, Menu } from "@/components/ui/icons";
 
 function Dropdown({
@@ -105,7 +106,7 @@ export function Header() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/teracode-logo-horizontal-white.svg"
-            alt="TeraCode"
+            alt="TeraCodeAI"
             width={105}
             height={28}
             className="h-7 w-auto select-none"
@@ -155,14 +156,7 @@ export function Header() {
         </nav>
 
         <div className="ml-auto hidden md:block">
-          <a
-            href={nav.cta.href}
-            className="inline-flex items-center rounded-lg bg-fg-soft p-2 transition-colors hover:bg-fg"
-          >
-            <span className="px-1.5 text-sm font-medium leading-5 text-[#1c1917]">
-              {nav.cta.label}
-            </span>
-          </a>
+          <Button href={nav.cta.href}>{nav.cta.label}</Button>
         </div>
 
         {/* Mobile toggle */}
@@ -187,23 +181,30 @@ export function Header() {
             className="overflow-hidden border-t border-border bg-bg md:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
-              {[...nav.products, ...nav.resources.company, ...nav.links].map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-btn px-2 py-2.5 text-[15px] text-fg-soft hover:bg-surface"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <a
-                href={nav.cta.href}
-                onClick={() => setMobileOpen(false)}
-                className="mt-3 inline-flex h-10 items-center justify-center rounded-[10px] bg-fg-soft px-5 text-sm font-medium text-bg"
-              >
+              {[...nav.products, ...nav.resources.company, ...nav.links].map((item) =>
+                item.href.startsWith("http") ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-btn px-2 py-2.5 text-[15px] text-fg-soft hover:bg-surface"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-btn px-2 py-2.5 text-[15px] text-fg-soft hover:bg-surface"
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
+              <Button href={nav.cta.href} className="mt-3 w-full">
                 {nav.cta.label}
-              </a>
+              </Button>
             </div>
           </motion.nav>
         )}

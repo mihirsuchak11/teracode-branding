@@ -6,7 +6,7 @@ import { changelogHero, releases } from "@/content/changelog";
 export const metadata = buildMetadata({
   title: "Changelog",
   description:
-    "What has shipped across TeraCode Review, Migrate and Oncall, and the runtime underneath them.",
+    "What has shipped in TeraCodeAI — the GitHub App, dashboard, and $20-per-repo meter.",
   path: "/changelog",
 });
 

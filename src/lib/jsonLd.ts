@@ -8,10 +8,7 @@ const SITE_ID = `${SITE_URL}/#website`;
  * Site-wide graph: the company and the site itself.
  *
  * Deliberately omitted:
- * - `sameAs` — the footer's social links currently point at x.com / linkedin.com
- *   / github.com root URLs, not real profiles. Listing those as the company's
- *   verified accounts would be a false claim. Add real profile URLs here and in
- *   `content/site.ts` together.
+ * - `sameAs` — no verified public social profiles to claim.
  * - `foundingDate` — not confirmed.
  */
 export const siteGraph = {
@@ -20,16 +17,15 @@ export const siteGraph = {
     {
       "@type": "Organization",
       "@id": ORG_ID,
-      name: "TeraSoft AI",
+      name: "TeraCodeAI",
       url: SITE_URL,
-      /* Raster logo: the generated Apple touch icon, which is a real 180x180 PNG. */
       logo: `${SITE_URL}/apple-icon`,
       brand: { "@type": "Brand", name: SITE_NAME },
-      email: "contact@teracode.ai",
+      email: "contact@teracodeai.com",
       contactPoint: {
         "@type": "ContactPoint",
-        contactType: "sales",
-        email: "contact@teracode.ai",
+        contactType: "customer support",
+        email: "contact@teracodeai.com",
         availableLanguage: "English",
       },
     },
@@ -61,10 +57,7 @@ export function faqJsonLd(items: FaqItem[]) {
 
 /**
  * A product page: the software itself plus a breadcrumb.
- *
- * `offers` is attached only to products that are actually obtainable. Review is
- * in private beta at no platform fee; Migrate and Oncall are not released, so
- * advertising a price for them would be untrue.
+ * All three pages are facets of the same obtainable product.
  */
 export function productJsonLd(feature: FeaturePage, released: boolean) {
   const url = `${SITE_URL}/products/${feature.slug}`;
@@ -74,7 +67,8 @@ export function productJsonLd(feature: FeaturePage, released: boolean) {
       {
         "@type": "SoftwareApplication",
         "@id": `${url}#software`,
-        name: feature.name,
+        name: "TeraCodeAI",
+        alternateName: feature.name,
         url,
         applicationCategory: "DeveloperApplication",
         applicationSubCategory: "Code review",
@@ -85,11 +79,11 @@ export function productJsonLd(feature: FeaturePage, released: boolean) {
           ? {
               offers: {
                 "@type": "Offer",
-                price: "0",
+                price: "20",
                 priceCurrency: "USD",
-                availability: "https://schema.org/LimitedAvailability",
+                availability: "https://schema.org/InStock",
                 description:
-                  "Private beta. No platform fee and no per-seat licence — model usage is billed to you directly by your own provider.",
+                  "$20 per connected repository per month. The first repository in an organization is free forever. Inference is billed by your own provider.",
               },
             }
           : {}),

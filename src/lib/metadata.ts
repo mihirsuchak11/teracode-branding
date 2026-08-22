@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://teracode.ai";
-export const SITE_NAME = "TeraCode";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://teracodeai.com";
+export const SITE_NAME = "TeraCodeAI";
 
 export function buildMetadata({
   title,
@@ -12,7 +12,7 @@ export function buildMetadata({
   title: string;
   description: string;
   path?: string;
-  /** Set false when `title` already carries the brand, e.g. "TeraCode Review". */
+  /** Set false when `title` already carries the brand. */
   brandSuffix?: boolean;
 }): Metadata {
   const fullTitle = path === "/" || !brandSuffix ? title : `${title} — ${SITE_NAME}`;

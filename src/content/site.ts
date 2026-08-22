@@ -1,35 +1,36 @@
 import type { NavDropdownItem } from "@/lib/types";
-import { MAIL_ACCESS, MAIL_CONTACT, MAIL_DEMO } from "@/content/home";
+import { APP_LOGIN, APP_START } from "@/lib/app";
+import { MAIL_CONTACT } from "@/content/home";
 
 export const nav = {
   products: [
     {
-      label: "TeraCode Review",
-      description: "An AI review board on every pull request.",
+      label: "Multi-agent review",
+      description: "Several reviewers on every pull request.",
       href: "/products/review",
     },
     {
-      label: "TeraCode Migrate",
-      description: "Carry a codebase-wide migration to done.",
-      href: "/products/migrate",
+      label: "Bring your own key",
+      description: "Anthropic or OpenRouter. We take no cut.",
+      href: "/products/agents",
     },
     {
-      label: "TeraCode Oncall",
-      description: "Triage that reads the trace, not the alert.",
-      href: "/products/oncall",
+      label: "One check each",
+      description: "Require the agents you trust to merge.",
+      href: "/products/checks",
     },
   ] satisfies NavDropdownItem[],
   resources: {
     support: [
       {
-        label: "Early access",
-        description: "Get TeraCode Review in private beta.",
-        href: MAIL_ACCESS,
+        label: "Start free",
+        description: "Sign in and connect the first repository.",
+        href: APP_START,
       },
       {
-        label: "Contact us",
-        description: "Talk to the team building TeraCode.",
-        href: "/contact-us",
+        label: "Sign in",
+        description: "Already have an org? Open the dashboard.",
+        href: APP_LOGIN,
       },
     ] satisfies NavDropdownItem[],
     company: [
@@ -44,17 +45,17 @@ export const nav = {
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about-us" },
   ],
-  cta: { label: "Get early access", href: MAIL_ACCESS },
+  cta: { label: "Start free", href: APP_START },
 };
 
 export const footer = {
   columns: [
     {
-      title: "Products",
+      title: "Product",
       links: [
-        { label: "TeraCode Review", href: "/products/review" },
-        { label: "TeraCode Migrate", href: "/products/migrate" },
-        { label: "TeraCode Oncall", href: "/products/oncall" },
+        { label: "Multi-agent review", href: "/products/review" },
+        { label: "Bring your own key", href: "/products/agents" },
+        { label: "One check each", href: "/products/checks" },
       ],
     },
     {
@@ -75,31 +76,29 @@ export const footer = {
       ],
     },
     {
-      /* Social profiles are intentionally absent until real handles exist.
-         The template shipped x.com / linkedin.com / github.com root URLs as
-         placeholders; linking those would send visitors to the wrong company
-         (linkedin.com/company/teracode is an unrelated business). */
+      /* Social profiles are intentionally absent until real handles exist. */
       title: "Connect",
       links: [
-        { label: "contact@teracode.ai", href: MAIL_CONTACT },
-        { label: "Get early access", href: MAIL_ACCESS },
-        { label: "Contact form", href: "/contact-us" },
+        { label: "Start free", href: APP_START },
+        { label: "Sign in", href: APP_LOGIN },
+        { label: "contact@teracodeai.com", href: MAIL_CONTACT },
       ],
     },
   ],
-  status: { label: "Private beta", uptime: "BY INVITATION" },
-  newsletter: { blurb: "Updates on what we ship next.", cta: "Subscribe" },
+  /* Not an uptime claim. The dashboard does not publish a status page. */
+  status: { label: "GitHub App + dashboard", uptime: "BYOK" },
+  newsletter: { blurb: "Product notes when we have them.", cta: "Subscribe" },
   legal: [
     { label: "Terms and Conditions", href: "/terms-of-service" },
     { label: "Privacy Policy", href: "/privacy-policy" },
   ],
-  copyright: "© 2026 TeraSoft AI. All rights reserved.",
+  copyright: "© 2026 TeraCodeAI. All rights reserved.",
 };
 
 export const ctaBand = {
-  title: "Private beta is open. Bring your own keys.",
-  titleLine1: "Private beta is open.",
-  titleLine2: "Bring your own keys.",
-  primary: { label: "Get early access", href: MAIL_ACCESS },
-  secondary: { label: "Book a demo", href: MAIL_DEMO },
+  title: "Start on the first repository. It stays free.",
+  titleLine1: "Start on the first repository.",
+  titleLine2: "It stays free.",
+  primary: { label: "Start free", href: APP_START },
+  secondary: { label: "See pricing", href: "/pricing" },
 };

@@ -14,10 +14,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/careers/[slug]">) {
   const { slug } = await params;
   const job = jobs.find((j) => j.slug === slug);
-  if (!job) return buildMetadata({ title: "Careers", description: "Open application at TeraSoft AI.", path: "/careers" });
+  if (!job) return buildMetadata({ title: "Careers", description: "Open application at TeraCodeAI.", path: "/careers" });
   return buildMetadata({
     title: job.title,
-    description: `${job.title} at TeraSoft AI — ${job.location}, ${job.type}. Help build the layer that makes AI agents safe to operate.`,
+    description: `${job.title} at TeraCodeAI — ${job.location}, ${job.type}. Help build the review board teams will actually require.`,
     path: `/careers/${job.slug}`,
   });
 }

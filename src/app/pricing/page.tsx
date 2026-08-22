@@ -8,19 +8,16 @@ import { LogoTicker } from "@/components/sections/LogoTicker";
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "No platform fee, no per-seat licence and no markup on inference. You bring your own API keys and your provider bills you directly. Private beta.",
+    "$20 per connected repository per month. The first repository in an organization is free forever. One meter. Inference is billed by your own provider.",
   path: "/pricing",
 });
 
-/** Static billing-period toggle, styled after the original (Monthly active). */
-function BillingToggle() {
+/** Honest meter, not a yearly toggle we do not offer. */
+function MeterNote() {
   return (
-    <div className="flex items-center rounded-[10px] bg-bg-deep p-1 text-[15px]">
-      <span className="rounded-lg border border-border-strong/70 bg-surface-2 px-6 py-1.5 font-medium text-fg">
-        Monthly
-      </span>
-      <span className="px-6 py-1.5 text-fg-faint">Yearly</span>
-    </div>
+    <p className="max-w-sm text-right text-[15px] leading-6 text-fg-muted">
+      {pricingHero.note}
+    </p>
   );
 }
 
@@ -34,7 +31,7 @@ export default function PricingPage() {
           </h1>
         </Reveal>
         <Reveal delay={0.05}>
-          <BillingToggle />
+          <MeterNote />
         </Reveal>
       </section>
       <PricingTiers tiers={tiers} />

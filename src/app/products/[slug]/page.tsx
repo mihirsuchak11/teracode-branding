@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { features, featureExtras, featureHero, getFeature } from "@/content/features";
-import { MAIL_ACCESS } from "@/content/home";
+import { featureCta } from "@/content/features";
 import { productJsonLd } from "@/lib/jsonLd";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { FeaturePage as Feature } from "@/lib/types";
@@ -58,7 +58,7 @@ function HeroBadge({ name }: { name: string }) {
 function HeroCtas({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <Button href={MAIL_ACCESS}>Get early access</Button>
+      <Button href={featureCta.href}>{featureCta.label}</Button>
       <Button href="/pricing" variant="secondary">
         View pricing
       </Button>
@@ -146,8 +146,7 @@ export default async function FeaturePage({
 
   return (
     <>
-      {/* Only Review is obtainable today, so only Review carries an offer. */}
-      <JsonLd data={productJsonLd(feature, feature.slug === "review")} />
+      <JsonLd data={productJsonLd(feature, true)} />
       <div className="relative">
         {artTop && (
           <div className="pointer-events-none absolute right-0 top-0 hidden h-[480px] w-[480px] md:block">
@@ -161,10 +160,10 @@ export default async function FeaturePage({
       {feature.slug === "review" && extras?.midSection && (
         <CortexMidPanels title={extras.midSection.title} items={extras.midSection.items} />
       )}
-      {feature.slug === "migrate" && extras?.midSection && (
+      {feature.slug === "agents" && extras?.midSection && (
         <CapabilityChips title={extras.midSection.title} items={extras.midSection.items} />
       )}
-      {feature.slug === "oncall" && extras?.midSection && (
+      {feature.slug === "checks" && extras?.midSection && (
         <PulseMidSection mid={extras.midSection} />
       )}
       {feature.stats && extras?.statsTitle && (

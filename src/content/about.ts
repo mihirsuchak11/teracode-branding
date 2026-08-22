@@ -5,25 +5,24 @@ export const aboutHero = {
 export const origins = {
   eyebrow: "Origins",
   paragraphs: [
-    "Agents are easy to demo and hard to operate. A scripted run on a clean repository proves very little; the same agent against a real codebase, on a Friday, with branch protection and a CI suite in the way, is a different problem entirely. The gap between those two things is where most of this category currently lives.",
-    "TeraSoft AI builds TeraCode to close that gap — an authoring, execution and scoring layer, and the agents we run on top of it. The first is TeraCode Review, an AI review board on every pull request. It runs on your own API keys, bills you nothing on top of what your provider charges, and is measured on which of its findings your team actually kept.",
+    "TeraCodeAI is a GitHub App and dashboard that runs several review agents on every pull request. You bring the model key. Each agent posts its own check. The first connected repository in an organization is free; after that the meter is $20 per repository per month.",
+    "That is the company. There is not a second platform of knowledge graphs, migrate-the-monorepo agents, or on-call triage under another name. If a page here describes something the dashboard cannot do, the page is wrong.",
   ],
-  /* A verifiable fact about how we charge, in place of a funding number. */
-  funding: { value: "$0", label: "Markup on your token spend" },
+  funding: { value: "$20", label: "Per extra connected repository / month" },
   facts: [
-    { label: "Company:", value: "TeraSoft AI" },
-    { label: "Product:", value: "TeraCode" },
-    { label: "Stage:", value: "Private beta" },
+    { label: "Product:", value: "TeraCodeAI" },
+    { label: "What it is:", value: "BYOK multi-agent PR review" },
+    { label: "Meter:", value: "$20 / extra repo, first free" },
   ],
-  trustedBy: "Bring your own key — TeraCode runs on the providers and stacks you already use",
+  trustedBy: "GitHub App, GitLab token, Anthropic or OpenRouter — the stack you already pay for",
 };
 
 export const milestones = {
-  eyebrow: "Milestones",
+  eyebrow: "What exists",
   items: [
-    { date: "2026", event: "TeraSoft AI founded" },
-    { date: "2026", event: "TeraCode Review enters private beta" },
-    { date: "Next", event: "TeraCode Migrate and Oncall" },
-    { date: "The future", event: "Help shape what we build" },
+    { date: "Now", event: "GitHub App + dashboard reviews" },
+    { date: "Now", event: "GitLab project connect" },
+    { date: "Now", event: "BYOK Anthropic and OpenRouter" },
+    { date: "The meter", event: "First repo free; $20 each after that" },
   ],
 };
