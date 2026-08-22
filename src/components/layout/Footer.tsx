@@ -59,7 +59,11 @@ export function Footer() {
 
         <FooterWordmark />
 
-        <div className="flex flex-col items-start justify-between gap-3 pb-8 text-sm text-fg-muted md:flex-row md:items-center">
+        {/* pb clears <ChromaticGlareBand />, the fixed 69px strip at the bottom of
+            the viewport. Every other element scrolls up out of the band; this row
+            is the last content on the page, so without the clearance it parks
+            inside the band at full scroll and stays smeared. */}
+        <div className="flex flex-col items-start justify-between gap-3 pb-24 text-sm text-fg-muted md:flex-row md:items-center">
           <p>{footer.copyright}</p>
           <p className="flex items-center gap-3">
             {footer.legal.map((link, i) => (

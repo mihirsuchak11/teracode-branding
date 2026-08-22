@@ -1,7 +1,7 @@
 import { hero, steps } from "@/content/home";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
-import { HeroStrands } from "@/components/three/HeroStrands";
+import { HeroStrands, HERO_LOGO_CONFIG } from "@/components/three/HeroStrands";
 
 /* Geometry below is measured off the original page at a 1512px viewport:
    announcement block 692x64 from the frame edge, hairline at y=132, the text
@@ -29,9 +29,9 @@ export function Hero() {
       </div>
       <div className="h-px w-full max-w-[692px] bg-border" />
 
-      {/* Live 3D strand graphic (ported from the original HeroThreeJSV2) */}
+      {/* Live 3D strand graphic — strand roots trace the TeraCode symbol */}
       <div className="absolute right-16 top-0 hidden h-[643px] w-[562px] md:block">
-        <HeroStrands className="h-full w-full" />
+        <HeroStrands className="h-full w-full" config={HERO_LOGO_CONFIG} />
       </div>
 
       {/* Headline stack */}
