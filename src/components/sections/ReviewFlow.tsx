@@ -21,10 +21,10 @@ const NODES = [
 ];
 
 const SPECIALISTS = [
-  { name: "Security", x: 50, y: 8 },
-  { name: "Performance", x: 8, y: 50 },
-  { name: "Tests", x: 92, y: 50 },
-  { name: "Style", x: 50, y: 92 },
+  { name: "Security", x: 50, y: 12 },
+  { name: "Performance", x: 16, y: 50 },
+  { name: "Tests", x: 84, y: 50 },
+  { name: "Style", x: 50, y: 88 },
 ] as const;
 
 export function useReviewTick(ms: number, steps: number, pauseAtEnd = 0) {
