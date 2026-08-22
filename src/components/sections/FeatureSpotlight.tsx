@@ -2,33 +2,28 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { graphSources, pulseAlert, spotlights, hero } from "@/content/home";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { graphSources, pulseAlert, spotlights } from "@/content/home";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
-import { ChevronDown, Mic, Plus } from "@/components/ui/icons";
-import { HeroStrands, type StrandConfig } from "@/components/three/HeroStrands";
-import { ASK_RING, PULSE_SCATTER } from "@/components/three/clouds";
+import { ChevronDown } from "@/components/ui/icons";
+import { StrandMorph, type MorphShape } from "@/components/three/StrandMorph";
+import { ASK_SHAPE, CORTEX_SHAPE, PULSE_SHAPE } from "@/components/three/morphShapes";
+import { AskComposer } from "@/components/sections/AskChatAnim";
+import { ProgressRuler } from "@/components/sections/ProgressRuler";
 
-// Stable config objects (referential stability keeps the WebGL effect from re-initing).
-const ASK_CONFIG: Partial<StrandConfig> = {
-  points: ASK_RING,
-  threshold: 0.6,
-  cameraRotationX: 0,
-  cameraRotationY: 0,
-  extrudeOffset: { x: 0, y: 0, z: 0.18 },
-  strandOpacity: 0.25,
-  tipRadius: 0.003,
-  dispersion: 0.8,
-};
-const PULSE_CONFIG: Partial<StrandConfig> = {
-  points: PULSE_SCATTER,
-  threshold: 0.55,
-  cameraRotationX: 0,
-  cameraRotationY: 0,
-  extrudeOffset: { x: 0, y: 0, z: 0.22 },
-  strandOpacity: 0.2,
-  tipRadius: 0.003,
-  dispersion: 0.8,
-};
+/**
+ * The three clouds the strand field morphs between, with the exact thresholds
+ * and scales the original passed. Module-level so the identity is stable —
+ * a new array would rebuild the whole GPGPU sim.
+ */
+const MORPH_SHAPES: MorphShape[] = [
+  { points: CORTEX_SHAPE, threshold: 0.6, scale: 0.92 },
+  { points: ASK_SHAPE, threshold: 0.4, scale: 1 },
+  { points: PULSE_SHAPE, threshold: 0.45, scale: 0.95 },
+];
+
+/** The ease the original uses for every card/row entrance in this section. */
+const ROW_EASE = [0.44, 0, 0.56, 1] as const;
 
 function MiniGlyph({ i }: { i: number }) {
   const shapes = [
@@ -66,136 +61,113 @@ function ExploreMore({ href }: { href: string }) {
   );
 }
 
-/**
- * 01/02/03 progress rail on the frame's right edge — the active feature's
- * number brightens and its tick extends, matching the original "Progress"
- * component that tracks scroll through the pinned section.
- */
-function ProgressRail({ active, count }: { active: number; count: number }) {
-  return (
-    <div className="flex shrink-0 flex-col items-end gap-3 font-mono text-[11px]">
-      {Array.from({ length: count }).map((_, i) => (
-        <span key={i} className="flex items-center gap-2">
-          <span className={`transition-colors ${active === i ? "text-fg" : "text-fg-disabled"}`}>
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <span
-            className={`h-px transition-all duration-500 ${
-              active === i ? "w-6 bg-fg" : "w-2.5 bg-border-strong"
-            }`}
-          />
-        </span>
-      ))}
-    </div>
-  );
-}
-
 function CortexMock() {
   const dot: Record<string, string> = {
     Live: "bg-brand",
-    Syncing: "bg-warn",
-    Pending: "bg-fg-disabled",
+    Syncing: "bg-info",
+    Pending: "bg-warn",
   };
   return (
-    <div className="w-full max-w-[300px] rounded-card border border-border-strong/40 bg-bg-deep/60">
+    <div className="flex w-[289px] flex-col items-center gap-2">
       {graphSources.map((s, i) => (
-        <div
+        <motion.div
           key={s.name}
-          className={`flex items-center justify-between px-4 py-3.5 ${i > 0 ? "border-t border-border" : ""}`}
+          className="flex w-full items-center gap-4 rounded-2xl border border-[#262626] bg-[rgb(20,18,16)] p-4"
+          initial={{ opacity: 0.001, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.2, delay: i * 0.05, ease: ROW_EASE }}
         >
-          <div>
-            <p className="text-sm font-medium text-fg-soft">{s.name}</p>
-            <p className="mt-0.5 font-mono text-[11px] text-fg-faint">{s.detail}</p>
+          <div className="flex flex-1 flex-col gap-1.5">
+            <p className="text-[16px] leading-6 text-fg">{s.name}</p>
+            <p className="font-mono text-[12px] leading-4 font-medium text-[rgb(115,115,115)]">
+              {s.detail}
+            </p>
           </div>
-          <span className="flex items-center gap-1.5 text-xs text-fg-muted">
-            <span className={`h-1.5 w-1.5 rounded-full ${dot[s.status]}`} />
+          <span className="flex shrink-0 items-center gap-2 text-[12px] leading-4 whitespace-pre text-fg">
+            <span className={`h-2 w-2 rounded-full ${dot[s.status]}`} />
             {s.status}
           </span>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
 }
 
 function AskMock() {
-  return (
-    <div className="relative flex w-full max-w-[560px] flex-col items-center py-24">
-      <HeroStrands
-        config={ASK_CONFIG}
-        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[130%] -translate-x-1/2 -translate-y-1/2"
-      />
-      <div className="relative z-10 w-full max-w-[500px] rounded-2xl border border-border-strong/50 bg-bg/80 p-5 backdrop-blur-[2px]">
-        <p className="text-lg text-fg-faint">{hero.mock.prompt}</p>
-        <div className="mt-10 flex items-center justify-between text-fg-faint">
-          <Plus width={18} height={18} />
-          <Mic width={17} height={17} />
-        </div>
-      </div>
-      <div className="mt-4 flex items-center gap-2">
-        {["Analyze", "Compare", "Monitor"].map((chip, i) => (
-          <span
-            key={chip}
-            className="flex items-center gap-2 rounded-lg border border-border-strong/50 bg-bg/80 px-3.5 py-2 text-sm text-fg-dim"
-          >
-            <span className="text-fg-faint">
-              <MiniGlyph i={i + 3} />
-            </span>
-            {chip}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
+  return <AskComposer chips={3} className="w-[401px]" />;
 }
 
 function PulseMock() {
   return (
-    <div className="relative flex w-full max-w-[600px] items-center justify-center py-24">
-      <HeroStrands
-        config={PULSE_CONFIG}
-        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[125%] -translate-x-1/2 -translate-y-1/2"
-      />
-      <div className="relative z-10 w-full max-w-[290px] rounded-card border border-border-strong/40 bg-surface/90 shadow-xl shadow-black/40">
-        <div className="p-4">
-          <div className="flex items-center justify-between">
-            <span className="rounded-md bg-danger-soft/40 px-2.5 py-1 text-xs font-medium text-danger">
-              {pulseAlert.severity}
-            </span>
-            <span className="text-xs text-fg-faint">{pulseAlert.time}</span>
-          </div>
-          <p className="mt-3.5 text-[15px] font-medium text-fg-soft">{pulseAlert.title}</p>
-          <p className="mt-1.5 text-[13px] leading-snug text-fg-muted">{pulseAlert.body}</p>
-          <svg viewBox="0 0 260 70" className="mt-4 w-full">
-            <polyline
-              points="0,28 40,25 80,29 120,24 160,27 200,26 260,22"
-              fill="none"
-              stroke="#57534e"
-              strokeWidth="1.5"
+    <div className="w-[297px] rounded-2xl border border-[#262626] bg-[rgb(20,18,16)] p-4">
+      <div className="flex items-center gap-4">
+        <span className="rounded bg-danger-soft/60 px-2 py-1 text-[12px] leading-4 font-medium whitespace-pre text-danger">
+          {pulseAlert.severity}
+        </span>
+        <span className="flex-1 text-right text-[11px] leading-4 font-medium text-fg-faint">
+          {pulseAlert.time}
+        </span>
+      </div>
+
+      <div className="mt-4 flex flex-col gap-2">
+        <p className="text-[16px] leading-6 text-fg">{pulseAlert.title}</p>
+        <p className="text-[12px] leading-4 text-[rgb(115,115,115)]">{pulseAlert.body}</p>
+      </div>
+
+      {/* Baseline vs anomaly trace — the labels sit on the plot like the original */}
+      <div className="relative mt-4">
+        <svg viewBox="0 0 260 78" className="w-full">
+          {/* Faint horizontal divisions, like the original's yDivisions: 2 */}
+          {[0, 1, 2].map((i) => (
+            <line
+              key={i}
+              x1="0"
+              x2="260"
+              y1={7 + i * 25}
+              y2={7 + i * 25}
+              stroke="rgb(23,23,23)"
+              strokeWidth="1"
             />
-            <polyline
-              points="160,27 190,30 210,55 235,38 260,42"
-              fill="none"
-              stroke="#e5484d"
-              strokeWidth="1.5"
-            />
-            <circle cx="210" cy="55" r="3" fill="#e5484d" />
-            <text x="200" y="14" fill="#79716b" fontSize="10">
-              Baseline
-            </text>
-            <text x="175" y="68" fill="#e5484d" fontSize="10">
-              Anomaly
-            </text>
-          </svg>
-        </div>
-        <div className="flex items-center justify-between border-t border-border px-4 py-3 text-xs">
-          <span className="flex items-center gap-2 text-fg-muted">
-            <span className="flex h-4 w-4 items-center justify-center rounded bg-surface-2 font-mono text-[9px] text-fg-faint">
-              #
-            </span>
-            Sent to <span className="font-medium text-fg-dim">#product-alerts</span>
-          </span>
-          <span className="text-fg-faint">{pulseAlert.delivered}</span>
-        </div>
+          ))}
+          {/* Learned baseline */}
+          <polyline
+            points="0,8 65,15 130,8 195,13 260,9"
+            fill="none"
+            stroke="rgb(64,64,64)"
+            strokeWidth="1"
+          />
+          {/* Actual: flat, then the drop that trips the alert, then a partial
+              recovery — the original's series is 91,84,91,85,91,34,55. */}
+          <polyline
+            points="0,7 43,12.5 87,7 130,11.7 173,7"
+            fill="none"
+            stroke="rgb(64,64,64)"
+            strokeWidth="1"
+          />
+          <polyline
+            points="173,7 217,51.5 260,35"
+            fill="none"
+            stroke="#e5484d"
+            strokeWidth="1"
+          />
+          <circle cx="217" cy="51.5" r="3" fill="#e5484d" />
+        </svg>
+        <span className="absolute top-[21%] left-[91%] text-[11px] leading-4 font-medium text-[rgb(82,82,82)]">
+          Baseline
+        </span>
+        <span className="absolute top-[81%] left-[83%] text-[11px] leading-4 font-medium text-danger">
+          Anomaly
+        </span>
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] leading-4 font-medium">
+        <span className="flex h-4 w-4 items-center justify-center rounded bg-[rgb(23,23,23)] font-mono text-[9px] text-[rgb(82,82,82)]">
+          #
+        </span>
+        <span className="whitespace-pre text-fg-muted">
+          <span className="text-[rgb(115,115,115)]">Sent to</span> #product-alerts
+        </span>
+        <span className="flex-1 text-right text-fg-muted">{pulseAlert.delivered}</span>
       </div>
     </div>
   );
@@ -204,17 +176,50 @@ function PulseMock() {
 const mocks = { graph: <CortexMock />, ask: <AskMock />, pulse: <PulseMock /> };
 
 /**
- * Pinned feature scroller — ports the original "Scroll Progress Section":
- * the left text panels (Cortex / Ask / Pulse) scroll vertically while the right
- * visual is `position: sticky` (pinned to the viewport) and crossfades to the
- * active feature, with a 01/02/03 progress rail. Reduces to a simple stacked
- * layout on mobile (where the original hides the sticky column too).
+ * Pinned feature scroller — ports the original "Scroll Progress Section".
+ *
+ * The left text panels (Cortex / Ask / Pulse) scroll while the right column is
+ * `position: sticky`. That column is ONE WebGL strand field (`StrandMorph`)
+ * that morphs between a point cloud per feature, with the matching UI card
+ * carried in front of it. Both the morph and the card swap are driven by the
+ * left column's scroll progress, exactly as in the original:
+ *
+ *   index   = clamp(floor(progress * 3), 0, 2)
+ *   visible = triangle(clamp(progress, 1/6, 5/6), 3) * 0.5 + 0.3 > 0
+ *
+ * That second line is the handover gap — the card is hidden for the first and
+ * last 10% of each third, so the strands are alone while the shape changes.
+ *
+ * Reduces to a simple stacked layout on mobile, where the original hides the
+ * sticky column too.
  */
+
+/** Triangle wave over `sections` periods: -1 at each edge, +1 at each centre. */
+function triangle(x: number, sections: number) {
+  const period = 1 / sections;
+  const a = ((((x % period) % period) + period) % period) / period;
+  return a < 0.5 ? 4 * a - 1 : 3 - 4 * a;
+}
+
 export function FeatureSpotlights() {
   const [active, setActive] = useState(0);
-  // null until measured, so we mount each WebGL mock exactly once (desktop OR mobile)
+  const [cardVisible, setCardVisible] = useState(true);
+  // null until measured, so the WebGL field mounts exactly once (desktop only)
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
-  const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const panelsRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: panelsRef,
+    offset: ["start center", "end center"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (p) => {
+    const count = spotlights.length;
+    setActive(Math.min(Math.max(Math.floor(p * count), 0), count - 1));
+    const edge = 1 / (count * 2);
+    const clamped = Math.min(Math.max(p, edge), 1 - edge);
+    setCardVisible(triangle(clamped, count) * 0.5 + 0.3 > 0);
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 810px)");
@@ -224,35 +229,15 @@ export function FeatureSpotlights() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
-  // Which left panel is at viewport centre = the active feature.
-  useEffect(() => {
-    if (!isDesktop) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActive(Number((entry.target as HTMLElement).dataset.idx));
-          }
-        }
-      },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
-    );
-    panelRefs.current.forEach((el) => el && io.observe(el));
-    return () => io.disconnect();
-  }, [isDesktop]);
-
   return (
     <section className="relative">
       <div className="grid px-6 md:grid-cols-2 md:gap-14 md:px-10">
-        {/* LEFT — scrolling text panels (always SSR-rendered) */}
-        <div>
-          {spotlights.map((f, i) => (
+        {/* LEFT — scrolling text panels (always SSR-rendered). Its scroll
+            progress is what drives the morph, the card swap and the ruler. */}
+        <div ref={panelsRef}>
+          {spotlights.map((f) => (
             <div
               key={f.name}
-              data-idx={i}
-              ref={(el) => {
-                panelRefs.current[i] = el;
-              }}
               className="flex min-h-[70vh] flex-col justify-center py-16 md:min-h-screen md:py-0"
             >
               <ChromaticCascade
@@ -298,32 +283,82 @@ export function FeatureSpotlights() {
           ))}
         </div>
 
-        {/* RIGHT — sticky pinned visual + progress rail (desktop only) */}
+        {/* RIGHT — sticky strand field + swapping card + ruler (desktop only) */}
         <div className="hidden md:block">
-          <div className="sticky top-[68px] flex h-[calc(100vh-68px)] items-center gap-8">
-            <div
-              className="relative h-full flex-1"
-              style={{
-                WebkitMaskImage: "linear-gradient(270deg, #0000 6%, #000 48%)",
-                maskImage: "linear-gradient(270deg, #0000 6%, #000 48%)",
-              }}
-            >
-              {isDesktop &&
-                spotlights.map((f, i) => (
-                  <div
-                    key={f.name}
-                    aria-hidden={active !== i}
-                    className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-out ${
-                      active === i
-                        ? "opacity-100 blur-0"
-                        : "pointer-events-none translate-y-3 opacity-0 blur-[2px]"
-                    }`}
-                  >
-                    {mocks[f.mock]}
-                  </div>
-                ))}
+          <div className="sticky top-0 flex h-screen flex-col items-center justify-center">
+            <div className="relative flex h-[508px] w-full items-center justify-center gap-4">
+              <div
+                className="relative h-full flex-1"
+                style={{
+                  // The original masks both axes, fading the field out at all
+                  // four edges of the sticky frame.
+                  WebkitMaskImage:
+                    "linear-gradient(0deg, #0000 0%, #000 10%, #000 90%, #0000 100%), linear-gradient(90deg, #0000 0%, #000 10%, #000 90%, #0000 100%)",
+                  WebkitMaskComposite: "source-in",
+                  maskImage:
+                    "linear-gradient(0deg, #0000 0%, #000 10%, #000 90%, #0000 100%), linear-gradient(90deg, #0000 0%, #000 10%, #000 90%, #0000 100%)",
+                  maskComposite: "intersect",
+                }}
+              >
+                {isDesktop && (
+                  <StrandMorph
+                    shapes={MORPH_SHAPES}
+                    currentShape={active}
+                    className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2"
+                    cameraFov={34}
+                    cameraPosition={{ x: 0, y: 0, z: 1.8 }}
+                    tipRadius={0.003}
+                    tipLayers={8}
+                    sizeVariance={0.5}
+                    dispersion={0.8}
+                    dispersionBand={0.9}
+                    dispersionOffset={0.05}
+                    simSpring={60}
+                    simDamping={7}
+                    simMaxVelocity={9.5}
+                    springVariance={22.6}
+                    opacitySpeed={5.3}
+                  />
+                )}
+
+                <AnimatePresence mode="wait" initial={false}>
+                  {isDesktop && cardVisible && (
+                    <motion.div
+                      key={active}
+                      className="pointer-events-none absolute inset-0 flex items-center justify-center px-3 select-none"
+                      initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                        filter: "blur(0px)",
+                        transition: {
+                          duration: 0.1,
+                          ease: "easeOut",
+                          filter: { duration: 0.3, ease: "easeOut" },
+                          scale: { duration: 0.3, ease: "easeOut" },
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0.95,
+                        filter: "blur(8px)",
+                        transition: { duration: 0.15, ease: "easeIn" },
+                      }}
+                    >
+                      {mocks[spotlights[active].mock]}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
-            <ProgressRail active={active} count={spotlights.length} />
+            {/* Rail: full-height strip, vertically centring a 300px ruler. */}
+            <div className="absolute top-0 right-px bottom-0 flex items-center">
+              <ProgressRuler
+                target={panelsRef}
+                sections={spotlights.length}
+                className="h-[300px]"
+              />
+            </div>
           </div>
         </div>
       </div>

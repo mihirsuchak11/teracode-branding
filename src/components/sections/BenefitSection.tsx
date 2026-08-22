@@ -1,10 +1,12 @@
 import type { FeatureBenefit } from "@/lib/types";
 import type { FeatureMidSection } from "@/content/features";
-import { stack, hero } from "@/content/home";
+
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ArrowRight, ArrowUpRight } from "@/components/ui/icons";
+import { FeatureAccordion } from "@/components/sections/FeatureAccordion";
+import { AskChatAnim } from "@/components/sections/AskChatAnim";
 
 /* Dotted-grid backdrop behind every demo mock, as in the original panels. */
 const dots =
@@ -64,43 +66,69 @@ const icons = {
 
 /* --------------------------------------------------------------- cortex */
 
+/* Both mocks below are laid out at the original's exact pixel geometry:
+   a 320x428 assembly on the left panel, a 301x362 stack on the right. */
 function EntityResolutionMock() {
   const sources = [
     { name: "Pipecloud", value: "John Smith", color: "#3e63dd", glyph: "swirl" },
     { name: "Gridwork", value: "J. Smith", color: "#10b981", glyph: "clover" },
     { name: "VaultDB", value: "jsmith@co.com", color: "#e5484d", glyph: "triangle" },
   ];
+  const chip =
+    "flex h-[19px] items-center rounded-full bg-[#1c1917] px-2 text-[11px] font-medium leading-[15px] text-fg";
   return (
-    <div className="flex items-center gap-8">
-      <div className="flex flex-col gap-3">
-        <span className="self-start rounded-md border border-border bg-bg-deep px-2 py-0.5 font-mono text-[10px] text-fg-faint">
-          Records found
-        </span>
-        {sources.map((s) => (
-          <div key={s.name} className="w-[160px] rounded-lg border border-border bg-bg-deep px-3 py-2">
-            <p className="flex items-center gap-1.5 font-mono text-[10px] text-fg-faint">
-              <SourceGlyph glyph={s.glyph} color={s.color} size={11} />
-              {s.name}
-            </p>
-            <p className="mt-1 text-[13px] text-fg-soft">{s.value}</p>
-          </div>
+    <div className="relative h-[428px] w-[320px] shrink-0">
+      <span className={`absolute left-0 top-0 ${chip}`}>Records found</span>
+
+      {sources.map((s, i) => (
+        <div
+          key={s.name}
+          className="absolute left-0 h-[68px] w-[189px] rounded-xl border border-border bg-[#141210] p-3"
+          style={{ top: 24 + i * 80 }}
+        >
+          <p className="flex h-5 items-center gap-2 text-xs leading-4 text-fg-faint">
+            <SourceGlyph glyph={s.glyph} color={s.color} size={14} />
+            {s.name}
+          </p>
+          <p className="mt-1 text-sm leading-5 text-fg">{s.value}</p>
+        </div>
+      ))}
+
+      {/* elbows from each card's right edge converging onto one drop line */}
+      <svg
+        className="absolute"
+        style={{ left: 189, top: 58, width: 26, height: 222 }}
+        viewBox="0 0 26 222"
+        fill="none"
+        aria-hidden
+      >
+        {[0, 80, 160].map((o) => (
+          <path
+            key={o}
+            d={`M0 ${o + 2} H14 A12 12 0 0 1 26 ${o + 14} V222`}
+            stroke="#292524"
+            strokeWidth={1}
+          />
         ))}
-      </div>
-      <div className="h-px w-10 shrink-0 bg-border-strong" />
-      <div className="relative w-[180px] rounded-lg border border-border-strong/60 bg-surface px-4 py-3.5">
-        <span className="absolute -top-2.5 right-3 rounded-md border border-border bg-bg-deep px-2 py-0.5 font-mono text-[10px] text-fg-faint">
-          Synced
-        </span>
-        <p className="text-sm font-medium text-fg">J. Smith</p>
-        <p className="mt-0.5 font-mono text-[10px] text-fg-faint">john.smith@company.com</p>
-        <p className="mt-4 font-mono text-[10px] text-fg-faint">Synced from:</p>
-        <div className="mt-2 flex gap-2">
+      </svg>
+
+      <span className={`absolute right-0 ${chip}`} style={{ top: 256 }}>
+        Synced
+      </span>
+      <div
+        className="absolute h-[148px] w-[211px] rounded-xl border border-border bg-[#141210] p-3"
+        style={{ left: 109, top: 280 }}
+      >
+        <p className="text-base leading-6 text-fg">J. Smith</p>
+        <p className="text-sm leading-5 text-fg-faint">john.smith@company.com</p>
+        <p className="mt-6 font-mono text-xs font-medium leading-4 text-fg-faint">Synced from:</p>
+        <div className="mt-1 flex gap-1">
           {sources.map((s) => (
             <span
               key={s.name}
-              className="flex h-7 w-7 items-center justify-center rounded-md border border-border bg-bg-deep"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-[#1c1917]"
             >
-              <SourceGlyph glyph={s.glyph} color={s.color} size={13} />
+              <SourceGlyph glyph={s.glyph} color={s.color} size={20} />
             </span>
           ))}
         </div>
@@ -111,27 +139,28 @@ function EntityResolutionMock() {
 
 function LiveFeedMock() {
   const rows = [
-    { title: "Account updated", sub: "Pipecloud", time: "just now", live: true },
-    { title: "New payment linked", sub: "Stride", time: "12s ago", live: true },
-    { title: "Record created", sub: "VaultDB", time: "28s ago", live: true },
-    { title: "Entity resolved", sub: "Pipecloud", time: "1m ago", live: false },
-    { title: "Subscription changed", sub: "Stride", time: "2m ago", live: false },
+    { title: "Account updated", sub: "Pipecloud", time: "just now" },
+    { title: "New payment linked", sub: "Stride", time: "12s ago" },
+    { title: "Record created", sub: "VaultDB", time: "28s ago" },
+    { title: "Entity resolved", sub: "Pipecloud", time: "1m ago" },
+    { title: "Subscription changed", sub: "Stride", time: "2m ago" },
   ];
   return (
-    <div className="w-full max-w-[350px] divide-y divide-border rounded-xl border border-border bg-bg-deep">
+    <div className="flex w-[301px] shrink-0 flex-col gap-2">
       {rows.map((r) => (
-        <div key={r.title} className="flex items-center gap-3 px-4 py-3">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border bg-surface text-fg-faint">
+        <div
+          key={r.title}
+          className="relative flex h-[66px] items-center gap-3 rounded-xl border border-border bg-[#141210] p-3"
+        >
+          <span className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-md bg-[#1c1917] text-fg-faint">
             <NodeIcon d={icons.sync} />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="truncate font-mono text-xs text-fg-soft">{r.title}</p>
-            <p className="mt-0.5 font-mono text-[10px] text-fg-faint">{r.sub}</p>
+            <p className="truncate font-mono text-sm font-medium leading-5 text-fg">{r.title}</p>
+            <p className="mt-0 text-xs leading-4 text-fg-muted">{r.sub}</p>
           </div>
-          <span className="flex items-center gap-1.5 font-mono text-[10px] text-fg-faint">
-            {r.time}
-            <span className={`h-1.5 w-1.5 rounded-full ${r.live ? "bg-brand" : "bg-fg-disabled"}`} />
-          </span>
+          <span className="self-end text-xs font-medium leading-4 text-fg-faint">{r.time}</span>
+          <span className="absolute right-3 top-3 h-1.5 w-1.5 rounded-full bg-brand" />
         </div>
       ))}
     </div>
@@ -147,41 +176,55 @@ function GraphExplorerMock() {
     { icon: "card" },
   ];
   return (
-    <div className="flex items-center gap-8">
-      <div className="flex flex-col items-center">
-        {chain.map((n, i) => (
-          <div key={i} className="flex flex-col items-center">
-            {i > 0 && <span className="h-6 w-px bg-border-strong" />}
-            {n.active ? (
-              <span className="flex items-center gap-2 rounded-lg border border-border-strong bg-surface-2 px-3.5 py-2 font-mono text-xs text-fg">
+    <div className="relative h-[372px] w-[366px] shrink-0">
+      {/* the node chain is centred on x=194 of this box; 50px nodes, 32px links */}
+      <div className="absolute left-[46px] top-0 flex w-[50px] flex-col items-center gap-8">
+        {chain.map((n, i) =>
+          n.active ? (
+            <span
+              key={i}
+              className="flex h-11 items-center gap-2 rounded-xl bg-[#1c1917] px-2 font-mono text-xs font-medium leading-4 text-fg"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-border text-fg-faint">
                 <NodeIcon d={icons.sync} />
-                Subscription
               </span>
-            ) : (
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-bg-deep text-fg-faint">
-                <NodeIcon d={icons[n.icon]} />
-              </span>
-            )}
-          </div>
-        ))}
+              Subscription
+            </span>
+          ) : (
+            <span
+              key={i}
+              className="flex h-[50px] w-[50px] items-center justify-center rounded-xl border border-border bg-[#141210] text-fg-faint"
+            >
+              <NodeIcon d={icons[n.icon]} />
+            </span>
+          ),
+        )}
       </div>
-      <div className="w-[210px] rounded-xl border border-border-strong/60 bg-surface p-4">
-        <div className="flex items-center justify-between">
+      {/* hairlines sitting in the 32px gaps */}
+      {[50, 132, 208, 290].map((t) => (
+        <span key={t} className="absolute left-[71px] h-8 w-px bg-border" style={{ top: t }} />
+      ))}
+
+      <div
+        className="absolute h-[140px] w-[211px] rounded-xl border border-border bg-[#141210] p-3"
+        style={{ left: 154, top: 116 }}
+      >
+        <div className="flex h-4 items-center justify-between">
           <SourceGlyph glyph="swirl" color="#6e56cf" size={16} />
-          <span className="flex items-center gap-1.5 text-xs text-fg-dim">
+          <span className="flex items-center gap-1.5 text-xs font-medium leading-4 text-fg">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
             Active
           </span>
         </div>
-        <div className="mt-3 space-y-2 text-[13px]">
+        <div className="mt-3">
           {[
             ["Plan", "Enterprise"],
             ["Renewal", "Dec 14, 2025"],
             ["MRR", "$1,240"],
           ].map(([k, v]) => (
-            <p key={k} className="flex items-center justify-between">
-              <span className="text-fg-faint">{k}</span>
-              <span className="font-medium text-fg-soft">{v}</span>
+            <p key={k} className="flex h-7 items-center justify-between text-sm leading-5">
+              <span className="font-medium text-fg-muted">{k}</span>
+              <span className="font-medium text-fg">{v}</span>
             </p>
           ))}
         </div>
@@ -331,21 +374,11 @@ function ShareMock() {
 
 /** Full-width query band over the wave art, as on the original Ask page. */
 function AskWavesPanel() {
+  /* The original runs the same particle-grid + chat loop as the home page's
+     Statement section here, in a 500px full-width band. */
   return (
-    <div
-      className="flex items-center justify-center border-t border-border bg-[length:100%_auto] bg-bottom bg-no-repeat px-6 py-24"
-      style={{ backgroundImage: "url(/art/statement-waves.png)" }}
-    >
-      <div className="w-full max-w-[400px]">
-        <div className="flex items-center justify-between gap-4 rounded-xl border border-border-strong/60 bg-bg/90 px-4 py-3.5 backdrop-blur-[2px]">
-          <span className="text-[13px] text-fg">Which accounts are at risk this quarter?</span>
-          <span className="shrink-0 font-mono text-[11px] text-fg-faint">Thinking</span>
-        </div>
-        <div className="mt-3 rounded-xl border border-border bg-bg/80 px-4 py-3 font-mono text-xs backdrop-blur-[2px]">
-          <span className="text-brand">{hero.mock.status[1].split(" ")[0]}</span>
-          <span className="text-fg-faint"> {hero.mock.status[1].split(" ").slice(1).join(" ")}</span>
-        </div>
-      </div>
+    <div className="h-[500px] overflow-hidden border-t border-border">
+      <AskChatAnim />
     </div>
   );
 }
@@ -478,13 +511,13 @@ function PanelText({ benefit }: { benefit: FeatureBenefit }) {
         {
           kind: "text",
           tag: "h3",
-          className: "text-[17px] font-semibold text-fg",
+          className: "text-[18px] font-semibold leading-6 text-fg",
           segments: [{ text: benefit.title }],
         },
         {
           kind: "text",
           tag: "p",
-          className: "mt-1.5 max-w-[590px] text-base leading-relaxed text-fg-muted",
+          className: "mt-2 text-base leading-6 text-fg-muted",
           segments: [{ text: benefit.body }],
         },
       ]}
@@ -492,10 +525,40 @@ function PanelText({ benefit }: { benefit: FeatureBenefit }) {
   );
 }
 
-function Panel({ benefit, mock }: { benefit: FeatureBenefit; mock: React.ReactNode }) {
+function Panel({
+  benefit,
+  mock,
+  dense = false,
+  stage = 480,
+}: {
+  benefit: FeatureBenefit;
+  mock: React.ReactNode;
+  dense?: boolean;
+  /** Height of the dotted stage — 480 on cortex, 440 on pulse. */
+  stage?: number;
+}) {
+  /* Two-up panels (cortex, pulse) are 40px-padded with a 480px stage; the
+     three-up ask panels inset the stage 20px and the copy 36px. */
+  if (dense) {
+    return (
+      <div className="flex flex-col px-9 pb-9 pt-5">
+        <Reveal
+          className={`-mx-4 flex h-[422px] items-center justify-center overflow-hidden ${dots}`}
+        >
+          {mock}
+        </Reveal>
+        <div className="mt-14">
+          <PanelText benefit={benefit} />
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className="flex flex-col p-10 pb-9">
-      <Reveal className={`flex min-h-[430px] flex-1 items-center justify-center ${dots} p-6`}>
+    <div className="flex flex-col p-10">
+      <Reveal
+        className={`flex items-center justify-center overflow-hidden ${dots}`}
+        style={{ height: stage }}
+      >
         {mock}
       </Reveal>
       <div className="mt-10">
@@ -523,15 +586,23 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
           }`}
         >
           {inGrid.map((benefit, i) => (
-            <Panel key={benefit.title} benefit={benefit} mock={mocks[i]} />
+            <Panel
+              key={benefit.title}
+              benefit={benefit}
+              mock={mocks[i]}
+              dense={across === 3}
+              stage={slug === "pulse" ? 440 : 480}
+            />
           ))}
         </div>
         {fullWidth && (
           <div className="grid border-t border-border md:grid-cols-2">
-            <div className="flex flex-col justify-end p-10 pb-12">
+            <div className="flex flex-col justify-end p-10">
               <PanelText benefit={fullWidth} />
             </div>
-            <Reveal className={`m-10 flex min-h-[440px] items-center justify-center ${dots} p-6`}>
+            <Reveal
+              className={`m-10 flex h-[446px] items-center justify-center overflow-hidden ${dots}`}
+            >
               {mocks[across]}
             </Reveal>
           </div>
@@ -543,96 +614,11 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
 
 /* --------------------------------------------------------- mid sections */
 
-function TwoToneTitle({ title, className = "" }: { title: string; className?: string }) {
-  const [first, ...rest] = title.split("\n");
-  return (
-    <ChromaticLines
-      as="h2"
-      className={`text-3xl font-medium leading-[1.18] tracking-tight md:text-[38px] ${className}`}
-      segments={[
-        { text: `${first} `, className: "text-fg-muted" },
-        { text: rest.join(" "), className: "text-fg" },
-      ]}
-    />
-  );
-}
 
-function ConnectedSourcesCard() {
-  return (
-    <div className="w-full max-w-[310px] rounded-xl border border-border bg-bg-deep">
-      <p className="border-b border-border px-4 py-2.5 text-[13px] text-fg-faint">
-        Connected sources
-      </p>
-      {stack.sources.map((s) => (
-        <div key={s.name} className="flex items-center gap-3.5 border-b border-border px-4 py-3">
-          <SourceGlyph glyph={s.glyph} color={s.color} size={19} />
-          <div>
-            <p className="text-[15px] font-medium text-fg-soft">{s.name}</p>
-            <p className="mt-0.5 font-mono text-xs">
-              <span className="text-brand">{s.a}</span>
-              <span className="text-fg-disabled"> • {s.b}</span>
-            </p>
-          </div>
-        </div>
-      ))}
-      <p className="px-4 py-3 font-mono text-[11px] text-fg-faint">
-        {stack.totals[0].value} {stack.totals[0].label}
-        <span className="pl-4">
-          {stack.totals[1].value} {stack.totals[1].label}
-        </span>
-      </p>
-    </div>
-  );
-}
 
 /** Cortex mid: two-tone headline + accordion copy beside the connected-sources card. */
-export function CortexMidSection({ mid }: { mid: FeatureMidSection }) {
-  const [active, ...others] = mid.items;
-  return (
-    <section className="grid gap-14 px-6 py-24 md:grid-cols-2 md:px-10 md:py-32">
-      <div>
-        <TwoToneTitle title={mid.title} />
-        <Reveal>
-          <div className="mt-24 max-w-[580px]">
-            <h3 className="text-[17px] font-semibold text-fg">{active.title}</h3>
-            <p className="mt-2 max-w-[510px] text-[15px] leading-relaxed text-fg-muted">
-              {active.body}
-            </p>
-            <div className="relative mt-7 h-px bg-border">
-              <span className="absolute left-0 top-0 h-[2px] w-5 -translate-y-px bg-fg" />
-            </div>
-            {others.map((item) => (
-              <h3 key={item.title} className="mt-9 text-[17px] font-semibold text-fg">
-                {item.title}
-              </h3>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-      <Reveal className={`flex items-center justify-center ${dots} p-10`}>
-        <ConnectedSourcesCard />
-      </Reveal>
-    </section>
-  );
-}
 
 /* Small decorative marks on the right edge of pulse accordion rows. */
-function RowMark({ kind }: { kind: "wave" | "dots" }) {
-  if (kind === "wave") {
-    return (
-      <svg width={26} height={12} viewBox="0 0 26 12" fill="none" stroke="#57534e" strokeWidth={1.3}>
-        <path d="M1 9c4 0 4-6 8-6s4 6 8 6 4-4 8-4" strokeDasharray="2 2.5" />
-      </svg>
-    );
-  }
-  return (
-    <svg width={26} height={4} viewBox="0 0 26 4" fill="#57534e">
-      {[1, 7, 13, 19, 25].map((x) => (
-        <circle key={x} cx={x} cy={2} r={1.2} />
-      ))}
-    </svg>
-  );
-}
 
 function BaselineChartCard() {
   return (
@@ -691,44 +677,25 @@ function BaselineChartCard() {
 /** Pulse mid: centered two-tone headline band, then chart + accordion tiles. */
 export function PulseMidSection({ mid }: { mid: FeatureMidSection }) {
   const [first, ...rest] = mid.title.split("\n");
-  const [active, ...others] = mid.items;
   return (
     <>
-      <section className="px-6 py-28 md:py-40">
+      {/* 390px band with the two-tone line centred in it */}
+      <section className="flex h-[390px] items-center justify-center px-6">
         <ChromaticLines
           as="h2"
-          className="mx-auto max-w-[640px] text-3xl font-medium leading-[1.25] tracking-tight text-center md:text-[30px]"
+          className="max-w-[560px] text-center text-[28px] font-semibold tracking-tight md:text-[32px] md:leading-[34px]"
           segments={[
             { text: `${first} `, className: "text-fg-muted" },
             { text: rest.join(" "), className: "text-fg" },
           ]}
         />
       </section>
-      <section className="grid items-center gap-16 border-t border-border px-6 py-20 md:grid-cols-[1.08fr_1fr] md:px-10 md:py-24">
-        <Reveal className={`flex items-center justify-center ${dots} px-6 py-16`}>
+      <section className="grid items-center gap-12 border-t border-border px-6 py-16 md:grid-cols-[668fr_588fr] md:px-10">
+        <Reveal className={`flex h-[450px] items-center justify-center overflow-hidden ${dots}`}>
           <BaselineChartCard />
         </Reveal>
         <Reveal>
-          <div className="flex items-start justify-between gap-6">
-            <h3 className="text-lg font-semibold text-fg">{active.title}</h3>
-            <span className="mt-2 shrink-0">
-              <RowMark kind="wave" />
-            </span>
-          </div>
-          <p className="mt-3 max-w-[520px] text-[15px] leading-relaxed text-fg-muted">
-            {active.body}
-          </p>
-          {others.map((item) => (
-            <div
-              key={item.title}
-              className="mt-7 flex items-center justify-between gap-6 border-t border-border pt-7"
-            >
-              <h3 className="text-lg font-semibold text-fg">{item.title}</h3>
-              <span className="shrink-0">
-                <RowMark kind="dots" />
-              </span>
-            </div>
-          ))}
+          <FeatureAccordion items={mid.items} muteClosed bodyGap="mt-4" dividers="all" marks />
         </Reveal>
       </section>
     </>

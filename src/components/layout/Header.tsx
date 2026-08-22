@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav } from "@/content/site";
-import { ChevronDown, Close, LogoMark, Menu } from "@/components/ui/icons";
+import { ChevronDown, Close, LogoMark, LogoWord, Menu } from "@/components/ui/icons";
 
 function Dropdown({
   label,
@@ -24,14 +24,18 @@ function Dropdown({
         aria-expanded={open}
         onClick={onToggle}
         onMouseEnter={() => !open && onToggle()}
-        className={`flex items-center gap-1.5 px-3 py-2 text-base transition-colors ${
-          open ? "text-fg" : "text-fg-muted hover:text-fg"
-        }`}
+        className="flex items-center gap-1 p-2"
       >
-        {label}
+        <span
+          className={`px-1.5 text-sm font-medium leading-5 transition-colors ${
+            open ? "text-fg" : "text-fg-soft hover:text-fg"
+          }`}
+        >
+          {label}
+        </span>
         <ChevronDown
-          width={13}
-          height={13}
+          width={16}
+          height={16}
           className={`text-fg-faint transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
@@ -90,15 +94,15 @@ export function Header() {
   const close = () => setOpenMenu(null);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-[68px] border-b border-border bg-bg">
-      <div className="mx-4 flex h-full items-center px-6 md:mx-10 md:px-10 lg:mx-16">
-        <Link href="/" className="flex items-center gap-2.5" onClick={close}>
+    <header className="fixed inset-x-0 top-0 z-50 h-[68px] bg-bg">
+      <div className="mx-4 flex h-full items-center gap-10 px-6 md:mx-10 md:px-10 lg:mx-16">
+        <Link href="/" className="flex items-center gap-2" onClick={close}>
           <LogoMark className="text-fg" />
-          <span className="text-[19px] font-semibold tracking-tight text-fg">Strand</span>
+          <LogoWord className="text-fg" />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="ml-24 hidden items-center gap-2 md:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           <Dropdown
             label="Features"
             open={openMenu === "features"}
@@ -130,9 +134,11 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-2 text-base text-fg-muted transition-colors hover:text-fg"
+              className="flex items-center p-2"
             >
-              {link.label}
+              <span className="px-1.5 text-sm font-medium leading-5 text-fg-soft transition-colors hover:text-fg">
+                {link.label}
+              </span>
             </Link>
           ))}
         </nav>
@@ -140,9 +146,11 @@ export function Header() {
         <div className="ml-auto hidden md:block">
           <Link
             href={nav.cta.href}
-            className="inline-flex h-10 items-center rounded-[10px] bg-fg-soft px-5 text-sm font-medium text-bg transition-colors hover:bg-fg"
+            className="inline-flex items-center rounded-lg bg-fg-soft p-2 transition-colors hover:bg-fg"
           >
-            {nav.cta.label}
+            <span className="px-1.5 text-sm font-medium leading-5 text-[#1c1917]">
+              {nav.cta.label}
+            </span>
           </Link>
         </div>
 

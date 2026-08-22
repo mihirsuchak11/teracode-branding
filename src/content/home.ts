@@ -85,13 +85,18 @@ export const stack = {
   title: "Connect your stack",
   body: "Monitoring, code, observability, cloud, CI/CD systems, messaging, and even homegrown tooling.",
   cta: { label: "View integrations", href: "/integrations" },
+  label: "Connected sources",
+  addLabel: "Add integration",
+  /** `logo` files are the original site's own brand marks, saved from its DOM. */
   sources: [
-    { name: "Chatdock", a: "9.841 conversations", b: "204 open", color: "#79716b", glyph: "waveform" },
-    { name: "VaultDB", a: "38 schemes", b: "6.4M rows", color: "#e5484d", glyph: "triangle" },
-    { name: "Stride", a: "$2.4 MMR", b: "1,204 subscriptions", color: "#6e56cf", glyph: "swirl" },
-    { name: "ThreadBase", a: "42 channels", b: "alerts enabled", color: "#36c5f0", glyph: "clover" },
-    { name: "Pipecloud", a: "874 accounts", b: "12,400 records", color: "#3e63dd", glyph: "swirl" },
+    { name: "Chatdock", a: "9.841 conversations", b: "204 open", logo: "/logos/chatdock.svg" },
+    { name: "VaultDB", a: "38 schemes", b: "6.4M rows", logo: "/logos/vaultdb.svg" },
+    { name: "Stride", a: "$2.4 MMR", b: "1,204 subscriptions", logo: "/logos/stride.svg" },
+    { name: "ThreadBase", a: "42 channels", b: "alerts enabled", logo: "/logos/threadbase.svg" },
+    { name: "Pipecloud", a: "874 accounts", b: "12,400 records", logo: "/logos/pipecloud.svg" },
   ],
+  /** The dim 3-wide tile grid beside the list. */
+  tiles: Array.from({ length: 11 }, (_, i) => `/logos/tile-${String(i).padStart(2, "0")}.svg`),
   totals: [
     { value: "41.2M", label: "records indexed" },
     { value: "0", label: "errors" },
@@ -119,6 +124,51 @@ export const statementMock = {
     { name: "Apex Systems", risk: "Medium", pill: "Usage -40%", dim: true },
   ],
   actions: ["Export CSV", "Share with team"],
+};
+
+/**
+ * Copy + colours for the looping chat demo in the Statement section, taken
+ * verbatim from the original "Ask Chat Anim" Framer component.
+ */
+export const askChat = {
+  placeholder: "How can I help today?",
+  message: "Which accounts are at risk this quarter?",
+  thinkingLabel: "Thinking",
+  resultsLabel: "3 Results",
+  chips: [
+    { icon: "analyze", label: "Analyze" },
+    { icon: "compare", label: "Compare" },
+    { icon: "monitor", label: "Monitor" },
+    { icon: "report", label: "Report" },
+  ],
+  ticker: ["Scanning Salesforce", "Scoring by churn signal weight", "3 accounts flagged"],
+  rows: [
+    {
+      name: "Meridian Corp",
+      risk: "High risk",
+      reason: "No login in 30d",
+      tint: "rgb(229, 72, 77)",
+      tintSoft: "rgba(229, 72, 77, 0.2)",
+    },
+    {
+      name: "Apex Systems",
+      risk: "Medium",
+      reason: "Usage -40%",
+      tint: "rgb(249, 171, 0)",
+      tintSoft: "rgba(249, 171, 0, 0.2)",
+    },
+    {
+      name: "Acme Corp",
+      risk: "High Risk",
+      reason: "Ticket spike",
+      tint: "rgb(229, 72, 77)",
+      tintSoft: "rgba(229, 72, 77, 0.2)",
+    },
+  ],
+  resultActions: [
+    { icon: "export", label: "Export CSV" },
+    { icon: "share", label: "Share with team" },
+  ],
 };
 
 export const testimonial = {

@@ -1,19 +1,15 @@
-/* eslint-disable @next/next/no-img-element */
 import { notFound } from "next/navigation";
 import { features, featureExtras, featureHero, getFeature } from "@/content/features";
 import type { FeaturePage as Feature } from "@/lib/types";
 import { buildMetadata } from "@/lib/metadata";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
-import { ChevronDown } from "@/components/ui/icons";
-import {
-  FeatureShowcase,
-  CortexMidSection,
-  PulseMidSection,
-} from "@/components/sections/BenefitSection";
+import { FeatureShowcase, PulseMidSection } from "@/components/sections/BenefitSection";
+import { CortexMidPanels } from "@/components/sections/CortexMidPanels";
 import { CapabilityChips } from "@/components/sections/CapabilityChips";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { FeatureStrands } from "@/components/three/FeatureStrands";
 
 export function generateStaticParams() {
   return features.map((feature) => ({ slug: feature.slug }));
@@ -30,22 +26,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
-function Breadcrumb({ name }: { name: string }) {
+/* The original's breadcrumb block is 58px tall with the rule at its baseline,
+   running from the frame edge to wherever the 480px hero graphic begins. */
+function Breadcrumb({ name, ruleToArt = true }: { name: string; ruleToArt?: boolean }) {
   return (
     <div>
-      <nav className="flex items-center gap-3 px-6 pt-7 text-[15px] md:px-10">
-        <span className="text-fg-dim">Features</span>
-        <ChevronDown width={12} height={12} className="-rotate-90 text-fg-disabled" />
+      <nav className="flex h-[58px] items-center gap-2 px-6 pt-5 pb-[18px] text-sm leading-5 md:px-10">
+        <span className="text-fg">Features</span>
+        <span className="flex w-4 justify-center font-mono text-xs text-fg-faint">∴</span>
         <span className="text-fg-faint">{name}</span>
       </nav>
-      <div className="mt-6 h-px w-[57%] bg-border" />
+      <div
+        className={`h-px bg-border ${ruleToArt ? "w-[calc(100%-480px)]" : "w-full max-w-[692px]"}`}
+      />
     </div>
   );
 }
 
 function HeroBadge({ name }: { name: string }) {
   return (
-    <span className="inline-flex rounded-full border border-border-strong/70 bg-surface px-3.5 py-1 text-[13px] text-fg-soft">
+    <span className="inline-flex h-6 items-center rounded-full bg-[#1c1917] px-4 text-xs font-medium leading-4 text-fg">
       {name}
     </span>
   );
@@ -64,73 +64,63 @@ function HeroCtas({ className = "" }: { className?: string }) {
 
 function Hero({ feature }: { feature: Feature }) {
   const conf = featureHero[feature.slug] ?? { layout: "art-top", ctas: false };
-  const art = `/art/feature-${feature.slug}-art.png`;
   const titleLines = feature.heroTitle.split("\n");
 
+  /* "centered": the strand graphic sits in the flow, centred above the copy. */
   if (conf.layout === "centered") {
     return (
-      <section className="flex flex-col items-center px-6 pb-24 text-center md:px-10">
-        <img
-          src={art}
-          alt=""
-          className="art-blend pointer-events-none -mb-4 mt-2 w-[400px] max-w-full"
-        />
-        <Reveal className="flex flex-col items-center">
+      <section className="flex flex-col items-center px-6 pb-[61px] pt-px text-center md:px-20">
+        <div className="pointer-events-none h-[457px] w-[460px] max-w-full">
+          <FeatureStrands slug={feature.slug} />
+        </div>
+        <Reveal className="flex w-full flex-col items-center">
           <HeroBadge name={feature.name} />
-          <h1 className="mt-8 text-5xl font-medium leading-[1.06] tracking-tight text-fg md:text-[64px]">
+          <h1 className="mt-10 w-full text-display-hero text-fg">
             {titleLines.map((line) => (
               <span key={line} className="block">
                 {line}
               </span>
             ))}
           </h1>
-          <p className="mt-6 max-w-[620px] text-[17px] leading-relaxed text-fg-muted">
-            {feature.heroBody}
-          </p>
+          <p className="mt-3 w-full text-base leading-6 text-fg-muted">{feature.heroBody}</p>
           {conf.ctas && <HeroCtas className="mt-10 justify-center" />}
         </Reveal>
       </section>
     );
   }
 
+  /* "split": copy in a 612px column, the strand graphic parked to its right. */
   if (conf.layout === "split") {
     return (
-      <section className="relative grid items-center gap-10 px-6 pb-12 pt-4 md:grid-cols-[1fr_auto] md:px-10">
-        <Reveal>
+      <section className="relative px-6 pb-[138px] md:px-10">
+        <div className="pointer-events-none absolute right-[78px] top-[44px] hidden h-[554px] w-[536px] lg:block">
+          <FeatureStrands slug={feature.slug} />
+        </div>
+        <Reveal className="max-w-[612px] pt-[98px]">
           <HeroBadge name={feature.name} />
-          <h1 className="mt-7 whitespace-pre-line text-4xl font-medium leading-[1.12] tracking-tight text-fg md:text-[52px]">
+          <h1 className="mt-10 whitespace-pre-line text-display-hero text-fg">
             {feature.heroTitle}
           </h1>
-          <p className="mt-6 max-w-[470px] text-base leading-relaxed text-fg-muted">
-            {feature.heroBody}
-          </p>
-          {conf.ctas && <HeroCtas className="mt-9" />}
+          <p className="mt-5 text-base leading-6 text-fg-muted">{feature.heroBody}</p>
+          {conf.ctas && <HeroCtas className="mt-10" />}
         </Reveal>
-        <img
-          src={art}
-          alt=""
-          className="art-blend pointer-events-none hidden w-[480px] justify-self-end md:block"
-        />
       </section>
     );
   }
 
+  /* "art-top": the 480px strand graphic is pinned to the frame's top-right by
+     the page shell, so the copy simply starts below it. */
   return (
-    <section className="relative px-6 pb-16 md:px-10">
-      <img
-        src={art}
-        alt=""
-        className="art-blend pointer-events-none absolute -top-4 right-6 hidden w-[420px] lg:block"
-      />
-      <Reveal className="pt-[430px]">
+    <section className="relative px-6 pb-[60px] md:px-10">
+      <Reveal className="pt-[440px]">
         <HeroBadge name={feature.name} />
-        <h1 className="mt-7 whitespace-pre-line text-5xl font-medium leading-[1.08] tracking-tight text-fg md:text-[64px]">
+        <h1 className="mt-10 whitespace-pre-line text-display-hero text-fg">
           {feature.heroTitle}
         </h1>
-        <p className="mt-7 max-w-[620px] text-[17px] leading-relaxed text-fg-muted">
-          {feature.heroBody}
-        </p>
-        {conf.ctas && <HeroCtas className="mt-9" />}
+        <div className="mt-[100px] flex flex-wrap items-center justify-between gap-8">
+          <p className="max-w-[418px] text-base leading-6 text-fg">{feature.heroBody}</p>
+          <HeroCtas />
+        </div>
       </Reveal>
     </section>
   );
@@ -147,13 +137,23 @@ export default async function FeaturePage({
 
   const extras = featureExtras[feature.slug];
 
+  const heroLayout = featureHero[feature.slug]?.layout ?? "art-top";
+  const artTop = heroLayout === "art-top";
+
   return (
     <>
-      <Breadcrumb name={feature.name} />
-      <Hero feature={feature} />
+      <div className="relative">
+        {artTop && (
+          <div className="pointer-events-none absolute right-0 top-0 hidden h-[480px] w-[480px] md:block">
+            <FeatureStrands slug={feature.slug} />
+          </div>
+        )}
+        <Breadcrumb name={feature.name} ruleToArt={artTop} />
+        <Hero feature={feature} />
+      </div>
       <FeatureShowcase slug={feature.slug} benefits={feature.benefits} />
       {feature.slug === "cortex" && extras?.midSection && (
-        <CortexMidSection mid={extras.midSection} />
+        <CortexMidPanels title={extras.midSection.title} items={extras.midSection.items} />
       )}
       {feature.slug === "ask" && extras?.midSection && (
         <CapabilityChips title={extras.midSection.title} items={extras.midSection.items} />
@@ -166,6 +166,12 @@ export default async function FeaturePage({
           titleMuted={extras.statsTitleMuted}
           title={extras.statsTitle}
           stats={feature.stats}
+          icons={[
+            "/lottie/stat-1.json",
+            "/lottie/stat-2.json",
+            "/lottie/stat-3.json",
+            "/lottie/stat-4.json",
+          ]}
         />
       )}
       <CtaBand />

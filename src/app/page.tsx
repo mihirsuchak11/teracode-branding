@@ -23,6 +23,7 @@ export default function HomePage() {
         titleMuted="Your team already has the data."
         title="Strand gives you the answers."
         stats={statsSection.stats}
+        icons={["/lottie/stat-1.json", "/lottie/stat-2.json", "/lottie/stat-3.json", "/lottie/stat-4.json"]}
       />
       <FaqSection items={faq} />
       <CtaBand />

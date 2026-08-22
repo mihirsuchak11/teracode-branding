@@ -6,7 +6,25 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { FaqItem } from "@/lib/types";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticHeading } from "@/components/motion/ChromaticLines";
-import { ChevronDown } from "@/components/ui/icons";
+
+/** The original's indicator: four 2px dots that fan into a wider spread when
+ *  the row opens. No chevron. */
+function DotsIndicator({ open }: { open: boolean }) {
+  return (
+    <span className="flex h-6 w-8 shrink-0 items-center justify-center" aria-hidden>
+      <span className="relative block h-0.5 w-5">
+        {[0, 1, 2, 3].map((i) => (
+          <motion.span
+            key={i}
+            className="absolute top-0 h-0.5 w-0.5 rounded-[1px] bg-fg-muted"
+            animate={{ left: open ? i * 6 : i * 4 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          />
+        ))}
+      </span>
+    </span>
+  );
+}
 
 function AccordionItem({
   item,
@@ -18,21 +36,15 @@ function AccordionItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-border first:border-t">
+    <div className="border-b border-border">
       <button
         type="button"
         aria-expanded={open}
         onClick={onToggle}
-        className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left"
+        className="flex w-full cursor-pointer items-center justify-between gap-4 py-8 text-left"
       >
-        <h3 className="text-lg font-semibold leading-6 text-fg">{item.question}</h3>
-        <ChevronDown
-          width={15}
-          height={15}
-          className={`shrink-0 text-fg-faint transition-transform duration-200 ${
-            open ? "rotate-180" : ""
-          }`}
-        />
+        <h3 className="text-[18px] leading-6 font-semibold text-fg">{item.question}</h3>
+        <DotsIndicator open={open} />
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -43,8 +55,7 @@ function AccordionItem({
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-5 pr-8 text-[15px] leading-relaxed text-fg-muted">{item.answer}</p>
-            {/* answer */}
+            <p className="pr-8 pb-8 text-[15px] leading-relaxed text-fg-muted">{item.answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -55,16 +66,17 @@ function AccordionItem({
 export function FaqSection({ items }: { items: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <section className="px-6 py-20 md:px-10 md:pb-44 md:pt-16">
-      <div className="grid gap-12 md:grid-cols-2">
-        <div>
+    <section className="px-6 py-20 md:px-0 md:pt-20 md:pb-44">
+      {/* Rows run to the frame edge, so only the left column is padded. */}
+      <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-2 md:gap-0 md:pl-10">
+        <div className="md:pt-10 md:pr-10">
           <ChromaticHeading
             as="h2"
-            className="text-h2-section max-w-[340px] text-fg"
+            className="text-[32px] leading-[34px] font-semibold tracking-tight text-fg"
             text="Frequently Asked Questions"
           />
           <Reveal>
-            <p className="mt-4 max-w-[360px] text-[15px] text-fg-muted">
+            <p className="mt-6 max-w-[612px] text-[16px] leading-6 text-fg-muted">
               Do you want to learn more about us, let&apos;s go{" "}
               <Link href="/blog" className="text-fg-dim underline underline-offset-4 hover:text-fg">
                 the blog page

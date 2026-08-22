@@ -3,15 +3,14 @@ import type { ReactNode } from "react";
 
 const variants = {
   /* Original site: white buttons with near-black text */
-  primary: "bg-fg-soft text-bg hover:bg-fg border border-transparent font-medium",
-  secondary:
-    "bg-surface-2 text-fg-soft border border-border-strong/60 hover:bg-border-strong font-medium",
-  ghost: "bg-transparent text-fg-muted hover:text-fg border border-transparent",
+  primary: "bg-fg-soft text-bg hover:bg-fg font-medium",
+  secondary: "bg-[#1c1917] text-fg-soft hover:bg-border-strong font-medium",
+  ghost: "bg-transparent text-fg-muted hover:text-fg",
 } as const;
 
 const sizes = {
   sm: "h-9 px-4 text-sm",
-  md: "h-10 px-4.5 text-sm",
+  md: "h-10 px-4 text-sm leading-5",
   lg: "h-11 px-5 text-[15px]",
 } as const;
 

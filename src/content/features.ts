@@ -40,7 +40,7 @@ export const featureHero: Record<
   string,
   { layout: "art-top" | "centered" | "split"; ctas: boolean }
 > = {
-  cortex: { layout: "art-top", ctas: false },
+  cortex: { layout: "art-top", ctas: true },
   ask: { layout: "centered", ctas: true },
   pulse: { layout: "split", ctas: true },
 };

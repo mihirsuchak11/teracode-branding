@@ -12,8 +12,8 @@ function ChipIcon({ i }: { i: number }) {
   ];
   return (
     <svg
-      width={19}
-      height={19}
+      width={20}
+      height={20}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -36,27 +36,25 @@ export function CapabilityChips({
 }) {
   const [first, ...rest] = title.split("\n");
   return (
-    <section className="border-b border-border px-6 py-24 md:px-10 md:py-28">
+    <section className="border-b border-border px-6 pb-20 pt-9 md:px-10">
       <ChromaticLines
         as="h2"
-        className="text-3xl font-medium leading-[1.25] tracking-tight md:text-[32px]"
+        className="max-w-[620px] text-[28px] font-semibold tracking-tight md:text-[32px] md:leading-[34px]"
         segments={[
           { text: `${first} `, className: "text-fg-muted" },
           { text: rest.join(" "), className: "text-fg" },
         ]}
       />
-      <div className="mt-24 grid gap-x-12 gap-y-14 md:grid-cols-3">
+      <div className="mt-[84px] grid gap-x-20 gap-y-[60px] md:grid-cols-3">
         {items.map((item, i) => (
           <Reveal key={item.title} delay={(i % 3) * 0.05}>
-            <div className="flex items-center gap-3 text-fg">
+            <div className="flex h-5 items-center gap-3 text-fg">
               <span className="text-fg-dim">
                 <ChipIcon i={i} />
               </span>
-              <h3 className="text-base font-semibold">{item.title}</h3>
+              <h3 className="text-base font-semibold leading-5">{item.title}</h3>
             </div>
-            <p className="mt-3.5 max-w-[370px] text-sm leading-relaxed text-fg-muted">
-              {item.body}
-            </p>
+            <p className="mt-4 text-sm leading-5 text-fg-muted">{item.body}</p>
           </Reveal>
         ))}
       </div>

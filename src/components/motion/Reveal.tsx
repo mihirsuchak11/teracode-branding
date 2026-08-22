@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Scroll-into-view reveal matching the original Framer appear effect:
@@ -13,16 +13,24 @@ export function Reveal({
   children,
   delay = 0,
   className,
+  style,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
+  style?: CSSProperties;
 }) {
   const reduced = useReducedMotion();
-  if (reduced) return <div className={className}>{children}</div>;
+  if (reduced)
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
   return (
     <motion.div
       className={className}
+      style={style}
       initial={{ opacity: 0.001, y: 10, filter: "blur(3px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "0px 0px -12% 0px" }}

@@ -59,7 +59,8 @@ body {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(44px, 9vw, 72px);
-  line-height: 0.9;
+  /* the original renders 72px type on a 64px line box */
+  line-height: 0.888889;
   letter-spacing: -0.03em;
 }
 .text-display-cta {
@@ -208,4 +209,54 @@ body {
   .chromatic-glare {
     display: none;
   }
+}
+
+/* Statement chat mock: the status ticker's rainbow sweep.
+   Mirrors TextTransitionV2's gradient — a value ramps 0..100 linearly once a
+   second and is mapped over the colour stops between 25 and 75, clamped to the
+   base grey outside that window. Per-letter animation-delay (0.02s apart) is
+   what makes the band travel across the word. */
+@keyframes chat-ticker-sweep {
+  0%,
+  25% {
+    color: rgb(115, 115, 115);
+  }
+  35% {
+    color: rgb(0, 238, 255);
+  }
+  45% {
+    color: rgb(0, 14, 221);
+  }
+  55% {
+    color: rgb(245, 29, 0);
+  }
+  65% {
+    color: rgb(255, 187, 0);
+  }
+  75%,
+  100% {
+    color: rgb(115, 115, 115);
+  }
+}
+.chat-ticker-sweep {
+  animation: chat-ticker-sweep 1s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-ticker-sweep {
+    animation: none;
+  }
+}
+
+/* Mid-section accordion: the rule under the open item fills over its dwell. */
+@keyframes accordion-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.accordion-fill {
+  animation-name: accordion-fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-fill { animation: none; width: 100%; }
 }
