@@ -12,29 +12,19 @@ export const metadata = buildMetadata({
   path: "/pricing",
 });
 
-/** Static billing-period toggle, styled after the original (Monthly active). */
-function BillingToggle() {
-  return (
-    <div className="flex items-center rounded-[10px] bg-bg-deep p-1 text-[15px]">
-      <span className="rounded-lg border border-border-strong/70 bg-surface-2 px-6 py-1.5 font-medium text-fg">
-        Monthly
-      </span>
-      <span className="px-6 py-1.5 text-fg-faint">Yearly</span>
-    </div>
-  );
-}
-
 export default function PricingPage() {
   return (
     <>
-      <section className="flex flex-wrap items-center justify-between gap-6 px-6 pb-7 pt-7 md:px-32">
+      <section className="flex flex-wrap items-end justify-between gap-6 px-6 pb-7 pt-7 md:px-32">
         <Reveal>
           <h1 className="text-4xl font-medium tracking-tight text-fg md:text-[46px]">
             {pricingHero.title}
           </h1>
         </Reveal>
         <Reveal delay={0.05}>
-          <BillingToggle />
+          <p className="max-w-[360px] text-right text-[15px] leading-6 text-fg-muted">
+            {pricingHero.note}
+          </p>
         </Reveal>
       </section>
       <PricingTiers tiers={tiers} />

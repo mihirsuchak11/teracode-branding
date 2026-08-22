@@ -4,17 +4,17 @@ import { PageShell, PageHero, Eyebrow } from "@/components/sections/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import { Marquee } from "@/components/motion/Marquee";
 import { buildMetadata } from "@/lib/metadata";
-import { aboutHero, origins, milestones } from "@/content/about";
+import { aboutHero, mission, principles, origins, milestones } from "@/content/about";
 import { tickerBrands } from "@/content/home";
 
 export const metadata = buildMetadata({
-  title: "About us",
+  title: "About TeraSoft",
   description:
-    "TeraSoft AI builds TeraCode — an authoring, execution and scoring layer for AI agents, and the agents we run on it. Starting with TeraCode Review, on your own API keys.",
+    "TeraSoft's goal is to empower developers to ship software quickly and securely, using AI to streamline the work. We build TeraCode — starting with TeraCode Review, on your own API keys.",
   path: "/about-us",
 });
 
-/* Simple geometric glyphs standing in for the fictional brand marks. */
+/* Geometric glyphs standing in for provider and language marks. */
 function BrandGlyph({ i }: { i: number }) {
   const shapes = [
     <path key="0" d="M12 3 21 12 12 21 3 12Z" />,
@@ -31,19 +31,18 @@ function BrandGlyph({ i }: { i: number }) {
   );
 }
 
-
 export default function AboutPage() {
   return (
     <>
       <PageShell narrow>
         <PageHero title={aboutHero.title} />
 
-        {/* Origins */}
         <section className="border-b border-border pt-10">
-          <Eyebrow>{origins.eyebrow}</Eyebrow>
+          <Eyebrow>{mission.eyebrow}</Eyebrow>
           <Reveal className="px-6 pt-10 md:px-10">
-            <div className="flex max-w-[560px] flex-col gap-5">
-              {origins.paragraphs.map((paragraph) => (
+            <h2 className="max-w-[640px] text-h2-section text-fg">{mission.title}</h2>
+            <div className="mt-8 flex max-w-[560px] flex-col gap-5">
+              {mission.paragraphs.map((paragraph) => (
                 <p key={paragraph} className="text-xl leading-7 text-fg">
                   {paragraph}
                 </p>
@@ -70,9 +69,33 @@ export default function AboutPage() {
           </Reveal>
         </section>
 
-        {/* Trusted by */}
         <section className="border-b border-border pt-10">
-          <Eyebrow>{origins.trustedBy}</Eyebrow>
+          <Eyebrow>{principles.eyebrow}</Eyebrow>
+          <div className="divide-y divide-border">
+            {principles.items.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.05} className="px-6 py-10 md:px-10">
+                <h3 className="text-xl font-semibold leading-7 text-fg">{item.title}</h3>
+                <p className="mt-3 max-w-[560px] text-base leading-6 text-fg-muted">{item.body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-b border-border pt-10">
+          <Eyebrow>{origins.eyebrow}</Eyebrow>
+          <Reveal className="px-6 py-10 md:px-10">
+            <div className="flex max-w-[560px] flex-col gap-5">
+              {origins.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="text-xl leading-7 text-fg">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="border-b border-border pt-10">
+          <Eyebrow>{origins.stacks}</Eyebrow>
           <div className="py-10">
             <Marquee>
               {tickerBrands.map((name, i) => (
@@ -88,14 +111,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Milestones */}
         <section className="border-b border-border pt-10">
           <Eyebrow>{milestones.eyebrow}</Eyebrow>
           <div className="mt-10 pb-10">
             <MilestoneTimeline items={milestones.items} />
           </div>
         </section>
-
       </PageShell>
 
       <CtaBand />
