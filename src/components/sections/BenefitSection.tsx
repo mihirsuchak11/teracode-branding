@@ -7,6 +7,7 @@ import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ArrowRight, ArrowUpRight } from "@/components/ui/icons";
 import { FeatureAccordion } from "@/components/sections/FeatureAccordion";
 import { AskChatAnim } from "@/components/sections/AskChatAnim";
+import { ReviewBoardMock, ReviewPostedMock, ReviewRiskMock } from "@/components/sections/ReviewMocks";
 
 /* Dotted-grid backdrop behind every demo mock, as in the original panels. */
 const dots =
@@ -500,6 +501,7 @@ function SeverityScoreMock() {
 
 const mocksBySlug: Record<string, React.ReactNode[]> = {
   cortex: [<EntityResolutionMock key="0" />, <LiveFeedMock key="1" />, <GraphExplorerMock key="2" />],
+  review: [<ReviewBoardMock key="0" />, <ReviewRiskMock key="1" />, <ReviewPostedMock key="2" />],
   ask: [<SchemaMock key="0" />, <FollowUpsMock key="1" />, <ShareMock key="2" />],
   pulse: [<PulseAlertMock key="0" />, <SeverityScoreMock key="1" />],
 };

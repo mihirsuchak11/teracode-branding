@@ -67,6 +67,12 @@ export const features: FeaturePage[] = [
         body: "Findings are merged, de-duplicated and posted as a single review. No comment storm, no forty notifications, no reviewer fatigue.",
       },
     ],
+    stats: [
+      { value: "$0", label: "Markup on your token spend" },
+      { value: "0", label: "Per-seat licences" },
+      { value: "100%", label: "BYOK — your own API keys" },
+      { value: "1", label: "Review on the pull request" },
+    ],
   },
   {
     slug: "migrate",
@@ -143,6 +149,8 @@ export const featureExtras: Record<string, FeatureExtras> = {
         },
       ],
     },
+    statsTitleMuted: "Every AI reviewer charges per seat.",
+    statsTitle: "TeraCode runs on your keys, at cost.",
   },
   migrate: {
     midSection: {

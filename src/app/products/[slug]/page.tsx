@@ -1,18 +1,33 @@
 import { notFound } from "next/navigation";
 import { features, featureExtras, featureHero, getFeature } from "@/content/features";
 import { MAIL_ACCESS } from "@/content/home";
-import { productJsonLd } from "@/lib/jsonLd";
+import { faqJsonLd, productJsonLd } from "@/lib/jsonLd";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { FeaturePage as Feature } from "@/lib/types";
 import { buildMetadata } from "@/lib/metadata";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { FeatureShowcase, PulseMidSection } from "@/components/sections/BenefitSection";
-import { CortexMidPanels } from "@/components/sections/CortexMidPanels";
+import { ReviewMidPanels } from "@/components/sections/ReviewMidPanels";
 import { CapabilityChips } from "@/components/sections/CapabilityChips";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { CopyGrid } from "@/components/sections/CopyGrid";
+import { Differentiator } from "@/components/sections/Differentiator";
+import { IntegrationStrip } from "@/components/sections/IntegrationStrip";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { FeatureStrands } from "@/components/three/FeatureStrands";
+import {
+  reviewAudience,
+  reviewCatches,
+  reviewCompare,
+  reviewFaq,
+  reviewFaqBlurb,
+  reviewHowItWorks,
+  reviewIntegrations,
+  reviewTrust,
+} from "@/content/review";
 
 export function generateStaticParams() {
   return features.map((feature) => ({ slug: feature.slug }));
@@ -148,6 +163,7 @@ export default async function FeaturePage({
     <>
       {/* Only Review is obtainable today, so only Review carries an offer. */}
       <JsonLd data={productJsonLd(feature, feature.slug === "review")} />
+      {feature.slug === "review" && <JsonLd data={faqJsonLd(reviewFaq)} />}
       <div className="relative">
         {artTop && (
           <div className="pointer-events-none absolute right-0 top-0 hidden h-[480px] w-[480px] md:block">
@@ -157,15 +173,49 @@ export default async function FeaturePage({
         <Breadcrumb name={feature.name} ruleToArt={artTop} />
         <Hero feature={feature} />
       </div>
+      {feature.slug === "review" && (
+        <HowItWorks
+          eyebrow={reviewHowItWorks.eyebrow}
+          titleMuted={reviewHowItWorks.titleMuted}
+          title={reviewHowItWorks.title}
+          steps={reviewHowItWorks.steps}
+        />
+      )}
       <FeatureShowcase slug={feature.slug} benefits={feature.benefits} />
       {feature.slug === "review" && extras?.midSection && (
-        <CortexMidPanels title={extras.midSection.title} items={extras.midSection.items} />
+        <ReviewMidPanels title={extras.midSection.title} items={extras.midSection.items} />
       )}
       {feature.slug === "migrate" && extras?.midSection && (
         <CapabilityChips title={extras.midSection.title} items={extras.midSection.items} />
       )}
       {feature.slug === "oncall" && extras?.midSection && (
         <PulseMidSection mid={extras.midSection} />
+      )}
+      {feature.slug === "review" && (
+        <>
+          <CopyGrid
+            eyebrow={reviewCatches.eyebrow}
+            titleMuted={reviewCatches.titleMuted}
+            title={reviewCatches.title}
+            items={reviewCatches.items}
+            columns={4}
+          />
+          <CopyGrid
+            eyebrow={reviewAudience.eyebrow}
+            titleMuted={reviewAudience.titleMuted}
+            title={reviewAudience.title}
+            items={reviewAudience.items}
+          />
+          <IntegrationStrip {...reviewIntegrations} />
+          <CopyGrid
+            eyebrow={reviewTrust.eyebrow}
+            titleMuted={reviewTrust.titleMuted}
+            title={reviewTrust.title}
+            items={reviewTrust.items}
+            columns={4}
+          />
+          <Differentiator {...reviewCompare} />
+        </>
       )}
       {feature.stats && extras?.statsTitle && (
         <StatsBand
@@ -179,6 +229,9 @@ export default async function FeaturePage({
             "/lottie/stat-4.json",
           ]}
         />
+      )}
+      {feature.slug === "review" && (
+        <FaqSection items={reviewFaq} title="Questions about Review" blurb={reviewFaqBlurb} />
       )}
       <CtaBand />
     </>
