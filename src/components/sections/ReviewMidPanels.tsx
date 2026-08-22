@@ -129,11 +129,11 @@ export function ReviewMidPanels({ title, items }: { title: string; items: Accord
   const panels = [<PathSkillsPanel key="paths" />, <ByokPanel key="byok" />, <KeepRatePanel key="keep" />];
 
   return (
-    <section className="grid gap-10 px-6 py-[60px] md:grid-cols-[652fr_612fr] md:px-10">
+    <section className="grid gap-12 px-6 pt-24 pb-24 md:grid-cols-[652fr_612fr] md:gap-10 md:px-10 md:pt-32 md:pb-32">
       <div className="flex flex-col">
         <ChromaticLines
           as="h2"
-          className="mt-4 text-3xl font-semibold tracking-tight md:text-[36px] md:leading-10"
+          className="text-3xl font-semibold tracking-tight md:text-[36px] md:leading-10"
           segments={[
             { text: `${first} `, className: "text-fg-muted" },
             { text: rest.join(" "), className: "text-fg" },

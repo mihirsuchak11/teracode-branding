@@ -1,9 +1,14 @@
 "use client";
 
-import { ChromaticLines } from "@/components/motion/ChromaticLines";
+import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
 import { REVIEW_DWELL, ReviewFlow, useReviewCycle } from "@/components/sections/ReviewFlow";
 
+/**
+ * Opening band of the Review page, built on the home page's Statement rhythm:
+ * a two-tone headline with room above it, a tall live stage, then the three
+ * steps. Space separates this from the next section — no rule.
+ */
 export function HowItWorks({
   eyebrow,
   titleMuted,
@@ -18,43 +23,59 @@ export function HowItWorks({
   const active = useReviewCycle();
 
   return (
-    <section className="border-y border-border">
-      <div className="px-6 pt-16 md:px-10 md:pt-20">
-        {eyebrow && (
-          <p className="font-mono text-xs uppercase tracking-widest text-brand">{eyebrow}</p>
-        )}
-        <ChromaticLines
-          as="h2"
-          className="mt-4 max-w-[640px] text-h2-section"
-          segments={[
-            ...(titleMuted ? [{ text: `${titleMuted} `, className: "text-fg-faint" }] : []),
-            { text: title, className: "text-fg" },
+    <section className="relative">
+      <div className="px-6 pt-28 md:px-10 md:pt-36">
+        <ChromaticCascade
+          blocks={[
+            ...(eyebrow
+              ? [
+                  {
+                    kind: "text" as const,
+                    tag: "p" as const,
+                    className: "font-mono text-xs uppercase tracking-widest text-brand",
+                    segments: [{ text: eyebrow }],
+                  },
+                ]
+              : []),
+            {
+              kind: "text",
+              tag: "h2",
+              className: "mt-5 max-w-[620px] text-h2-statement",
+              segments: [
+                ...(titleMuted ? [{ text: `${titleMuted} `, className: "text-fg-faint" }] : []),
+                { text: title, className: "text-fg" },
+              ],
+            },
           ]}
         />
       </div>
 
-      <div className="px-6 pt-10 md:px-10">
+      <div className="relative pt-10">
         <ReviewFlow active={active} />
       </div>
 
-      <div className="grid gap-10 px-6 py-14 md:grid-cols-3 md:px-10 md:pb-20">
+      <div className="grid gap-12 px-6 pt-16 pb-28 md:grid-cols-3 md:gap-14 md:px-10 md:pt-20 md:pb-36">
         {steps.map((step, i) => (
           <ChromaticReveal key={step.title} delay={0.08 * i}>
-            <div
-              className={`relative overflow-hidden rounded-2xl border px-5 py-5 transition-colors duration-300 ${
-                i === active ? "border-brand/40 bg-brand-soft/20" : "border-transparent"
-              }`}
-            >
+            <div className="relative pt-5">
+              {/* The rule over each step fills while that step is on stage. */}
+              <span className="absolute inset-x-0 top-0 h-px bg-border" />
               {i === active && (
                 <span
                   key={active}
-                  className="review-step-fill pointer-events-none absolute inset-x-0 bottom-0 h-px bg-brand"
+                  className="review-step-fill pointer-events-none absolute inset-x-0 top-0 h-px bg-brand"
                   style={{ animationDuration: `${REVIEW_DWELL[active]}ms` }}
                 />
               )}
-              <p className="font-mono text-sm text-brand">{step.n}</p>
-              <h3 className="mt-3 text-xl font-semibold leading-6 text-fg">{step.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-fg-muted">{step.body}</p>
+              <p
+                className={`font-mono text-sm transition-colors duration-300 ${
+                  i === active ? "text-brand" : "text-fg-faint"
+                }`}
+              >
+                {step.n}
+              </p>
+              <h3 className="mt-4 text-xl font-semibold leading-6 text-fg">{step.title}</h3>
+              <p className="mt-3 text-[15px] leading-6 text-fg-muted">{step.body}</p>
             </div>
           </ChromaticReveal>
         ))}

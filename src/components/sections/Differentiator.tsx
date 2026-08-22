@@ -1,9 +1,14 @@
 "use client";
 
-import { ChromaticLines } from "@/components/motion/ChromaticLines";
+import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { Reveal } from "@/components/motion/Reveal";
-import { useReviewTick } from "@/components/sections/ReviewFlow";
+import { REVIEW_EASE, useReviewTick } from "@/components/sections/ReviewFlow";
+import { motion } from "framer-motion";
 
+/**
+ * Them-versus-us table. A brand marker walks the rows so the comparison reads
+ * itself while the visitor scans, instead of sitting as a static block.
+ */
 export function Differentiator({
   eyebrow,
   titleMuted,
@@ -19,22 +24,35 @@ export function Differentiator({
   ours: string;
   rows: { feature: string; theirs: string; ours: string }[];
 }) {
-  const active = useReviewTick(1800, rows.length, 1);
+  const active = useReviewTick(1900, rows.length, 1);
 
   return (
-    <section className="border-b border-border px-6 py-16 md:px-10 md:py-20">
-      {eyebrow && (
-        <p className="font-mono text-xs uppercase tracking-widest text-brand">{eyebrow}</p>
-      )}
-      <ChromaticLines
-        as="h2"
-        className="mt-4 max-w-[640px] text-h2-section"
-        segments={[
-          ...(titleMuted ? [{ text: `${titleMuted} `, className: "text-fg-faint" }] : []),
-          { text: title, className: "text-fg" },
+    <section className="px-6 pt-24 pb-24 md:px-10 md:pt-32 md:pb-32">
+      <ChromaticCascade
+        blocks={[
+          ...(eyebrow
+            ? [
+                {
+                  kind: "text" as const,
+                  tag: "p" as const,
+                  className: "font-mono text-xs uppercase tracking-widest text-brand",
+                  segments: [{ text: eyebrow }],
+                },
+              ]
+            : []),
+          {
+            kind: "text",
+            tag: "h2",
+            className: "mt-5 max-w-[620px] text-h2-statement",
+            segments: [
+              ...(titleMuted ? [{ text: `${titleMuted} `, className: "text-fg-faint" }] : []),
+              { text: title, className: "text-fg" },
+            ],
+          },
         ]}
       />
-      <Reveal className="mt-12 overflow-x-auto">
+
+      <Reveal className="mt-14 overflow-x-auto md:mt-16">
         <table className="w-full min-w-[640px] border-collapse text-left">
           <thead>
             <tr className="border-b border-border">
@@ -45,22 +63,36 @@ export function Differentiator({
           </thead>
           <tbody>
             {rows.map((row, i) => (
-              <tr
+              <motion.tr
                 key={row.feature}
-                className={`border-b border-border transition-colors duration-300 ${
-                  i === active ? "bg-brand-soft/15" : ""
-                }`}
+                className="border-b border-border"
+                animate={{
+                  backgroundColor:
+                    i === active ? "rgba(16,236,144,0.06)" : "rgba(16,236,144,0)",
+                }}
+                transition={{ duration: 0.4, ease: REVIEW_EASE }}
               >
-                <td className="py-[18px] pr-6 text-[15px] text-fg-dim">{row.feature}</td>
-                <td className="py-[18px] pr-6 text-[15px] text-fg-faint">{row.theirs}</td>
-                <td
-                  className={`py-[18px] text-[15px] ${
-                    i === active ? "text-brand" : "text-fg"
-                  }`}
-                >
-                  {row.ours}
+                <td className="py-5 pr-6 text-[15px] text-fg-dim">{row.feature}</td>
+                <td className="py-5 pr-6 text-[15px] text-fg-faint">{row.theirs}</td>
+                <td className="py-5 text-[15px]">
+                  <span className="flex items-center gap-2.5">
+                    <motion.span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full"
+                      animate={{
+                        backgroundColor: i === active ? "rgb(16,236,144)" : "rgb(68,64,60)",
+                        boxShadow: i === active ? "0 0 10px #10ec90" : "0 0 0 transparent",
+                      }}
+                      transition={{ duration: 0.4, ease: REVIEW_EASE }}
+                    />
+                    <motion.span
+                      animate={{ color: i === active ? "rgb(16,236,144)" : "rgb(250,250,249)" }}
+                      transition={{ duration: 0.4, ease: REVIEW_EASE }}
+                    >
+                      {row.ours}
+                    </motion.span>
+                  </span>
                 </td>
-              </tr>
+              </motion.tr>
             ))}
           </tbody>
         </table>

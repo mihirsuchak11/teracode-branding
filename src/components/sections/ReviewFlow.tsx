@@ -1,18 +1,20 @@
 "use client";
 
 /**
- * Review-page signature graphics. Same motion family as Strand's Framer
- * components: a live graphic per section, looping product state, ParticleGrid
- * swell while the board is working. One WebGL field on this page (How it works);
- * the specialists mark is SVG so we don't stack a second GPGPU next to the hero.
+ * Review-page signature graphics.
+ *
+ * Same motion family as the homepage Statement: a live WebGL wave with a
+ * looping product scene in front of it. One loop tells the whole story —
+ * Connect → Review → Ship — so the section teaches without the user scrolling.
+ * Only one GPGPU field on this page (here); the specialist mark below is SVG.
  */
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ParticleGrid } from "@/components/three/ParticleGrid";
 
 export const REVIEW_EASE = [0.12, 0.23, 0.5, 1] as const;
-export const REVIEW_DWELL = [2200, 3600, 2600] as const;
+export const REVIEW_DWELL = [2600, 4400, 3200] as const;
 
 const NODES = [
   { n: "1", label: "Connect" },
@@ -20,11 +22,30 @@ const NODES = [
   { n: "3", label: "Ship" },
 ];
 
+const CONNECT_ROWS = [
+  { k: "Repository", v: "teracode/api" },
+  { k: "Provider", v: "Anthropic · sk-…c91" },
+  { k: "Scope", v: "Pull requests only" },
+];
+
 const SPECIALISTS = [
-  { name: "Security", x: 50, y: 12 },
-  { name: "Performance", x: 16, y: 50 },
-  { name: "Tests", x: 84, y: 50 },
-  { name: "Style", x: 50, y: 88 },
+  { name: "Security", detail: "2 findings", tone: "text-danger" },
+  { name: "Performance", detail: "1 regression", tone: "text-warn" },
+  { name: "Tests", detail: "coverage -3%", tone: "text-warn" },
+  { name: "Style", detail: "house rules", tone: "text-fg-faint" },
+];
+
+const SHIP_ROWS = [
+  { k: "Comments posted", v: "1 review" },
+  { k: "Findings reconciled", v: "12 → 5" },
+  { k: "Blocking", v: "2" },
+];
+
+const MARK = [
+  { name: "Security", x: 50, y: 14 },
+  { name: "Performance", x: 17, y: 50 },
+  { name: "Tests", x: 83, y: 50 },
+  { name: "Style", x: 50, y: 86 },
 ] as const;
 
 export function useReviewTick(ms: number, steps: number, pauseAtEnd = 0) {
@@ -51,123 +72,284 @@ export function useReviewCycle() {
   return reduced ? 2 : active;
 }
 
-function useOnScreen() {
-  const ref = useRef<HTMLDivElement>(null);
+/** Only run the WebGL field while the section is actually on screen. */
+function useOnScreen<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
   const [on, setOn] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setOn(e.isIntersecting), { threshold: 0.2 });
+    const io = new IntersectionObserver(([e]) => setOn(e.isIntersecting), { threshold: 0.15 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
   return { ref, on };
 }
 
+function Row({ k, v, tone }: { k: string; v: string; tone?: string }) {
+  return (
+    <div className="flex items-center justify-between gap-4 py-2">
+      <span className="text-[13px] leading-5 text-fg-muted">{k}</span>
+      <span className={`font-mono text-[12px] leading-5 ${tone ?? "text-fg"}`}>{v}</span>
+    </div>
+  );
+}
+
+function ConnectScene() {
+  return (
+    <div className="w-full">
+      {CONNECT_ROWS.map((r, i) => (
+        <motion.div
+          key={r.k}
+          initial={{ opacity: 0, transform: "translateY(8px)" }}
+          animate={{ opacity: 1, transform: "translateY(0px)" }}
+          transition={{ duration: 0.35, delay: 0.06 * i, ease: REVIEW_EASE }}
+        >
+          <Row k={r.k} v={r.v} />
+        </motion.div>
+      ))}
+      <p className="mt-3 font-mono text-[11px] leading-4 text-fg-disabled">
+        Keys stay yours. TeraCode never resells inference.
+      </p>
+    </div>
+  );
+}
+
+function ReviewScene() {
+  /* Four specialists resolve one after another, then the scan settles. */
+  const done = useReviewTick(700, SPECIALISTS.length + 1);
+
+  return (
+    <div className="relative w-full">
+      <span className="review-scan pointer-events-none absolute inset-x-0 top-0 h-px bg-brand/70" />
+      {SPECIALISTS.map((s, i) => {
+        const running = i === done;
+        const finished = i < done;
+        return (
+          <motion.div
+            key={s.name}
+            className="flex items-center justify-between gap-4 py-2"
+            animate={{ opacity: finished || running ? 1 : 0.3 }}
+            transition={{ duration: 0.25, ease: REVIEW_EASE }}
+          >
+            <span className="flex items-center gap-2.5 text-[13px] leading-5 text-fg">
+              <motion.span
+                className="h-1.5 w-1.5 rounded-full"
+                animate={{
+                  backgroundColor: finished
+                    ? "rgb(16,236,144)"
+                    : running
+                      ? "rgb(54,197,240)"
+                      : "rgb(87,83,78)",
+                  boxShadow: running ? "0 0 10px #36c5f0" : "0 0 0 transparent",
+                }}
+                transition={{ duration: 0.25, ease: REVIEW_EASE }}
+              />
+              {s.name}
+            </span>
+            <span
+              className={`font-mono text-[12px] leading-5 ${finished ? s.tone : "text-fg-disabled"}`}
+            >
+              {finished ? s.detail : running ? "reading diff…" : "queued"}
+            </span>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ShipScene() {
+  return (
+    <div className="w-full">
+      {SHIP_ROWS.map((r, i) => (
+        <motion.div
+          key={r.k}
+          initial={{ opacity: 0, transform: "translateY(8px)" }}
+          animate={{ opacity: 1, transform: "translateY(0px)" }}
+          transition={{ duration: 0.35, delay: 0.06 * i, ease: REVIEW_EASE }}
+        >
+          <Row k={r.k} v={r.v} tone={r.k === "Blocking" ? "text-danger" : "text-fg"} />
+        </motion.div>
+      ))}
+      <motion.p
+        className="mt-3 font-mono text-[11px] leading-4 text-brand"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.35, delay: 0.2, ease: REVIEW_EASE }}
+      >
+        One review on the pull request. Merge stays yours.
+      </motion.p>
+    </div>
+  );
+}
+
+const SCENES = [ConnectScene, ReviewScene, ShipScene];
+const STATUS = ["Connected", "Reviewing", "Reviewed"];
+const STATUS_TONE = ["text-fg-muted", "text-info", "text-brand"];
+
+/**
+ * The Connect → Review → Ship stage: a live wave, one PR card that plays the
+ * whole loop, and the rail underneath that tracks where the loop is.
+ */
 export function ReviewFlow({ active }: { active: number }) {
   const reduced = useReducedMotion();
-  const { ref, on } = useOnScreen();
+  const { ref, on } = useOnScreen<HTMLDivElement>();
+  const Scene = SCENES[active] ?? SCENES[0];
   const working = active === 1;
 
   const grid = working
-    ? { noiseFrequency: 3, timeScale: 0.31, waveHeightScale: 0.14, noiseLayerSpread: 0.01 }
-    : { noiseFrequency: 2, timeScale: 0.08, waveHeightScale: 0.08, noiseLayerSpread: 0.005 };
+    ? { noiseFrequency: 3, timeScale: 0.31, waveHeightScale: 0.15, noiseLayerSpread: 0.01 }
+    : { noiseFrequency: 2, timeScale: 0.08, waveHeightScale: 0.09, noiseLayerSpread: 0.005 };
 
   return (
-    <div ref={ref} className="relative mx-auto h-[220px] w-full max-w-[720px]">
+    <div ref={ref} className="relative flex h-[460px] w-full items-center justify-center px-4">
       {!reduced && on && (
         <ParticleGrid
-          className="absolute inset-0 h-full w-full opacity-25 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_78%)]"
+          className="absolute inset-0 h-full w-full opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_78%)]"
           {...grid}
         />
       )}
 
-      <div className="relative z-10 flex h-full items-center px-2">
-        {NODES.map((node, i) => (
-          <div key={node.n} className="flex flex-1 items-center">
-            <div className="flex flex-col items-center">
+      <div className="relative z-10 flex w-full max-w-[440px] flex-col items-center">
+        {/* PR card — the scene swaps inside it, the frame stays put */}
+        <div
+          className="w-full rounded-2xl p-px"
+          style={{
+            background:
+              "linear-gradient(111deg, rgb(68,64,60) 0%, rgb(41,37,36) 35%, rgb(38,38,38) 73%, rgb(68,64,60) 100%)",
+          }}
+        >
+          <div className="rounded-[15px] bg-[rgb(17,15,13)] p-5">
+            <div className="flex items-center justify-between gap-4 border-b border-[#262626] pb-3">
+              <p className="font-mono text-[13px] leading-5 text-fg">PR #482</p>
               <motion.span
-                className="flex h-11 w-11 items-center justify-center rounded-full border font-mono text-sm"
-                animate={{
-                  borderColor: i === active ? "rgba(16,236,144,0.7)" : "rgb(41,37,36)",
-                  backgroundColor: i === active ? "rgba(16,236,144,0.12)" : "rgb(20,18,16)",
-                  color: i === active ? "rgb(16,236,144)" : "rgb(168,162,158)",
-                  scale: i === active ? 1.06 : 1,
-                }}
-                transition={{ duration: 0.35, ease: REVIEW_EASE }}
+                key={active}
+                className={`font-mono text-[11px] leading-4 ${STATUS_TONE[active]}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, ease: REVIEW_EASE }}
               >
-                {node.n}
+                {STATUS[active]}
               </motion.span>
-              <span
-                className={`mt-2 text-[12px] font-medium ${
-                  i === active ? "text-fg" : "text-fg-faint"
-                }`}
-              >
-                {node.label}
-              </span>
             </div>
-            {i < NODES.length - 1 && (
-              <div className="relative mx-3 h-px flex-1 bg-border">
-                <motion.span
-                  className="absolute top-1/2 h-px -translate-y-1/2 bg-brand"
-                  animate={{ width: active > i ? "100%" : active === i ? "55%" : "0%" }}
-                  transition={{ duration: 0.45, ease: REVIEW_EASE }}
-                />
-                {!reduced && active === i && (
-                  <motion.span
-                    className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-brand shadow-[0_0_12px_#10ec90]"
-                    initial={{ left: "0%" }}
-                    animate={{ left: "100%" }}
-                    transition={{ duration: REVIEW_DWELL[i] / 1000, ease: "linear", repeat: Infinity }}
-                  />
-                )}
-              </div>
-            )}
+
+            {/* Fixed height so the frame never resizes between scenes */}
+            <div className="relative mt-2 h-[164px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  className="absolute inset-0"
+                  initial={reduced ? { opacity: 0 } : { opacity: 0, transform: "translateY(10px)" }}
+                  animate={reduced ? { opacity: 1 } : { opacity: 1, transform: "translateY(0px)" }}
+                  exit={reduced ? { opacity: 0 } : { opacity: 0, transform: "translateY(-8px)" }}
+                  transition={{ duration: 0.3, ease: REVIEW_EASE }}
+                >
+                  <Scene />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        ))}
+        </div>
+
+        {/* Rail — where the loop currently is */}
+        <div className="mt-10 flex w-full items-center px-1">
+          {NODES.map((node, i) => (
+            <div key={node.n} className="flex flex-1 items-center last:flex-none">
+              <div className="flex flex-col items-center">
+                <motion.span
+                  className="flex h-10 w-10 items-center justify-center rounded-full border font-mono text-[13px]"
+                  animate={{
+                    borderColor: i === active ? "rgba(16,236,144,0.7)" : "rgb(41,37,36)",
+                    backgroundColor: i === active ? "rgba(16,236,144,0.12)" : "rgb(20,18,16)",
+                    color: i === active ? "rgb(16,236,144)" : "rgb(168,162,158)",
+                  }}
+                  transition={{ duration: 0.35, ease: REVIEW_EASE }}
+                >
+                  {node.n}
+                </motion.span>
+                <span
+                  className={`mt-2.5 text-[12px] font-medium transition-colors duration-300 ${
+                    i === active ? "text-fg" : "text-fg-faint"
+                  }`}
+                >
+                  {node.label}
+                </span>
+              </div>
+              {i < NODES.length - 1 && (
+                <div className="relative mx-3 h-px flex-1 bg-border">
+                  <motion.span
+                    className="absolute top-1/2 left-0 h-px -translate-y-1/2 bg-brand"
+                    animate={{ width: active > i ? "100%" : active === i ? "60%" : "0%" }}
+                    transition={{ duration: 0.5, ease: REVIEW_EASE }}
+                  />
+                  {!reduced && active === i && (
+                    <motion.span
+                      className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-brand shadow-[0_0_12px_#10ec90]"
+                      initial={{ left: "0%" }}
+                      animate={{ left: "100%" }}
+                      transition={{
+                        duration: REVIEW_DWELL[i] / 1000,
+                        ease: "linear",
+                        repeat: Infinity,
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
-/** Four specialists folding into one verdict — the "What it looks for" mark. */
+/**
+ * "What it looks for": four specialists on spokes that draw toward the middle,
+ * then fold into one verdict. SVG, so it costs nothing next to the hero field.
+ */
 export function ReviewSpecialists() {
   const reduced = useReducedMotion();
-  const tick = useReviewTick(1500, 5, 1);
+  const { ref, on } = useOnScreen<HTMLDivElement>();
+  const tick = useReviewTick(1600, 5, 1);
   const merge = tick === 4;
 
   return (
-    <div className="relative mx-auto h-[220px] w-full max-w-[360px]">
+    <div ref={ref} className="relative mx-auto h-[340px] w-full max-w-[520px]">
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" aria-hidden>
-        {SPECIALISTS.map((s, i) => (
-          <motion.line
-            key={s.name}
-            x1={s.x}
-            y1={s.y}
-            x2="50"
-            y2="50"
-            stroke="currentColor"
-            strokeWidth="0.6"
-            className="text-border"
-            animate={{
-              stroke: merge || tick === i ? "rgba(16,236,144,0.7)" : "rgb(41,37,36)",
-            }}
-            transition={{ duration: 0.35, ease: REVIEW_EASE }}
-          />
-        ))}
+        {MARK.map((s, i) => {
+          const lit = merge || tick === i;
+          return (
+            <motion.line
+              key={s.name}
+              x1={s.x}
+              y1={s.y}
+              x2="50"
+              y2="50"
+              strokeWidth="0.5"
+              initial={false}
+              animate={{
+                stroke: lit ? "rgba(16,236,144,0.75)" : "rgb(41,37,36)",
+                pathLength: on ? 1 : 0,
+              }}
+              transition={{ duration: 0.5, ease: REVIEW_EASE }}
+            />
+          );
+        })}
       </svg>
 
-      {SPECIALISTS.map((s, i) => {
-        const on = merge || tick === i;
+      {MARK.map((s, i) => {
+        const lit = merge || tick === i;
         return (
           <motion.span
             key={s.name}
-            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-2.5 py-1 font-mono text-[11px]"
+            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-1.5 font-mono text-[12px] whitespace-nowrap"
             style={{ left: `${s.x}%`, top: `${s.y}%` }}
             animate={{
-              borderColor: on ? "rgba(16,236,144,0.65)" : "rgb(41,37,36)",
-              backgroundColor: on ? "rgba(16,236,144,0.1)" : "rgb(20,18,16)",
-              color: on ? "rgb(16,236,144)" : "rgb(168,162,158)",
+              borderColor: lit ? "rgba(16,236,144,0.65)" : "rgb(41,37,36)",
+              backgroundColor: lit ? "rgba(16,236,144,0.1)" : "rgb(20,18,16)",
+              color: lit ? "rgb(16,236,144)" : "rgb(168,162,158)",
             }}
             transition={{ duration: 0.35, ease: REVIEW_EASE }}
           >
@@ -177,16 +359,16 @@ export function ReviewSpecialists() {
       })}
 
       <motion.span
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-1.5 text-[12px] font-medium"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border px-4 py-2 text-[13px] font-medium whitespace-nowrap"
         animate={{
           borderColor: merge ? "rgba(16,236,144,0.8)" : "rgb(41,37,36)",
           backgroundColor: merge ? "rgba(16,236,144,0.14)" : "rgb(17,15,13)",
           color: merge ? "rgb(16,236,144)" : "rgb(245,245,244)",
-          scale: merge && !reduced ? 1.06 : 1,
+          transform: merge && !reduced ? "scale(1.06)" : "scale(1)",
         }}
         transition={{ duration: 0.4, ease: REVIEW_EASE }}
       >
-        {merge ? "One review" : "Board"}
+        {merge ? "One reconciled review" : "The board"}
       </motion.span>
     </div>
   );

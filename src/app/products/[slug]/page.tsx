@@ -207,6 +207,7 @@ export default async function FeaturePage({
             titleMuted={reviewAudience.titleMuted}
             title={reviewAudience.title}
             items={reviewAudience.items}
+            layout="split"
           />
           <IntegrationStrip {...reviewIntegrations} />
           <CopyGrid
