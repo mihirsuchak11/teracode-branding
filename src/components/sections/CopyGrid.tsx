@@ -72,7 +72,7 @@ export function CopyGrid({
 }) {
   if (layout === "split") {
     return (
-      <section className="grid gap-12 px-6 pt-24 pb-24 md:grid-cols-5 md:gap-14 md:px-10 md:pt-32 md:pb-32">
+      <section className="grid gap-12 px-6 py-16 md:grid-cols-5 md:gap-14 md:px-10 md:py-24">
         <div className="md:col-span-2">
           <Heading
             eyebrow={eyebrow}
@@ -98,15 +98,15 @@ export function CopyGrid({
   }
 
   return (
-    <section className="pt-24 pb-24 md:pt-32 md:pb-32">
+    <section className="py-16 md:py-24">
       <div className="px-6 md:px-10">
         <Heading eyebrow={eyebrow} titleMuted={titleMuted} title={title} />
       </div>
 
-      {graphic && <div className="px-6 pt-14 md:px-10 md:pt-16">{graphic}</div>}
+      {graphic && <div className="px-6 pt-12 md:px-10 md:pt-14">{graphic}</div>}
 
       <div
-        className={`mt-16 grid border-t border-border md:mt-20 md:divide-x md:divide-border ${
+        className={`mt-14 grid border-t border-border md:mt-16 md:divide-x md:divide-border ${
           columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3"
         }`}
       >

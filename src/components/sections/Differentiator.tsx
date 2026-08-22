@@ -27,7 +27,7 @@ export function Differentiator({
   const active = useReviewTick(1900, rows.length, 1);
 
   return (
-    <section className="px-6 pt-24 pb-24 md:px-10 md:pt-32 md:pb-32">
+    <section className="px-6 py-16 md:px-10 md:py-24">
       <ChromaticCascade
         blocks={[
           ...(eyebrow

@@ -26,7 +26,7 @@ export function IntegrationStrip({
   return (
     <section className="relative border-y border-border">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-5">
-        <div className="flex flex-col justify-center px-6 py-20 md:col-span-2 md:px-10 md:py-24">
+        <div className="flex flex-col justify-center px-6 py-16 md:col-span-2 md:px-10 md:py-24">
           <ChromaticCascade
             blocks={[
               ...(eyebrow
@@ -69,7 +69,7 @@ export function IntegrationStrip({
           />
         </div>
 
-        <div className="px-6 pb-20 md:col-span-3 md:flex md:items-center md:px-10 md:py-24">
+        <div className="px-6 pb-16 md:col-span-3 md:flex md:items-center md:px-10 md:py-24">
           <Reveal className="w-full">
             <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4">
               {items.map((item, i) => (

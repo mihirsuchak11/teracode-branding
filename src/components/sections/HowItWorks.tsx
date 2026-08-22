@@ -54,7 +54,7 @@ export function HowItWorks({
         <ReviewFlow active={active} />
       </div>
 
-      <div className="grid gap-12 px-6 pt-16 pb-28 md:grid-cols-3 md:gap-14 md:px-10 md:pt-20 md:pb-36">
+      <div className="grid gap-12 px-6 pt-16 pb-16 md:grid-cols-3 md:gap-14 md:px-10 md:pt-20 md:pb-24">
         {steps.map((step, i) => (
           <ChromaticReveal key={step.title} delay={0.08 * i}>
             <div className="relative pt-5">

@@ -129,7 +129,7 @@ export function ReviewMidPanels({ title, items }: { title: string; items: Accord
   const panels = [<PathSkillsPanel key="paths" />, <ByokPanel key="byok" />, <KeepRatePanel key="keep" />];
 
   return (
-    <section className="grid gap-12 px-6 pt-24 pb-24 md:grid-cols-[652fr_612fr] md:gap-10 md:px-10 md:pt-32 md:pb-32">
+    <section className="grid gap-12 px-6 py-16 md:grid-cols-[652fr_612fr] md:gap-10 md:px-10 md:py-24">
       <div className="flex flex-col">
         <ChromaticLines
           as="h2"

@@ -312,7 +312,9 @@ export function ReviewFlow({ active }: { active: number }) {
 export function ReviewSpecialists() {
   const reduced = useReducedMotion();
   const { ref, on } = useOnScreen<HTMLDivElement>();
-  const tick = useReviewTick(1600, 5, 1);
+  /* Two extra ticks park the loop on the merged verdict — that resolution is
+     the point of the mark, so it holds ~4.5s before the spokes light again. */
+  const tick = useReviewTick(1500, 5, 2);
   const merge = tick === 4;
 
   return (
