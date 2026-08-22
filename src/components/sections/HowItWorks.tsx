@@ -57,13 +57,18 @@ export function HowItWorks({
       <div className="grid gap-12 px-6 pt-16 pb-16 md:grid-cols-3 md:gap-14 md:px-10 md:pt-20 md:pb-24">
         {steps.map((step, i) => (
           <ChromaticReveal key={step.title} delay={0.08 * i}>
-            <div className="relative pt-5">
-              {/* The rule over each step fills while that step is on stage. */}
-              <span className="absolute inset-x-0 top-0 h-px bg-border" />
+            {/* The step on stage carries the brand tint as well as the filling
+                rule — the rule alone was too quiet to read as movement. */}
+            <div
+              className={`relative rounded-xl px-5 pt-5 pb-6 transition-colors duration-500 ${
+                i === active ? "bg-brand-soft/15" : "bg-transparent"
+              }`}
+            >
+              <span className="absolute inset-x-5 top-0 h-px bg-border" />
               {i === active && (
                 <span
                   key={active}
-                  className="review-step-fill pointer-events-none absolute inset-x-0 top-0 h-px bg-brand"
+                  className="review-step-fill pointer-events-none absolute inset-x-5 top-0 h-px bg-brand"
                   style={{ animationDuration: `${REVIEW_DWELL[active]}ms` }}
                 />
               )}

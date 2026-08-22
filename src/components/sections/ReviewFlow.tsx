@@ -199,8 +199,8 @@ export function ReviewFlow({ active }: { active: number }) {
   const working = active === 1;
 
   const grid = working
-    ? { noiseFrequency: 3, timeScale: 0.34, waveHeightScale: 0.16, noiseLayerSpread: 0.01 }
-    : { noiseFrequency: 2, timeScale: 0.12, waveHeightScale: 0.11, noiseLayerSpread: 0.005 };
+    ? { noiseFrequency: 3, timeScale: 0.34, waveHeightScale: 0.22, noiseLayerSpread: 0.012 }
+    : { noiseFrequency: 2, timeScale: 0.14, waveHeightScale: 0.16, noiseLayerSpread: 0.006 };
 
   return (
     <div ref={ref} className="relative flex h-[460px] w-full items-center justify-center px-4">
@@ -208,7 +208,7 @@ export function ReviewFlow({ active }: { active: number }) {
           mask would hide the wave exactly where the card already covers it. */}
       {!reduced && on && (
         <ParticleGrid
-          className="absolute inset-0 h-full w-full opacity-50 [mask-image:linear-gradient(0deg,transparent_0%,#000_24%)]"
+          className="absolute inset-0 h-full w-full opacity-70 [mask-image:linear-gradient(0deg,transparent_0%,#000_10%)]"
           {...grid}
         />
       )}
