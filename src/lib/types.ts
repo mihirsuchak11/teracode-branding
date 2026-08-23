@@ -23,9 +23,18 @@ export interface FeatureBenefit {
   image?: { src: string; alt: string };
 }
 
+/**
+ * Where a product is in its life. Only `available` products carry the $0/$20
+ * offer and the Start free CTA; coming-soon products swap it for a waitlist.
+ */
+export type ProductStatus = "available" | "coming-soon";
+
 export interface FeaturePage {
   slug: string;
   name: string;
+  status: ProductStatus;
+  /** schema.org applicationSubCategory for the product's JSON-LD. */
+  category: string;
   tagline: string;
   heroTitle: string;
   heroBody: string;

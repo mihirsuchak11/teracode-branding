@@ -3,7 +3,21 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { graphSources, migrateComposer, pulseAlert, spotlights } from "@/content/home";
+import {
+  applicationSpotlights as products,
+  graphSources,
+  migrateComposer,
+  productsSection,
+  pulseAlert,
+} from "@/content/home";
+import {
+  applications,
+  platform,
+  productGroups,
+  productHref,
+  productStatus,
+} from "@/content/products";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ChevronDown } from "@/components/ui/icons";
@@ -13,9 +27,10 @@ import { AskComposer } from "@/components/sections/AskChatAnim";
 import { ProgressRuler } from "@/components/sections/ProgressRuler";
 
 /**
- * The three clouds the strand field morphs between, with the exact thresholds
- * and scales the original passed. Module-level so the identity is stable —
- * a new array would rebuild the whole GPGPU sim.
+ * The three clouds the strand field morphs between, index-aligned with the
+ * applications (Review, Migrate, Oncall), with the exact thresholds and scales
+ * the original passed. Module-level so the identity is stable — a new array would
+ * rebuild the whole GPGPU sim.
  */
 const MORPH_SHAPES: MorphShape[] = [
   { points: CORTEX_SHAPE, threshold: 0.6, scale: 0.92 },
@@ -51,11 +66,55 @@ function MiniGlyph({ i }: { i: number }) {
   );
 }
 
-function ExploreMore({ href }: { href: string }) {
+/**
+ * The whole lineup in one row under the section heading, so a visitor sees
+ * all seven products before the pinned scroller (three screens of
+ * applications) and the platform grid below it.
+ */
+function LineupIndex() {
+  const groups = [
+    { key: "applications", title: productGroups.applications.title, items: applications },
+    { key: "platform", title: productGroups.platform.title, items: platform },
+  ];
+  return (
+    <div className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
+      {groups.map((g) => (
+        <div key={g.key} className="flex flex-wrap items-center gap-2">
+          <span className="mr-1 font-mono text-[11px] uppercase tracking-widest text-fg-faint">
+            {g.title}
+          </span>
+          {g.items.map((p) => (
+            <Link
+              key={p.slug}
+              href={productHref(p)}
+              title={productStatus[p.status].label}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-[13px] text-fg-dim transition-colors hover:border-border-strong hover:text-fg"
+            >
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  p.status === "available" ? "bg-brand" : "bg-warn"
+                }`}
+              />
+              {p.short}
+            </Link>
+          ))}
+        </div>
+      ))}
+      <p className="w-full text-xs text-fg-faint">
+        <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-brand align-middle" />
+        {productStatus.available.label}
+        <span className="ml-4 mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-warn align-middle" />
+        {productStatus["coming-soon"].label}
+      </p>
+    </div>
+  );
+}
+
+function ExploreMore({ href, label }: { href: string; label: string }) {
   const Tag = href.startsWith("mailto:") || href.startsWith("http") ? "a" : Link;
   return (
     <Tag href={href} className="group mt-10 inline-flex items-center gap-3 text-[15px] text-fg-dim">
-      Learn more
+      {label}
       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-surface-2 transition-colors group-hover:bg-border-strong">
         <ChevronDown width={13} height={13} className="-rotate-90 text-fg-muted" />
       </span>
@@ -154,11 +213,11 @@ function PulseMock() {
           />
           <circle cx="217" cy="51.5" r="3" fill="#e5484d" />
         </svg>
-        <span className="absolute top-[21%] left-[91%] text-[11px] leading-4 font-medium text-[rgb(82,82,82)]">
-          Clean
+        <span className="absolute top-[21%] left-[86%] text-[11px] leading-4 font-medium text-[rgb(82,82,82)]">
+          {pulseAlert.labels.baseline}
         </span>
-        <span className="absolute top-[81%] left-[83%] text-[11px] leading-4 font-medium text-danger">
-          Finding
+        <span className="absolute top-[81%] left-[88%] text-[11px] leading-4 font-medium text-danger">
+          {pulseAlert.labels.anomaly}
         </span>
       </div>
 
@@ -179,9 +238,9 @@ function PulseMock() {
 const mocks = { graph: <CortexMock />, ask: <AskMock />, pulse: <PulseMock /> };
 
 /**
- * Pinned feature scroller — ports the original "Scroll Progress Section".
+ * Pinned product scroller — ports the original "Scroll Progress Section".
  *
- * The left text panels (review / BYOK / checks) scroll while the right column is
+ * The left text panels (Review / Migrate / Oncall) scroll while the right column is
  * `position: sticky`. That column is ONE WebGL strand field (`StrandMorph`)
  * that morphs between a point cloud per feature, with the matching UI card
  * carried in front of it. Both the morph and the card swap are driven by the
@@ -204,7 +263,7 @@ function triangle(x: number, sections: number) {
   return a < 0.5 ? 4 * a - 1 : 3 - 4 * a;
 }
 
-export function FeatureSpotlights() {
+export function ProductSpotlights() {
   const [active, setActive] = useState(0);
   const [cardVisible, setCardVisible] = useState(true);
   // null until measured, so the WebGL field mounts exactly once (desktop only)
@@ -217,7 +276,7 @@ export function FeatureSpotlights() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (p) => {
-    const count = spotlights.length;
+    const count = products.length;
     setActive(Math.min(Math.max(Math.floor(p * count), 0), count - 1));
     const edge = 1 / (count * 2);
     const clamped = Math.min(Math.max(p, edge), 1 - edge);
@@ -233,12 +292,28 @@ export function FeatureSpotlights() {
   }, []);
 
   return (
-    <section className="relative">
+    <section id={productsSection.id} className="relative scroll-mt-[68px]">
+      <div className="px-6 pt-28 md:px-10 md:pt-36">
+        <SectionHeading
+          align="left"
+          eyebrow={productsSection.eyebrow}
+          title={productsSection.title}
+          body={productsSection.body}
+        />
+        <LineupIndex />
+        <p className="mt-16 border-t border-border pt-6 text-sm text-fg-muted md:mt-20">
+          <span className="font-mono text-xs uppercase tracking-widest text-fg">
+            {productGroups.applications.title}
+          </span>
+          <span className="mx-3 text-fg-faint">∴</span>
+          {productGroups.applications.body}
+        </p>
+      </div>
       <div className="grid px-6 md:grid-cols-2 md:gap-14 md:px-10">
         {/* LEFT — scrolling text panels (always SSR-rendered). Its scroll
             progress is what drives the morph, the card swap and the ruler. */}
         <div ref={panelsRef}>
-          {spotlights.map((f) => (
+          {products.map((f) => (
             <div
               key={f.name}
               className="flex min-h-[70vh] flex-col justify-center py-16 md:min-h-screen md:py-0"
@@ -248,11 +323,8 @@ export function FeatureSpotlights() {
                   {
                     kind: "node",
                     children: (
-                      <Badge
-                        tone="brand"
-                        className="mb-5"
-                      >
-                        {f.status}
+                      <Badge tone={productStatus[f.status].tone} className="mb-5">
+                        {productStatus[f.status].label}
                       </Badge>
                     ),
                   },
@@ -260,13 +332,13 @@ export function FeatureSpotlights() {
                     kind: "text",
                     tag: "h2",
                     className: "text-h2-section text-fg",
-                    segments: [{ text: f.name }],
+                    segments: [{ text: f.short }],
                   },
                   {
                     kind: "text",
                     tag: "p",
                     className: "mt-5 max-w-[560px] text-base leading-relaxed text-fg-muted",
-                    segments: [{ text: f.body }],
+                    segments: [{ text: `${f.tagline}. ${f.body}` }],
                   },
                   {
                     kind: "node",
@@ -284,7 +356,10 @@ export function FeatureSpotlights() {
                             </div>
                           ))}
                         </div>
-                        <ExploreMore href={f.href} />
+                        <ExploreMore
+                          href={f.href}
+                          label={f.status === "available" ? "Learn more" : "See what is coming"}
+                        />
                       </>
                     ),
                   },
@@ -359,7 +434,7 @@ export function FeatureSpotlights() {
                         transition: { duration: 0.15, ease: "easeIn" },
                       }}
                     >
-                      {mocks[spotlights[active].mock]}
+                      {mocks[products[active].mock]}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -369,7 +444,7 @@ export function FeatureSpotlights() {
             <div className="absolute top-0 right-px bottom-0 flex items-center">
               <ProgressRuler
                 target={panelsRef}
-                sections={spotlights.length}
+                sections={products.length}
                 className="h-[300px]"
               />
             </div>

@@ -1,25 +1,25 @@
 import type { NavDropdownItem } from "@/lib/types";
-import { APP_LOGIN, APP_START } from "@/lib/app";
-import { MAIL_CONTACT } from "@/content/home";
+import { APP_LOGIN, APP_START, MAIL_CONTACT } from "@/lib/app";
+import {
+  applications,
+  platform,
+  productHref,
+  productStatus,
+  type Product,
+} from "@/content/products";
+
+const productItem = (p: Product): NavDropdownItem => ({
+  label: p.name,
+  description: `${productStatus[p.status].label} — ${p.tagline}.`,
+  href: productHref(p),
+});
 
 export const nav = {
-  products: [
-    {
-      label: "Multi-agent review",
-      description: "Several reviewers on every pull request.",
-      href: "/products/review",
-    },
-    {
-      label: "Bring your own key",
-      description: "Anthropic or OpenRouter. We take no cut.",
-      href: "/products/agents",
-    },
-    {
-      label: "One check each",
-      description: "Require the agents you trust to merge.",
-      href: "/products/checks",
-    },
-  ] satisfies NavDropdownItem[],
+  /** Grouped like the catalog: the agents we run, then the platform you build on. */
+  products: {
+    applications: applications.map(productItem),
+    platform: platform.map(productItem),
+  },
   resources: {
     support: [
       {
@@ -51,12 +51,12 @@ export const nav = {
 export const footer = {
   columns: [
     {
-      title: "Product",
-      links: [
-        { label: "Multi-agent review", href: "/products/review" },
-        { label: "Bring your own key", href: "/products/agents" },
-        { label: "One check each", href: "/products/checks" },
-      ],
+      title: "Applications",
+      links: applications.map((p) => ({ label: p.name, href: productHref(p) })),
+    },
+    {
+      title: "Platform",
+      links: platform.map((p) => ({ label: p.short, href: productHref(p) })),
     },
     {
       title: "Company",
@@ -64,11 +64,6 @@ export const footer = {
         { label: "Pricing", href: "/pricing" },
         { label: "About", href: "/about-us" },
         { label: "Careers", href: "/careers" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
         { label: "Blog", href: "/blog" },
         { label: "Integrations", href: "/integrations" },
         { label: "Changelog", href: "/changelog" },
@@ -96,8 +91,8 @@ export const footer = {
 };
 
 export const ctaBand = {
-  title: "Start on the first repository. It stays free.",
-  titleLine1: "Start on the first repository.",
+  title: "Start with Review on one repository. It stays free.",
+  titleLine1: "Start with Review on one repository.",
   titleLine2: "It stays free.",
   primary: { label: "Start free", href: APP_START },
   secondary: { label: "See pricing", href: "/pricing" },

@@ -12,11 +12,14 @@ function Dropdown({
   open,
   onToggle,
   children,
+  panelClassName = "w-72",
 }: {
   label: string;
   open: boolean;
   onToggle: () => void;
   children: React.ReactNode;
+  /** Panel width; the two-column products menu passes a wider one. */
+  panelClassName?: string;
 }) {
   return (
     <div className="relative" onMouseLeave={() => open && onToggle()}>
@@ -49,7 +52,9 @@ function Dropdown({
             transition={{ duration: 0.15 }}
             className="absolute left-0 top-full pt-2"
           >
-            <div className="w-72 rounded-card border border-border-strong/50 bg-surface p-2 shadow-2xl shadow-black/60">
+            <div
+              className={`rounded-card border border-border-strong/50 bg-surface p-2 shadow-2xl shadow-black/60 ${panelClassName}`}
+            >
               {children}
             </div>
           </motion.div>
@@ -100,14 +105,15 @@ export function Header() {
   const close = () => setOpenMenu(null);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-[68px] bg-bg">
-      <div className="mx-4 flex h-full items-center gap-10 px-6 md:mx-10 md:px-10 lg:mx-16">
+    <header className="fixed inset-x-0 top-0 z-50 h-[68px] bg-bg px-4 md:px-10 lg:px-16">
+      {/* Same 1600px cap as the page frame in layout.tsx */}
+      <div className="mx-auto flex h-full w-full max-w-[1600px] items-center gap-10 px-6 md:px-10">
         <Link href="/" className="flex items-center gap-2" onClick={close}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/teracode-logo-horizontal-white.svg"
             alt="TeraCodeAI"
-            width={105}
+            width={113}
             height={28}
             className="h-7 w-auto select-none"
           />
@@ -119,10 +125,27 @@ export function Header() {
             label="Products"
             open={openMenu === "features"}
             onToggle={() => setOpenMenu(openMenu === "features" ? null : "features")}
+            panelClassName="w-[36rem]"
           >
-            {nav.products.map((item) => (
-              <DropdownLink key={item.href} {...item} onNavigate={close} />
-            ))}
+            {/* Two columns: the agents we run, and the platform you build on. */}
+            <div className="grid grid-cols-2 divide-x divide-border">
+              <div className="pr-2">
+                <p className="px-3 pb-1 pt-2 font-mono text-[10px] uppercase tracking-widest text-fg-faint">
+                  Applications
+                </p>
+                {nav.products.applications.map((item) => (
+                  <DropdownLink key={item.href} {...item} onNavigate={close} />
+                ))}
+              </div>
+              <div className="pl-2">
+                <p className="px-3 pb-1 pt-2 font-mono text-[10px] uppercase tracking-widest text-fg-faint">
+                  Platform
+                </p>
+                {nav.products.platform.map((item) => (
+                  <DropdownLink key={item.href} {...item} onNavigate={close} />
+                ))}
+              </div>
+            </div>
           </Dropdown>
           <Dropdown
             label="Resources"
@@ -181,7 +204,12 @@ export function Header() {
             className="overflow-hidden border-t border-border bg-bg md:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
-              {[...nav.products, ...nav.resources.company, ...nav.links].map((item) =>
+              {[
+                ...nav.products.applications,
+                ...nav.products.platform,
+                ...nav.resources.company,
+                ...nav.links,
+              ].map((item) =>
                 item.href.startsWith("http") ? (
                   <a
                     key={item.href}

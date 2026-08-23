@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps<"/careers/[slug]">)
   if (!job) return buildMetadata({ title: "Careers", description: "Open application at TeraCodeAI.", path: "/careers" });
   return buildMetadata({
     title: job.title,
-    description: `${job.title} at TeraCodeAI — ${job.location}, ${job.type}. Help build the review board teams will actually require.`,
+    description: `${job.title} at TeraCodeAI — ${job.location}, ${job.type}. Help build the agents that let teams ship fast and secure.`,
     path: `/careers/${job.slug}`,
   });
 }

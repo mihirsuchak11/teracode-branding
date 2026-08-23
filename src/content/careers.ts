@@ -18,14 +18,14 @@ export const careersHero = {
       height: 774,
     },
   ],
-  statement: "Build the review board teams will actually require.",
+  statement: "Build the agents that let teams ship fast and secure.",
 };
 
 export const peopleSection = {
   eyebrow: "The people behind TeraCodeAI",
   title: "Small team, the product you can run tomorrow",
   paragraphs: [
-    "The job is a GitHub App that several reviewers can share, on keys the customer already has, with a check each and a journal that says whether they were worth it. Not a SOC 2 scanner, not a seven-product platform.",
+    "The job is a platform to author, run and score AI agents — and the applications we run on it: Review today, Migrate and Oncall next — on keys the customer already has, with a check each and a keep rate that says whether they were worth it. Not a SOC 2 scanner in a box.",
     "We are not running a slate of open roles. If that problem is the one you want to work on, write anyway.",
   ],
   cta: { label: "More about us", href: "/about-us" },

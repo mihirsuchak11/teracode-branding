@@ -1,18 +1,19 @@
 import type { Stat } from "@/lib/types";
-import { APP_START } from "@/lib/app";
+import { APP_START, MAIL_CONTACT } from "@/lib/app";
+import { applications, productHref } from "@/content/products";
 
-export const MAIL_CONTACT = "mailto:contact@teracodeai.com";
+export { MAIL_CONTACT };
 
 export const hero = {
   announcement: {
-    badge: "New",
-    text: "First connected repository is free. Then $20 per repo, per month.",
-    href: "/pricing",
+    badge: "Live",
+    text: "Review is available now. First connected repository free, then $20 per repo, per month.",
+    href: "/products/review",
   },
-  title: "Several reviewers. Your keys. One check each.",
-  body: "TeraCodeAI is a GitHub App and dashboard that runs multiple review agents on every pull request. Each agent writes in its own voice, posts its own status check, and comments only when it has something to say. You bring the model key; we take no cut of inference.",
+  title: "Ship fast. Ship secure. Every change.",
+  body: "TeraCodeAI is the platform to build and ship AI agents, and the agents we run on it for you. Review reads every pull request today; Migrate and Oncall are next. Studio, Runtime, Evals and Signals are what you build your own with. Your keys, no cut of inference.",
   primary: { label: "Start free", href: APP_START },
-  secondary: { label: "See pricing", href: "/pricing" },
+  secondary: { label: "See the products", href: "/#products" },
   mock: {
     prompt: "What should I review?",
     chips: ["Review", "Explain", "Secure", "Test"],
@@ -24,66 +25,71 @@ export const steps = [
   {
     n: "1.",
     title: "Connect",
-    body: "Install the GitHub App, sign in, and connect a repository. The first one in an org is free forever.",
+    body: "Install the GitHub App or connect a GitLab project. The first repository in an org is free forever.",
   },
   {
     n: "2.",
     title: "Bring a key",
-    body: "Add an Anthropic or OpenRouter key. Reviews run on your account, at your provider's price.",
+    body: "Add an Anthropic or OpenRouter key. Every agent runs on your account, at your provider's price.",
   },
   {
     n: "3.",
-    title: "Gate the merge",
-    body: "Each agent posts its own check. Require the ones you care about. The dashboard shows what your team kept.",
+    title: "Ship behind a gate",
+    body: "Each agent posts its own check. Require the ones you trust, merge when they pass, and see what the team kept.",
   },
 ];
 
 export const statement = {
-  eyebrow: "Bring your own key — several reviewers, one check each",
-  title:
-    "AI writes code faster than any team can review it. TeraCodeAI puts named reviewers on the pull request, not a SOC 2 scanner in a box.",
+  eyebrow: "Runs on the forges, providers, and languages you already use",
+  /* Two-tone headline: the problem dim, the answer bright. */
+  problem: "AI writes code faster than any team can check, secure, or release it.",
+  answer:
+    "TeraCodeAI is the layer between a diff and a deploy that keeps fast from turning into unsafe.",
 };
 
-export const spotlights = [
-  {
-    name: "Multi-agent review",
-    status: "Several reviewers",
-    href: "/products/review",
-    body: "Legal, Compliance, Team Lead, Senior Engineer, or agents you write. They fan out on the same diff, then findings merge into one review so two agents flagging the same line become one comment.",
-    bullets: [
-      "Each agent posts its own status check.",
-      "Findings merge before they hit the thread.",
-      "Skills attach to the paths they know.",
-    ],
-    mock: "graph" as const,
-  },
-  {
-    name: "Bring your own key",
-    status: "Your keys",
-    href: "/products/agents",
-    body: "Anthropic or OpenRouter, stored encrypted, used only to call the provider you chose. The key never enters the sandbox that clones the pull request. We do not resell tokens.",
-    bullets: [
-      "Keys encrypted at rest.",
-      "Spend shown from what the provider reports.",
-      "A monthly budget you can actually hit.",
-    ],
-    mock: "ask" as const,
-  },
-  {
-    name: "One check each",
-    status: "Merge gates",
-    href: "/products/checks",
-    body: "A clean run is a passing check, not an approval you did not ask for. Require the agents you trust. The journal records which findings the team kept, so you can see whether the reviewers were worth it.",
-    bullets: [
-      "Checks you can require in branch protection.",
-      "A journal, not a black box.",
-      "Keep-rate per agent, per repository.",
-    ],
-    mock: "pulse" as const,
-  },
-];
+export const productsSection = {
+  id: "products",
+  eyebrow: "Products",
+  title: "Seven products. One platform.",
+  body: "Three applications we run for you, and the four platform pieces they are built on. Same dashboard, same keys, same meter.",
+};
 
-/** The specialist board shown beside multi-agent review. */
+/** What the pinned scroller says under each application. */
+const spotlightDetails: Record<string, { bullets: string[]; mock: "graph" | "ask" | "pulse" }> = {
+  review: {
+    bullets: [
+      "One check per agent, not one blob of comments.",
+      "Your Anthropic or OpenRouter key. No cut of inference.",
+      "A keep rate from what the team resolved, not deleted.",
+    ],
+    mock: "graph",
+  },
+  migrate: {
+    bullets: [
+      "One pull request per module, never a 400-file diff.",
+      "Your test suite runs before each PR opens.",
+      "A burn-down of every remaining call site.",
+    ],
+    mock: "ask",
+  },
+  oncall: {
+    bullets: [
+      "Trace, deploys and owner gathered before you wake.",
+      "Three ranked causes, with the evidence attached.",
+      "The timeline written for the post-mortem.",
+    ],
+    mock: "pulse",
+  },
+};
+
+/** The three applications, in lineup order, with their scroller extras. */
+export const applicationSpotlights = applications.map((p) => ({
+  ...p,
+  href: productHref(p),
+  ...spotlightDetails[p.slug],
+}));
+
+/** The reviewer board shown beside Review. */
 export const graphSources = [
   { name: "Security", detail: "2 findings", status: "Done" },
   { name: "Team Lead", detail: "1 regression", status: "Done" },
@@ -91,20 +97,21 @@ export const graphSources = [
   { name: "Compliance", detail: "awaiting diff", status: "Queued" },
 ];
 
-/** The check card shown beside merge gates. */
+/** The incident card shown beside Oncall. */
 export const pulseAlert = {
-  severity: "Check failed",
-  time: "2 min ago",
-  title: "security · check failed",
-  body: "Token logged in plaintext in auth/session.ts. Check security is failing until this finding is addressed.",
-  channel: "PR #482",
+  severity: "Page fired",
+  time: "40 s ago",
+  title: "checkout-api · p95 latency",
+  body: "Spike began 2 min after deploy 4f21c. Three ranked causes and the suspected diff are in the channel.",
+  labels: { baseline: "Baseline", anomaly: "Spike" },
+  channel: "#inc-checkout",
   routed: "Posted to",
-  delivered: "Check run updated",
+  delivered: "Trace attached",
 };
 
 export const stack = {
-  title: "The dashboard after you sign in",
-  body: "Agents, skills, findings, coverage, and usage for the repositories you connected. Two forges: GitHub App, or a GitLab project token.",
+  title: "One dashboard for every product",
+  body: "Agents, skills, findings, coverage, and usage for the repositories you connected. Review today; every product lands on the same screen. Two forges: GitHub App, or a GitLab project token.",
   cta: { label: "See how it connects", href: "/integrations" },
   label: "What you configure",
   addLabel: "Connect a repository",
@@ -180,25 +187,25 @@ export const askChat = {
   ],
 };
 
-/** Composer placeholder for the BYOK spotlight panel. */
-export const migrateComposer = "Add the Anthropic key from Settings → Vault";
+/** Composer placeholder for the Migrate product panel. */
+export const migrateComposer = "Move every call site off the deprecated client";
 
 export const testimonial = {
-  stat: { value: "$20", label: "per extra connected repository, per month — first repo free" },
+  stat: { value: "7", label: "products on one platform — the first connected repository free on every one of them" },
   quote:
-    "“Bring your own key. Several reviewers in their own voice. One check each. We show you whether they were worth it.”",
-  name: "The product, in one line",
+    "“Help teams ship fast and secure. Connect a repository to Review and you are already on the platform: Studio, Runtime and Evals are the same account, the same keys and the same agents.”",
+  name: "The company, in one line",
   role: "TeraCodeAI",
   image: "/art/hero-knot.png",
 };
 
 export const statsSection: { titleMuted: string; title: string; stats: Stat[] } = {
-  titleMuted: "One meter. Your keys. No second company.",
-  title: "TeraCodeAI is the review board, not the model bill.",
+  titleMuted: "One platform. One meter. Your keys.",
+  title: "TeraCodeAI is the layer between the agent and the model bill.",
   stats: [
-    { value: "$20", label: "Per extra connected repository / month" },
-    { value: "1", label: "First repository in an org, free forever" },
-    { value: "0", label: "Cut of your inference spend" },
-    { value: "N", label: "Reviewers — each posts its own check" },
+    { value: "7", label: "Products on one platform" },
+    { value: "1", label: "Runtime under all of them" },
+    { value: "$0", label: "Markup on your tokens" },
+    { value: "$20", label: "Per extra connected repository / month — first one free" },
   ],
 };

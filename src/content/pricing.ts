@@ -3,7 +3,7 @@ import { APP_START } from "@/lib/app";
 
 export const pricingHero = {
   title: "Pricing",
-  note: "$20 per connected repository per month. The first repository in an organization is free, forever. One meter.",
+  note: "$20 per connected repository per month, across every product. The first repository in an organization is free, forever. One meter.",
 };
 
 /**
@@ -72,7 +72,9 @@ export const comparison: ComparisonGroup[] = [
   {
     name: "What you get",
     rows: [
-      { feature: "Multi-agent pull request review", values: [true, true, true] },
+      { feature: "Review: multi-agent pull request review", values: [true, true, true] },
+      { feature: "Studio, Runtime and Evals on the same account", values: [true, true, true] },
+      { feature: "Migrate, Oncall and Signals when they launch (same meter)", values: [true, true, true] },
       { feature: "One status check per agent", values: [true, true, true] },
       { feature: "Bring your own key", values: [true, true, true] },
       { feature: "GitHub App", values: [true, true, true] },

@@ -15,7 +15,7 @@ export const releases: ChangelogRelease[] = [
   {
     version: "Now",
     date: "2026",
-    title: "TeraCodeAI — the review board, not a second company",
+    title: "TeraCodeAI — Review is live; six more products on the way",
     items: [
       {
         label: "NEW",
@@ -28,6 +28,9 @@ export const releases: ChangelogRelease[] = [
       {
         label: "NEW",
         text: "One meter: $20 per extra connected repository per month. The first repository in an organization is free forever.",
+      },
+      {
+        text: "The lineup: Migrate, Oncall, Studio, Runtime, Evals and Signals are coming soon on the same dashboard, the same keys and the same meter.",
       },
       {
         text: "Start from this site at the dashboard login, destination /projects/new. Contact: contact@teracodeai.com.",

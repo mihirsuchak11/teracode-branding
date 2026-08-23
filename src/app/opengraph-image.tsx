@@ -37,10 +37,10 @@ export default function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 72, color: "#fafaf9", letterSpacing: -3, lineHeight: 1.05 }}>
-            Several reviewers. Your keys.
+            Ship fast. Ship secure.
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "#a6a09b", marginTop: 26 }}>
-            One check each. First connected repository free.
+            Seven products, one platform. Review is live on your keys today.
           </div>
         </div>
 

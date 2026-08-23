@@ -2,6 +2,11 @@ import type { FaqItem } from "@/lib/types";
 
 export const faq: FaqItem[] = [
   {
+    question: "What does TeraCodeAI do?",
+    answer:
+      "It helps teams ship fast and secure. TeraCodeAI is a platform to build and ship AI agents — Studio to author them, Runtime to execute them on your own keys, Evals to score them on what humans kept — and the applications we run on it for you. Review reads every pull request today; the other six are coming soon.",
+  },
+  {
     question: "How do I start?",
     answer:
       "Start free opens the TeraCodeAI dashboard login and, after GitHub OAuth, the connect-repository screen. The first repository in an organization is free forever. If you are already signed in, the app keeps that destination instead of showing the button again.",
@@ -27,8 +32,8 @@ export const faq: FaqItem[] = [
       "No. Reviews call the provider whose key you add. The dashboard can show a labeled fixture of what a comment looks like; that is not a live review and not hosted inference.",
   },
   {
-    question: "Does TeraCodeAI merge the pull request for me?",
+    question: "Does TeraCodeAI merge or deploy for me?",
     answer:
-      "No. Each agent posts a status check. You require the names you care about in branch protection. There is no auto-merge and no seat licence.",
+      "No. Each agent posts a status check and you require the names you care about in branch protection. Migrate opens pull requests your team merges; Oncall posts to the incident channel. Nothing auto-merges, nothing auto-deploys, and there is no seat licence.",
   },
 ];

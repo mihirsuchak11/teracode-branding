@@ -14,6 +14,10 @@ export const PULSE_POINTS =
 
 export const FEATURE_POINTS: Record<string, string> = {
   review: CORTEX_POINTS,
-  agents: ASK_POINTS,
-  checks: PULSE_POINTS,
+  migrate: ASK_POINTS,
+  oncall: PULSE_POINTS,
+  studio: CORTEX_POINTS,
+  runtime: ASK_POINTS,
+  evals: PULSE_POINTS,
+  signals: CORTEX_POINTS,
 };

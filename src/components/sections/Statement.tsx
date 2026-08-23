@@ -2,9 +2,6 @@ import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { AskChatAnim } from "@/components/sections/AskChatAnim";
 import { statement } from "@/content/home";
 
-/* The headline is two-tone: the problem dim, the answer bright. */
-const [problem, answer] = statement.title.split(/(?<=review it\.)\s/);
-
 export function Statement() {
   return (
     <section className="relative">
@@ -13,8 +10,8 @@ export function Statement() {
           as="h2"
           className="text-h2-statement max-w-[620px]"
           segments={[
-            { text: `${problem} `, className: "text-fg-faint" },
-            { text: answer, className: "text-fg" },
+            { text: `${statement.problem} `, className: "text-fg-faint" },
+            { text: statement.answer, className: "text-fg" },
           ]}
         />
       </div>

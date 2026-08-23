@@ -1,5 +1,6 @@
 import type { FeaturePage } from "@/lib/types";
 import { APP_START } from "@/lib/app";
+import { MAIL_CONTACT } from "@/lib/app";
 
 /** A small decorative mock card rendered beside a benefit section. */
 export interface MockCallout {
@@ -32,6 +33,8 @@ export interface FeatureMidSection {
 
 export interface FeatureExtras {
   midSection?: FeatureMidSection;
+  /** Which mid-page layout renders `midSection`. Defaults to "panels". */
+  midLayout?: "panels" | "chips" | "pulse";
   statsTitleMuted?: string;
   statsTitle?: string;
 }
@@ -42,17 +45,36 @@ export const featureHero: Record<
   { layout: "art-top" | "centered" | "split"; ctas: boolean }
 > = {
   review: { layout: "art-top", ctas: true },
-  agents: { layout: "centered", ctas: true },
-  checks: { layout: "split", ctas: true },
+  migrate: { layout: "split", ctas: true },
+  oncall: { layout: "centered", ctas: true },
+  studio: { layout: "split", ctas: true },
+  runtime: { layout: "centered", ctas: true },
+  evals: { layout: "split", ctas: true },
+  signals: { layout: "centered", ctas: true },
 };
 
 export const featureCta = { label: "Start free", href: APP_START };
 
+/**
+ * CTAs for a coming-soon product: you cannot buy it yet, so the pricing
+ * button becomes a waitlist and the secondary points back at Review, the
+ * product you can connect today.
+ */
+export const comingSoonCtas = (name: string) => ({
+  primary: {
+    label: "Join the waitlist",
+    href: `${MAIL_CONTACT}?subject=${encodeURIComponent(`${name} — waitlist`)}`,
+  },
+  secondary: { label: "Start with Review", href: "/products/review" },
+});
+
 export const features: FeaturePage[] = [
   {
     slug: "review",
-    name: "Multi-agent review",
-    tagline: "Several reviewers on every pull request.",
+    name: "TeraCode Review",
+    status: "available",
+    category: "Code review",
+    tagline: "A board of specialists on every pull request.",
     heroTitle: "Several reviewers.\nOne review on the thread.",
     heroBody:
       "Agents you name — Legal, Compliance, Team Lead, Senior Engineer, or your own — fan out on the same diff. Findings merge so two agents flagging the same line become one comment. Each still posts its own check.",
@@ -78,56 +100,146 @@ export const features: FeaturePage[] = [
     ],
   },
   {
-    slug: "agents",
-    name: "Bring your own key",
-    tagline: "Your provider. Your bill. No markup.",
-    heroTitle: "You bring the key.\nWe run the reviewers.",
+    slug: "migrate",
+    name: "TeraCode Migrate",
+    status: "coming-soon",
+    category: "Migrations",
+    tagline: "Carry a codebase-wide migration to done.",
+    heroTitle: "The last call site\nis the hard one.",
     heroBody:
-      "Add an Anthropic or OpenRouter key in the vault. Reviews call that provider from the host. The key is encrypted at rest and never enters the sandbox that clones the pull request.",
+      "Point a fleet at a framework upgrade or a deprecated API. It opens one pull request per module, keeps the build green, and stops when the last call site is gone. Migrate is coming soon; join the waitlist and you will hear from us the week it opens up.",
     benefits: [
       {
-        title: "Two providers, on purpose.",
-        body: "Anthropic direct when you already hold a key and do not want a second account. OpenRouter when you want exact per-call cost in the dashboard. Other models are whatever OpenRouter fronts — not a pretend Azure or Bedrock product page.",
+        title: "One pull request per module.",
+        body: "Nobody reviews a 400-file diff. The fleet splits the work along your module boundaries and lands it piece by piece, each PR small enough for the Review board to actually read.",
       },
       {
-        title: "A budget you can hit.",
-        body: "Set a monthly cap on the project. The review stops spending when it would go over, and says so on the pull request instead of going quiet.",
+        title: "Green the whole way.",
+        body: "Each pull request runs your suite before it opens. A module that cannot go green is reported with the failing test, not merged and hoped for.",
       },
       {
-        title: "No seat tax, no token resale.",
-        body: "The platform meter is connected repositories. Inference is your provider invoice. Those are different bills on purpose.",
+        title: "Stops when it is done.",
+        body: "The migration has a definition of finished — zero remaining call sites — and the fleet shuts itself off when it gets there. No agent is left running on a done job.",
       },
-    ],
-    chips: [
-      "Anthropic or OpenRouter",
-      "Encrypted at rest",
-      "Key stays off the sandbox",
-      "Spend from the provider",
-      "Monthly project budget",
-      "No markup on tokens",
-    ],
-    stats: [
-      { value: "$20", label: "Per extra connected repository / month" },
-      { value: "1", label: "First repository free forever" },
-      { value: "0", label: "Cut of your inference spend" },
-      { value: "2", label: "Providers: Anthropic, OpenRouter" },
     ],
   },
   {
-    slug: "checks",
-    name: "One check each",
-    tagline: "Require the agents you trust.",
-    heroTitle: "A check per agent.\nNot a rubber stamp.",
+    slug: "oncall",
+    name: "TeraCode Oncall",
+    status: "coming-soon",
+    category: "Incident response",
+    tagline: "Triage that reads the trace, not the alert.",
+    heroTitle: "The page fires.\nThe work is done.",
     heroBody:
-      "Each reviewer posts its own status check. Gate the merge on the ones that matter. The dashboard journal shows which findings the team kept, so you can tell whether the reviewers were worth it.",
+      "When a page fires, an agent has already pulled the trace, the recent deploys and the owning service, and posted the three most likely causes, ranked, with the evidence for each. Oncall is coming soon; join the waitlist and you will hear from us the week it opens up.",
     benefits: [
       {
-        title: "Branch protection, not theatre.",
-        body: "A clean run is a passing check you can require in branch protection. The App posts comments and checks. It does not merge the pull request.",
+        title: "Context before you are awake.",
+        body: "Trace, recent deploys, owning service and the last incident that looked like this — gathered and posted to the incident channel before you open the laptop.",
       },
       {
-        title: "A journal, not a black box.",
-        body: "Resolved, deleted, or silently fixed: the product records what became of each comment from what the team did, and feeds that back to the agent as calibration.",
+        title: "Three causes, ranked.",
+        body: "Not a summary of the alert. An ordered hypothesis list with the evidence for each one attached, and the suspected commit linked when a deploy correlates.",
+      },
+      {
+        title: "Writes the timeline for you.",
+        body: "Every step it took lands in the channel as it happens, so the post-mortem is half-written by the time you resolve.",
+      },
+    ],
+  },
+  {
+    slug: "studio",
+    name: "TeraCode Studio",
+    status: "coming-soon",
+    category: "Authoring",
+    tagline: "Author agents: personas, skills and tools.",
+    heroTitle: "An agent is\na document.",
+    heroBody:
+      "Write an agent's instructions, attach skills scoped to file globs, give it tools, and version every change. It is the same authoring model behind every application we ship — the Review board is built in it. Studio is coming soon; join the waitlist and we will reach out when your organisation can connect.",
+    benefits: [
+      {
+        title: "Personas, not prompts.",
+        body: "An agent is instructions, a model, a set of skills and a policy — a document you can read, review and roll back. Edit any preset and it becomes yours: same slug, your voice.",
+      },
+      {
+        title: "Skills scoped to globs.",
+        body: "Attach a skill to the paths it understands and it stays out of the prompt everywhere else. Context that scales with the codebase instead of against it.",
+      },
+      {
+        title: "Org-wide, repo-deep.",
+        body: "Set the roster once for the organisation, then override it on the repositories that genuinely differ. Every change is a revision you can compare.",
+      },
+    ],
+  },
+  {
+    slug: "runtime",
+    name: "TeraCode Runtime",
+    status: "coming-soon",
+    category: "Execution",
+    tagline: "Sandboxed execution on your own keys.",
+    heroTitle: "One turn.\nOne sandbox.",
+    heroBody:
+      "Every agent turn runs isolated and concurrent, on the provider key you supply. One agent failing never sinks the run, and we never take a cut of inference. Runtime is what every TeraCodeAI product executes on; it is coming soon as a surface you can build your own agents against.",
+    benefits: [
+      {
+        title: "Bring your own key.",
+        body: "Your provider bills you directly. The key is encrypted at rest, decrypted only to run a turn, never written to a log, and never enters the sandbox that clones the repository.",
+      },
+      {
+        title: "Isolated by default.",
+        body: "Each turn gets its own sandbox. One agent throwing never takes down the others in the run; the rest complete and report.",
+      },
+      {
+        title: "Spend, itemised.",
+        body: "Every run records its tokens against the agent that spent them, so cost has a name attached. A cheap model for docs, a frontier model for security — routed per agent, not per account.",
+      },
+    ],
+  },
+  {
+    slug: "evals",
+    name: "TeraCode Evals",
+    status: "coming-soon",
+    category: "Measurement",
+    tagline: "Scored on what humans kept, not vibes.",
+    heroTitle: "Kept,\nor deleted.",
+    heroBody:
+      "Resolve a finding and it counted. Delete it and it didn't. Every agent carries a keep rate, and regression suites gate a persona before it reaches production. Evals is coming soon; join the waitlist and we will reach out when your organisation can connect.",
+    benefits: [
+      {
+        title: "Signal from the work itself.",
+        body: "No survey, no thumbs. The two things a human already does — resolve or delete — are the whole scoring model, recorded from what the team did on the pull request.",
+      },
+      {
+        title: "Keep rate per agent.",
+        body: "Every persona carries a number that says whether it earned its place on the roster, per repository. It is how you decide to keep an agent, not a marketing score.",
+      },
+      {
+        title: "Regression suites and side-by-side.",
+        body: "Replay a persona against cases it has already seen; a change that loses ground does not ship. Run two versions on live traffic and promote the one that wins.",
+      },
+    ],
+  },
+  {
+    slug: "signals",
+    name: "TeraCode Signals",
+    status: "coming-soon",
+    category: "Observability",
+    tagline: "Traces, spend and drift for every agent.",
+    heroTitle: "Watch it\nin production.",
+    heroBody:
+      "Every run itemised: which agent, which model, how many tokens, what it cost. Watch a keep rate drift off its own baseline before anyone thinks to complain about it. Signals is coming soon; join the waitlist and you will hear from us the week it opens up.",
+    benefits: [
+      {
+        title: "Full trace per turn.",
+        body: "The prompt that went out, the skills that joined it, the tools it called and what came back — retained per turn, per agent.",
+      },
+      {
+        title: "Cost with a name on it.",
+        body: "Spend broken down by agent, model and repository, so an expensive persona is visible immediately rather than at invoice time.",
+      },
+      {
+        title: "Drift alerts and an audit trail.",
+        body: "When an agent's keep rate falls off its baseline, you hear about it from us first. Who changed which agent, when, and what it did afterwards — exportable.",
       },
     ],
   },
@@ -135,6 +247,7 @@ export const features: FeaturePage[] = [
 
 export const featureExtras: Record<string, FeatureExtras> = {
   review: {
+    midLayout: "panels",
     midSection: {
       title: "Named reviewers on the diff,\nmerged into one thread.",
       items: [
@@ -155,61 +268,12 @@ export const featureExtras: Record<string, FeatureExtras> = {
     statsTitleMuted: "Every AI reviewer charges per seat.",
     statsTitle: "TeraCode runs on your keys, at cost.",
   },
-  agents: {
-    midSection: {
-      title: "The vault is the product.\nThe model bill is yours.",
-      items: [
-        {
-          title: "Anthropic direct",
-          body: "Your sk-ant key. Token counts in the dashboard; dollars on Anthropic's invoice. Recorded as unmetered, never as free.",
-        },
-        {
-          title: "OpenRouter",
-          body: "One key for whatever it fronts, with the per-call cost the dashboard can show. Their BYOK path still charges a small platform fee on their side — that is their bill, not ours.",
-        },
-        {
-          title: "Encrypted at rest",
-          body: "Keys sit in the vault. They are used to call the provider from the host process.",
-        },
-        {
-          title: "Never in the sandbox",
-          body: "The clone can read the repository. It cannot see your key, the database URL, or the App private key.",
-        },
-        {
-          title: "A cap that speaks",
-          body: "When spend would pass the project budget, the review says so on the pull request. A cap that only fails closed is a cap nobody can plan around.",
-        },
-        {
-          title: "First repo free",
-          body: "Connect one repository and reviews start. The $20 meter is the second repository, not a trial clock.",
-        },
-      ],
-    },
-    statsTitleMuted: "One meter for the platform.",
-    statsTitle: "Your provider for the tokens.",
-  },
-  checks: {
-    midSection: {
-      title: "Most tools dump a comment storm.\nEach agent here has a check you can require.",
-      items: [
-        {
-          title: "One check per agent.",
-          body: "Security can fail while style passes. That is the point of several reviewers instead of one blob.",
-        },
-        {
-          title: "Comment-only unless you say otherwise.",
-          body: "Default policy posts findings and checks. It does not merge the pull request. You require the check names in the forge.",
-        },
-        {
-          title: "Keep-rate in the dashboard.",
-          body: "The journal is how you decide whether to keep an agent on a repository — not a marketing score.",
-        },
-      ],
-    },
-  },
 };
 
-/** Decorative mock cards, index-aligned with each page's benefits. */
+/**
+ * Decorative mock cards, index-aligned with each page's benefits. Only
+ * available products render a showcase; coming-soon pages are a teaser.
+ */
 export const featureMocks: Record<string, FeatureMock[]> = {
   review: [
     {
@@ -241,74 +305,6 @@ export const featureMocks: Record<string, FeatureMock[]> = {
         { label: "Findings merged", value: "12 → 5" },
         { label: "Duplicates removed", value: "7" },
         { label: "Checks posted", value: "4", mono: true },
-      ],
-    },
-  ],
-  agents: [
-    {
-      callout: {
-        tone: "neutral",
-        title: "Vault",
-        meta: "Encrypted at rest",
-      },
-      rows: [
-        { label: "provider", value: "anthropic", mono: true },
-        { label: "key", value: "sk-ant-…4f21", mono: true },
-        { label: "in sandbox", value: "no", mono: true },
-        { label: "budget", value: "$40 / month", mono: true },
-        { label: "spent", value: "$12.40", mono: true },
-      ],
-    },
-    {
-      callout: {
-        tone: "brand",
-        title: "OpenRouter reports the dollar",
-        body: "Anthropic reports tokens only. The dashboard does not invent a price table.",
-      },
-      rows: [
-        { label: "This run", value: "$0.18", mono: true },
-        { label: "Month to date", value: "$12.40", mono: true },
-        { label: "Budget remaining", value: "$27.60", mono: true },
-      ],
-    },
-    {
-      label: "Meter",
-      rows: [
-        { label: "First repository", value: "Free forever", dot: "brand" },
-        { label: "This extra repository", value: "$20 / month", dot: "brand" },
-        { label: "Inference", value: "Your provider", dot: "brand" },
-      ],
-    },
-  ],
-  checks: [
-    {
-      callout: {
-        tone: "danger",
-        badge: "Check failed",
-        meta: "2 min ago",
-        title: "security",
-        body: "Token logged in plaintext in auth/session.ts. Require this check to hold the merge.",
-      },
-      rows: [
-        { label: "agent", value: "security", mono: true },
-        { label: "check", value: "failure", mono: true },
-        { label: "findings", value: "2", mono: true },
-        { label: "blocking", value: "1", mono: true, dot: "danger" },
-      ],
-      footer: { left: "Posted on PR #482", right: "Check run updated" },
-    },
-    {
-      callout: {
-        tone: "brand",
-        title: "Keep-rate 64%",
-        meta: "Last 30 days · security",
-      },
-      label: "What the team did",
-      rows: [
-        { label: "Resolved", value: "18", dot: "brand" },
-        { label: "Deleted as noise", value: "7", dot: "warn" },
-        { label: "Still open", value: "3", dot: "faint" },
-        { label: "Silently fixed", value: "2", dot: "brand" },
       ],
     },
   ],

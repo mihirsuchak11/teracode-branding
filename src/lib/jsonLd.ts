@@ -56,8 +56,8 @@ export function faqJsonLd(items: FaqItem[]) {
 }
 
 /**
- * A product page: the software itself plus a breadcrumb.
- * All three pages are facets of the same obtainable product.
+ * A product page: the software itself plus a breadcrumb. `released` is false
+ * for products that are not yet available, which carry no offer.
  */
 export function productJsonLd(feature: FeaturePage, released: boolean) {
   const url = `${SITE_URL}/products/${feature.slug}`;
@@ -71,7 +71,7 @@ export function productJsonLd(feature: FeaturePage, released: boolean) {
         alternateName: feature.name,
         url,
         applicationCategory: "DeveloperApplication",
-        applicationSubCategory: "Code review",
+        applicationSubCategory: feature.category ?? "Code review",
         operatingSystem: "Web",
         description: feature.heroBody,
         publisher: { "@id": ORG_ID },

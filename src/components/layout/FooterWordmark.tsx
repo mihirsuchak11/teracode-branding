@@ -38,9 +38,9 @@ export function FooterWordmark() {
           src="/teracode-logo-horizontal-white.svg"
           alt=""
           aria-hidden
-          width={1322}
-          height={352}
-          className="h-auto w-full select-none"
+          width={1292}
+          height={320}
+          className="mx-auto block h-auto w-full select-none"
           initial={reduced ? false : { opacity: 0.001, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "0px 0px -10% 0px" }}

@@ -1,7 +1,8 @@
 import { Hero } from "@/components/sections/Hero";
 import { LogoTicker } from "@/components/sections/LogoTicker";
 import { Statement } from "@/components/sections/Statement";
-import { FeatureSpotlights } from "@/components/sections/FeatureSpotlight";
+import { ProductSpotlights } from "@/components/sections/ProductSpotlight";
+import { ProductLineup } from "@/components/sections/ProductLineup";
 import { StackSection } from "@/components/sections/StackSection";
 import { Testimonial } from "@/components/sections/Testimonial";
 import { StatsBand } from "@/components/sections/StatsBand";
@@ -19,7 +20,8 @@ export default function HomePage() {
       <Hero />
       <LogoTicker />
       <Statement />
-      <FeatureSpotlights />
+      <ProductSpotlights />
+      <ProductLineup />
       <StackSection />
       <Testimonial />
       <StatsBand

@@ -32,9 +32,9 @@ const cabinet = localFont({
 });
 
 export const metadata: Metadata = buildMetadata({
-  title: "TeraCodeAI — BYOK multi-agent PR review",
+  title: "TeraCodeAI — Ship fast and secure with AI agents on every change",
   description:
-    "TeraCodeAI is a GitHub App and dashboard that runs several review agents on every pull request. Each posts its own check. You bring the model key. $20 per extra connected repository per month; the first repo in an org is free forever.",
+    "TeraCodeAI is the platform to build and ship AI agents, and the agents we run on it for you. Review reads every pull request today on your own model keys; Studio, Runtime and Evals are the platform underneath. First connected repository free; $20 per extra repo per month.",
 });
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -48,10 +48,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SmoothScroll />
         <ChromaticFilters />
         <Header />
-        {/* Hairline page frame, as in the original layout */}
-        <div className="mx-4 flex flex-1 flex-col border-x border-border md:mx-10 lg:mx-16">
-          <main className="flex-1 pt-[68px]">{children}</main>
-          <Footer />
+        {/* Hairline page frame, as in the original layout: the content column
+            is capped at 1600px and centred, so ultra-wide viewports get margin
+            on both sides instead of a left-aligned page. The header shares the
+            same cap so its logo and CTA line up with the frame edges. */}
+        <div className="flex flex-1 flex-col px-4 md:px-10 lg:px-16">
+          <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col border-x border-border">
+            <main className="flex-1 pt-[68px]">{children}</main>
+            <Footer />
+          </div>
         </div>
         {/* Fixed bottom-of-viewport chromatic band — the original's "glare".
             Last in the body so it sits above the page content it smears. */}

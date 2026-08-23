@@ -18,5 +18,7 @@ export const APP_ORIGIN = (
 
 export const APP_LOGIN = `${APP_ORIGIN}/login`;
 
+export const MAIL_CONTACT = "mailto:contact@teracodeai.com";
+
 /** Start free / Get started — connect the first (free) repository. */
 export const APP_START = `${APP_LOGIN}?next=/projects/new`;
