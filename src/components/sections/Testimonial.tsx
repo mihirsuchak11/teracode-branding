@@ -2,13 +2,15 @@ import Image from "next/image";
 import { testimonial } from "@/content/home";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
-import { ChevronDown } from "@/components/ui/icons";
 
 /**
  * 600px band: a bottom-aligned text column beside a fixed 500×600 portrait.
  * The portrait's fade to black is baked into the PNG, so it needs no mask.
  * Type and rhythm are the original's — stat, label, a right-aligned rule and
- * quote at 20/28, then the carousel arrows level with the attribution.
+ * quote at 20/28, then the attribution.
+ *
+ * The template carried carousel arrows here. There is one testimonial and no
+ * carousel, so they were controls that did nothing.
  */
 export function Testimonial() {
   return (
@@ -43,21 +45,9 @@ export function Testimonial() {
               {testimonial.quote}
             </blockquote>
 
-            <div className="mt-10 flex items-end justify-between gap-6">
-              {/* Carousel arrows (the scrape only ships one testimonial) */}
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-fg-disabled">
-                  <ChevronDown width={14} height={14} className="rotate-90" />
-                </span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-2 text-fg-dim">
-                  <ChevronDown width={14} height={14} className="-rotate-90" />
-                </span>
-              </div>
-
-              <div className="text-right">
-                <p className="text-[16px] leading-6 text-fg">{testimonial.name}</p>
-                <p className="mt-1 text-[12px] leading-4 text-fg-muted">{testimonial.role}</p>
-              </div>
+            <div className="mt-10 ml-auto max-w-[589px] text-right">
+              <p className="text-[16px] leading-6 text-fg">{testimonial.name}</p>
+              <p className="mt-1 text-[12px] leading-4 text-fg-muted">{testimonial.role}</p>
             </div>
           </Reveal>
         </div>
