@@ -51,10 +51,9 @@ const MARK = [
 ] as const;
 
 /**
- * Every loop on this page is paused while its section is off screen. Lenis
- * drives the scroll from rAF, so a timer that re-renders a table the visitor
- * cannot see is paid for in scroll smoothness. `FeatureAccordion` gates its
- * own advance the same way.
+ * Every loop on this page is paused while its section is off screen: a timer
+ * that re-renders a table the visitor cannot see is paid for in scroll
+ * smoothness. `FeatureAccordion` gates its own advance the same way.
  */
 export function useOnScreen<T extends HTMLElement>() {
   const ref = useRef<T>(null);

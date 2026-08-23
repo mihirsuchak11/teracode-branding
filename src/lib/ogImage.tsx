@@ -2,16 +2,25 @@ import { ImageResponse } from "next/og";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
-export const alt = "TeraCodeAI — BYOK multi-agent PR review";
+export const OG_SIZE = { width: 1200, height: 630 } as const;
+export const OG_CONTENT_TYPE = "image/png";
+export const OG_ALT = "TeraCodeAI — BYOK multi-agent PR review";
 
 /* The symbol is used rather than the horizontal lockup: the lockup sets its
    wordmark as live SVG <text>, which needs a font at raster time. The mark is
    pure paths, so the wordmark is set here in real type instead. */
 const mark = readFileSync(join(process.cwd(), "public", "teracode-symbol-white.svg"));
 
-export default function OpengraphImage() {
+/**
+ * The single source of truth for the share card.
+ *
+ * Two things render it: `app/opengraph-image.tsx`, which serves it from
+ * `/opengraph-image` at request time, and `scripts/generate-og.tsx`, which
+ * bakes the identical pixels into `public/og.png`. The static copy is what
+ * `buildMetadata` actually advertises — see the note there — so this module
+ * exists to keep the two from drifting apart.
+ */
+export function ogImage() {
   return new ImageResponse(
     (
       <div
@@ -26,7 +35,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <img
+          <img
             src={`data:image/svg+xml;base64,${mark.toString("base64")}`}
             width={62}
             height={54}
@@ -51,6 +60,6 @@ export default function OpengraphImage() {
         </div>
       </div>
     ),
-    { ...size },
+    { ...OG_SIZE },
   );
 }

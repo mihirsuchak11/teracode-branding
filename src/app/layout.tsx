@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { ChromaticFilters } from "@/components/motion/ChromaticReveal";
 import { ChromaticGlareBand } from "@/components/motion/ChromaticGlareBand";
 import { buildMetadata } from "@/lib/metadata";
@@ -37,6 +36,13 @@ export const metadata: Metadata = buildMetadata({
     "TeraCodeAI is the platform to build and ship AI agents, and the agents we run on it for you. Review reads every pull request today on your own model keys; Studio, Runtime and Evals are the platform underneath. First connected repository free; $20 per extra repo per month.",
 });
 
+/* Paints the browser chrome (mobile address bar, PWA splash) in the page
+   background rather than the default white. */
+export const viewport: Viewport = {
+  themeColor: "#110f0d",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -45,7 +51,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col">
         <JsonLd data={siteGraph} />
-        <SmoothScroll />
         <ChromaticFilters />
         <Header />
         {/* Hairline page frame, as in the original layout: the content column

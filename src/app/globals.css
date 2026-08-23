@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "lenis/dist/lenis.css";
 
 @theme {
   --font-sans: var(--font-geist-sans), Inter, sans-serif;
@@ -44,6 +43,21 @@
       transform: translateX(-50%);
     }
   }
+}
+
+/* Native smooth scrolling, in place of the Lenis wrapper that used to hijack
+   the wheel. `scroll-margin-top` clears the 68px fixed header so an anchor
+   target ("/careers#open-roles") does not land underneath it. */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+:target {
+  scroll-margin-top: 88px;
 }
 
 body {
