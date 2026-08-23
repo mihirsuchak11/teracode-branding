@@ -2,6 +2,7 @@ import type { Stat } from "@/lib/types";
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { Lottie } from "@/components/motion/Lottie";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 
 /**
  * Four stat cells across the frame. On the home page each cell is topped by the
@@ -13,16 +14,23 @@ export function StatsBand({
   title,
   stats,
   icons,
+  divider = "bottom",
 }: {
   titleMuted?: string;
   title: string;
   stats: Stat[];
   /** One Lottie JSON path per stat, in order. */
   icons?: string[];
+  /**
+   * Where the original draws its chromatic divider: along the bottom on the
+   * home page, along the top (before the cells) on the feature pages.
+   */
+  divider?: "top" | "bottom";
 }) {
   return (
     <section className="px-6 md:px-0">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="relative mx-auto max-w-[1400px]">
+        <ChromaticBorder edge={divider} />
         <div className="pt-20 pb-10 md:px-10">
           <ChromaticLines
             as="h2"

@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 
 function ChipIcon({ i }: { i: number }) {
   const shapes = [
@@ -36,7 +37,9 @@ export function CapabilityChips({
 }) {
   const [first, ...rest] = title.split("\n");
   return (
-    <section className="border-b border-border px-6 pb-20 pt-9 md:px-10">
+    // the original's USP block opens with a chromatic divider
+    <section className="relative border-b border-border px-6 pb-20 pt-9 md:px-10">
+      <ChromaticBorder edge="top" />
       <ChromaticLines
         as="h2"
         className="max-w-[620px] text-[28px] font-semibold tracking-tight md:text-[32px] md:leading-[34px]"

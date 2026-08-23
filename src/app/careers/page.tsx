@@ -3,6 +3,7 @@ import Link from "next/link";
 import { JobList } from "@/components/sections/JobList";
 import { PageShell, PageHero } from "@/components/sections/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 import { ChevronDown } from "@/components/ui/icons";
 import { buildMetadata } from "@/lib/metadata";
 import { careersHero, peopleSection, jobsSection, jobs } from "@/content/careers";
@@ -51,7 +52,9 @@ export default function CareersPage() {
       />
 
       {/* Manifesto */}
-      <section className="grid gap-10 border-b border-border px-6 py-10 md:grid-cols-2 md:gap-8 md:px-10">
+      <section className="relative grid gap-10 border-b border-border px-6 py-10 md:grid-cols-2 md:gap-8 md:px-10">
+        {/* the original draws a chromatic divider under this block, before the job postings */}
+        <ChromaticBorder edge="bottom" />
         <Reveal className="flex flex-col justify-between gap-16">
           <h2 className="max-w-[504px] text-2xl font-semibold leading-[1.07] tracking-tight text-fg md:text-[32px]">
             {careersHero.statement}

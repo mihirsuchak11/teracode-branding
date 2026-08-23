@@ -14,6 +14,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import type { FeaturePage as Feature } from "@/lib/types";
 import { buildMetadata } from "@/lib/metadata";
 import { Reveal } from "@/components/motion/Reveal";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 import { Button } from "@/components/ui/Button";
 import { FeatureShowcase, PulseMidSection } from "@/components/sections/BenefitSection";
 import { ReviewMidPanels } from "@/components/sections/ReviewMidPanels";
@@ -246,6 +247,8 @@ export default async function FeaturePage({
         )}
         <Breadcrumb name={feature.name} ruleToArt={artTop} />
         <Hero feature={feature} />
+        {/* the original feature hero ends on a chromatic divider */}
+        <ChromaticBorder edge="bottom" />
       </div>
       {released ? (
         <>
@@ -300,6 +303,7 @@ export default async function FeaturePage({
               titleMuted={extras.statsTitleMuted}
               title={extras.statsTitle}
               stats={feature.stats}
+              divider="top"
               icons={[
                 "/lottie/stat-1.json",
                 "/lottie/stat-2.json",

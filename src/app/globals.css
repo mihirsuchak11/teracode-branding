@@ -304,3 +304,70 @@ body {
   .review-step-fill { animation: none; width: 100%; }
   .integ-cell { animation: none; }
 }
+
+/* ChromaticBorder — see components/motion/ChromaticBorder.tsx. Values are the
+   original Framer component's: 0.4s cubic-bezier(.12,.23,.5,1), bars staggered
+   0 / .02 / .04s, pure RGB while growing, dimmed channels at rest. */
+[data-chromatic-border] {
+  display: flex;
+  height: 1px;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+[data-chromatic-border] .cb-half {
+  position: relative;
+  flex: 1 0 0;
+  height: 1px;
+  overflow: hidden;
+}
+[data-chromatic-border] .cb-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  transition:
+    width 0.4s cubic-bezier(0.12, 0.23, 0.5, 1),
+    background-color 0.4s cubic-bezier(0.12, 0.23, 0.5, 1);
+}
+/* both halves grow from the centre outward */
+[data-chromatic-border] .cb-half--l .cb-bar {
+  right: 0;
+}
+[data-chromatic-border] .cb-half--r .cb-bar {
+  left: 0;
+}
+[data-chromatic-border] .cb-bar--b {
+  background-color: rgb(0, 0, 255);
+}
+[data-chromatic-border] .cb-bar--g {
+  background-color: rgb(0, 255, 0);
+  mix-blend-mode: screen;
+}
+[data-chromatic-border] .cb-bar--r {
+  background-color: rgb(255, 0, 0);
+  mix-blend-mode: screen;
+}
+/* stagger: left r→g→b, right b→g→r */
+[data-chromatic-border] .cb-bar--g {
+  transition-delay: 0.02s;
+}
+[data-chromatic-border] .cb-half--l .cb-bar--b,
+[data-chromatic-border] .cb-half--r .cb-bar--r {
+  transition-delay: 0.04s;
+}
+[data-chromatic-border].is-visible .cb-bar {
+  width: 100%;
+}
+[data-chromatic-border].is-visible .cb-bar--b {
+  background-color: rgb(0, 0, 36);
+}
+[data-chromatic-border].is-visible .cb-bar--g {
+  background-color: rgb(0, 37, 0);
+}
+[data-chromatic-border].is-visible .cb-bar--r {
+  background-color: rgb(41, 0, 0);
+}
+[data-chromatic-border].is-static .cb-bar {
+  transition: none;
+}

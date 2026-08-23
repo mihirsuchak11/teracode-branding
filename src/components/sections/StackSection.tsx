@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { stack } from "@/content/home";
-import { Reveal } from "@/components/motion/Reveal";
+import { SlideInFromRight } from "@/components/motion/SlideInFromRight";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ChevronDown, Plus } from "@/components/ui/icons";
 
@@ -90,7 +91,9 @@ function StackPanel() {
 export function StackSection() {
   return (
     <section className="relative">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-5">
+      <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-5">
+        {/* the original overlays its chromatic divider on the top edge */}
+        <ChromaticBorder edge="top" />
         {/* Text — 2 of 5 columns */}
         <div className="flex flex-col justify-center px-6 py-16 md:col-span-2 md:p-10">
           <ChromaticCascade
@@ -133,9 +136,9 @@ export function StackSection() {
             WebkitMaskImage: "linear-gradient(270deg, rgba(0,0,0,0) 12%, rgb(0,0,0) 61%)",
           }}
         >
-          <Reveal>
+          <SlideInFromRight>
             <StackPanel />
-          </Reveal>
+          </SlideInFromRight>
         </div>
       </div>
     </section>

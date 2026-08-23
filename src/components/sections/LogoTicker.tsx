@@ -1,5 +1,6 @@
 import { statement, tickerBrands } from "@/content/home";
 import { Marquee } from "@/components/motion/Marquee";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 
 /* Simple geometric glyphs standing in for the fictional brand marks. */
 function BrandGlyph({ i }: { i: number }) {
@@ -20,7 +21,7 @@ function BrandGlyph({ i }: { i: number }) {
 
 export function LogoTicker() {
   return (
-    <section className="border-y border-border py-12">
+    <section className="relative border-y border-border py-12">
       <p className="px-6 pb-9 text-center text-sm font-medium text-fg-muted md:px-10">
         {statement.eyebrow}
       </p>
@@ -35,6 +36,8 @@ export function LogoTicker() {
           </span>
         ))}
       </Marquee>
+      {/* the original draws its chromatic divider along the bottom edge */}
+      <ChromaticBorder edge="bottom" />
     </section>
   );
 }

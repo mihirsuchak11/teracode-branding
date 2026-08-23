@@ -2,6 +2,7 @@ import type { FeatureBenefit } from "@/lib/types";
 import { type FeatureMidSection, featureMocks } from "@/content/features";
 
 import { Reveal } from "@/components/motion/Reveal";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 import { ChromaticLines } from "@/components/motion/ChromaticLines";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { FeatureAccordion } from "@/components/sections/FeatureAccordion";
@@ -104,7 +105,10 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
   const fullWidth = benefits[across];
 
   return (
-    <section className="border-y border-border">
+    // The original Bento draws its chromatic divider between the rows and
+    // along the bottom edge.
+    <section className="relative border-y border-border">
+      <ChromaticBorder edge="bottom" />
       <div
         className={`grid divide-y divide-border md:divide-x md:divide-y-0 ${
           across === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
@@ -121,7 +125,8 @@ export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: Fe
         ))}
       </div>
       {fullWidth && (
-        <div className="grid border-t border-border md:grid-cols-2">
+        <div className="relative grid border-t border-border md:grid-cols-2">
+          <ChromaticBorder edge="top" />
           <div className="flex flex-col justify-end p-10">
             <PanelText benefit={fullWidth} />
           </div>
@@ -196,7 +201,9 @@ export function PulseMidSection({ mid }: { mid: FeatureMidSection }) {
   const [first, ...rest] = mid.title.split("\n");
   return (
     <>
-      <section className="flex h-[390px] items-center justify-center px-6">
+      {/* the original brackets this intro block with two chromatic dividers */}
+      <section className="relative flex h-[390px] items-center justify-center px-6">
+        <ChromaticBorder edge="top" />
         <ChromaticLines
           as="h2"
           className="max-w-[560px] text-center text-[28px] font-semibold tracking-tight md:text-[32px] md:leading-[34px]"
@@ -206,7 +213,8 @@ export function PulseMidSection({ mid }: { mid: FeatureMidSection }) {
           ]}
         />
       </section>
-      <section className="grid items-center gap-12 border-t border-border px-6 py-16 md:grid-cols-[668fr_588fr] md:px-10">
+      <section className="relative grid items-center gap-12 border-t border-border px-6 py-16 md:grid-cols-[668fr_588fr] md:px-10">
+        <ChromaticBorder edge="top" />
         <Reveal className={`flex h-[450px] items-center justify-center overflow-hidden ${dots}`}>
           <KeepRateChartCard />
         </Reveal>

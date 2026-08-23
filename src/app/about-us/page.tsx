@@ -3,6 +3,7 @@ import { MilestoneTimeline } from "@/components/sections/MilestoneTimeline";
 import { PageShell, PageHero, Eyebrow } from "@/components/sections/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import { Marquee } from "@/components/motion/Marquee";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 import { buildMetadata } from "@/lib/metadata";
 import { aboutHero, origins, milestones } from "@/content/about";
 import { tickerBrands } from "@/content/home";
@@ -71,7 +72,9 @@ export default function AboutPage() {
         </section>
 
         {/* Trusted by */}
-        <section className="border-b border-border pt-10">
+        <section className="relative border-b border-border pt-10">
+          {/* the original closes the partners ticker with a chromatic divider */}
+          <ChromaticBorder edge="bottom" />
           <Eyebrow>{origins.trustedBy}</Eyebrow>
           <div className="py-10">
             <Marquee>

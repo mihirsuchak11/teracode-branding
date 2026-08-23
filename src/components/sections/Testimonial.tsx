@@ -2,6 +2,7 @@ import Image from "next/image";
 import { testimonial } from "@/content/home";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
+import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
 
 /**
  * 600px band: a bottom-aligned text column beside a fixed 500×600 portrait.
@@ -17,7 +18,9 @@ export function Testimonial() {
     // The page frame (layout.tsx `mx-16`) already supplies the outer inset,
     // so this only pads on small screens.
     <section className="relative border-y border-border px-6 md:px-0">
-      <div className="mx-auto flex max-w-[1400px] md:h-[600px]">
+      <div className="relative mx-auto flex max-w-[1400px] md:h-[600px]">
+        {/* the original draws its chromatic divider along the bottom edge */}
+        <ChromaticBorder edge="bottom" />
         {/* No right padding — the original runs the text to the column edge,
             where the portrait begins. */}
         <div className="flex flex-1 flex-col justify-end py-16 md:py-10 md:pr-0 md:pl-10">

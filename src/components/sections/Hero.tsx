@@ -7,7 +7,12 @@ import { HeroStrands, HERO_LOGO_CONFIG } from "@/components/three/HeroStrands";
 /* Geometry below is measured off the original page at a 1512px viewport:
    announcement block 692x64 from the frame edge, hairline at y=132, the text
    stack 612 wide at y=283 (h1 -> 20px -> body -> 40px -> buttons), and the
-   three steps on a 235px/32px-gutter grid at y=750. */
+   three steps on a 235px/32px-gutter grid at y=750.
+   The steps' y is NOT "191px below the buttons": in the original the hero
+   Content is a fixed 578px-tall grid (y=132..710) with the text column inside
+   it, and the Steps container adds 40px padding -> 750. Pinning the box height
+   keeps the steps at 750 whatever the headline wraps to, so on load they sit
+   above the glare band instead of smeared inside it. */
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
@@ -31,7 +36,10 @@ export function Hero() {
       <div className="h-px w-full max-w-[692px] bg-border" />
 
       {/* Headline stack */}
-      <div className="relative px-6 pt-[150px] md:px-10">
+      {/* 578px box = the original's Content grid height; the stack is 150px
+          from its top and the remaining ~40px below the buttons is the
+          original's padding */}
+      <div className="relative px-6 pt-[150px] md:px-10 xl:min-h-[578px]">
         <div className="max-w-[612px]">
           <Reveal delay={0.1}>
             <h1 className="text-display-hero text-fg">{hero.title}</h1>
@@ -62,8 +70,10 @@ export function Hero() {
         <HeroStrands className="h-full w-full" config={HERO_LOGO_CONFIG} />
       </div>
 
-      {/* Steps row — 3 columns of 235px with a 32px gutter, left half of the frame */}
-      <div className="relative px-6 pb-[120px] pt-20 md:px-10 xl:pt-[191px]">
+      {/* Steps row — 3 columns of 235px with a 32px gutter, left half of the
+          frame. 40px top padding is the original Steps container's, at every
+          breakpoint. */}
+      <div className="relative px-6 pb-[120px] pt-10 md:px-10">
         <div className="grid max-w-[769px] grid-cols-1 gap-8 md:grid-cols-3">
           {/* the original staggers the three step blocks at 0.5 / 0.6 / 0.7s */}
           {steps.map((step, i) => (
