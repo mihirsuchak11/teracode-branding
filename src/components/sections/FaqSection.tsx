@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import type { FaqItem } from "@/lib/types";
@@ -63,7 +63,15 @@ function AccordionItem({
   );
 }
 
-export function FaqSection({ items }: { items: FaqItem[] }) {
+export function FaqSection({
+  items,
+  title = "Frequently Asked Questions",
+  blurb,
+}: {
+  items: FaqItem[];
+  title?: string;
+  blurb?: ReactNode;
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
     <section className="px-6 py-20 md:px-0 md:pt-20 md:pb-44">
@@ -73,15 +81,19 @@ export function FaqSection({ items }: { items: FaqItem[] }) {
           <ChromaticHeading
             as="h2"
             className="text-[32px] leading-[34px] font-semibold tracking-tight text-fg"
-            text="Frequently Asked Questions"
+            text={title}
           />
           <Reveal>
             <p className="mt-6 max-w-[612px] text-[16px] leading-6 text-fg-muted">
-              Do you want to learn more about us, let&apos;s go{" "}
-              <Link href="/blog" className="text-fg-dim underline underline-offset-4 hover:text-fg">
-                the blog page
-              </Link>
-              .
+              {blurb ?? (
+                <>
+                  Do you want to learn more about us, let&apos;s go{" "}
+                  <Link href="/blog" className="text-fg-dim underline underline-offset-4 hover:text-fg">
+                    the blog page
+                  </Link>
+                  .
+                </>
+              )}
             </p>
           </Reveal>
         </div>

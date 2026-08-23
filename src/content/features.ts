@@ -70,6 +70,12 @@ export const features: FeaturePage[] = [
         body: "Comments land as one review from the App. Checks stay per agent, so you can require security without requiring style.",
       },
     ],
+    stats: [
+      { value: "$0", label: "Markup on your token spend" },
+      { value: "0", label: "Per-seat licences" },
+      { value: "100%", label: "BYOK — your own API keys" },
+      { value: "1", label: "Review on the pull request" },
+    ],
   },
   {
     slug: "agents",
@@ -146,6 +152,8 @@ export const featureExtras: Record<string, FeatureExtras> = {
         },
       ],
     },
+    statsTitleMuted: "Every AI reviewer charges per seat.",
+    statsTitle: "TeraCode runs on your keys, at cost.",
   },
   agents: {
     midSection: {

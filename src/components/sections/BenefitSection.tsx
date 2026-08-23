@@ -7,6 +7,7 @@ import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { FeatureAccordion } from "@/components/sections/FeatureAccordion";
 import { AskChatAnim } from "@/components/sections/AskChatAnim";
 import { FeatureMockCard } from "@/components/sections/FeatureMockCard";
+import { ReviewBoardMock, ReviewPostedMock, ReviewRiskMock } from "@/components/sections/ReviewMocks";
 
 /* Dotted-grid backdrop behind every demo mock, as in the original panels. */
 const dots =
@@ -88,7 +89,16 @@ function Panel({
  */
 export function FeatureShowcase({ slug, benefits }: { slug: string; benefits: FeatureBenefit[] }) {
   const cards = featureMocks[slug] ?? [];
-  const mocks = cards.map((card, i) => <FeatureMockCard key={i} mock={card} />);
+  /* Review is the launch page, so its three cards play rather than sit still.
+     They read the same `featureMocks` copy as every other product. */
+  const mocks =
+    slug === "review"
+      ? [
+          <ReviewBoardMock key="0" mock={cards[0]} />,
+          <ReviewRiskMock key="1" mock={cards[1]} />,
+          <ReviewPostedMock key="2" mock={cards[2]} />,
+        ]
+      : cards.map((card, i) => <FeatureMockCard key={i} mock={card} />);
   const across = slug === "agents" ? benefits.length : Math.min(benefits.length, 2);
   const inGrid = benefits.slice(0, across);
   const fullWidth = benefits[across];
