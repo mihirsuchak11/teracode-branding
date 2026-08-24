@@ -137,7 +137,7 @@ export const termsOfService: LegalDoc = {
     {
       heading: "Subscription and Billing",
       body: [
-        "The Service is metered at $20 per connected repository per month. The first repository in an organization is free, forever. There is no per-seat licence and no second meter for queries or data sources. Model usage is billed to you by your own provider under your agreement with them; we add no margin to it. Paid quantity is billed in advance for the subscription period. Disconnecting a repository drops quantity at the next boundary; we do not promise a pro-rata refund. We may change pricing with reasonable advance notice.",
+        "The Service is metered at $29 (USD) or ₹2,999 (INR) per extra connected repository per month. The first repository in an organization is free, forever. There is no per-seat licence and no second meter for queries or data sources. Model usage is billed to you by your own provider under your agreement with them; we add no margin to it. Paid quantity is billed in advance through Razorpay hosted checkout; TeraCodeAI remains the seller (including GST, where applicable). Disconnecting a repository drops quantity at the next boundary; we do not promise a pro-rata refund. We may change pricing with reasonable advance notice.",
       ],
     },
     {

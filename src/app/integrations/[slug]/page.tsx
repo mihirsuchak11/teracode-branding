@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { APP_START } from "@/lib/app";
 import { integrations, getIntegration } from "@/content/integrations";
 import { Reveal } from "@/components/motion/Reveal";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { IntegrationMark } from "@/components/sections/IntegrationsGrid";
 import { ChevronDown } from "@/components/ui/icons";

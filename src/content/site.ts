@@ -24,7 +24,7 @@ export const nav = {
     support: [
       {
         label: "Start free",
-        description: "Sign in and connect the first repository.",
+        description: "Sign in and put the army on the first repository.",
         href: APP_START,
       },
       {
@@ -91,8 +91,8 @@ export const footer = {
 };
 
 export const ctaBand = {
-  title: "Start with Review on one repository. It stays free.",
-  titleLine1: "Start with Review on one repository.",
+  title: "Put the army on one repository. It stays free.",
+  titleLine1: "Put the army on one repository.",
   titleLine2: "It stays free.",
   primary: { label: "Start free", href: APP_START },
   secondary: { label: "See pricing", href: "/pricing" },

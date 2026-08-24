@@ -14,12 +14,17 @@ export const faq: FaqItem[] = [
   {
     question: "What is BYOK, and what does it mean for my bill?",
     answer:
-      "Bring your own key. You add an Anthropic or OpenRouter key; TeraCodeAI calls that provider from the host. Tokens are billed to you by the provider. We do not resell inference. The platform charge is separate: $20 per extra connected repository per month.",
+      "Bring your own key. You add an Anthropic or OpenRouter key; TeraCodeAI calls that provider from the host. Tokens are billed to you by the provider. We do not resell inference. The platform charge is separate: $29 or ₹2,999 per extra connected repository per month.",
   },
   {
     question: "How is TeraCodeAI priced?",
     answer:
-      "One meter. $20 per connected repository per month. The first repository in an organization is free, forever. There is no per-seat licence and no query pack. Inference is your provider invoice.",
+      "The product is an army of review agents. $29 or ₹2,999 per extra connected repository per month; the first repository is free forever. There is no per-seat licence. Inference is your provider invoice. Students with a university email and public open-source projects run one agent, free. Pay in USD or INR on Razorpay hosted checkout after you sign in — the card is never typed on this site. We remain the GST seller.",
+  },
+  {
+    question: "I am a student or I maintain an open-source project. What do I get?",
+    answer:
+      "One review agent, on the free repository. Apply from the dashboard billing page. A .edu / .ac.in / .ac.uk email is granted immediately. A public GitHub repository is checked against the forge. The rest of the army unlocks when you subscribe.",
   },
   {
     question: "Which forges and models do you support?",

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Job } from "@/lib/types";
 import { ChevronDown } from "@/components/ui/icons";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -38,16 +40,16 @@ export function JobList({ jobs }: { jobs: Job[] }) {
   return (
     <>
       <div className="px-6 pb-10 md:px-10">
-        <label className="flex h-10 w-full max-w-[400px] items-center gap-2.5 rounded-[12px] bg-surface px-3">
+        <Label className="flex h-10 w-full max-w-[400px] items-center gap-2.5 rounded-[12px] bg-surface px-3">
           <SearchIcon className="shrink-0 text-fg-faint" />
-          <input
+          <Input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search applications..."
-            className="w-full bg-transparent text-sm font-medium text-fg outline-none placeholder:text-fg-faint"
+            className="h-auto border-0 bg-transparent px-0 py-0 text-sm font-medium shadow-none focus-visible:ring-0"
           />
-        </label>
+        </Label>
       </div>
       <div>
         {filtered.map((job) => (

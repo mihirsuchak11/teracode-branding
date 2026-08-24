@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export type AccordionItem = { title: string; body: string };
 
@@ -95,10 +96,11 @@ export function FeatureAccordion({
         const showRule = dividers === "all" ? !last : open;
         return (
           <div key={item.title} className={i === 0 ? "" : "pt-6"}>
-            <button
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => setActive(i)}
-              className="flex w-full cursor-pointer items-center justify-between text-left"
+              className="h-auto w-full justify-between rounded-none p-0 text-left hover:bg-transparent hover:text-fg"
             >
               <span
                 className={`text-[18px] font-semibold leading-6 transition-colors ${
@@ -108,7 +110,7 @@ export function FeatureAccordion({
                 {item.title}
               </span>
               {marks && <RowMark open={open} />}
-            </button>
+            </Button>
             <div
               className="grid transition-[grid-template-rows] duration-300 ease-out"
               style={{ gridTemplateRows: open ? "1fr" : "0fr" }}

@@ -54,7 +54,7 @@ export function ogImage() {
         </div>
 
         <div style={{ display: "flex", gap: 40, fontSize: 24, color: "#79716b" }}>
-          <div style={{ display: "flex", color: "#10ec90" }}>$20 / extra repo</div>
+          <div style={{ display: "flex", color: "#10ec90" }}>$29 / extra repo</div>
           <div style={{ display: "flex" }}>BYOK</div>
           <div style={{ display: "flex" }}>GitHub App + dashboard</div>
         </div>

@@ -5,7 +5,7 @@ import type { BlogPost } from "@/lib/types";
  */
 export const blogHero = {
   title: "Blog",
-  body: "Notes on BYOK review, keep-rate, and the $20-per-repo meter — when there is something true to write.",
+  body: "Notes on BYOK review, keep-rate, and the $29-per-repo meter — when there is something true to write.",
 };
 
 export const posts: BlogPost[] = [

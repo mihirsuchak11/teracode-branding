@@ -33,7 +33,7 @@ const cabinet = localFont({
 export const metadata: Metadata = buildMetadata({
   title: "TeraCodeAI — Ship fast and secure with AI agents on every change",
   description:
-    "TeraCodeAI is the platform to build and ship AI agents, and the agents we run on it for you. Review reads every pull request today on your own model keys; Studio, Runtime and Evals are the platform underneath. First connected repository free; $20 per extra repo per month.",
+    "TeraCodeAI is the platform to build and ship AI agents, and the agents we run on it for you. Review reads every pull request today on your own model keys; Studio, Runtime and Evals are the platform underneath. First connected repository free; $29 per extra repo per month.",
 });
 
 /* Paints the browser chrome (mobile address bar, PWA splash) in the page

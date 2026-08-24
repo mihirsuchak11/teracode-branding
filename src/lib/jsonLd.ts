@@ -83,7 +83,7 @@ export function productJsonLd(feature: FeaturePage, released: boolean) {
                 priceCurrency: "USD",
                 availability: "https://schema.org/InStock",
                 description:
-                  "$20 per connected repository per month. The first repository in an organization is free forever. Inference is billed by your own provider.",
+                  "$29 or ₹2,999 per extra connected repository per month. The first repository in an organization is free forever. Inference is billed by your own provider. Checkout is Razorpay hosted (USD or INR).",
               },
             }
           : {}),

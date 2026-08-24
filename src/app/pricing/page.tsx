@@ -8,7 +8,7 @@ import { LogoTicker } from "@/components/sections/LogoTicker";
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "$20 per connected repository per month. The first repository in an organization is free forever. One meter. Inference is billed by your own provider.",
+    "An army of agents on every pull request. $29 or ₹2,999 per extra repository; first repo free. Students and open-source projects run one agent free. Enterprise is bulk / invoice. Pay in USD or INR on Razorpay hosted checkout.",
   path: "/pricing",
 });
 

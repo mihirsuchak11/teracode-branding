@@ -2,6 +2,8 @@
 
 import { useActionState } from "react";
 import { subscribeNewsletter, type FormState } from "@/app/actions";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const initial: FormState = { status: "idle" };
 
@@ -14,8 +16,7 @@ export function NewsletterForm() {
 
   return (
     <form action={action} className="flex items-center gap-3">
-      {/* honeypot */}
-      <input
+      <Input
         type="text"
         name="website"
         tabIndex={-1}
@@ -24,20 +25,21 @@ export function NewsletterForm() {
         className="hidden"
       />
       <div className="flex h-11 w-full max-w-xs items-center rounded-full border border-border-strong/60 bg-bg-deep pl-4 pr-1">
-        <input
+        <Input
           type="email"
           name="email"
           required
           placeholder="you@company.com"
-          className="w-full bg-transparent text-sm text-fg placeholder:text-fg-faint focus:outline-none"
+          className="h-auto border-0 bg-transparent px-0 py-0 shadow-none focus-visible:ring-0"
         />
-        <button
+        <Button
           type="submit"
           disabled={pending}
-          className="h-9 shrink-0 cursor-pointer rounded-full bg-fg-soft px-4 text-sm font-medium text-bg transition-colors hover:bg-fg disabled:opacity-50"
+          size="sm"
+          className="h-9 shrink-0 rounded-full"
         >
           Subscribe
-        </button>
+        </Button>
       </div>
       {state.status === "error" && <p className="text-xs text-danger">{state.message}</p>}
     </form>

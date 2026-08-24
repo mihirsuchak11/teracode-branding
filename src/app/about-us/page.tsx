@@ -11,7 +11,7 @@ import { tickerBrands } from "@/content/home";
 export const metadata = buildMetadata({
   title: "About us",
   description:
-    "TeraCodeAI is BYOK multi-agent pull request review. GitHub App plus dashboard. $20 per extra connected repository; first repo in an org free forever.",
+    "TeraCodeAI is BYOK multi-agent pull request review. GitHub App plus dashboard. $29 per extra connected repository; first repo in an org free forever.",
   path: "/about-us",
 });
 

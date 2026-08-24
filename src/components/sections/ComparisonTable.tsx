@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import type { ComparisonGroup, PricingTier } from "@/lib/types";
 import { Reveal } from "@/components/motion/Reveal";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Check, Close } from "@/components/ui/icons";
 
 function CellValue({ value }: { value: string | boolean }) {
