@@ -27,7 +27,7 @@ export const releases: ChangelogRelease[] = [
       },
       {
         label: "NEW",
-        text: "One meter: $20 per extra connected repository per month. The first repository in an organization is free forever.",
+        text: "One meter: $20 or ₹1,699 per extra connected repository per month. The first repository in an organization is free forever. Extra repos are paid on Razorpay hosted checkout after you sign in.",
       },
       {
         text: "The lineup: Migrate, Oncall, Studio, Runtime, Evals and Signals are coming soon on the same dashboard, the same keys and the same meter.",

@@ -7,7 +7,7 @@ export { MAIL_CONTACT };
 export const hero = {
   announcement: {
     badge: "Live",
-    text: "An army of agents on every pull request. First repo free, then $20 / extra repo. Students and OSS: one agent free.",
+    text: "An army of agents on every pull request. First repo free, then $20 / ₹1,699 per extra repo. Students and OSS: one agent free.",
     href: "/products/review",
   },
   title: "An army of agents on every pull request.",
@@ -206,6 +206,6 @@ export const statsSection: { titleMuted: string; title: string; stats: Stat[] } 
     { value: "8", label: "Review agents in the army — Legal, Security, Team Lead…" },
     { value: "1", label: "Free agent for students and public open-source projects" },
     { value: "$0", label: "Markup on your tokens" },
-    { value: "$20", label: "Per extra connected repository / month — first one free" },
+    { value: "$20 / ₹1,699", label: "Per extra connected repository / month — first one free" },
   ],
 };

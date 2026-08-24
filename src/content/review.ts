@@ -167,7 +167,7 @@ export const reviewFaq: FaqItem[] = [
   {
     question: "What is BYOK, and what do I pay?",
     answer:
-      "Bring your own key. You add an Anthropic or OpenRouter key and TeraCodeAI calls that provider. Tokens are billed to you by the provider. The platform charge is separate and is one meter: $20 per extra connected repository per month.",
+      "Bring your own key. You add an Anthropic or OpenRouter key and TeraCodeAI calls that provider. Tokens are billed to you by the provider. The platform charge is separate and is one meter: $20 or ₹1,699 per extra connected repository per month.",
   },
   {
     question: "Which forges and models do you support?",
