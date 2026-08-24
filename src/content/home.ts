@@ -7,11 +7,11 @@ export { MAIL_CONTACT };
 export const hero = {
   announcement: {
     badge: "Live",
-    text: "Review is available now. First connected repository free, then $20 per repo, per month.",
+    text: "An army of agents on every pull request. First repo free, then $20 / extra repo. Students and OSS: one agent free.",
     href: "/products/review",
   },
-  title: "Ship fast. Ship secure. Every change.",
-  body: "TeraCodeAI is the platform to build and ship AI agents, and the agents we run on it for you. Review reads every pull request today; Migrate and Oncall are next. Studio, Runtime, Evals and Signals are what you build your own with. Your keys, no cut of inference.",
+  title: "An army of agents on every pull request.",
+  body: "Legal, Compliance, Security, Team Lead, Senior Engineer — they read the same diff at once, each in its own voice, each with its own check. Review is live today. You bring the key; we take no cut of inference. Students and open-source projects run one agent, free.",
   primary: { label: "Start free", href: APP_START },
   secondary: { label: "See the products", href: "/#products" },
   mock: {
@@ -203,8 +203,8 @@ export const statsSection: { titleMuted: string; title: string; stats: Stat[] } 
   titleMuted: "One platform. One meter. Your keys.",
   title: "TeraCodeAI is the layer between the agent and the model bill.",
   stats: [
-    { value: "7", label: "Products on one platform" },
-    { value: "1", label: "Runtime under all of them" },
+    { value: "8", label: "Review agents in the army — Legal, Security, Team Lead…" },
+    { value: "1", label: "Free agent for students and public open-source projects" },
     { value: "$0", label: "Markup on your tokens" },
     { value: "$20", label: "Per extra connected repository / month — first one free" },
   ],

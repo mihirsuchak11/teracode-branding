@@ -38,7 +38,7 @@ export const reviewHowItWorks = {
 
 export const reviewCatches = {
   eyebrow: "What it looks for",
-  titleMuted: "Agents you name.",
+  titleMuted: "An army of agents you name.",
   title: "One review on the thread.",
   items: [
     {

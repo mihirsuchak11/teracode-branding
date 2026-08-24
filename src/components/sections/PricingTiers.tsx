@@ -25,7 +25,7 @@ function CircleCheck() {
 /** One hairline-bordered panel divided into three tier columns. */
 export function PricingTiers({ tiers }: { tiers: PricingTier[] }) {
   return (
-    <section className="px-6 md:px-24">
+    <section id="community" className="px-6 md:px-24">
       <Reveal>
         <div className="grid border border-border md:grid-cols-3 md:divide-x md:divide-border">
           {tiers.map((tier) => (

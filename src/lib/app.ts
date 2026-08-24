@@ -1,7 +1,7 @@
 /**
  * Dashboard origin. This site is static and holds no secrets, so CTAs are
  * links that carry intent into the TeraCodeAI app:
- *   `{APP}/login?next=/projects/new`
+ *   `{APP}/start`  →  `/login?next=/projects/new`
  *
  * Logged-in visitors are handled there (`safeNext`). Override the origin with
  * `NEXT_PUBLIC_APP_URL` for a preview or local dashboard.
@@ -21,4 +21,7 @@ export const APP_LOGIN = `${APP_ORIGIN}/login`;
 export const MAIL_CONTACT = "mailto:contact@teracodeai.com";
 
 /** Start free / Get started — connect the first (free) repository. */
-export const APP_START = `${APP_LOGIN}?next=/projects/new`;
+export const APP_START = `${APP_ORIGIN}/start`;
+
+/** Student / OSS apply form on Plans & billing. */
+export const APP_BILLING = `${APP_LOGIN}?next=/billing`;
