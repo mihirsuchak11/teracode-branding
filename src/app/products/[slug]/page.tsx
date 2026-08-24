@@ -236,7 +236,7 @@ export default async function FeaturePage({
 
   return (
     <>
-      {/* Released products carry the real $0/$20 offer; unreleased ones carry none. */}
+      {/* Released products carry the real $0/$29 offer; unreleased ones carry none. */}
       <JsonLd data={productJsonLd(feature, released)} />
       {feature.slug === "review" && <JsonLd data={faqJsonLd(reviewFaq)} />}
       <div className="relative">

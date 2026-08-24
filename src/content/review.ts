@@ -9,7 +9,7 @@ import type { FaqItem } from "@/lib/types";
  *
  * Every fact here has to match `content/pricing.ts`, `content/integrations.ts`
  * and `content/faq.ts`: GitHub App or GitLab token, Anthropic or OpenRouter,
- * first repository free forever then $20 per repository per month, inference
+ * first repository free forever then $29 per repository per month, inference
  * billed to you. No Bitbucket, no hosted inference, no private beta.
  */
 
@@ -71,7 +71,7 @@ export const reviewAudience = {
     },
     {
       title: "No seat tax",
-      body: "One meter: the first repository in an organization is free forever, then $20 per connected repository per month. There is no per-developer licence.",
+      body: "One meter: the first repository in an organization is free forever, then $29 per connected repository per month. There is no per-developer licence.",
     },
     {
       title: "Security as a reviewer, not a linter",
@@ -112,7 +112,7 @@ export const reviewCompare = {
   theirs: "Typical AI reviewer",
   rows: [
     { feature: "Who pays for inference", theirs: "They resell you tokens", ours: "Your provider, at their price" },
-    { feature: "Platform fee", theirs: "Per seat, per month", ours: "$0 first repo, then $20 each" },
+    { feature: "Platform fee", theirs: "Per seat, per month", ours: "$0 first repo, then $29 each" },
     { feature: "Who reviews", theirs: "One generalist", ours: "A board of agents you name" },
     { feature: "What lands on the PR", theirs: "A comment storm", ours: "One review, one check per agent" },
     { feature: "How findings are ordered", theirs: "By line number", ours: "By what it would break" },
@@ -167,7 +167,7 @@ export const reviewFaq: FaqItem[] = [
   {
     question: "What is BYOK, and what do I pay?",
     answer:
-      "Bring your own key. You add an Anthropic or OpenRouter key and TeraCodeAI calls that provider. Tokens are billed to you by the provider. The platform charge is separate and is one meter: $20 or ₹1,699 per extra connected repository per month.",
+      "Bring your own key. You add an Anthropic or OpenRouter key and TeraCodeAI calls that provider. Tokens are billed to you by the provider. The platform charge is separate and is one meter: $29 or ₹2,999 per extra connected repository per month.",
   },
   {
     question: "Which forges and models do you support?",

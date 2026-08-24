@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Contact us",
   description:
-    "Questions about TeraCodeAI, the $20-per-repo meter, or BYOK keys? Reach the team here or start free on the dashboard.",
+    "Questions about TeraCodeAI, the $29-per-repo meter, or BYOK keys? Reach the team here or start free on the dashboard.",
   path: "/contact-us",
 });
 
@@ -22,7 +22,7 @@ export default function ContactPage() {
               Talk to TeraCodeAI.
             </h1>
             <p className="mt-3 max-w-[496px] text-base leading-6 text-fg-muted">
-              Questions about the GitHub App, the $20-per-repo meter, or bringing your own key? Start free
+              Questions about the GitHub App, the $29-per-repo meter, or bringing your own key? Start free
               on the dashboard, or write us here.
             </p>
           </div>

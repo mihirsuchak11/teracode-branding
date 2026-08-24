@@ -28,7 +28,7 @@ export const MAIL_CONTACT = "mailto:contact@teracodeai.com";
 /** Start free / Get started — connect the first (free) repository. */
 export const APP_START = `${APP_ORIGIN}/start`;
 
-/** Extra-repo checkout — INR ₹1,699 or USD $20 on Razorpay hosted checkout. */
+/** Extra-repo checkout — INR ₹2,999 or USD $29 on Razorpay hosted checkout. */
 export const APP_SUBSCRIBE = `${APP_ORIGIN}/subscribe`;
 
 /** Student / OSS apply form on Plans & billing (same page as subscribe). */
