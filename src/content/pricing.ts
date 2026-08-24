@@ -3,7 +3,7 @@ import { APP_BILLING, APP_START, APP_SUBSCRIBE } from "@/lib/app";
 
 export const pricingHero = {
   title: "Pricing",
-  note: "An army of agents on every pull request. $20 or ₹1,699 per extra repository / month; first repo free. Students and public open-source projects run one agent, free. Pay in USD or INR on Razorpay hosted checkout — the card is never typed on this site.",
+  note: "An army of agents on every pull request. First repo free. Extra repos are $20 or ₹1,699 / month — India sees rupees first. You pick USD or INR when you subscribe; it locks after the first payment.",
 };
 
 /**
@@ -32,6 +32,7 @@ export const tiers: PricingTier[] = [
     name: "Each extra repository",
     price: "$20 / ₹1,699",
     period: "/month",
+    billed: { usd: "$20", inr: "₹1,699", period: "/month" },
     description: "Same army. The meter is connected repositories, not seats and not queries.",
     cta: { label: "Subscribe in the dashboard", href: APP_SUBSCRIBE },
     features: [

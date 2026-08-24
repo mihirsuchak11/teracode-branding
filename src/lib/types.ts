@@ -51,6 +51,8 @@ export interface PricingTier {
   cta: { label: string; href: string };
   features: string[];
   highlighted?: boolean;
+  /** Extra-repo card: display-only USD/INR toggle. Checkout still happens on the dashboard. */
+  billed?: { usd: string; inr: string; period: string };
 }
 
 export interface ComparisonGroup {

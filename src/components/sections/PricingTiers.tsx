@@ -1,6 +1,7 @@
 import type { PricingTier } from "@/lib/types";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
+import { CurrencyToggle } from "@/components/sections/CurrencyToggle";
 
 /** Circled check, as in the original tier checklists. */
 function CircleCheck() {
@@ -34,14 +35,22 @@ export function PricingTiers({ tiers }: { tiers: PricingTier[] }) {
               className="flex flex-col border-t border-border p-8 pb-9 first:border-t-0 md:min-h-[483px] md:border-t-0"
             >
               <h3 className="text-[17px] font-medium text-fg-dim">{tier.name}</h3>
-              <p className="mt-4 flex items-baseline gap-1.5">
-                <span className="text-[28px] font-medium tracking-tight text-fg">
-                  {tier.price}
-                </span>
-                {tier.period && (
-                  <span className="text-[15px] text-fg-faint">{tier.period}</span>
-                )}
-              </p>
+              {tier.billed ? (
+                <CurrencyToggle
+                  usd={tier.billed.usd}
+                  inr={tier.billed.inr}
+                  period={tier.billed.period}
+                />
+              ) : (
+                <p className="mt-4 flex items-baseline gap-1.5">
+                  <span className="text-[28px] font-medium tracking-tight text-fg">
+                    {tier.price}
+                  </span>
+                  {tier.period && (
+                    <span className="text-[15px] text-fg-faint">{tier.period}</span>
+                  )}
+                </p>
+              )}
               <div className="mt-10">
                 <p className="text-[15px] text-fg-muted">{tier.description}</p>
                 <ul className="mt-6 flex flex-col gap-[13px]">
