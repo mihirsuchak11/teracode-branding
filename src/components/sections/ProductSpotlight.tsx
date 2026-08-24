@@ -18,7 +18,7 @@ import {
   productStatus,
 } from "@/content/products";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/badge";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { ChevronDown } from "@/components/ui/icons";
 import { StrandMorph, type MorphShape } from "@/components/three/StrandMorph";

@@ -34,6 +34,27 @@
   --radius-btn: 8px;
   --radius-card: 12px;
 
+  /* shadcn primitives (Button, Switch, Input) read these names. Mapped onto
+     the existing marketing ramp so adding a registry component does not
+     restyle the site to zinc. */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-primary: var(--color-fg-soft);
+  --color-primary-foreground: var(--color-bg);
+  --color-secondary: #1c1917;
+  --color-secondary-foreground: var(--color-fg-soft);
+  --color-muted: var(--color-surface-2);
+  --color-muted-foreground: var(--color-fg-muted);
+  --color-accent: var(--color-surface-2);
+  --color-accent-foreground: var(--color-fg);
+  --color-destructive: var(--color-danger);
+  --color-input: var(--color-border-strong);
+  --color-ring: var(--color-fg);
+  --color-popover: var(--color-surface);
+  --color-popover-foreground: var(--color-fg);
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-fg);
+
   --animate-marquee: marquee 40s linear infinite;
   @keyframes marquee {
     from {

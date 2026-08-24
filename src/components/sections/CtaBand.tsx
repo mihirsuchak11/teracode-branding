@@ -1,5 +1,5 @@
 import { ctaBand } from "@/content/site";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { ChromaticCascade } from "@/components/motion/ChromaticCascade";
 import { StrandBurst } from "@/components/three/StrandBurst";
 

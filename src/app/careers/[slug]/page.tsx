@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { PageShell } from "@/components/sections/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { buildMetadata } from "@/lib/metadata";
 import { jobs } from "@/content/careers";
 

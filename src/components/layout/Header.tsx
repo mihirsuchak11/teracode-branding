@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav } from "@/content/site";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { ChevronDown, Close, Menu } from "@/components/ui/icons";
 
 function Dropdown({
@@ -23,15 +23,16 @@ function Dropdown({
 }) {
   return (
     <div className="relative" onMouseLeave={() => open && onToggle()}>
-      <button
+      <Button
         type="button"
+        variant="ghost"
         aria-expanded={open}
         onClick={onToggle}
         onMouseEnter={() => !open && onToggle()}
-        className="flex items-center gap-1 p-2"
+        className="h-auto gap-1 p-2 text-sm font-medium leading-5"
       >
         <span
-          className={`px-1.5 text-sm font-medium leading-5 transition-colors ${
+          className={`px-1.5 transition-colors ${
             open ? "text-fg" : "text-fg-soft hover:text-fg"
           }`}
         >
@@ -42,7 +43,7 @@ function Dropdown({
           height={16}
           className={`text-fg-faint transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
-      </button>
+      </Button>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -183,14 +184,16 @@ export function Header() {
         </div>
 
         {/* Mobile toggle */}
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           className="ml-auto text-fg md:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <Close width={22} height={22} /> : <Menu width={22} height={22} />}
-        </button>
+        </Button>
       </div>
 
       {/* Mobile menu */}

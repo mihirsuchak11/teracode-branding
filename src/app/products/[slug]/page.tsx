@@ -8,14 +8,14 @@ import {
   comingSoonCtas,
 } from "@/content/features";
 import { productStatus } from "@/content/products";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/badge";
 import { faqJsonLd, productJsonLd } from "@/lib/jsonLd";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { FeaturePage as Feature } from "@/lib/types";
 import { buildMetadata } from "@/lib/metadata";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticBorder } from "@/components/motion/ChromaticBorder";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { FeatureShowcase, PulseMidSection } from "@/components/sections/BenefitSection";
 import { ReviewMidPanels } from "@/components/sections/ReviewMidPanels";
 import { CapabilityChips } from "@/components/sections/CapabilityChips";

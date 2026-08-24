@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { ChevronDown } from "@/components/ui/icons";
+import { Button } from "@/components/ui/button";
 
 /** Tick counts per milestone segment, mirroring the original ruler rhythm. */
 const TICKS = [9, 16, 27, 42];
@@ -45,22 +46,24 @@ export function MilestoneTimeline({
         </div>
       </div>
       <div className="mt-11 flex items-center gap-2">
-        <button
+        <Button
           type="button"
+          variant="secondary"
           aria-label="Previous milestones"
           onClick={() => scroll(-1)}
-          className="flex h-[26px] w-[55px] cursor-pointer items-center justify-center rounded-full bg-surface-2 text-fg-dim transition-colors hover:text-fg"
+          className="h-[26px] w-[55px] rounded-full bg-surface-2 px-0 text-fg-dim hover:bg-surface-2 hover:text-fg"
         >
           <ChevronDown width={12} height={12} className="rotate-90" />
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="secondary"
           aria-label="Next milestones"
           onClick={() => scroll(1)}
-          className="flex h-[26px] w-[55px] cursor-pointer items-center justify-center rounded-full bg-surface-2 text-fg-dim transition-colors hover:text-fg"
+          className="h-[26px] w-[55px] rounded-full bg-surface-2 px-0 text-fg-dim hover:bg-surface-2 hover:text-fg"
         >
           <ChevronDown width={12} height={12} className="-rotate-90" />
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { FaqItem } from "@/lib/types";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticHeading } from "@/components/motion/ChromaticLines";
+import { Button } from "@/components/ui/button";
 
 /** The original's indicator: four 2px dots that fan into a wider spread when
  *  the row opens. No chevron. */
@@ -37,15 +38,16 @@ function AccordionItem({
 }) {
   return (
     <div className="border-b border-border">
-      <button
+      <Button
         type="button"
+        variant="ghost"
         aria-expanded={open}
         onClick={onToggle}
-        className="flex w-full cursor-pointer items-center justify-between gap-4 py-8 text-left"
+        className="h-auto w-full justify-between gap-4 rounded-none py-8 text-left text-fg hover:bg-transparent hover:text-fg"
       >
         <h3 className="text-[18px] leading-6 font-semibold text-fg">{item.question}</h3>
         <DotsIndicator open={open} />
-      </button>
+      </Button>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div

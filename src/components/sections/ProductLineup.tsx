@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { platform, productGroups, productHref, productStatus } from "@/content/products";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/badge";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
 import { ChevronDown } from "@/components/ui/icons";
 

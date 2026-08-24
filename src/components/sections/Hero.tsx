@@ -1,7 +1,7 @@
 import { hero, steps } from "@/content/home";
 import { Reveal } from "@/components/motion/Reveal";
 import { ChromaticReveal } from "@/components/motion/ChromaticReveal";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { HeroStrands, HERO_LOGO_CONFIG } from "@/components/three/HeroStrands";
 
 /* Geometry below is measured off the original page at a 1512px viewport:

@@ -1,6 +1,6 @@
 import type { PricingTier } from "@/lib/types";
 import { Reveal } from "@/components/motion/Reveal";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { CurrencyToggle } from "@/components/sections/CurrencyToggle";
 
 /** Circled check, as in the original tier checklists. */

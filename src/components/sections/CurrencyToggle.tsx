@@ -2,6 +2,8 @@
 
 import { useEffect, useId, useState } from "react";
 import { preferInrFromBrowser } from "@/lib/prefer-inr";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 export type DisplayCurrency = "usd" | "inr";
 
@@ -41,27 +43,27 @@ export function CurrencyToggle({
         <span className="text-[15px] text-fg-faint">{period}</span>
       </p>
       <div className="mt-3 flex items-center gap-2.5">
-        <span className="text-[12px] font-medium text-fg-faint" id={`${labelId}-usd`}>
-          USD
-        </span>
-        <button
-          type="button"
-          role="switch"
-          aria-checked={inrOn}
-          aria-labelledby={`${labelId}-usd ${labelId}-inr`}
-          disabled={currency === null}
-          onClick={() => setCurrency(inrOn ? "usd" : "inr")}
-          className="relative h-5 w-9 shrink-0 rounded-full border border-border bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 disabled:opacity-50"
+        <Label
+          className="cursor-pointer text-[12px] font-medium text-fg-faint"
+          id={`${labelId}-usd`}
+          onClick={() => currency && setCurrency("usd")}
         >
-          <span
-            className={`absolute top-0.5 size-3.5 rounded-full bg-fg-soft transition-transform ${
-              inrOn ? "translate-x-4" : "translate-x-0.5"
-            }`}
-          />
-        </button>
-        <span className="text-[12px] font-medium text-fg-faint" id={`${labelId}-inr`}>
+          USD
+        </Label>
+        <Switch
+          id={`${labelId}-currency`}
+          checked={inrOn}
+          disabled={currency === null}
+          onCheckedChange={(checked) => setCurrency(checked ? "inr" : "usd")}
+          aria-labelledby={`${labelId}-usd ${labelId}-inr`}
+        />
+        <Label
+          className="cursor-pointer text-[12px] font-medium text-fg-faint"
+          id={`${labelId}-inr`}
+          onClick={() => currency && setCurrency("inr")}
+        >
           INR
-        </span>
+        </Label>
       </div>
       <p className="mt-2 text-[13px] leading-5 text-fg-faint">
         Preview. Also {other}. You pick USD or INR when you subscribe; it
