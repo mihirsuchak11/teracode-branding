@@ -71,12 +71,14 @@ export const footer = {
       ],
     },
     {
-      /* Social profiles are intentionally absent until real handles exist. */
       title: "Connect",
       links: [
         { label: "Start free", href: APP_START },
         { label: "Sign in", href: APP_LOGIN },
-        { label: "contact@teracodeai.com", href: MAIL_CONTACT },
+        { label: "Contact", href: MAIL_CONTACT },
+        { label: "X", href: "https://x.com/TeraCodeAI" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/139374388" },
+        { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61593670505385" },
       ],
     },
   ],
