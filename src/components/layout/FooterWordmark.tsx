@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { INSTANT_S, useScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Oversized footer wordmark, ported from the reference site's footer.
@@ -29,6 +30,9 @@ import { motion, useReducedMotion } from "framer-motion";
  */
 export function FooterWordmark() {
   const reduced = useReducedMotion();
+  // A one-second spring is the slowest entrance on the site, so it is the one a
+  // fast scroll outruns first; `instant` puts the wordmark in place instead.
+  const { ref, visible, instant } = useScrollReveal<HTMLImageElement>({ enabled: !reduced });
 
   return (
     <div className="relative py-16 md:py-24">
@@ -41,10 +45,14 @@ export function FooterWordmark() {
           width={1292}
           height={320}
           className="mx-auto block h-auto w-full select-none"
+          ref={ref}
           initial={reduced ? false : { opacity: 0.001, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-          transition={{ type: "spring", bounce: 0.2, duration: 1 }}
+          animate={visible ? { opacity: 1, y: 0 } : undefined}
+          transition={
+            instant
+              ? { duration: INSTANT_S, ease: [0.12, 0.23, 0.5, 1] }
+              : { type: "spring", bounce: 0.2, duration: 1 }
+          }
         />
       </div>
 

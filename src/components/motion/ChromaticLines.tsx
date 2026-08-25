@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { useReducedMotion } from "framer-motion";
+import { observeReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * ChromaticLines — per-visual-line reveal.
@@ -66,7 +67,6 @@ export function ChromaticLines({
   blur = 0,
   stagger = 0.1,
   delay = 0,
-  margin = "0px 0px 0px 0px",
 }: {
   segments: Segment[];
   className?: string;
@@ -90,15 +90,6 @@ export function ChromaticLines({
   stagger?: number;
   /** seconds before the first line starts */
   delay?: number;
-  /**
-   * IntersectionObserver rootMargin. The bottom MUST stay 0 (not a negative
-   * inset): the reveal has to fire at the viewport's bottom edge so the line
-   * is still inside <ChromaticGlareBand /> (the fixed bottom 69px strip) while
-   * it animates in. With the old "0px 0px -12% 0px" the trigger sat ~92px up,
-   * above the band, so scrolling DOWN revealed text only after it had already
-   * cleared the glare -- the smear showed on the way up but never on the way down.
-   */
-  margin?: string;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
@@ -194,27 +185,29 @@ export function ChromaticLines({
     // when the last line has finished: delay + every stagger step + the tween
     const settle = (delay + (lines.length - 1) * stagger + 0.4) * 1000 + 120;
     let timer: number | undefined;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          // re-trigger every time it enters view (and reset when it leaves)
-          el.classList.toggle("is-visible", entry.isIntersecting);
-          window.clearTimeout(timer);
-          if (entry.isIntersecting) {
-            timer = window.setTimeout(() => setResolved(true), settle);
-          } else {
-            setResolved(false);
-          }
-        }
-      },
-      { rootMargin: margin, threshold: 0.01 },
-    );
-    io.observe(el);
+    // Fires at the viewport's bottom edge, with no inset, so the first line is
+    // still inside <ChromaticGlareBand /> (the fixed bottom 69px strip) when it
+    // starts -- inset the trigger and the smear only ever shows on the way up.
+    // The cascade is the entrance most easily outrun: n lines take
+    // 0.4s + n * stagger, so on a fast scroll every line on screen is caught
+    // mid-fade. `instant` drops the stagger and shortens the tween (see
+    // .is-catchup in globals.css) so the text is simply there.
+    const dispose = observeReveal(el, (visible, instant) => {
+      el.classList.toggle("is-catchup", visible && instant);
+      // re-trigger every time it enters view (and reset when it leaves)
+      el.classList.toggle("is-visible", visible);
+      window.clearTimeout(timer);
+      if (visible) {
+        timer = window.setTimeout(() => setResolved(true), instant ? 280 : settle);
+      } else {
+        setResolved(false);
+      }
+    });
     return () => {
-      io.disconnect();
+      dispose();
       window.clearTimeout(timer);
     };
-  }, [reduced, lines, margin, delay, stagger]);
+  }, [reduced, lines, delay, stagger]);
 
   // Reduced motion: plain text.
   if (reduced) {

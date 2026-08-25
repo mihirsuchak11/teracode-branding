@@ -11,6 +11,7 @@ import {
 } from "react";
 import { useReducedMotion } from "framer-motion";
 import { channelLayers } from "@/components/motion/ChromaticLines";
+import { observeReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * ChromaticCascade — per-visual-line reveal across a GROUP of text blocks.
@@ -18,9 +19,9 @@ import { channelLayers } from "@/components/motion/ChromaticLines";
  * Unlike ChromaticLines (single element), this measures the wrapped lines of
  * every block (heading, body, …) plus any atomic node blocks (a CTA), then
  * hands out ONE continuous, increasing transition-delay across all of them and
- * fires from a single IntersectionObserver. Result: heading line 1 → heading
- * line 2 → body line 1 → … → CTA, each following the previous instead of all
- * arriving together.
+ * fires from a single scroll-reveal registration. Result: heading line 1 →
+ * heading line 2 → body line 1 → … → CTA, each following the previous instead
+ * of all arriving together.
  *
  * Motion values are Framer's real appear numbers (opacity 0.001→1,
  * translateY 10px, 0.4s, ease cubic-bezier(0.12,0.23,0.5,1)) — and by default
@@ -58,7 +59,6 @@ export function ChromaticCascade({
   riseY = 10,
   shift = 0,
   blur = 0,
-  margin = "0px 0px 0px 0px",
 }: {
   blocks: Block[];
   className?: string;
@@ -73,15 +73,6 @@ export function ChromaticCascade({
   shift?: number;
   /** blur (px) while split. DEFAULT 0. */
   blur?: number;
-  /**
-   * IntersectionObserver rootMargin. The bottom MUST stay 0 (not a negative
-   * inset): the reveal has to fire at the viewport's bottom edge so the line
-   * is still inside <ChromaticGlareBand /> (the fixed bottom 69px strip) while
-   * it animates in. With the old "0px 0px -12% 0px" the trigger sat ~92px up,
-   * above the band, so scrolling DOWN revealed text only after it had already
-   * cleared the glare -- the smear showed on the way up but never on the way down.
-   */
-  margin?: string;
 }) {
   const reduced = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -187,28 +178,30 @@ export function ChromaticCascade({
     const steps = layout.reduce((n, b) => Math.max(n, b.startIndex + (b.lines?.length ?? 1)), 0);
     const settle = (delay + Math.max(0, steps - 1) * stagger + 0.4) * 1000 + 120;
     let timer: number | undefined;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          // re-trigger every time it enters view (and reset when it leaves)
-          el.classList.toggle("is-visible", entry.isIntersecting);
-          window.clearTimeout(timer);
-          if (entry.isIntersecting) {
-            // drop the channel copies once the cascade has played out
-            timer = window.setTimeout(() => setResolved(true), settle);
-          } else {
-            setResolved(false);
-          }
-        }
-      },
-      { rootMargin: margin, threshold: 0.01 },
-    );
-    io.observe(el);
+    // Fires at the viewport's bottom edge, with no inset, so the first line is
+    // still inside <ChromaticGlareBand /> (the fixed bottom 69px strip) when it
+    // starts -- inset the trigger and the smear only ever shows on the way up.
+    // A cascade runs one continuous delay across every block, so it is the
+    // longest entrance on the page and the easiest for a fast scroll to outrun.
+    // `instant` collapses the stagger (see .is-catchup in globals.css) rather
+    // than letting the text arrive somewhere above the reader.
+    const dispose = observeReveal(el, (visible, instant) => {
+      el.classList.toggle("is-catchup", visible && instant);
+      // re-trigger every time it enters view (and reset when it leaves)
+      el.classList.toggle("is-visible", visible);
+      window.clearTimeout(timer);
+      if (visible) {
+        // drop the channel copies once the cascade has played out
+        timer = window.setTimeout(() => setResolved(true), instant ? 280 : settle);
+      } else {
+        setResolved(false);
+      }
+    });
     return () => {
-      io.disconnect();
+      dispose();
       window.clearTimeout(timer);
     };
-  }, [reduced, layout, margin, delay, stagger]);
+  }, [reduced, layout, delay, stagger]);
 
   if (reduced) {
     return (

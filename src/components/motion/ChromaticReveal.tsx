@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode, type CSSProperties } from "react";
 import { useReducedMotion } from "framer-motion";
+import { observeReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * ChromaticReveal — the original Framer site's scroll reveal.
@@ -46,8 +47,6 @@ export function ChromaticReveal({
   fade = 0.999,
   /** seconds to wait before this block resolves (hero load sequencing) */
   delay = 0,
-  /** IntersectionObserver rootMargin — when the reveal triggers */
-  margin = "0px 0px 0px 0px",
 }: {
   children: ReactNode;
   className?: string;
@@ -57,15 +56,6 @@ export function ChromaticReveal({
   rise?: number;
   fade?: number;
   delay?: number;
-  /**
-   * IntersectionObserver rootMargin. The bottom MUST stay 0 (not a negative
-   * inset): the reveal has to fire at the viewport's bottom edge so the line
-   * is still inside <ChromaticGlareBand /> (the fixed bottom 69px strip) while
-   * it animates in. With the old "0px 0px -12% 0px" the trigger sat ~92px up,
-   * above the band, so scrolling DOWN revealed text only after it had already
-   * cleared the glare -- the smear showed on the way up but never on the way down.
-   */
-  margin?: string;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -74,18 +64,17 @@ export function ChromaticReveal({
     if (reduced) return;
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          // re-trigger every time it enters view (and reset when it leaves)
-          el.classList.toggle("is-visible", entry.isIntersecting);
-        }
-      },
-      { root: null, rootMargin: margin, threshold: 0.01 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [reduced, margin]);
+    // Fires at the viewport's bottom edge, with no inset: the reveal has to
+    // start while the element is still inside <ChromaticGlareBand /> (the fixed
+    // bottom 69px strip) or the smear shows on the way up but never on the way
+    // down. `instant` means the reader outran the 0.4s tween, so the block is
+    // put in place with a short fade instead of arriving behind them.
+    return observeReveal(el, (visible, instant) => {
+      el.classList.toggle("is-catchup", visible && instant);
+      // re-trigger every time it enters view (and reset when it leaves)
+      el.classList.toggle("is-visible", visible);
+    });
+  }, [reduced]);
 
   // Reduced motion: render content once, no effect.
   if (reduced) {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
+import { observeReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * ChromaticBorder — the original site's section divider ("Chromatic Border",
@@ -17,8 +18,13 @@ import { useReducedMotion } from "framer-motion";
  * r leads on the left half and b on the right — which fringes the two moving
  * tips red and blue before they settle to grey.
  *
- * Trigger is the original's variant-appear effect: threshold 1 (fully in
- * view), plays once. Motion lives in globals.css under [data-chromatic-border].
+ * Trigger is the original's variant-appear effect: it plays once, when the
+ * line reaches the viewport. It is driven by <scroll-reveal>, not by an
+ * IntersectionObserver: a 1px line is exactly what a threshold observer loses
+ * on a fast scroll -- the page can step over it between two frames, cross no
+ * threshold, and leave the divider undrawn for good. If the reader does outrun
+ * it, `instant` draws the line without the animation rather than not at all.
+ * Motion lives in globals.css under [data-chromatic-border].
  *
  * `edge` overlays it on the top or bottom edge of the nearest positioned
  * ancestor at the original's width (centred, max 1400px) without taking any
@@ -39,19 +45,15 @@ export function ChromaticBorder({
     if (reduced) return;
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            el.classList.add("is-visible");
-            io.disconnect();
-          }
-        }
+    return observeReveal(
+      el,
+      (visible, instant) => {
+        if (!visible) return;
+        if (instant) el.classList.add("is-static");
+        el.classList.add("is-visible");
       },
-      { threshold: 1 },
+      { once: true },
     );
-    io.observe(el);
-    return () => io.disconnect();
   }, [reduced]);
 
   const bars = (side: "l" | "r") => (

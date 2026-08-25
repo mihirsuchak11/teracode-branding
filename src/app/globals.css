@@ -155,6 +155,16 @@ body {
 [data-chromatic].is-visible {
   --e: 0;
 }
+/* Caught up. The reader is moving faster than the 0.4s tween, so the entrance
+   would finish somewhere above their eye and every block on screen would sit
+   half-faded. `.is-catchup` (set by scroll-reveal.ts alongside `.is-visible`)
+   drops the wait and shortens the fade, so the content is simply there. The
+   delay override needs `!important`: the per-line delays are inline styles. */
+[data-chromatic].is-catchup,
+[data-chromatic].is-catchup > .chromatic__layer {
+  transition-delay: 0s !important;
+  transition-duration: 0.15s;
+}
 [data-chromatic] > .chromatic__layer {
   grid-area: 1 / 1;
   mix-blend-mode: screen;
@@ -220,6 +230,14 @@ body {
 }
 [data-chromatic-lines].is-visible .cl-line {
   --e: 0;
+}
+/* Caught up — see the note on [data-chromatic].is-catchup above. This is the
+   case that matters most: a cascade's delays run 0.1s per line across every
+   block, so a fast scroll leaves whole sections mid-fade. */
+[data-chromatic-lines].is-catchup .cl-line,
+[data-chromatic-lines].is-catchup .cl-layer {
+  transition-delay: 0s !important;
+  transition-duration: 0.15s;
 }
 @media (prefers-reduced-motion: reduce) {
   [data-chromatic-lines] .cl-line {
