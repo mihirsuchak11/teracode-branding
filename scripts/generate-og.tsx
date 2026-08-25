@@ -1,11 +1,11 @@
 /**
- * Bakes the share card into `public/og.png`.
+ * Bakes the generated card into `public/og.png`.
  *
- * `app/opengraph-image.tsx` already serves the same pixels from
- * `/opengraph-image`, but that URL carries no file extension and is generated
- * per request. A handful of link unfurlers — WhatsApp among them — are happier
- * with a plain static `.png`, so that is the one `buildMetadata` advertises and
- * this script is how it gets regenerated.
+ * Running this does NOT change the site's share image. `buildMetadata`
+ * advertises the designed `public/teracode-og-1200x630.png`; this only
+ * refreshes the older generated copy, which exists so a link a crawler cached
+ * against `/og.png` still resolves. To change what people see when they paste a
+ * link, replace the designed PNG.
  *
  * Usage: npx tsx scripts/generate-og.tsx   (run from the repo root)
  */

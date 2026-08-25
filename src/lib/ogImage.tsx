@@ -12,13 +12,13 @@ export const OG_ALT = "TeraCodeAI — BYOK multi-agent PR review";
 const mark = readFileSync(join(process.cwd(), "public", "teracode-symbol-white.svg"));
 
 /**
- * The single source of truth for the share card.
+ * The generated share card.
  *
- * Two things render it: `app/opengraph-image.tsx`, which serves it from
- * `/opengraph-image` at request time, and `scripts/generate-og.tsx`, which
- * bakes the identical pixels into `public/og.png`. The static copy is what
- * `buildMetadata` actually advertises — see the note there — so this module
- * exists to keep the two from drifting apart.
+ * It is no longer the card anyone sees: `buildMetadata` advertises the designed
+ * `public/teracode-og-1200x630.png` instead. This survives to keep the two URLs
+ * a crawler may already hold — `/opengraph-image`, served from here at request
+ * time, and `public/og.png`, baked from here by `scripts/generate-og.tsx` —
+ * resolving to something rather than to a 404.
  */
 export function ogImage() {
   return new ImageResponse(

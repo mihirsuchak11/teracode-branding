@@ -11,18 +11,22 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://teracode.ai
 export const SITE_NAME = "TeraCodeAI";
 
 /**
- * The share card, as a plain static file.
+ * The share card: a designed asset, not a generated one.
  *
- * `app/opengraph-image.tsx` serves identical pixels from `/opengraph-image`,
- * but that URL is extensionless and rendered per request; some unfurlers
- * (WhatsApp in particular) are more reliable with a static `.png`. Regenerate
- * with `npx tsx scripts/generate-og.tsx` after editing `src/lib/ogImage.tsx`.
+ * `src/lib/ogImage.tsx` still renders a card at `/opengraph-image`, and
+ * `scripts/generate-og.tsx` still bakes that one into `public/og.png`, but
+ * neither is what unfurlers are pointed at any more. Editing the generator no
+ * longer changes what anyone sees when they paste a link — replace this file.
+ *
+ * It stays a plain static `.png` for the reason the generated copy did:
+ * `/opengraph-image` is extensionless and rendered per request, and some
+ * unfurlers (WhatsApp in particular) are happier with a file.
  */
 const OG_IMAGE = {
-  url: "/og.png",
+  url: "/teracode-og-1200x630.png",
   width: 1200,
   height: 630,
-  alt: "TeraCodeAI — BYOK multi-agent PR review",
+  alt: "TeraCode — Ship fast. Ship secure. Every change. An AI reviewer on every pull request, catching bugs and leaks before they merge.",
   type: "image/png",
 } as const;
 
