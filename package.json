@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "og": "npx tsx scripts/generate-og.tsx",
     "start": "next start",
     "lint": "eslint"
   },

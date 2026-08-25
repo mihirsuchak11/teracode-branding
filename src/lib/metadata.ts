@@ -13,10 +13,10 @@ export const SITE_NAME = "TeraCodeAI";
 /**
  * The share card: a designed asset, not a generated one.
  *
- * `src/lib/ogImage.tsx` still renders a card at `/opengraph-image`, and
- * `scripts/generate-og.tsx` still bakes that one into `public/og.png`, but
- * neither is what unfurlers are pointed at any more. Editing the generator no
- * longer changes what anyone sees when they paste a link — replace this file.
+ * There is no build step and nothing to regenerate: to change what people see
+ * when they paste a link, replace this file. (`src/lib/ogImage.tsx` still draws
+ * a card at `/opengraph-image`, but only so a crawler holding that URL gets
+ * something back; it is not what anyone is pointed at.)
  *
  * It stays a plain static `.png` for the reason the generated copy did:
  * `/opengraph-image` is extensionless and rendered per request, and some

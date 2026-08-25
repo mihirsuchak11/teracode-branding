@@ -12,13 +12,13 @@ export const OG_ALT = "TeraCodeAI — BYOK multi-agent PR review";
 const mark = readFileSync(join(process.cwd(), "public", "teracode-symbol-white.svg"));
 
 /**
- * The generated share card.
+ * The retired share card.
  *
- * It is no longer the card anyone sees: `buildMetadata` advertises the designed
- * `public/teracode-og-1200x630.png` instead. This survives to keep the two URLs
- * a crawler may already hold — `/opengraph-image`, served from here at request
- * time, and `public/og.png`, baked from here by `scripts/generate-og.tsx` —
- * resolving to something rather than to a 404.
+ * Nothing advertises these pixels any more — `buildMetadata` points unfurlers
+ * at the designed `public/teracode-og-1200x630.png`. This survives for exactly
+ * one reason: `/opengraph-image`, its only caller, is a URL a crawler may still
+ * hold, and it should answer with a card rather than a 404. Do not edit it to
+ * change the site's share image; it would change nothing anyone sees.
  */
 export function ogImage() {
   return new ImageResponse(
