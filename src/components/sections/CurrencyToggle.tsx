@@ -8,7 +8,7 @@ import { Switch } from "@/components/ui/switch";
 export type DisplayCurrency = "usd" | "inr";
 
 /**
- * Preview-only USD / INR switch for the extra-repo card.
+ * Preview-only USD / INR switch for the Team card.
  *
  * Does not start checkout and does not lock `billing_currency`. That happens
  * on the dashboard when they press Pay in ₹ or Pay in $.
