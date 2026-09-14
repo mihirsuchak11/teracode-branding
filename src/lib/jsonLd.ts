@@ -21,11 +21,11 @@ export const siteGraph = {
       url: SITE_URL,
       logo: `${SITE_URL}/apple-icon`,
       brand: { "@type": "Brand", name: SITE_NAME },
-      email: "contact@teracodeai.com",
+      email: "contact@teracode.ai",
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
-        email: "contact@teracodeai.com",
+        email: "contact@teracode.ai",
         availableLanguage: "English",
       },
     },

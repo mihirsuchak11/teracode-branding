@@ -33,7 +33,7 @@ export const releases: ChangelogRelease[] = [
         text: "The lineup: Migrate, Oncall, Studio, Runtime, Evals and Signals are coming soon on the same dashboard, the same keys and the same meter.",
       },
       {
-        text: "Start from this site at the dashboard login, destination /projects/new. Contact: contact@teracodeai.com.",
+        text: "Start from this site at the dashboard login, destination /projects/new. Contact: contact@teracode.ai.",
       },
     ],
   },

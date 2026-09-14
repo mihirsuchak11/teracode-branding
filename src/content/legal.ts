@@ -93,7 +93,7 @@ export const privacyPolicy: LegalDoc = {
     },
     {
       heading: "Contact",
-      body: ["Questions about this Privacy Policy can be sent to contact@teracodeai.com."],
+      body: ["Questions about this Privacy Policy can be sent to contact@teracode.ai."],
     },
   ],
 };

@@ -11,19 +11,26 @@
  * Logged-in visitors are handled there (`safeNext`). Override the origin with
  * `NEXT_PUBLIC_APP_URL` for a preview or local dashboard.
  *
- * The default is the Vercel host because it is the only dashboard origin that
- * currently resolves: `app.teracodeai.com` is NXDOMAIN, so defaulting to it
- * made every CTA on this site a dead link. `teracodeai.vercel.app` is also the
- * `homepage` recorded on the product repository. Once the apex domain has DNS,
- * set `NEXT_PUBLIC_APP_URL=https://app.teracodeai.com` — no code change needed.
+ * The default is `app.teracode.ai`, the dashboard's production host, so the
+ * links work even when the env var is missing. Never default to a platform
+ * host such as `*.vercel.app`: the old default pointed every Sign in button at
+ * a retired deployment that returned 404, and a brand site sending visitors
+ * to a login page on a different, dead domain is what got `teracode.ai`
+ * flagged by Google Safe Browsing as deceptive.
  */
 export const APP_ORIGIN = (
-  process.env.NEXT_PUBLIC_APP_URL ?? "https://teracodeai.vercel.app"
+  process.env.NEXT_PUBLIC_APP_URL ?? "https://app.teracode.ai"
 ).replace(/\/$/, "");
 
 export const APP_LOGIN = `${APP_ORIGIN}/login`;
 
-export const MAIL_CONTACT = "mailto:contact@teracodeai.com";
+/**
+ * On the site's own domain, whose MX is Zoho. `teracodeai.com` has no DNS at
+ * all, so an address there bounces — and an unreachable contact is one more
+ * mark against the site in a phishing check.
+ */
+export const CONTACT_EMAIL = "contact@teracode.ai";
+export const MAIL_CONTACT = `mailto:${CONTACT_EMAIL}`;
 
 /** Start free / Get started — connect the first (free) repository. */
 export const APP_START = `${APP_ORIGIN}/start`;

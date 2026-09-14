@@ -48,5 +48,5 @@ export const posts: BlogPost[] = [
 
 export const placeholderBody: string[] = [
   "This piece has not been published yet. It is on the list of things to write when there are real numbers from real repositories — not a second marketing site inside the dashboard.",
-  "If the topic is one you care about, write to contact@teracodeai.com.",
+  "If the topic is one you care about, write to contact@teracode.ai.",
 ];

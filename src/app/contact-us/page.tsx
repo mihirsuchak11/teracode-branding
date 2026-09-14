@@ -10,7 +10,7 @@ export const metadata = buildMetadata({
   path: "/contact-us",
 });
 
-const emails = [{ label: "Email:", email: "contact@teracodeai.com" }];
+const emails = [{ label: "Email:", email: "contact@teracode.ai" }];
 
 export default function ContactPage() {
   return (
@@ -28,8 +28,8 @@ export default function ContactPage() {
           </div>
           <p className="text-xs leading-4 text-fg-muted">
             You can also email us at{" "}
-            <a href="mailto:contact@teracodeai.com" className="transition-colors hover:text-fg">
-              contact@teracodeai.com
+            <a href="mailto:contact@teracode.ai" className="transition-colors hover:text-fg">
+              contact@teracode.ai
             </a>
           </p>
         </Reveal>
